@@ -1,24 +1,27 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+**** ToBe added here- A brief description of the undertaking, why I chose tumblr in as far as I illustrate my knowledge of working with rails, sql, react, redux and javascript overall. 
 
-Things you may want to cover:
+This read me will describe the main framworks and libraries involved in the build, along with their dependencies and any relevant version information
 
-* Ruby version
 
-* System dependencies
+
+
+
+Rails 5.2.6
+postgreSQL 13
+React 17.0.2
+Redux 4.1.0
+
+and dependencies
+
 
 * Configuration
 
-* Database creation
+* Database setup relative to the functionality of the app
 
-* Database initialization
+* Describe any issues I encountered and describe some of the better solutions I used to address them. Take the time to note any outstanding issues and your potential hopes for addressing them
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Future additions 
 
 * ...
