@@ -1,9 +1,13 @@
 class User < ApplicationRecord
   attr_reader :password
-  validates :username, :password_digest, :session_token, presence: true
-  validates :password, length: { minimu: 6, allow_nil: true }
+  validates :username, :password_digest, :session_token, :email, presence: true
+  validates :password, length: { minimum: 6, allow_nil: true }
 
   before_validation :ensure_session_token
+
+  # def email_default()
+  #   self.email ||= 'default@ithinkthiswillwork.com'
+  # end
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
