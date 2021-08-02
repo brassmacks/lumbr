@@ -9,12 +9,19 @@ class Api::SessionsController < ApplicationController
       render :new
     else 
       log_in!(@user)
-      redirect_to user_url
+      p current_user
+      render 'static_pages/root'
     end
     
     def destroy 
-      log_out!
-      redirect_to new_session_url
+      if current_user != nil
+        log_out!
+        render 'static_pages/root'
+      else
+        p 'here'
+        # render ''
+      end
+      # redirect_to new_session_url
       ## define this
     end
 

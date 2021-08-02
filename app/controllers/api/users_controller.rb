@@ -5,9 +5,10 @@ class Api::UsersController < ApplicationController
 
     if @user.save 
       log_in!(@user)
-      render json: @user
+      render :users_show
     else 
-      render json: @user.errors.full_messages
+      p @user.errors.full_messages
+      render json: @user.errors.full_messages, status: 400
     end
   end
 
@@ -22,7 +23,7 @@ class Api::UsersController < ApplicationController
   #     # route to explore page
   #   else
   #     @user = current_user
-  #     render: json: @user.username
+  #     render 200
   #     #isolate user/blog name to be added to current path
   #   end
   # end
