@@ -9,7 +9,7 @@ class Api::SessionsController < ApplicationController
       render :new
     else 
       log_in!(@user)
-      p current_user
+      # p current_user
       render 'static_pages/root'
     end
     
@@ -18,7 +18,7 @@ class Api::SessionsController < ApplicationController
         log_out!
         render 'static_pages/root'
       else
-        p 'here'
+        # p 'here'
         # render ''
       end
       # redirect_to new_session_url
