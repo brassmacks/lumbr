@@ -1,0 +1,16 @@
+import { combineReducers } from "redux";
+
+import { sessionReducer } from './session_reducer'
+import { entitiesReducer } from './entities_reducer'
+import { errorsReducer } from './errors_reducer'
+
+const rootReducer = combineReducers({
+  session: sessionReducer,
+  // refactor to include only their label by exporting an anonymous function
+  // from their home file and importing it as the desired lable
+  entities: entitiesReducer,
+  // ie. entities,
+  errors: errorsReducer
+})
+
+export default rootReducer
