@@ -6,14 +6,14 @@ import merge from 'lodash/merge';
 
 let defaultState = {id: null, errors: []};
 
-export const sessionReducer = (oldState = defaultState, action) => {
+const sessionReducer = (oldState = defaultState, action) => {
 
   Object.freeze(oldState);
   let newState = merge({}, oldState);
 
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      Object.assign({}, newState, { id: action.id });
+      Object.assign({}, newState, { id: action.user.id });
       return newState;
     case LOGOUT_CURRENT_USER:
       Object.assign({}, newState, { id: null });
@@ -23,4 +23,4 @@ export const sessionReducer = (oldState = defaultState, action) => {
   }
 }
 
-
+export default sessionReducer

@@ -6,23 +6,22 @@ class Api::SessionsController < ApplicationController
     )
 
     if @user.nil?
-      render :new
+      render json: ["Invalid username/password combination"], status: 401
     else 
       log_in!(@user)
-      # p current_user
-      render 'static_pages/root'
+      # user jbuilder to pass user information to frontend
+      render "/api/users/show"
     end
     
     def destroy 
-      if current_user != nil
+      @user = current_user
+      if @user
         log_out!
-        render 'static_pages/root'
+        render "api/users/show"
       else
-        # p 'here'
-        # render ''
+        render json: ["Nobody signed in"], status: 404    
       end
-      # redirect_to new_session_url
-      ## define this
+
     end
 
     def new

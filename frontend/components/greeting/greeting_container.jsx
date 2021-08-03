@@ -10,5 +10,5 @@ const mapDispatchToProps = dispatch => ({
     logout: () => createDispatchHook(logout())
 });
 
-export default connefctt(mapStateToProps, mapDispatchToProps)(greeting);
+export default connect(mapStateToProps, mapDispatchToProps)(greeting);
 

@@ -5,7 +5,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save 
       log_in!(@user)
-      render :users_show
+      render 'api/users/show'
     else 
       # p @user.errors.full_messages
       render json: @user.errors.full_messages, status: 400

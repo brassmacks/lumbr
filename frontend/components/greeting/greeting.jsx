@@ -14,10 +14,11 @@ const greeting = ({ currentUser, logout }) => {
   const sessionLinks = () => (
     // will reuse in multiple areas
     <nav className="login-signup">
-    
-      <Link to="/login">Log In</Link>
-      <Link to="/signup>Sign up">Sign up</Link>
-
+      <ul>
+        <Link to="/"><h1 >lumbr</h1></Link>
+        <Link to="/login">Log In</Link>
+        <Link to="/signup>Sign up">Sign up</Link>
+      </ul>
     </nav>
   );
 
@@ -39,15 +40,16 @@ const greeting = ({ currentUser, logout }) => {
 
   const sideBarGreeting = () => (
     <div className="sidebar-group">
+      <ul>
       <Link className="sidebar-buttons" id="sidebar-username" to={`/users/show/${currentUser.id}`}>{currentUser.username}
       </Link>
       <button className="sidebar-buttons" id="sidebar-signout" onClick={logout}>
         Log Out
       </button>
-
+      </ul>
     </div>
   )
-
+    // refactor to show entrance or home
     return currentUser ? personalGreeting() : sessionLinks();
 
 }
