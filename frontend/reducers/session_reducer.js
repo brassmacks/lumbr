@@ -6,7 +6,7 @@ import merge from 'lodash/merge';
 
 let defaultState = {id: null, errors: []};
 
-const sessionReducer = (oldState = defaultState, action) => {
+export const sessionReducer = (oldState = defaultState, action) => {
 
   Object.freeze(oldState);
   let newState = merge({}, oldState);
@@ -23,4 +23,4 @@ const sessionReducer = (oldState = defaultState, action) => {
   }
 }
 
-export default sessionReducer
+
