@@ -17,7 +17,7 @@ const greeting = ({ currentUser, logout }) => {
       <ul>
         <Link to="/"><h1 >lumbr</h1></Link>
         <Link to="/login">Log In</Link>
-        <Link to="/signup>Sign up">Sign up</Link>
+        <Link to="/signup">Sign up</Link>
       </ul>
     </nav>
   );
