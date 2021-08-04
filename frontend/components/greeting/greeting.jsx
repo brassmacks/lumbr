@@ -41,16 +41,18 @@ const greeting = ({ currentUser, logout }) => {
   const sideBarGreeting = () => (
     <div className="sidebar-group">
       <ul>
+      
       <Link className="sidebar-buttons" id="sidebar-username" to={`/users/show/${currentUser.id}`}>{currentUser.username}
       </Link>
-      <button className="sidebar-buttons" id="sidebar-signout" onClick={logout}>
+      <button className="sidebar-buttons" id="sidebar-signout" onClick={() => logout()}>
         Log Out
       </button>
       </ul>
     </div>
   )
     // refactor to show entrance or home
-    return currentUser ? personalGreeting() : sessionLinks();
+    
+    return currentUser ? sideBarGreeting() : sessionLinks();
 
 }
 
