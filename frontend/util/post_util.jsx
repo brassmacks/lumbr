@@ -6,7 +6,7 @@ export const fetchPosts = () => {
 }
 export const fetchPost = (postId) => {
   $.ajax({
-    url: `api/posts/`,
+    url: `api/posts/${postId}`,
     method: 'GET'
   })
 }
