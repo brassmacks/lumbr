@@ -1,8 +1,11 @@
 import React from 'react';
-import GreetingContainer from "../components/greeting/greeting_container"
+import SignupFormContainer from './session_form/SignupFormContainer';
+import LoginFormContainer from './session_form/LoginFormContainer';
+import GreetingContainer from "./greeting/greeting_container"
 const App = () => (
   <div>
     
+    <LoginFormContainer />
     <GreetingContainer />
   </div>
 );

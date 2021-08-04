@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import { configureStore } from './store/store'
 import Root from './components/root'
 import * as seshActions from './actions/session_actions'
+
 // import * as seshAPI from "./util/session_api_util"
 
 
