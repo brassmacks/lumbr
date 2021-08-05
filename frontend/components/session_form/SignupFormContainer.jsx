@@ -7,7 +7,7 @@ import  SessionForm from './SessionForm'
 
 
 const mSTP = ({ errors }) => ({
-  errors: errors.session,
+  errors: Object.values(errors.session),
   formType: 'signup'
 })
 

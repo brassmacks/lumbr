@@ -6,11 +6,15 @@ class SessionForm extends React.Component {
     this.state = {
       username: "",
       password: "",
-      email: ""
+      email: "",
+
     }
+    
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
+  componentWillUnmount(){
+    //use to call clear errors action
+  }
   update(field) {
     return e => this.setState({
         [field]: e.currentTarget.value
@@ -23,29 +27,52 @@ class SessionForm extends React.Component {
     this.props.processForm(user)
   }
   // add a render errors function to circumvent break-age
+  renderErrors() {
+    
+    return (
+      <ul className='form-errors-list'>
+        {
+        this.props.errors.map((error, i) => (
+          <li key={`error-${i}`}>
+            {error}
+          </li>
+        ))}
+      </ul>
+    );
+  }
 
   render() {
     return (
       <div>
         <form onSubmit={this.handleSubmit} className="session-form">
           <h3>{this.props.formType}</h3>
+          <h5 className="form-errors">{this.renderErrors()}</h5>
           <ul>
             <li>
               <label>Username:
-                <input type="text" onChange={this.update('username')}     value={this.state.username}></input>  
+                <input type="text" 
+                  onChange={this.update('username')} 
+                  value={this.state.username}>
+                </input>  
               </label> 
             </li>
           { this.props.formType === 'signup' ? 
             <li>
               <label>Email 
-                <input type='text' onChange={this.update('email')}  value= {this.state.email}></input>
+                <input type='text'
+                  onChange={this.update('email')}
+                  value= {this.state.email}>
+                </input>
               </label>
             </li>
                   : null
           }
             <li>
               <label>Password:
-                <input type="password" onChange={this.update('password')  }   value={this.state.password}></input>  
+                <input type="password" 
+                  onChange={this.update('password')  }   
+                  value={this.state.password}>
+                </input>  
               </label> 
             </li>
           </ul>

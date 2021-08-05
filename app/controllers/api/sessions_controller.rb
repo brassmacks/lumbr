@@ -5,12 +5,12 @@ class Api::SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    if @user.nil?
-      render json: ["Invalid username/password combination"], status: 401
-    else 
+    if @user
       log_in!(@user)
       # user jbuilder to pass user information to frontend
       render "/api/users/show"
+    else 
+      render json: ["Invalid username/password combination"], status: 401
     end
     
     def destroy 
