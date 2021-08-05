@@ -12,7 +12,6 @@ class User < ApplicationRecord
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil if user.nil?
-    # route to error message 
     user.is_password?(password) ? user : nil
   end
 
@@ -29,8 +28,6 @@ class User < ApplicationRecord
     self.session_token = SecureRandom.urlsafe_base64
     self.save
     self.session_token
-    #evaluate whether implementation requires the active return of token
-    # or if it can just be recalled from current user
   end
 
   def ensure_session_token()

@@ -12,25 +12,10 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def new
-    # @user = User.new
-    # dummy user 
-    render :new
-  end
-
-  # def show
-  #   if current_user.nil?
-  #     # route to explore page
-  #   else
-  #     @user = current_user
-  #     render 200
-  #     #isolate user/blog name to be added to current path
-  #   end
-  # end
   protected 
+
   def user_params
     self.params.require(:user).permit(:username, :password, :email)
   end
-  
   
 end

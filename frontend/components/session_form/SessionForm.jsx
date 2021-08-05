@@ -12,8 +12,9 @@ class SessionForm extends React.Component {
     
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  componentWillUnmount(){
+  componentDidMount(){
     //use to call clear errors action
+    this.props.clearErrors()
   }
   update(field) {
     return e => this.setState({
@@ -28,9 +29,10 @@ class SessionForm extends React.Component {
   }
   // add a render errors function to circumvent break-age
   renderErrors() {
-    
+    if (this.props.errors.length > 0) {
     return (
       <ul className='form-errors-list'>
+        
         {
         this.props.errors.map((error, i) => (
           <li key={`error-${i}`}>
@@ -38,7 +40,7 @@ class SessionForm extends React.Component {
           </li>
         ))}
       </ul>
-    );
+    );}
   }
 
   render() {

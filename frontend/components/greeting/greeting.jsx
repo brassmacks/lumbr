@@ -13,6 +13,7 @@ const greeting = ({ currentUser, logout }) => {
 
   const sessionLinks = () => (
     // will reuse in multiple areas
+    <header>
     <nav className="login-signup">
       <ul>
         <Link to="/"><h1 >lumbr</h1></Link>
@@ -20,6 +21,7 @@ const greeting = ({ currentUser, logout }) => {
         <Link to="/signup">Sign up</Link>
       </ul>
     </nav>
+    </header>
   );
 
   // To be refactored with:
