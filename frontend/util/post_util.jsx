@@ -1,5 +1,5 @@
 export const fetchPosts = () => {
-  $.ajax({
+  return $.ajax({
     url: `api/posts/`,
     method: 'GET'
   })
