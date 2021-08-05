@@ -8,7 +8,9 @@ gem 'pry-rails'
 gem 'annotate'
 gem 'jquery-rails'
 gem "aws-sdk-s3"
-#
+
+gem 'rails_12factor', group: :production
+
 # gem 'mini-magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
