@@ -38,4 +38,4 @@ amazon_prod:
 # mirror:
 #   service: Mirror
 #   primary: local
-#   mirrors: [ amazon, google, microsoft ]
+#   mirrors: [ amazon, google, microsoft 
