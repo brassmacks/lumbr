@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class SessionForm extends React.Component {
     // e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
-    
+
   }
   // add a render errors function to circumvent break-age
   renderErrors() {
@@ -79,7 +80,9 @@ class SessionForm extends React.Component {
               </label> 
             </li>
           </ul>
+          
           <button type="submit">Submit</button>
+          
 
         </form>    
       </div>
