@@ -8,7 +8,7 @@ gem 'pry-rails'
 gem 'annotate'
 gem 'jquery-rails'
 gem "aws-sdk-s3"
-
+gem 'dotenv'
 gem 'rails_12factor', group: :production
 
 # gem 'mini-magick'
