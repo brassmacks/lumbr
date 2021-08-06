@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 
-const greeting = ({ currentUser, logout, pth }) => {
+const banner = ({ currentUser, logout, pth }) => {
   // for main signin / entrance page
   // To be refactored with:
   // Search lumbr
@@ -52,16 +52,18 @@ const greeting = ({ currentUser, logout, pth }) => {
     // linkdin
 
   const sideBarGreeting = () => (
-    <div className="sidebar-group">
-      <ul>
-      
-      <Link className="sidebar-buttons" id="sidebar-username" to={`/users/show/${currentUser.id}`}>{currentUser.username}
-      </Link>
-      <button className="sidebar-buttons" id="sidebar-signout" onClick={() => logout()}>
-        Log Out
-      </button>
-      </ul>
-    </div>
+    <span>
+      <div className="sidebar-group">
+        <ul>
+        
+        <Link className="sidebar-buttons" id="sidebar-username" to={`/users/show/${currentUser.id}`}> {currentUser.username}
+        </Link>
+        <button className="sidebar-buttons" id="sidebar-signout" onClick={() => logout()}>
+          Log Out
+        </button>
+        </ul>
+      </div>
+    </span>
   )
     // refactor to show entrance or home
     
@@ -69,4 +71,4 @@ const greeting = ({ currentUser, logout, pth }) => {
 
 }
 
-export default greeting
+export default banner;

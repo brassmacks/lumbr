@@ -1,5 +1,5 @@
 import { connect, createDispatchHook } from 'react-redux';
-import greeting from './greeting';
+import banner from './banner';
 import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router';
 
@@ -15,5 +15,5 @@ const mapDispatchToProps = dispatch => ({
     logout: () => dispatch(logout())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(greeting));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(banner));
 
