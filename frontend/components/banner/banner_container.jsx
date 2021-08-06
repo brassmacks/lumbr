@@ -1,4 +1,4 @@
-import { connect, createDispatchHook } from 'react-redux';
+import { connect } from 'react-redux';
 import banner from './banner';
 import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router';

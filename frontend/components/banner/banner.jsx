@@ -51,7 +51,7 @@ const banner = ({ currentUser, logout, pth }) => {
     // git
     // linkdin
 
-  const sideBarGreeting = () => (
+  const sideBar = () => (
     <span>
       <div className="sidebar-group">
         <ul>
@@ -67,7 +67,7 @@ const banner = ({ currentUser, logout, pth }) => {
   )
     // refactor to show entrance or home
     
-    return currentUser ? sideBarGreeting() : sessionLinks();
+    return currentUser ? sideBar() : sessionLinks();
 
 }
 
