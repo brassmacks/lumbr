@@ -26,6 +26,7 @@ class SessionForm extends React.Component {
     // e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
+    
   }
   // add a render errors function to circumvent break-age
   renderErrors() {

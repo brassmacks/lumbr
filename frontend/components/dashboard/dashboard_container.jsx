@@ -1,13 +1,24 @@
-import React from 'react'
 import { connect } from 'react-redux';
-// import dashboard from './dashboard';
-import { logout } from '../../actions/session_actions'
-// import PostShowContainer from "./posts/post_show_container"
-// import PostIndexContainer from './posts/post_index_container'
-// import { fetchPost } from '../../util/post_util';
+import Dashboard from './dashboard';
+import { logout } from '../../actions/session_actions';
+import { withRouter } from 'react-router'
 
-const DashboardContainer = () => {(
-  <h2>dashboard</h2>
-)}
 
-export default DashboardContainer 
+const mSTP = ({ session, entities: { users } }, ownProps) => {
+  return ({
+    currentUser: users[session.id],
+    pth: ownProps.location.pathname
+    // current user 
+    // relevant posts
+    // search
+    // follows
+
+  })
+};
+
+
+const mDTP = dispatch => ({
+  logout: () => dispatch(logout())
+})
+
+export default withRouter(connect(mSTP, mDTP)(Dashboard))
