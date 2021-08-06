@@ -4,12 +4,14 @@ import sessionReducer from './session_reducer'
 import { entitiesReducer } from './entities_reducer'
 import { errorsReducer } from './errors_reducer'
 import PostsReducer from './posts_reducer'
+import TagReducer from "./tags_reducer";
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   entities: entitiesReducer,
   posts: PostsReducer,
-  errors: errorsReducer
+  errors: errorsReducer,
+  tags: TagReducer
 })
 
 export default rootReducer
