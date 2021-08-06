@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // *** testing
   // window.signup = seshActions.signup
   // window.login = seshActions.login
-  window.logout = seshActions.logout
+  // window.logout = seshActions.logout
   // window.getState = store.getState;
   // window.dispatch = store.dispatch;
   // end testing ****

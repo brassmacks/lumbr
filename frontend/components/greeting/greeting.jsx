@@ -3,27 +3,38 @@ import { Link } from 'react-router-dom';
 
 
 
-const greeting = ({ currentUser, logout }) => {
+const greeting = ({ currentUser, logout, pth }) => {
   // for main signin / entrance page
   // To be refactored with:
   // Search lumbr
   // lumbr l-tree logo
   // lumbr entrance graphic
   // links to git, about, privacy, support pages
+  
+  const sessionLinks = () => {
+    
+    const isShowing = (title) => {
 
-  const sessionLinks = () => (
+      return pth === "/" ? "showing" : "/" + title === pth ? "hidden" : "showing"
+    }
+    
+    return(
     // will reuse in multiple areas
     <header>
     <nav className="login-signup">
       <ul>
-        <Link to="/"><h1 >lumbr</h1></Link>
-        <Link to="/login">Log In</Link>
-        <Link to="/signup">Sign up</Link>
+        
+        <Link to="/"><button><h2 id="logo-l">l</h2></button></Link>
+        <Link className={isShowing("login")} to="/login"><button id="login-butt">Log in</button></Link>
+        <Link className={isShowing("signup")} to="/signup"><button id="signup-butt">Sign up</button></Link>
+        
+      
+
       </ul>
     </nav>
     </header>
-  );
-
+  )};
+    
   // To be refactored with:
   // likes counter link
   // following counter link
