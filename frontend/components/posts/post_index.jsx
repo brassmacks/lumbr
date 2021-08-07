@@ -18,9 +18,8 @@ class PostIndex extends React.Component {
     const { posts, deletePost } = this.props;
 
     return (
-      <div>
-        <ul>
-          <h1>posts</h1>
+      <div id="post-index-wrapper">
+        <ul id="post-index-list">
           
           {
           

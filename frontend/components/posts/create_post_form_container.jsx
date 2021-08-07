@@ -2,11 +2,12 @@ import { connect } from 'react-redux';
 import PostForm from './post_form';
 import { createPost } from '../../actions/post_actions'
 
-const mSTP = state => ({
+const mSTP = (state, ownProps) => ({
+  
   post: {
     title: '',
     body: '',
-    contentType: 'text', 
+    contentType: ownProps.location.pathname, 
     userId: 0,
     source: '',
     tags: []

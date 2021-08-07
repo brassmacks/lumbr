@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -31,10 +32,10 @@ class PostForm extends React.Component {
   render(){
     return (
       <div className="post-form" id="post-form-div">
-        <h4 className="post-form" id="post-form-username">Username
-        </h4>
+        <h4 className="post-form" id="post-form-username"></h4>
         
-        <form className="post-form" id="post-form-form" onSubmit={this.attachTag(this.state.tagString)}>
+        <form className="post-form" id="post-form-form" onSubmit={this.handleSubmit}>
+          <h3>{this.state.contentType.split("/").join(" ") + " post"}</h3>
           <input 
             type="text" 
             placeholder="Title" 
@@ -60,6 +61,10 @@ class PostForm extends React.Component {
             className="post-form"
             onChange={this.update('tagString')}
           />
+          <button type="submit">post</button>
+          <Link to="/dashboard">
+            <button>close</button>
+          </Link>
         </form>
       </div>
     )
