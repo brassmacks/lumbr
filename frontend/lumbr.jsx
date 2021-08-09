@@ -22,15 +22,6 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         store = configureStore();
       }
-    
-  
-  // *** testing
-  // window.signup = seshActions.signup
-  // window.login = seshActions.login
-  // window.logout = seshActions.logout
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
-  // end testing ****
 
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);

@@ -4,7 +4,7 @@ class Api::PostsController < ApplicationController
     # works for rendering photo directly
     # refactor to send json object containing url
     @post = Post.find(params[:id])
-    # render :show
+    render :show
   end
   
   def index
@@ -16,7 +16,7 @@ class Api::PostsController < ApplicationController
 
     if @post.save
       # render :show
-      render 'api/post/show'
+      render 'api/posts/show'
     else
       render json: @post.errors.full_messages, status: 422
     end

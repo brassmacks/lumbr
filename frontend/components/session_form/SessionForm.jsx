@@ -14,7 +14,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount(){
-    //use to call clear errors action
+    
     this.props.clearErrors()
   }
   update(field) {
@@ -24,12 +24,12 @@ class SessionForm extends React.Component {
   }
 
   handleSubmit(e) {
-    // e.preventDefault();
+    e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
 
   }
-  // add a render errors function to circumvent break-age
+  
   renderErrors() {
     if (this.props.errors.length > 0) {
     return (

@@ -5,14 +5,14 @@ export const fetchPosts = () => {
   })
 }
 export const fetchPost = (postId) => {
-  $.ajax({
+  return $.ajax({
     url: `api/posts/${postId}`,
     method: 'GET'
   })
 }
 export const createPhotoPost = (formData) => {
   
-  $.ajax({
+  return $.ajax({
     url: `api/posts/`,
     method: 'POST',
     data: formData ,
@@ -21,7 +21,7 @@ export const createPhotoPost = (formData) => {
   })
 }
 export const createPost = (post) => {
-  $.ajax({
+  return $.ajax({
     url: `api/posts/`,
     method: 'POST',
     data: { post },
@@ -29,14 +29,14 @@ export const createPost = (post) => {
   })
 }
 export const updatePost = (post) => {
-  $.ajax({
+  return $.ajax({
     url: `api/posts/${post.id}`,
     method: 'PATCH',
     data: { post }
   })
 }
 export const deletePost = (postId) => {
-  $.ajax({
+  return $.ajax({
     url: `api/posts/${postId}`,
     method: 'DELETE'
   })
