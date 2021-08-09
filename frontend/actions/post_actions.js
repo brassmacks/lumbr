@@ -29,6 +29,12 @@ export const fetchPost = postId => dispatch => (
     .then(post => dispatch(receivePost(post)))
 );
 
+
+export const createPhotoPost = post => dispatch => (
+  PostApiUtil.createPhotoPost(post)
+    .then(post => dispatch(receivePost(post)))
+);
+
 export const createPost = post => dispatch => (
   PostApiUtil.createPost(post)
     .then(post => dispatch(receivePost(post)))

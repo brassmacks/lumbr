@@ -1,17 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { createPhotoPost } from '../../util/post_util';
 
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
+    this.currentUser = this.props.currentUser
     this.state = this.props.post;
     this.state.tagString = "";
+    this.state.photoFile = null
+    this.state.user_id = this.currentUser.id
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFile = this.handleFile.bind(this)
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    this.props.action(this.state);
+    const formData = new FormData();
+
+    formData.append('post[title]', this.state.title)
+    formData.append('post[body]', this.state.body)
+    
+    formData.append('post[user_id]', this.state.user_id)
+    
+    
+    if (this.state.photoFile) {
+      
+      formData.append('post[photo]', this.state.photoFile)
+      this.props.createPhoto(formData)
+    } else { this.props.textPost(this.state) }
+    
   }
   attachTag(tag) {
     if (tag.length >= 1) {
@@ -22,7 +40,10 @@ class PostForm extends React.Component {
       })
     }
   }
-
+  handleFile(e) {
+    
+    this.setState({photoFile: e.currentTarget.files[0]})
+  }
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -30,6 +51,7 @@ class PostForm extends React.Component {
   }
 
   render(){
+    console.log(this.props)
     return (
       <div className="post-form" id="post-form-div">
         <h4 className="post-form" id="post-form-username"></h4>
@@ -52,7 +74,10 @@ class PostForm extends React.Component {
             className="post-form"
             onChange={this.update('body')} 
           />
-          
+          {this.state.contentType === '/new/photo' || this.state.contentType === '/new/video' ? 
+          <input type="file" onChange={this.handleFile}/> :
+          <a></a>
+        }
           <input
             type="text"
             placeholder="#tags"

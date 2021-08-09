@@ -1,9 +1,10 @@
 import { connect } from 'react-redux';
 import PostForm from './post_form';
 import { createPost } from '../../actions/post_actions'
+import { createPhotoPost } from '../../actions/post_actions';
 
-const mSTP = (state, ownProps) => ({
-  
+const mSTP = ({ session, entities: { users }}, ownProps) => ({
+  currentUser: users[session.id],
   post: {
     title: '',
     body: '',
@@ -16,9 +17,8 @@ const mSTP = (state, ownProps) => ({
 })
 
 const mDTP = dispatch => ({
-  action: post => dispatch(createPost(post))
+  textPost: post => dispatch(createPost(post)),
+  createPhoto: post => dispatch(createPhotoPost(post))
 })
 
 export default connect(mSTP, mDTP)(PostForm)
-
-

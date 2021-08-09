@@ -10,11 +10,22 @@ export const fetchPost = (postId) => {
     method: 'GET'
   })
 }
+export const createPhotoPost = (formData) => {
+  
+  $.ajax({
+    url: `api/posts/`,
+    method: 'POST',
+    data: formData ,
+    contentType: false,
+    processData: false
+  })
+}
 export const createPost = (post) => {
   $.ajax({
     url: `api/posts/`,
     method: 'POST',
-    data: { post }
+    data: { post },
+
   })
 }
 export const updatePost = (post) => {
