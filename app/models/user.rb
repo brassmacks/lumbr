@@ -4,8 +4,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   before_validation :ensure_session_token
+  after_validation :create_blog
   has_many :posts
-  has_one_attached :profile_photo 
   has_one :blog
 
 
@@ -13,6 +13,15 @@ class User < ApplicationRecord
     user = User.find_by(username: username)
     return nil if user.nil?
     user.is_password?(password) ? user : nil
+  end
+  
+  def create_blog()
+    unless self.blog_id 
+      blog = Blog.create(url: self.username, blogger_id: self.id)
+      debugger 
+      self.blog_id = blog.id
+    end
+  
   end
 
   def password=(password)
