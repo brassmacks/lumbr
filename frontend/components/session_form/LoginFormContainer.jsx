@@ -4,9 +4,6 @@ import { login, clearErrors } from '../../actions/session_actions'
 
 import SessionForm  from './SessionForm'
 
-
-
-
 const mSTP = ({ errors }) => ({
   errors: Object.values(errors.session),
   formType: 'login'

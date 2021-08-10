@@ -4,10 +4,10 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   before_validation :ensure_session_token
+  has_many :posts
+  has_one_attached :profile_photo 
+  has_one :blog
 
-  # def email_default()
-  #   self.email ||= 'default@ithinkthiswillwork.com'
-  # end
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

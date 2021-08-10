@@ -14,13 +14,17 @@ import PostShowContainer from "./posts/post_show_container"
 import PostIndexContainer from './posts/post_index_container'
 import DashboardContainer from './dashboard/dashboard_container'
 import PostForm from './posts/create_post_form_container'
+import Dashboard from './dashboard/dashboard';
+import { render } from 'react-dom';
+// add splash redirect
+// when a user tries to nav to / it will redirect to dashboard unless they are logged out
 const App = () => (
 
   <div>
     <BannerContainer />
     
     
-
+    
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />  
     <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />

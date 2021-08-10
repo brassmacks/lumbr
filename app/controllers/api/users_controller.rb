@@ -11,7 +11,11 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 400
     end
   end
-
+  
+  def show
+    @user = User.find(params[:id])
+    render :show  
+  end
   protected 
 
   def user_params
