@@ -10,7 +10,7 @@ import fetchUser from './util/user_api_util'
 
 document.addEventListener('DOMContentLoaded', () => {
   let store; 
-  window.fetchUser = userActions.fetchUser
+  
   if (window.currentUser) {
     const preloadedState = {
       entities: {
@@ -23,8 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         store = configureStore();
       }
-  window.getState = store.getState;
-  window.dispatch = store.dispatch;
+
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

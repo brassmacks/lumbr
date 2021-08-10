@@ -11,13 +11,10 @@ const usersReducer = (oldState = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      console.log("1")
-      return Object.assign({}, newState, { [action.user.id]: action.user });
+      return Object.assign( newState, { [action.user.id]: action.user });
     case RECEIVE_USER:
-      console.log("2true")
-      return action
+      return Object.assign(newState, { [action.user.id]: action.user })
     default:
-      console.log("3")
       return oldState
   }
 }

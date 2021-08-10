@@ -15,7 +15,7 @@ class PostIndex extends React.Component {
   }
 
   render() {
-    const { posts, deletePost } = this.props;
+    const { posts, deletePost, fetchUser } = this.props;
 
     return (
       <div id="post-index-wrapper">
@@ -24,8 +24,8 @@ class PostIndex extends React.Component {
           {
           
             posts.map(post => {
-              
               return <PostIndexItem 
+                
                 post={post}
                 deletePost={deletePost}
                 key={post.id} />

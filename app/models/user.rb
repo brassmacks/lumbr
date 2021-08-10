@@ -3,6 +3,7 @@ class User < ApplicationRecord
   validates :username, :password_digest, :session_token, :email, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
+  has_one_attached :profile_photo
   before_validation :ensure_session_token
   after_validation :create_blog
   has_many :posts
