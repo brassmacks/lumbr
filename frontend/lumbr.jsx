@@ -3,14 +3,15 @@ import ReactDOM from "react-dom"
 import { configureStore } from './store/store'
 import Root from './components/root'
 import * as seshActions from './actions/session_actions'
-
+import * as userActions from './actions/user_actions'
+import fetchUser from './util/user_api_util'
 // import * as seshAPI from "./util/session_api_util"
 
 
 document.addEventListener('DOMContentLoaded', () => {
   let store; 
+  window.fetchUser = userActions.fetchUser
   if (window.currentUser) {
-
     const preloadedState = {
       entities: {
         users: { [window.currentUser.id]: window.currentUser }
@@ -22,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         store = configureStore();
       }
-
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -17,17 +17,19 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    if params.username
+    user = User.new(user_params)
+    if user.username
       @user = User.find_by(username: params[:username])
       render json: @user
-    elsif params.email
+    elsif user.email
       @user = User.find_by(email: params[:email])
       render json: @user
-    elsif params.id
+    elsif user.id
       @user = User.find_by(id: params[:id])
       render json: @user
     else
       render json: "missing criteria",status: 406
+    end
 
   end
 
@@ -35,7 +37,7 @@ class Api::UsersController < ApplicationController
   protected 
 
   def user_params
-    self.params.require(:user).permit(:username, :password, :email)
+    self.params.permit(:id, :username, :password, :email)
   end
   
 end
