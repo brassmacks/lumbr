@@ -1,6 +1,7 @@
 import React from 'react'
 
 export const PostIndexItem = ({post, deletePost}) => {
+  // move alt to postindex and fetch in component did mount
   return (
     <li>
       <div>

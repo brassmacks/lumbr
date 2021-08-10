@@ -9,5 +9,4 @@ export const entitiesReducer = combineReducers({
   tags: TagReducer
 })
 
-// this file is responsible for combining and tracking the relational data of lumbr
 
