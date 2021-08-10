@@ -1,4 +1,4 @@
-export const fetchUserName = (userId) => {
+export const fetchUser = (userId) => {
   return $.ajax({
     url: 'api/users',
     method: 'GET',
@@ -6,4 +6,10 @@ export const fetchUserName = (userId) => {
   })
 }
 
-export const fetchUserId
+export const fetchUserId = (userName) => {
+  return $.ajax({
+    url: 'api/users',
+    method: 'GET',
+    data: { userName }
+  })
+}

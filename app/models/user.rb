@@ -18,7 +18,6 @@ class User < ApplicationRecord
   def create_blog()
     unless self.blog_id 
       blog = Blog.create(url: self.username, blogger_id: self.id)
-      debugger 
       self.blog_id = blog.id
     end
   

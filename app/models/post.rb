@@ -8,6 +8,7 @@ class Post < ApplicationRecord
   # add blog validation 
 
   def set_content
+
     if self.photo.attached? 
       self.content_type = 'photo'
     else 
@@ -16,7 +17,7 @@ class Post < ApplicationRecord
 
   end
 
-  def :set_source
+  def set_source
     self.source ||= User.find(:user_id).username 
   end
   

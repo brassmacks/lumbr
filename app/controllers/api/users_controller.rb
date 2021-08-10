@@ -17,8 +17,18 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    @user = User.find_by(username: params[:username])
-    render json: @user.username   
+    if params.username
+      @user = User.find_by(username: params[:username])
+      render json: @user
+    elsif params.email
+      @user = User.find_by(email: params[:email])
+      render json: @user
+    elsif params.id
+      @user = User.find_by(id: params[:id])
+      render json: @user
+    else
+      render json: "missing criteria",status: 406
+
   end
 
 
