@@ -8,11 +8,6 @@ const mSTP = ({ session, entities: { users } }, ownProps) => {
   return ({
     currentUser: users[session.id],
     pth: ownProps.location.pathname
-    // current user 
-    // relevant posts
-    // search
-    // follows
-
   })
 };
 

@@ -10,14 +10,14 @@ import SignupFormContainer from './session_form/SignupFormContainer';
 import LoginFormContainer from './session_form/LoginFormContainer';
 import BannerContainer from "./banner/banner_container"
 import { AuthRoute, ProtectedRoute  } from '../util/route_util';
-import PostShowContainer from "./posts/post_show_container"
-import PostIndexContainer from './posts/post_index_container'
 import DashboardContainer from './dashboard/dashboard_container'
 import PostForm from './posts/create_post_form_container'
+
+import PostShowContainer from "./posts/post_show_container"
+import PostIndexContainer from './posts/post_index_container'
 import Dashboard from './dashboard/dashboard';
 import { render } from 'react-dom';
-// add splash redirect
-// when a user tries to nav to / it will redirect to dashboard unless they are logged out
+
 const App = () => (
 
   <div>

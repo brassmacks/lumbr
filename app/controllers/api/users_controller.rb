@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
     
     if @user.save && @blog.save
       log_in!(@user)
-      # redirect to @blog.show
+      
       render 'api/users/show'
     else 
       render json: { 

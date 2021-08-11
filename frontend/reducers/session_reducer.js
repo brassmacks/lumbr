@@ -3,7 +3,6 @@ import {
   LOGOUT_CURRENT_USER,
 } from '../actions/session_actions';
 
-
 let defaultState = {id: null, errors: []};
 
 const sessionReducer = (oldState = defaultState, action) => {

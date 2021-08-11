@@ -4,9 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 const banner = ({ currentUser, logout, pth }) => {
-  // for main signin / entrance page
-  // To be refactored with:
-  // Search lumbr
+
   // lumbr l-tree logo
   // lumbr entrance graphic
   // links to git, about, privacy, support pages
@@ -19,7 +17,7 @@ const banner = ({ currentUser, logout, pth }) => {
     }
     
     return(
-    // will reuse in multiple areas
+    
     <header>
     <nav className="login-signup">
       <ul>
@@ -27,29 +25,10 @@ const banner = ({ currentUser, logout, pth }) => {
         <Link to="/"><button><h2 id="logo-l">l</h2></button></Link>
         <Link className={isShowing("login")} to="/login"><button id="login-butt">Log in</button></Link>
         <Link className={isShowing("signup")} to="/signup"><button id="signup-butt">Sign up</button></Link>
-        
-      
-
       </ul>
     </nav>
     </header>
   )};
-    
-  // To be refactored with:
-  // likes counter link
-  // following counter link
-  // settings link
-  // Help link
-  // extra** change palette
-  // ul including
-    // posts
-    // followers
-    // activity
-    // drafts
-  // sidebar footer including
-    // about 
-    // git
-    // linkdin
 
   const sideBar = () => (
     <span>

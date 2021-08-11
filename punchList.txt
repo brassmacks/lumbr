@@ -1,0 +1,194 @@
+*****DOUBLE CHECK NOTHING IS ON THE WINDOW******
+
+STYLE
+  * everything
+
+Splash/Greeting
+  * route to dashboard unless loggedout
+  * postCrossSection model with api functions for upkeep
+  * about scroll component
+    riff tumblr/ me about
+  * house login, signup,/ 2 versions each // bonus: explore
+
+  1. app.jsx ln:25 splashContainer -> protected route 
+      loggedin -> null else splash
+      1a. splash_container.jsx
+          build showCase "top post"
+          mapstate: CurrentUser: session.CurrentUser
+                    showCase: [posts]
+          mapdispatch: openModal: modal => =>
+                       posts: fetchPosts => =>
+  2. splash.jsx 
+      2a. import auth modal components, about component
+        2a.i auth modal comps buttons, about on scroll down 
+      2b. pick one of the showCase posts photoUrls 
+        set 1 to main div background +1 to about div background
+      2c. welcome message before login/signup click
+
+MODAL
+  I. auth splash
+  II. edit post
+  III. edit/show user/blog
+  IV. about splash 
+  --BONUS--
+  V. Post zoom 
+  VI. dashboard, on hover USER/BLOG preview component
+
+BANNER 
+  ***figure out if/ how you can do a search bar***
+  I. lumbr l-tree logo link
+
+  II. refactor sidebar to dropdown menu on signin ln:36
+    IIa. user/blog show link/
+    IIb. signout 
+    IIc. all follows link
+    IId. edit user/blog/show
+    IIe. all followers 
+    IIf. about modal link- also in footer
+    IIg. link to github- also in footer
+      --later linkdin
+  III. containerize login/signup 
+    IIIa. import and route logic around currentpage/loggedin?
+    IIIb. render Auth forms and their buttons in modal
+
+
+DASHBOARD 
+  I. post-index mosaic
+  II. Dry up/ compartmentalize create post nav
+  III. pull real nav icons for create post/ banner nav
+  --bonus--
+  IV. posts at a glance side nav
+
+POST
+  ** debug edit**
+  I. model 
+    1. associations: tags, follows
+    
+  II. postShow.jsx / postShow.jbuilder
+    * ref'd on ln:4;ln:17 post_controller.rb
+    * render postShow zoom in component
+      recievePost=> postReducer => entities => root
+    1. Finish postShow component diversification
+      1a. contentType switchcase on render
+      1b. original size / resize in index render 
+    2. frontend/components/posts/post_zoom.jsx
+      2a. import postShow, openModal
+
+  III. post_form -> Clean up render, add functionality
+    IIIa. ln:34 finish attachTag
+    IIIb. addfollow toggle
+  IV.post_index_item
+    IVa. add better alt profile photo
+    IVb. match tumblr formatting 
+  V. post_index -> clean up code, take in filter 
+  VI. post_show -> refactor for zoom in
+      VI.a Add buttons:
+        edit
+        delete
+        like
+        follow
+      VI.b Add links
+        Authorshow
+        tags
+        source
+
+  ***Semi-bonus: post_index mosaic 
+   
+USERS 
+  I. users/show.json
+    ln:1
+      add blog association, profile to extract list 
+
+  II. users_controller.rb
+    ln:9
+    * fix render/redirect on login
+    * route to explore on signup
+
+  III. UserShow/blog page
+    * actions, reducer, controller, associations, component
+  IV. model
+    1. associations: follows, 
+    --BONUS--
+    2. update profile_photo
+    3. update username
+    4. change password
+    
+UI
+  Fix goofy Protected exact path /new situation
+    * app.jsx ln:29:34 /new should do
+
+  I. Unify error messages
+    * log what is actually on tumblr
+    * smooth out the creases/ fail with grace
+    controllers:
+      post, ln:20;ln:30;ln:40
+      sesh, ln:12;ln:22
+      tags, tbd: ln:9;ln:15
+      users, ln:15;ln:31
+      follows, tbd
+      blogs, tbd
+    ** frontend: take inventory **
+      log here as you break stuff :/
+      1.
+        /:
+
+BACKEND assorted
+  I. AWS Seed DB
+    * Users
+      * blogs
+      * profile pics 
+    * Tags
+    * Posts
+    * Follows
+  II. refactor reducers
+    uiReducer
+      add modal, filters, loading boolean
+    rootReducer.js
+      import uiReducer and replace modal
+  III. Dry up sessionForm.jsx 
+FOLLOWS
+    I. model
+      1a. associations,
+    
+    II. controller,
+      Return a list of follows associated with:
+      1a. tag
+      1b. post
+      1c. user/blog
+    IIa. jbuilder,
+      1a. format/label lists appropriatly for application
+
+    III. follow_util, actions, reducer
+      1a.
+      fetchAllFollows(user) 
+        //=> [...contentIds] returns contentIds of followed by user
+      fetchAllFollowers(contentId)
+        //=> [...userIds] returns all followers of individual content
+      addFollow(currentUserId, contentId) 
+          //=> null, adds UserId to followers list, 
+      removeFollow(currentUserId, contentId)
+          //=> null, removes UserId from followers list
+      1b. follows_reducer => entities => root
+
+    IV. components/ buttons
+      ***BUILD 1 COMPONENT AND IMPORT INTO: 
+      1a. post
+        onclick: follow/unfollow toggle
+      1b. user/blog
+        onclick: follow/unfollow toggle
+      1c. tag
+        onclick: follow/unfollow toggle
+
+    V. semi-bonus: filter,
+
+--SEMI-BONUS--
+
+TAGS ** FOCUS ONLY ONCE EVERYTHING ELSE IS DONE, EMULATE & REFACTOR FOLLOW ITEMS
+  I. model
+    1a. associations, validations, new(tag), tag_exists(tag), remove(tag)
+  II. controller
+  IIa. jbuilder
+  III. actions, 
+  IV. semi-bonus: filter, 
+    * search filter
+    * explore component

@@ -8,7 +8,6 @@ class EditPostForm extends React.Component {
 
   componentDidMount() {
     this.props.fetchPost(this.props.match.params.postId);
-
   }
 
   render() {
@@ -26,7 +25,7 @@ class EditPostForm extends React.Component {
 }
 
 const mSTP = (state, ownProps) => ({
-  post: state.post[ownProps.match.params.postId],
+  post: state.entities.post[ownProps.match.params.postId],
   formType: 'Update Post'
 });
 
@@ -36,5 +35,3 @@ const mDTP = dispatch => ({
 });
 
 export default connect(mSTP,mDTP)(EditPostForm)
-
-const 

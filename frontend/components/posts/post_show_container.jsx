@@ -3,7 +3,7 @@ import PostShow from './post_show';
 import fetchPost from './post_show';
 
 const mSTP = (state, ownProps) => ({
-  post: state.posts[ownProps.match.params.postId] 
+  post: state.entities.posts[ownProps.match.params.postId] 
 })
 
 const mDTP = dispatch => ({

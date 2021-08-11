@@ -1,13 +1,9 @@
 import React from 'react';
 import { PostIndexItem } from './post_index_item';
 
-
-// refactor to be userblog page
-
 class PostIndex extends React.Component {
   constructor(props){
     super(props)
-  
   }
   
   componentDidMount() {
@@ -25,7 +21,6 @@ class PostIndex extends React.Component {
           
             posts.map(post => {
               return <PostIndexItem 
-                
                 post={post}
                 deletePost={deletePost}
                 key={post.id} />

@@ -12,6 +12,7 @@ class Api::TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:tag_content])
+    
   end
 
   def index

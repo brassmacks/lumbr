@@ -31,17 +31,17 @@ class PostForm extends React.Component {
     } else { this.props.textPost(this.state) }
     
   }
-  attachTag(tag) {
-    if (tag.length >= 1) {
-      const tags = tag.split(' ')
-      tags.forEach(tag => {
-        //hit db for tag id then push tag id to tagArray
-        this.state.tags.push(fetchTagId(tag))
-      })
-    }
-  }
+
+  // attachTag(tag) {
+  //   if (tag.length >= 1) {
+  //     const tags = tag.split(' ')
+  //     tags.forEach(tag => {
+  //       this.state.tags.push(fetchTagId(tag))
+  //     })
+  //   }
+  // }
+
   handleFile(e) {
-    
     this.setState({photoFile: e.currentTarget.files[0]})
   }
   update(field) {
@@ -55,7 +55,6 @@ class PostForm extends React.Component {
     return (
       <div className="post-form" id="post-form-div">
         <h4 className="post-form" id="post-form-username"></h4>
-        
         <form className="post-form" id="post-form-form" onSubmit={this.handleSubmit}>
           <h3>{this.state.contentType.split("/").join(" ") + " post"}</h3>
           <input 
@@ -66,7 +65,6 @@ class PostForm extends React.Component {
             className="post-form"
             onChange={this.update('title')} 
           />
-          
           <textarea 
             placeholder="Go ahead, put anything" 
             value={this.state.body}
