@@ -7,7 +7,7 @@ import { openModal, closeModal } from '../../actions/modal_actions'
 
 const mSTP = ({ errors }) => ({
   errors: Object.values(errors.session),
-  formType: 'signup'
+  formType: 'Sign up'
 })
 
 const mDTP = dispatch => ({

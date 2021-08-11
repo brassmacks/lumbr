@@ -1,33 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../../app/assets/images/lmbrlogo.png'
+import { SessionButtons } from '../buttons/session_buttons'
 
 
 const banner = ({ currentUser, logout, pth }) => {
-  
-  const sessionLinks = () => {
-    
-    const isShowing = (title) => {
-      return pth === "/" ? "showing" : "/" + title === pth ? "hidden" : "showing"
-    }
-    
-    return(
-      <div id="banner-box">
-        <header id="banner" className="login-signup">
-        
-        <div id="logo-search-box">
-            <Link to="/"><img src={logo} id="logo-l"/></Link>
-          <input type="text"></input>
-        </div>
-        <div id="banner-auth-buttons">
-        <Link id="authLinks" className={isShowing("login")} to="/login"><button className="authButts" id="login-butt">Log in</button></Link>
-        
-        <Link id="authLinks" className={isShowing("signup")} to="/signup"><button className="authButts" id="signup-butt">Sign up</button></Link>
-        </div>
-  
-        </header>
-      </div>
-  )};
+  const location = "banner"
 
   const sideBar = () => (
     <span>
@@ -43,8 +21,24 @@ const banner = ({ currentUser, logout, pth }) => {
       </div>
     </span>
   )
+  
     
-    return currentUser ? sideBar() : sessionLinks();
+    return (
+      <div id={"banner-box"}>
+        <header id="banner" className="login-signup">
+
+          <div id="logo-search-box">
+            <Link to={currentUser ? "/dashboard" : "/"}>
+              <img src={logo} id="logo-l" />
+                </Link>
+            <input type="text" id="banner-search-bar" placeholder="Search lumbr"></input>
+          </div>
+          
+        {currentUser ? sideBar() : SessionButtons("banner", pth)}
+        </header>
+    
+      </div>
+      )
 
 }
 

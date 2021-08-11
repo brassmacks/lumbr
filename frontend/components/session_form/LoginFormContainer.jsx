@@ -8,7 +8,7 @@ import SessionForm  from './SessionForm'
 
 const mSTP = ({ errors }) => ({
   errors: Object.values(errors.session),
-  formType: 'login'
+  formType: 'Log in'
 })
 
 const mDTP = dispatch => ({

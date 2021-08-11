@@ -2,38 +2,45 @@
 
 STYLE
   * everything
-  -css reset
-  -backgroundcolor done
+  ❌-css reset
+  ❌-backgroundcolor done
+  ❌-auth buttons done
+  * SEARCH BAR
   -logo done
-  -auth buttons done
+  2c. welcome message before login/signup click
+    *resize and animate
+  DASHBOARD 
+    ...III. pull real nav icons for create post/ banner nav
 
 
 Splash/Greeting
-  * route to dashboard unless loggedout
+  
+  ❌ route to dashboard unless loggedout
   * postCrossSection model with api functions for upkeep
   * about scroll component
     riff tumblr/ me about
-  * house login, signup,/ 2 versions each // bonus: explore
+  ❌ house login, signup,/ 2 versions each // bonus: explore
   
   *** splash_container.jsx ln:6 import about, postCrossSection
 
-  1. app.jsx ln:25 splashContainer -> protected route 
-      loggedin -> null else splash
-      1a. splash_container.jsx
-          build showCase "top post"
-          mapstate: CurrentUser: session.CurrentUser
-                    showCase: [posts]
-          mapdispatch: openModal: modal => =>
-                       posts: fetchPosts => =>
+  ❌1. app.jsx ln:25 splashContainer -> protected route 
+  ❌   loggedin -> null else splash
+  1a. splash_container.jsx
+    build showCase "top post"
+      mapstate: showCase: [posts]
+      mapdispatch: posts: fetchPosts => =>
+        ❌  mapstate: CurrentUser: session.CurrentUser
+        ❌  mapdispatch: openModal: modal => =>           
   2. splash.jsx 
-      2a. import auth modal components, about component
-        2a.i auth modal comps buttons, about on scroll down 
+       about component
+      ❌2a. import auth button components,
+      2a. about on scroll down 
       2b. pick one of the showCase posts photoUrls 
         set 1 to main div background +1 to about div background
       2c. welcome message before login/signup click
 
 MODAL
-  I. auth splash
+  ❌I. auth splash
   II. edit post
   III. edit/show user/blog
     IIIa. modal.jsx -> blog_show_container
@@ -43,8 +50,9 @@ MODAL
   VI. dashboard, on hover USER/BLOG preview component
 
 BANNER 
-  ***figure out if/ how you can do a search bar***
-  I. lumbr l-tree logo link
+  ❌***figure out if/ how you can do a search bar***
+  ❌I. lumbr l-tree logo link
+    Ia. add search bar functionality
 
   II. refactor sidebar to dropdown menu on signin ln:36
     IIa. user/blog show link/
@@ -55,9 +63,9 @@ BANNER
     IIf. about modal link- also in footer
     IIg. link to github- also in footer
       --later linkdin
-  III. containerize login/signup 
-    IIIa. import and route logic around currentpage/loggedin?
-    IIIb. render Auth forms and their buttons in modal
+  ❌III. containerize login/signup 
+    ❌IIIa. import and route logic around currentpage/loggedin?
+    ❌IIIb. render Auth forms and their buttons in modal
 
 
 DASHBOARD 
@@ -113,7 +121,7 @@ USERS
     * route to explore on signup
 
   III. UserShow/blog page
-    * actions, reducer, controller, associations, component
+    * { actions, reducer, controller, jbuilder, associations, component }
   IV. model
     1. associations: follows, 
     --BONUS--
@@ -160,7 +168,7 @@ BACKEND assorted
       ** modal_container.jsx ln:6 -> modal: state.ui.modal 
     rootReducer.js
       import uiReducer and replace modal
-  III. Dry up sessionForm.jsx 
+  ❌III. Dry up sessionForm.jsx 
 FOLLOWS
     I. model
       1a. associations,

@@ -6,7 +6,8 @@ class Post < ApplicationRecord
   has_one_attached :photo
   has_one_attached :video
   belongs_to :author, foreign_key: :user_id, class_name: 'User'
-  before_validation :set_content, :set_source
+  before_validation :set_content,
+  #  :set_source
   # add blog validation 
   
   def set_content

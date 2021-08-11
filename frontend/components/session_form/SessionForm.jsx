@@ -27,7 +27,9 @@ class SessionForm extends React.Component {
     this.props.processForm(user)
 
   }
-  
+  assignID(formType) {
+    return formType === "Log in" ? "login-butt" : "signup-butt"
+  }
   renderErrors() {
     if (this.props.errors.length > 0) {
     return (
@@ -57,7 +59,7 @@ class SessionForm extends React.Component {
                 </input>  
               </label> 
             </li>
-          { this.props.formType === 'signup' ? 
+          { this.props.formType === 'Sign up' ? 
             <li>
               <label>Email 
                 <input type='text'
@@ -78,7 +80,9 @@ class SessionForm extends React.Component {
             </li>
           </ul>
           
-          <button type="submit">Submit</button>
+          <button id={this.assignID(this.props.formType)} 
+            className="authButts" type="submit">{this.props.formType}
+          </button>
           
 
         </form>    

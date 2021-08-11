@@ -11,10 +11,10 @@ class Api::PostsController < ApplicationController
   end
 
   def create 
+    p post_params
     @post = Post.new(post_params)
 
     if @post.save
-      
       render 'api/posts/show'
     else
       render json: @post.errors.full_messages, status: 422
@@ -42,8 +42,7 @@ class Api::PostsController < ApplicationController
   end
 
   def post_params
-    
-    params.require(:post).permit(:title, :body, :content_type, :photo, :user_id)
+    params.require(:post).permit(:title, :body, :content_type, :photo, :user_id, :photo_file)
   end
 
 end

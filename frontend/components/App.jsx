@@ -25,6 +25,7 @@ const App = () => (
     <Modal />
     <BannerContainer />
     <Splash />
+    <AuthRoute exact path="/" component={Modal} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />  
     <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
