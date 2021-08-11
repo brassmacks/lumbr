@@ -4,15 +4,10 @@ import logo from '../../../app/assets/images/lmbrlogo.png'
 
 
 const banner = ({ currentUser, logout, pth }) => {
-
-  // lumbr l-tree logo
-  // lumbr entrance graphic
-  // links to git, about, privacy, support pages
   
   const sessionLinks = () => {
     
     const isShowing = (title) => {
-
       return pth === "/" ? "showing" : "/" + title === pth ? "hidden" : "showing"
     }
     
@@ -48,7 +43,6 @@ const banner = ({ currentUser, logout, pth }) => {
       </div>
     </span>
   )
-    // refactor to show entrance or home
     
     return currentUser ? sideBar() : sessionLinks();
 

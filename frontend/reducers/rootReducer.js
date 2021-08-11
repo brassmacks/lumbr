@@ -4,7 +4,6 @@ import { errorsReducer } from './errors_reducer'
 import modalReducer from "./modal_reducer";
 import sessionReducer from './session_reducer'
 
-
 const rootReducer = combineReducers({
   session: sessionReducer,
   entities: entitiesReducer,

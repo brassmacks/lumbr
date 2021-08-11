@@ -8,5 +8,3 @@ export const entitiesReducer = combineReducers({
   posts: PostsReducer,
   tags: TagReducer
 })
-
-

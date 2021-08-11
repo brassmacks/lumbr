@@ -6,7 +6,7 @@ STYLE
   -backgroundcolor done
   -logo done
   -auth buttons done
-  
+
 
 Splash/Greeting
   * route to dashboard unless loggedout
@@ -14,6 +14,8 @@ Splash/Greeting
   * about scroll component
     riff tumblr/ me about
   * house login, signup,/ 2 versions each // bonus: explore
+  
+  *** splash_container.jsx ln:6 import about, postCrossSection
 
   1. app.jsx ln:25 splashContainer -> protected route 
       loggedin -> null else splash
@@ -34,6 +36,7 @@ MODAL
   I. auth splash
   II. edit post
   III. edit/show user/blog
+    IIIa. modal.jsx -> blog_show_container
   IV. about splash 
   --BONUS--
   V. Post zoom 
@@ -117,10 +120,16 @@ USERS
     2. update profile_photo
     3. update username
     4. change password
-    
+  V. components
+    1. blog_show_container
+    2. blog_show  
+    2a. append modal.jsx
 UI
   Fix goofy Protected exact path /new situation
     * app.jsx ln:29:34 /new should do
+  ref: https://reactrouter.com/web/api/match
+  ref: https://reactrouter.com/web/guides/quick-start
+  ref: https://reactrouter.com/web/api/location
 
   I. Unify error messages
     * log what is actually on tumblr
@@ -148,6 +157,7 @@ BACKEND assorted
   II. refactor reducers
     uiReducer
       add modal, filters, loading boolean
+      ** modal_container.jsx ln:6 -> modal: state.ui.modal 
     rootReducer.js
       import uiReducer and replace modal
   III. Dry up sessionForm.jsx 

@@ -3,7 +3,7 @@ import { Modal } from './modal';
 import { closeModal } from '../../actions/modal_actions';
 
 const mSTP = state => ({
-  modal: state.ui.modal
+  modal: state.modal
 })
 const mDTP = dispatch => ({
   closeModal: () => dispatch(closeModal())
