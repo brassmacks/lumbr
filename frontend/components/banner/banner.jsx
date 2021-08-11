@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../../../app/assets/images/lmbrlogo.png'
 
 
 const banner = ({ currentUser, logout, pth }) => {
@@ -17,17 +17,21 @@ const banner = ({ currentUser, logout, pth }) => {
     }
     
     return(
-    
-    <header>
-    <nav className="login-signup">
-      <ul>
+      <div id="banner-box">
+        <header id="banner" className="login-signup">
         
-        <Link to="/"><button><h2 id="logo-l">l</h2></button></Link>
-        <Link className={isShowing("login")} to="/login"><button id="login-butt">Log in</button></Link>
-        <Link className={isShowing("signup")} to="/signup"><button id="signup-butt">Sign up</button></Link>
-      </ul>
-    </nav>
-    </header>
+        <div id="logo-search-box">
+            <Link to="/"><img src={logo} id="logo-l"/></Link>
+          <input type="text"></input>
+        </div>
+        <div id="banner-auth-buttons">
+        <Link id="authLinks" className={isShowing("login")} to="/login"><button className="authButts" id="login-butt">Log in</button></Link>
+        
+        <Link id="authLinks" className={isShowing("signup")} to="/signup"><button className="authButts" id="signup-butt">Sign up</button></Link>
+        </div>
+  
+        </header>
+      </div>
   )};
 
   const sideBar = () => (
