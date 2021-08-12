@@ -1,4 +1,11 @@
 *****DOUBLE CHECK NOTHING IS ON THE WINDOW******
+BEFORE SLEEP:
+ SEED DB:
+    USERS/BLOGS
+    POSTS
+    TAGS
+    FOLLOWS
+  HAVE HEROKU RUNNING
 
 STYLE
   * everything
@@ -12,6 +19,32 @@ STYLE
   DASHBOARD 
     ...III. pull real nav icons for create post/ banner nav
 
+USERS  
+
+  I. users/show.json
+    ln:1
+      add blog association, profile to extract list 
+
+  II. users_controller.rb
+    ln:9
+    ❌* fix render/redirect on login
+    * route to explore on signup
+
+  III. UserShow/blog page
+    * { actions, reducer, controller, jbuilder, associations, component }
+    
+  IV. model
+    1. associations: follows, 
+    --BONUS--
+    2. update profile_photo
+    3. update username
+    4. change password
+
+  V. components
+
+    1. blog_show_container
+    2. blog_show  
+    2a. append modal.jsx
 
 Splash/Greeting
   
@@ -110,28 +143,7 @@ POST
 
   ***Semi-bonus: post_index mosaic 
    
-USERS 
-  I. users/show.json
-    ln:1
-      add blog association, profile to extract list 
 
-  II. users_controller.rb
-    ln:9
-    * fix render/redirect on login
-    * route to explore on signup
-
-  III. UserShow/blog page
-    * { actions, reducer, controller, jbuilder, associations, component }
-  IV. model
-    1. associations: follows, 
-    --BONUS--
-    2. update profile_photo
-    3. update username
-    4. change password
-  V. components
-    1. blog_show_container
-    2. blog_show  
-    2a. append modal.jsx
 UI
   Fix goofy Protected exact path /new situation
     * app.jsx ln:29:34 /new should do

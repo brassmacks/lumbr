@@ -8,17 +8,32 @@ class User < ApplicationRecord
   after_validation :create_blog
   has_many :posts
   has_one :blog
-
+  
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     return nil if user.nil?
     user.is_password?(password) ? user : nil
   end
-  
+
+  def self.find_by_missing_params(params)
+    user_dup = User.new(user_params)
+
+    case user_dup
+      when user_dup.id
+        return @user = User.find(user_dup.id)
+      when user_dup.username
+        return @user = User.find_by(username: user_dup.username)
+      when user_dup.email
+        return @user = User.find_by(email: user_dup.email)
+      else
+        nil
+    end
+  end
+
   def create_blog()
     unless self.blog_id 
-      blog = Blog.create(url: self.username, blogger_id: self.id)
+      blog = Blog.create(url: self.username, user_id: self.id)
       self.blog_id = blog.id
     end
   

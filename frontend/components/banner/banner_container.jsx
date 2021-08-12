@@ -3,17 +3,14 @@ import banner from './banner';
 import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router';
 
-const mapStateToProps = ( { session, entities: { users } }, ownProps) => {
-  return({
+const mSTP = ( { session, entities: { users } }, ownProps) => ({
     currentUser: users[session.id],
     pth: ownProps.location.pathname
-    
-  })
-};
+});
 
-const mapDispatchToProps = dispatch => ({
+const mDTP = dispatch => ({
     logout: () => dispatch(logout())
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(banner));
+export default withRouter(connect(mSTP, mDTP)(banner));
 

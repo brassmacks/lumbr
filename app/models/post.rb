@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_one_attached :video
   belongs_to :author, foreign_key: :user_id, class_name: 'User'
   before_validation :set_content,
-  #  :set_source
+  
   # add blog validation 
   
   def set_content
@@ -22,9 +22,5 @@ class Post < ApplicationRecord
 
   end
 
-  def set_source
-    self.source ||= User.find(:user_id).username 
-  end
-  
 
 end

@@ -2,7 +2,7 @@ class Api::PostsController < ApplicationController
   
   def show    
 
-    @post = Post.find(params[:id])
+    @post = Post.find_by(params[:id])
     render :show
   end
   
@@ -11,9 +11,8 @@ class Api::PostsController < ApplicationController
   end
 
   def create 
-    p post_params
     @post = Post.new(post_params)
-
+    
     if @post.save
       render 'api/posts/show'
     else

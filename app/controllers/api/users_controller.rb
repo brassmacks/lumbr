@@ -2,11 +2,9 @@ class Api::UsersController < ApplicationController
 
   def create 
     @user = User.new(user_params)
-    @blog = Blog.new(url: user_params.username, blogger_id: user_params.id)
-    
-    if @user.save && @blog.save
+
+    if @user.save
       log_in!(@user)
-      
       render 'api/users/show'
     else 
       render json: { 
@@ -17,27 +15,27 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    user = User.new(user_params)
-    if user.username
-      @user = User.find_by(username: params[:username])
-      render json: @user
-    elsif user.email
-      @user = User.find_by(email: params[:email])
-      render json: @user
-    elsif user.id
-      @user = User.find_by(id: params[:id])
-      render json: @user
+    case params[:type]
+      @user = User.find(params[:id])
+      when 'show'
+        render json: @user
+      when 'blog'
+        render 'api/users/'
+
+    @user = User.find_by_missing_params(user_params)
+    render json: @user
+      
+    
     else
       render json: "missing criteria",status: 406
     end
 
   end
 
-
   protected 
 
   def user_params
-    self.params.permit(:id, :username, :password, :email)
+    params.require(:user).permit(:id, :username, :password, :email, :type)
   end
   
 end
