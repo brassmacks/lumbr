@@ -8,8 +8,7 @@ class Api::UsersController < ApplicationController
       render 'api/users/show'
     else 
       render json: { 
-        user_errors: @user.errors.full_messages,
-        blog_errors: @blog.errors.full_messages 
+        user_errors: @user.errors.full_messages
         }, status: 400
     end
   end

@@ -175,6 +175,10 @@ UI
         /:
 
 BACKEND assorted
+  ## reroute both backsplash and profile photo to defaults once up on AWS
+  * add index to blog table on id to user_id
+    - ask about making the blog table primary key the same as the user id that creates it
+
   I. AWS Seed DB
     * Users
       * blogs

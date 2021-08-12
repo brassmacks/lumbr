@@ -9,5 +9,6 @@ const receiveBlog = blog => ({
 
 export const fetchBlog = userId => dispatch => (
   BlogApiUtil.fetchBlog(userId)
-    .then(blog => (dispatch(receiveBlog(blog))))
+    .then(blog => (dispatch(receiveBlog(blog)))),
+    posts => (dispatch(receivePosts(posts)))
 )
