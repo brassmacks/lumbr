@@ -21,4 +21,6 @@ class Api::TagsController < ApplicationController
 
   def tag_params 
     params.require(:tag).permit(:tag_content, :id, :tag_content_id) 
+  end
+  
 end
