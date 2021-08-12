@@ -4,8 +4,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
 
   has_one_attached :profile_photo
-  before_validation :ensure_session_token
-  after_validation :create_blog
+  before_validation :ensure_session_token, :create_blog
+
   has_many :posts
   has_one :blog
 
