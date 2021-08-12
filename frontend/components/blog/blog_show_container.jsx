@@ -5,6 +5,7 @@ import { fetchBlog } from '../../actions/blog_actions';
 
 const mSTP = ({ session, entities: { users } }, ownProps) => ({
   author: users[session.id],
+  // change to params ownprops userid
 })
 const mDTP = dispatch => ({
   fetchBlog: userId => dispatch(fetchBlog(userId)) 

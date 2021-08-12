@@ -1,13 +1,14 @@
 import { connect } from 'react-redux';
 import Blog from './blog';
-import { withRouter } from 'react-router';
 import { fetchBlog } from '../../actions/blog_actions';
 
-const mSTP = ({ session, entities: { users } }, ownProps) => ({
-  author: users[session.id]
+const mSTP = ({ session, entities: { users, blogs },  }) => ({
+  author: users[session.id],
+  blogs
 })
 const mDTP = dispatch => ({
-  fetchBlog: userId => dispatch(fetchBlog(userId))
+  fetchBlog: userId => dispatch(fetchBlog(userId)),
+  closeModal: () => dispatch(closeModal())
 })
 
-export default withRouter(connect(mSTP,mDTP)(Blog))
+export default connect(mSTP,mDTP)(Blog)

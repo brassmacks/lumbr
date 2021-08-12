@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../../app/assets/images/lmbrlogo.png'
 import { SessionButtons } from '../buttons/session_buttons'
 
-
-const banner = ({ currentUser, logout, pth }) => {
+const banner = ({ currentUser, logout, pth, openModal }) => {
   const location = "banner"
 
   const sideBar = () => (
@@ -12,8 +11,11 @@ const banner = ({ currentUser, logout, pth }) => {
       <div className="sidebar-group">
         <ul>
         
-        <Link className="sidebar-buttons" id="sidebar-username" to={`/users/show/${currentUser.id}`}> {currentUser.username}
-        </Link>
+
+          <button onClick={() => openModal('blog edit')}>
+          {currentUser.username}
+          </button>
+  
         <button className="sidebar-buttons" id="sidebar-signout" onClick={() => logout()}>
           Log Out
         </button>
