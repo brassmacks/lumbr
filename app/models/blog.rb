@@ -1,4 +1,5 @@
 class Blog < ApplicationRecord
+  attr_reader :user_id
   validates :url, :user_id, presence: true 
   
   belongs_to :author, foreign_key: :user_id, class_name: 'User'
