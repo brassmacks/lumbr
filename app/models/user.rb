@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  attr_reader :password
+  attr_reader :password, :blog_id
   validates :username, :password_digest, :session_token, :email, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
 
