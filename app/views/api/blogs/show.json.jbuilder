@@ -1,8 +1,13 @@
-json.extract! @blog, :id, :url, :profile_photo_id, :backsplach_id
-@blog.author.posts.each do |post|
-  json.set! post.id do
-    json.partial! 'post', post: post
+json.set! @blog.id do
+  json.author(@blog.author, :id, :username)
+  json.posts @blog.author.posts[0...4] do |post|
+    if post
+      json.extract! post, :id, :title, :body, :content_type
+    end
+  end
+  if (@blog.author.profile_photo.attached?)
+    json.profileUrl url_for(@blog.author.profile_photo)
   end
 end
-# @blog.author.posts
+
 

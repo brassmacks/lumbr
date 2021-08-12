@@ -1,7 +1,7 @@
 class Api::BlogsController < ApplicationController
   
   def show
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find_by(user_id: params[:user_id])
     @posts = @blog.author.posts
     #not great ^
     

@@ -6,7 +6,7 @@ const blogsReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_BLOG:
-      return Object.assign(newState, { [action.blog.id]: action.blog })
+      return action.blog 
     default:
       return oldState
   }
