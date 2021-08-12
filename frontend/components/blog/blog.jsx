@@ -1,22 +1,14 @@
 import React from 'react'
 import EditPostForm from '../posts/edit_post_form_container'
 
-class Blog extends React.Component {
-  constructor(props) {
-    super(props)
-    
-  }
-  componentDidMount() {
-    this.props.fetchBlog(this.props.author.id)
-    console.log(this.props)
-  }
-  render () {
 
+export const Blog = ({blog, author}) => {
+    
     return (
     <div>
-      <h3>show</h3>
+      {/* <img src={blog.profile_photo_id} alt="" /> */}
+      <h3>{author.username}</h3>
     </div>
    )
   }
-}
-export default Blog
+

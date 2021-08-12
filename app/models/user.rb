@@ -34,9 +34,9 @@ class User < ApplicationRecord
   def create_blog()
     unless self.blog_id 
       blog = Blog.create(
-        url: "/" + self.username,
-        user_id: self.id,
-        profile_photo_id: self.profile_photo.id )
+        url: (self.username),
+        user_id: self.id)
+        p blog
       self.blog_id = blog.id
     end
   

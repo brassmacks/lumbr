@@ -1,22 +1,28 @@
-import React from 'react'
-import Blog from '../blog/blog_edit_container'
+// import React from 'react'
+// import Blog from '../blog/blog_edit_container'
 
-export const Modal = ({modal, closeModal}) => {
-  if (!modal) return null;
+// class Modal extends React.Component {
+//   constructor(props){
+//     super(props)
+    
+//   }
+
+//   componentDidMount() {
+//     if (this.props.modal === <Blog />) {
+//       this.props.fetchBlog(this.props.currentUser.id)
+//     }
+//   }
   
-  let component;
-  switch (modal) {
-    case 'blog edit':
-      component = <Blog />
-      break;
-    default:
-      return null;
-  }
-  return (
-    <div className="modal-background" onClick={closeModal}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-        { component }
-      </div>
-    </div>
-  );
-}
+//   render () {
+//     if (!this.props.modal) { return null };
+ 
+//     return (
+//       <div className="modal-background" onClick={this.props.closeModal}>
+//       <div className="modal-child" onClick={e => e.stopPropagation()}>
+//         { this.props.modal }
+//       </div>
+//     </div>
+//   );
+//   }
+// }
+// export default Modal

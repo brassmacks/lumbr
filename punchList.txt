@@ -1,19 +1,25 @@
 ✅ done, but needs to be tested
 ❌ finished 
+🔵 Primary focus
+
 *****DOUBLE CHECK NOTHING IS ON THE WINDOW******
 BEFORE SLEEP:
+🔵 HAVE HEROKU RUNNING
  SEED DB:
     USERS/BLOGS
     POSTS
-    TAGS
-    FOLLOWS
-  HAVE HEROKU RUNNING
+🔵  finish/branch/seed the following   
+🔵    TAGS
+🔵    FOLLOWS
 
 STYLE
   * everything
   ❌-css reset
   ❌-backgroundcolor done
   ❌-auth buttons done
+  post index ln: 8:9 
+    add class and id's to h3s
+    
   * SEARCH BAR
   -logo done
   2c. welcome message before login/signup click
@@ -23,7 +29,7 @@ STYLE
 
 USERS  
 
-  I. users/show.json
+  🔵I. users/show.json
     ln:1
     ✅ add blog association, profile to extract list 
 
@@ -31,17 +37,16 @@ USERS
     ln:9
     ❌* fix render/redirect on login
     * route to explore on signup
-
-  III. UserShow/blog page
+🔵  III. UserShow/blog page
     * { 
-    actions, 
-    reducer, 
-    controller, 
+✅  actions, 
+✅  reducer, 
+✅  controller, 
 ✅  jbuilder, 
 ✅  associations, 
-    component }
+🔵  component }
     
-  IV. model
+🔵 IV. model
     1. associations: follows, 
     --BONUS--
     2. update profile_photo
@@ -50,19 +55,19 @@ USERS
 
   V. components
 
-    1. blog_show_container
+❌  1. blog_show_container
     2. blog_show  
     2a. append modal.jsx
 
 Splash/Greeting
   
   ❌ route to dashboard unless loggedout
-  * postCrossSection model with api functions for upkeep
-  * about scroll component
-    riff tumblr/ me about
+🔵  * postCrossSection model with api functions for upkeep
+🔵  * about scroll component
+🔵    riff tumblr/ me about
   ❌ house login, signup,/ 2 versions each // bonus: explore
   
-  *** splash_container.jsx ln:6 import about, postCrossSection
+🔵  *** splash_container.jsx ln:6 import about, postCrossSection
 
   ❌1. app.jsx ln:25 splashContainer -> protected route 
   ❌   loggedin -> null else splash
@@ -80,29 +85,29 @@ Splash/Greeting
         set 1 to main div background +1 to about div background
       2c. welcome message before login/signup click
 
-MODAL
-  ❌I. auth splash
-  II. edit post
+🔵MODAL
+  ❌ I. auth splash
+  🔵 II. edit post
   III. edit/show user/blog
-    IIIa. modal.jsx -> blog_show_container
-  IV. about splash 
+    ❌IIIa. modal.jsx -> blog_show_container
+  🔵 IV. about splash 
   --BONUS--
   V. Post zoom 
   VI. dashboard, on hover USER/BLOG preview component
 
 BANNER 
-  ❌***figure out if/ how you can do a search bar***
-  ❌I. lumbr l-tree logo link
-    Ia. add search bar functionality
-
-  II. refactor sidebar to dropdown menu on signin ln:36
-    IIa. user/blog show link/
-    IIb. signout 
-    IIc. all follows link
-    IId. edit user/blog/show
-    IIe. all followers 
-    IIf. about modal link- also in footer
-    IIg. link to github- also in footer
+  ❌  ***figure out if/ how you can do a search bar***
+  ❌  I. lumbr l-tree logo link
+  🔵  Ia. add search bar functionality
+      🔵 add or remove by end of day
+  🔵II. refactor sidebar to dropdown menu on signin ln:36
+    🔵 IIa. user/blog show link/
+    🔵 IIb. signout 
+       IIc. all follows link
+       IId. edit user/blog/show
+       IIe. all followers 
+       IIf. about modal link- also in footer
+       IIg. link to github- also in footer
       --later linkdin
   ❌III. containerize login/signup 
     ❌IIIa. import and route logic around currentpage/loggedin?
@@ -111,14 +116,15 @@ BANNER
 
 DASHBOARD 
   I. post-index mosaic
-  II. Dry up/ compartmentalize create post nav
-  III. pull real nav icons for create post/ banner nav
+🔵II. Dry up/ compartmentalize create post nav
+🔵III. pull real nav icons for create post/ banner nav
   --bonus--
   IV. posts at a glance side nav
 
 POST
-  ** debug edit**
+🔵  ** debug edit**
   I. model 
+🔵 finish or remove by end of day
     1. associations: tags, follows
     
   II. postShow.jsx / postShow.jbuilder
@@ -131,17 +137,19 @@ POST
     2. frontend/components/posts/post_zoom.jsx
       2a. import postShow, openModal
 
-  III. post_form -> Clean up render, add functionality
-    IIIa. ln:34 finish attachTag
+🔵III. post_form -> Clean up render, add functionality
+    🔵IIIa. ln:34 finish attachTag
+      🔵add or remove by end of day
     IIIb. addfollow toggle
+      🔵 add or remove code by end of day
   IV.post_index_item
-    IVa. add better alt profile photo
-    IVb. match tumblr formatting 
-  V. post_index -> clean up code, take in filter 
+    🔵IVa. add better alt profile photo
+    🔵IVb. match tumblr formatting 
+🔵 V. post_index -> clean up code, take in filter 
   VI. post_show -> refactor for zoom in
       VI.a Add buttons:
-        edit
-        delete
+🔵      edit
+🔵     delete
         like
         follow
       VI.b Add links
@@ -153,7 +161,7 @@ POST
    
 
 UI
-  Fix goofy Protected exact path /new situation
+🔵 Fix goofy Protected exact path /new situation
     * app.jsx ln:29:34 /new should do
   ref: https://reactrouter.com/web/api/match
   ref: https://reactrouter.com/web/guides/quick-start
@@ -173,13 +181,13 @@ UI
       log here as you break stuff :/
       1.
         /:
-
+🔵 remove marker breakpoints by end of day
 BACKEND assorted
-  ## reroute both backsplash and profile photo to defaults once up on AWS
+🔵  ## reroute both backsplash and profile photo to defaults once up on AWS
   * add index to blog table on id to user_id
-    - ask about making the blog table primary key the same as the user id that creates it
+🔵    - ask about making the blog table primary key the same as the user id that creates it
 
-  I. AWS Seed DB
+🔵  I. AWS Seed DB
     * Users
       * blogs
       * profile pics 

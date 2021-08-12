@@ -1,5 +1,4 @@
 import * as BlogApiUtil from '../util/blog_api_util'
-
 export const RECEIVE_BLOG = 'RECEIVE_BLOG'
 
 const receiveBlog = blog => ({
@@ -9,6 +8,6 @@ const receiveBlog = blog => ({
 
 export const fetchBlog = userId => dispatch => (
   BlogApiUtil.fetchBlog(userId)
-    .then(blog => (dispatch(receiveBlog(blog)))),
-    posts => (dispatch(receivePosts(posts)))
+    .then(blog => (dispatch(receiveBlog(blog))))
+    
 )

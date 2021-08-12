@@ -5,14 +5,11 @@ import { SessionButtons } from '../buttons/session_buttons'
 
 const banner = ({ currentUser, logout, pth, openModal }) => {
   const location = "banner"
-
   const sideBar = () => (
     <span>
       <div className="sidebar-group">
         <ul>
-        
-
-          <button onClick={() => openModal('blog edit')}>
+          <button onClick={() => openModal('edit blog')}>
           {currentUser.username}
           </button>
   

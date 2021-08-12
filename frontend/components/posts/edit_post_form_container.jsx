@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostForm from './post_form';
 import { fetchPost, updatePost } from '../../actions/post_actions';
-import { render } from 'react-dom';
+
 
 class EditPostForm extends React.Component {
 
