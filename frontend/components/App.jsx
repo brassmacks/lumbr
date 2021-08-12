@@ -18,12 +18,13 @@ import PostShowContainer from "./posts/post_show_container"
 import PostIndexContainer from './posts/post_index_container'
 import Dashboard from './dashboard/dashboard';
 import { render } from 'react-dom';
-
+import Blog from '../components/blog/blog_edit_container'
 const App = () => (
 
   <div>
     <Modal />
     <BannerContainer />
+    <Blog />
     <Splash />
     <AuthRoute exact path="/" component={Modal} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />

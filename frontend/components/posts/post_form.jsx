@@ -44,6 +44,7 @@ class PostForm extends React.Component {
   handleFile(e) {
     this.setState({photoFile: e.currentTarget.files[0]})
   }
+
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -55,7 +56,8 @@ class PostForm extends React.Component {
     return (
       <div className="post-form" id="post-form-div">
         <h4 className="post-form" id="post-form-username"></h4>
-        <form className="post-form" id="post-form-form" onSubmit={this.handleSubmit}>
+        <form className="post-form" id="post-form-form" 
+        onSubmit={this.handleSubmit}>
           <h3>{this.state.contentType.split("/").join(" ") + " post"}</h3>
           <input 
             type="text" 

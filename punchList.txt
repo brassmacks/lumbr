@@ -1,3 +1,5 @@
+✅ done, but needs to be tested
+❌ finished 
 *****DOUBLE CHECK NOTHING IS ON THE WINDOW******
 BEFORE SLEEP:
  SEED DB:
@@ -23,7 +25,7 @@ USERS
 
   I. users/show.json
     ln:1
-      add blog association, profile to extract list 
+    ✅ add blog association, profile to extract list 
 
   II. users_controller.rb
     ln:9
@@ -31,7 +33,13 @@ USERS
     * route to explore on signup
 
   III. UserShow/blog page
-    * { actions, reducer, controller, jbuilder, associations, component }
+    * { 
+    actions, 
+    reducer, 
+    controller, 
+✅  jbuilder, 
+✅  associations, 
+    component }
     
   IV. model
     1. associations: follows, 
@@ -58,7 +66,7 @@ Splash/Greeting
 
   ❌1. app.jsx ln:25 splashContainer -> protected route 
   ❌   loggedin -> null else splash
-  1a. splash_container.jsx
+  ✅1a. splash_container.jsx
     build showCase "top post"
       mapstate: showCase: [posts]
       mapdispatch: posts: fetchPosts => =>

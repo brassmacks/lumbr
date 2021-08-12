@@ -3,7 +3,7 @@ import PostIndex from './post_index';
 import { fetchPosts, deletePost } from '../../actions/post_actions'
 
 const mSTP = (state, ownParams) => ({
-  allPosts: Object.values(state.entities.posts)
+  posts: Object.values(state.entities.posts)
 })
 
 const mDTP = dispatch => ({

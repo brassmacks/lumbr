@@ -15,27 +15,18 @@ class Api::UsersController < ApplicationController
   end
   
   def show
-    case params[:type]
-      @user = User.find(params[:id])
-      when 'show'
+    @user = User.find(params[:id])
+    if @user
         render json: @user
-      when 'blog'
-        render 'api/users/'
-
-    @user = User.find_by_missing_params(user_params)
-    render json: @user
-      
-    
-    else
-      render json: "missing criteria",status: 406
-    end
-
+      else
+        render json: "missing criteria",status: 406
+      end
   end
 
   protected 
 
   def user_params
-    params.require(:user).permit(:id, :username, :password, :email, :type)
+    params.require(:user).permit(:id, :username, :password, :email)
   end
   
 end

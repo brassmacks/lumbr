@@ -29,6 +29,7 @@ class User < ApplicationRecord
       else
         nil
     end
+    
   end
 
   def create_blog()
