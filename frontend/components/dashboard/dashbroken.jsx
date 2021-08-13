@@ -2,12 +2,11 @@ import React from 'react'
 import PostIndexContainer from '../posts/post_index_container'
 import PostShowContainer from "../posts/post_show_container"
 import Movie from '../../../app/assets/images/movie.png'
-import PostButton from './post_button'
+import Lnk from '../../../app/assets/images/Link.png'
 import Photo from '../../../app/assets/images/Photo.png'
 import Quote from '../../../app/assets/images/Quote.png'
 import Text from '../../../app/assets/images/Text.png'
-
-
+import { PostButton } from './post_button'
 
 
 class Dashboard extends React.Component {
@@ -19,26 +18,26 @@ class Dashboard extends React.Component {
 
 
   render() {
-    const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
-    let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Lnk', Lnk], ['Movie', Movie] ]
+    let buttons = [['Movie', Movie], ['Lnk', Lnk], ['Photo', Photo], ['Quote', Quote], ['Text', Text]]
     return (
       <div>
         <div>
           <ul>
             {
-              buttons.map((button, i )=> {
+              buttons.forEach(button => {
                 let type, src = button
                 return (
-                  <li key={i}>
-                    <PostButton button={button} />
+                  <li>
+                    <a>hads</a>
+                    <PostButton type={type} button={button}/>
                   </li>)
               })
             }
-          </ul>
-          <div>
-            <PostIndexContainer />
-          </div>
-
+            </ul>
+            <div>
+              <PostIndexContainer />
+            </div>
+          
         </div>
       </div>
 
@@ -47,3 +46,4 @@ class Dashboard extends React.Component {
 
 }
 export default Dashboard
+

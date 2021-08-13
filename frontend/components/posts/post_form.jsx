@@ -29,6 +29,7 @@ class PostForm extends React.Component {
       formData.append('post[photo]', this.state.photoFile)
       this.props.createPhoto(formData)
     } else { this.props.textPost(this.state) }
+
     
   }
 
@@ -52,13 +53,13 @@ class PostForm extends React.Component {
   }
 
   render(){
-    console.log(this.props)
+    console.log(this.state)
     return (
       <div className="post-form" id="post-form-div">
         <h4 className="post-form" id="post-form-username"></h4>
         <form className="post-form" id="post-form-form" 
         onSubmit={this.handleSubmit}>
-          <h3>{this.state.contentType.split("/").join(" ") + " post"}</h3>
+          <h3>{this.props.contentType}</h3>
           <input 
             type="text" 
             placeholder="Title" 

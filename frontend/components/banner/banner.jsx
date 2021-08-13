@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../app/assets/images/lmbrlogo.png'
 import { SessionButtons } from '../buttons/session_buttons'
 
 const banner = ({ currentUser, logout, pth, openModal }) => {
   const location = "banner"
+  const logo = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/lmbrlogo.png'
   const sideBar = () => (
     <span>
       <div className="sidebar-group">

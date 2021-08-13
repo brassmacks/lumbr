@@ -29,12 +29,12 @@ const App = () => (
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />  
     <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
-    <ProtectedRoute exact path="/new" component={PostForm} />
+    {/* <ProtectedRoute exact path="/new" component={PostForm} />
     <ProtectedRoute exact path="/new/text" component={PostForm} />
     <ProtectedRoute exact path="/new/quote" component={PostForm} />
     <ProtectedRoute exact path="/new/photo" component={PostForm} />
     <ProtectedRoute exact path="/new/link" component={PostForm} />
-    <ProtectedRoute exact path="/new/video" component={PostForm} />
+    <ProtectedRoute exact path="/new/video" component={PostForm} /> */}
     
     
     
