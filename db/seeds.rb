@@ -11,11 +11,39 @@ require 'faker'
 
 
 
-  users = 20.times do 
-    User.create(username: Faker::Name.last_name + Faker::Movies::LordOfTheRings.character, email: Faker::Internet.email, password: Faker::Internet.password(min_length:7))
-  end
+  # users = 20.times do 
+  #   User.create(username: Faker::Name.last_name + Faker::Movies::LordOfTheRings.character, email: Faker::Internet.email, password: Faker::Internet.password(min_length:7))
+  # end
   
 
+
+  post_photo_links = [
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/diss.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/eclipseforest.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/field.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/houseabout.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/loadedlog.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/me-house.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/moss.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/splitdiagram.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/VID-wedgedemo.gif',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/watercherrysplash.gif',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/watercolor.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/willowbabe.jpg',
+    'https://lumbr-seeds.s3.us-west-1.amazonaws.com/willownice.jpg'
+  ]
+
+  # post_photo_links.each_with_index do |link, i|
+  #   pst = Post.create(
+  #     content_type: 'photo',
+  #     user_id: i/3.ceil,
+  #     title: Faker::JapaneseMedia::StudioGhibli.movie,
+  #     body: Faker::Quote.matz,
+  #     source: User.find(start).username
+  #   )
+
+  # end
+  
 
   profile_links = [
     'https://lumbr-seeds.s3.us-west-1.amazonaws.com/cartooncarver.jpg',
@@ -28,9 +56,27 @@ require 'faker'
     'https://lumbr-seeds.s3.us-west-1.amazonaws.com/trio.jpg'
   ]
 
-  profile_links.each_with_index do |lnk, i| 
-    file = URI.open(lnk)
-    User.find(i+19).profile_photo.attach(io: file, filename: lnk.split("/").last)
+  # profile_links.each_with_index do |lnk, i| 
+
+  #   usr = User.create(username: Faker::Name.last_name + Faker::Movies::LordOfTheRings.character, email: Faker::Internet.email, password: Faker::Internet.password(min_length:7))
+
+  #   file = URI.open(lnk)
+  #   usr.profile_photo.attach(io: file, filename: lnk.split("/").last)
+  # end
+  
+  cnt = 78
+    post_photo_links.each do |link|
+      pst = Post.create(
+        content_type: 'photo',
+        user_id: (cnt/3).ceil,
+        title: Faker::JapaneseMedia::StudioGhibli.movie,
+        body: Faker::Quote.matz,
+        source: User.find((cnt/3).ceil).username
+      )
+      cnt+=1
+      file = URI.open(link)
+      pst.photo.attach(io: file, filename: link.split("/").last)
+    
   end
 
 
