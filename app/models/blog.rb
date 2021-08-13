@@ -1,12 +1,15 @@
 class Blog < ApplicationRecord
-  attr_reader :user_id
-  validates :url, :user_id, presence: true 
+  attr_accessor :user_id, :author
+  validates :url, presence: true 
   
-  belongs_to :author, foreign_key: :user_id, class_name: 'User'
+  belongs_to :author, foreign_key: :user_id
   has_one_attached :backsplash 
   # has_many :posts
 
-  before_validation :ensure_profile_photo
+  before_validation :ensure_profile_photo 
+  # def add_user
+  #   self.author.id = self.user_id
+  # end
 
   def ensure_profile_photo 
     self.profile_photo_id ||= 1
