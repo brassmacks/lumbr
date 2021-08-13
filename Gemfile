@@ -11,6 +11,7 @@ gem "aws-sdk-s3"
 gem 'dotenv'
 gem 'rails_12factor', group: :production
 gem 'faker'
+gem 'open-uri'
 # gem 'mini-magick'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
