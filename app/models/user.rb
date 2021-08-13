@@ -8,7 +8,7 @@ class User < ApplicationRecord
   after_create :create_blog
 
   has_many :posts
-  has_one :blog
+  # has_one :blog
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)

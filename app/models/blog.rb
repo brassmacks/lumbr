@@ -7,6 +7,7 @@ class Blog < ApplicationRecord
   # has_many :posts
 
   before_validation :ensure_profile_photo 
+  
   # def add_user
   #   self.author.id = self.user_id
   # end
