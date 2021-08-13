@@ -30,7 +30,7 @@ require 'faker'
 
   profile_links.each_with_index do |lnk, i| 
     file = URI.open(lnk)
-    User.find(i+1).profile_photo.attach(io: file, filename: lnk.split("/").last)
+    User.find(i+19).profile_photo.attach(io: file, filename: lnk.split("/").last)
   end
 
 
