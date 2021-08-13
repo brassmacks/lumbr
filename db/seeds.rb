@@ -64,14 +64,14 @@ require 'faker'
   #   usr.profile_photo.attach(io: file, filename: lnk.split("/").last)
   # end
   
-  cnt = 78
+  cnt = 18
     post_photo_links.each do |link|
       pst = Post.create(
         content_type: 'photo',
         user_id: (cnt/3).ceil,
         title: Faker::JapaneseMedia::StudioGhibli.movie,
         body: Faker::Quote.matz,
-        source: User.find((cnt/3).ceil).username
+        source: User.find((cnt).ceil).username
       )
       cnt+=1
       file = URI.open(link)
