@@ -7,10 +7,10 @@ const PostButton = ({button, openModal}) => {
   let src = button[1];
   return (
     <div key={src + 'button'}>
-      <button onClick={() => openModal("new " + type + " post")}>        
+      <button id="post-nav-button" className="post-nav" onClick={() => openModal("new " + type + " post")}>        
         <div className="post-button-column">
-        <label>
-          <img src={src} width='40px' />
+        <label id='post-nav-button-label' className="post-nav">
+          <img id='pnii' className='post-nav' src={src} width='40px' />
             {type}
           </label>
         </div>

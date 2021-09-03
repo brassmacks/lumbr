@@ -3,8 +3,10 @@ import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import Blog from '../blog/blog_edit_container'
 import CreatePostContainer from '../posts/create_post_form_container'
+import { fetchBlog } from '../../actions/blog_actions';
 
-function Modal({ modal, closeModal }) {
+function Modal({ modal, closeModal, fetchBlog, currentUser }) {
+  if (currentUser) fetchBlog(currentUser.id)
   if (!modal) {
     return null;
   }
@@ -24,7 +26,6 @@ function Modal({ modal, closeModal }) {
   return (
     <div className="modal-background" onClick={closeModal}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
-        <h1>here</h1>
 
         {component}
       </div>
@@ -32,14 +33,15 @@ function Modal({ modal, closeModal }) {
   );
 }
 
-const mapStateToProps = state => {
-  return {
+const mapStateToProps = state => ({
+    currentUser: state.entities.users[state.session.id],  
     modal: state.modal
-  };
-};
+  });
+
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchBlog: (id) => dispatch(fetchBlog(id)),
     closeModal: () => dispatch(closeModal())
   };
 };

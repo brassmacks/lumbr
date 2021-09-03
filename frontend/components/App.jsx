@@ -20,7 +20,7 @@ import Dashboard from './dashboard/dashboard';
 import { render } from 'react-dom';
 
 const App = () => (
-
+  
   <div>
     <Modal />
     <BannerContainer />

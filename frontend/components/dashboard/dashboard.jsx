@@ -22,19 +22,25 @@ class Dashboard extends React.Component {
     const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
     let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Lnk', Lnk], ['Movie', Movie] ]
     return (
-      <div>
-        <div>
-          <ul>
+      <div id="log-run">
+            <div>
+    <div id="post-nav-panel" className="post-nav">
+      <div id="spacer" className="post-nav">
+
+          <ul className="post-nav" id="post-nav-buttons-list">
             {
               buttons.map((button, i )=> {
                 let type, src = button
                 return (
-                  <li key={i}>
-                    <PostButton button={button} />
+                  <li id="post-nav-list-item" className="post-nav" key={i}>
+                    <PostButton id="post-nav-button" button={button} />
                   </li>)
               })
             }
           </ul>
+
+            </div>
+          </div>
           <div>
             <PostIndexContainer />
           </div>

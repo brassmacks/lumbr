@@ -5,16 +5,15 @@ export default class BlogEdit extends Component {
     super(props)
     console.log(this.props)
   }
-  componentDidMount(){
-    this.props.fetchBlog(this.props.author.id)
-    console.log(this.props)
-  }
 
   render() {
-    const { blog, author } = this.props;
+  
     return (
+      <div id="blogchannel">
       <div>
-        <Blog blog={blog} author={author} />
+        <Blog blog={this.props.blog} />
+      </div>
+
       </div>
     )
   }

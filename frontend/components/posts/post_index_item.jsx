@@ -5,26 +5,27 @@ export const PostIndexItem = ({post, deletePost}) => {
   // switch case for each content type
   
   return (
-    <li>
-      <div>
+    <li className='post' id='post-item'>
+      
         <div id="pi-prof-box">
           <div id="prof-slider-bounds" >
           <img id="pi-prof-pic" src={post.profileUrl} width='100px' height="100px" alt="" ></img>
           </div>
-          </div>
-          <div id="pi-post-house">
+          <div>
+        </div>
+        <div id="pi-post-house">
 
         <h3>{post.title}</h3>
         <h3>{post.username}</h3>
       <img key={post.id}
           className="post-image" 
-          width='500px' 
+          width='540px' 
           src={post.photoUrl}>
       </img>
       </div>
       <p> {post.body}</p>
-      
       </div>
+      
     </li>
   )
 }

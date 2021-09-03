@@ -53,7 +53,7 @@ class PostForm extends React.Component {
   }
 
   render(){
-    console.log(this.state)
+    
     return (
       <div className="post-form" id="post-form-div">
         <h4 className="post-form" id="post-form-username"></h4>

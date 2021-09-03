@@ -1,9 +1,10 @@
 class Api::BlogsController < ApplicationController
   
   def show
-    @blog = Blog.find_by(user_id: params[:user_id])
-    @posts = @blog.author.posts
-    #not great ^
+    @user =User.find(params[:user_id])
+    @blog = @user.blog
+    @posts = @user.posts.with_attached_photo
+    #not great ^ Slightlybetter
     
     if @blog
       render :show

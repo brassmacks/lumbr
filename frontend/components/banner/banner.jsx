@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SessionButtons } from '../buttons/session_buttons'
 
-const banner = ({ currentUser, logout, pth, openModal }) => {
+const banner = ({ currentUser, logout, pth, openModal, fetchBlog }) => {
+  // fetchBlog(currentUser)
   const location = "banner"
   const logo = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/lmbrlogo.png'
   const sideBar = () => (
@@ -28,7 +29,7 @@ const banner = ({ currentUser, logout, pth, openModal }) => {
 
           <div id="logo-search-box">
             <Link to={currentUser ? "/dashboard" : "/"}>
-              <img src={logo} id="logo-l" />
+              <img id='lmbrlogo' className="banner" src={logo} id="logo-l" />
                 </Link>
             <input type="text" id="banner-search-bar" placeholder="Search lumbr"></input>
           </div>

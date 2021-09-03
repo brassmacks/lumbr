@@ -3,8 +3,7 @@ import { fetchBlog } from '../../actions/blog_actions';
 import BlogEdit from './blog_edit';
 
 const mSTP = (state) => ({
-  author: state.entities.users[state.session.id],
-  blog: state.entities.blog
+  blog: state.entities.blogs[state.session.id]
 })
 
 const mDTP = dispatch => ({

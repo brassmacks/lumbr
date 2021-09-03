@@ -46,7 +46,7 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="session-form">
         <form onSubmit={this.handleSubmit} className="session-form">
           <h3>{this.props.formType}</h3>
           <h5 className="form-errors">{this.renderErrors()}</h5>
