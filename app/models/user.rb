@@ -10,8 +10,8 @@ class User < ApplicationRecord
   has_many :posts
   has_one :blog
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by(username: username)
+  def self.find_by_credentials(email, password)
+    user = User.find_by(email: email)
     return nil if user.nil?
     user.is_password?(password) ? user : nil
   end

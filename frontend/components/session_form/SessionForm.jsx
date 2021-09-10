@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
     this.props.processForm(user)
 
   }
-  assignID(formType) {
+  assignLabel(formType) {
     return formType === "Log in" ? "login-butt" : "signup-butt"
   }
   renderErrors() {
@@ -48,39 +48,47 @@ class SessionForm extends React.Component {
     return (
       <div id="session-form">
         <form onSubmit={this.handleSubmit} className="session-form">
-          <h3>{this.props.formType}</h3>
+          <a id="lumbr-txt-logo">lumbr</a>
           <h5 className="form-errors">{this.renderErrors()}</h5>
-          <ul>
+          <ul id="session-inputs">
             <li>
-              <label>Username:
-                <input type="text" 
-                  onChange={this.update('username')} 
-                  value={this.state.username}>
-                </input>  
-              </label> 
+
+              <input id="email" type='text'
+                onChange={this.update('email')}
+                value={this.state.email}
+                placeholder="Email">
+              </input>
+
             </li>
-          { this.props.formType === 'Sign up' ? 
             <li>
-              <label>Email 
-                <input type='text'
-                  onChange={this.update('email')}
-                  value= {this.state.email}>
-                </input>
-              </label>
-            </li>
-                  : null
-          }
-            <li>
-              <label>Password:
-                <input type="password" 
+              
+              <input id="password"
+                  className={this.assignLabel(this.props.formType)}
+                  type="password" 
                   onChange={this.update('password')  }   
-                  value={this.state.password}>
+                  value={this.state.password}
+                  placeholder="Password">
                 </input>  
-              </label> 
+              
             </li>
+
+            { this.props.formType === 'Sign up' ? 
+      
+            <li>
+              
+                <input id="blogname" className='signup-butt'
+                  type="text" 
+                  onChange={this.update('username')} 
+                  value={this.state.username}
+                  placeholder="Blog name">
+                </input>  
+              
+            </li>
+                    : null
+            }
           </ul>
           
-          <button id={this.assignID(this.props.formType)} 
+          <button id={this.assignLabel(this.props.formType)} 
             className="authButts" type="submit">{this.props.formType}
           </button>
           

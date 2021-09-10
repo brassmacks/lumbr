@@ -1,16 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
-header#banner.login-signup {
+header#banner.nav {
   align-items:center;
   display:flex;
   justify-content: space-between;
   width: 100%;
   border-bottom: 1.5px solid rgb(30,54,78);
+  /* margin-bottom: 18px; */
+  background-color: rgb(0,25,53);
+  /* padding: 20px; */
+  z-index: 10;
+}
+header#banner.splash {
+  align-items:center;
+  display:flex;
+  justify-content: space-between;
+  width: 100%;
   margin: 0;
+  background-color: transparent;
+  /* padding: 20px; */
 }
 #banner-box {
   display: flex;
   justify-content: space-between;
-  padding: 0px 20px 0px 22px;
   height: 54px;
   width: 100%;
   box-sizing: border-box;
@@ -83,11 +94,18 @@ div#banner-auth-buttons {
 }
 
 img#lmbrlogo.banner {
-  margin-left: 10px;
+  margin-left: 22px;
   width: 25px;
   height: 45px;
 }
-
+img#logo-l.banner{
+  margin-left: 22px;
+  width: 19px;
+  height: 33px;
+}
+button#sidebar-signout.sidebar-buttons{
+  margin-right: 13px;
+}
 #banner-search-bar {
   margin-left: 12px;
   display:none;

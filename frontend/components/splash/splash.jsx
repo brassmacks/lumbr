@@ -9,7 +9,7 @@ export const splash = ({ currentUser, pth}) => {
       <div id="splash-container-root">
         <span></span>
         <div height="20%"></div>
-        <a id="welcome-note">Welcome to </a>
+        {/* <a id="welcome-note">Welcome to </a> */}
         <a id="lumbr-txt-logo">lumbr</a>
 
         {SessionButtons("splash", pth)}

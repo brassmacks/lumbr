@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import logo from '../../../app/assets/images/lmbrlogo.png'
+
 
 export const SessionButtons = (location, pth) => {
    

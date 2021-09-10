@@ -1,15 +1,18 @@
 class Api::SessionsController < ApplicationController
   
   def create
+    p params[:user]
+    puts "here"
     @user = User.find_by_credentials(
-      params[:user][:username],
+      params[:user][:email],
       params[:user][:password]
     )
+    puts @user
     if @user
       log_in!(@user)
       render "/api/users/show"
     else 
-      render json: ["Invalid username/password combination"], status: 401
+      render json: ["Invalid email/password combination"], status: 401
     end
   end
 
@@ -26,6 +29,8 @@ class Api::SessionsController < ApplicationController
   def new
     render :new
   end
-    
-  
+
+  def session_params
+    params.require(:user).permit(:id, :email, :username, :password)
+  end
 end

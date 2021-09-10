@@ -23,7 +23,7 @@ class Dashboard extends React.Component {
     let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Lnk', Lnk], ['Movie', Movie] ]
     return (
       <div id="log-run">
-            <div>
+            <div id="feed">
     <div id="post-nav-panel" className="post-nav">
       <div id="spacer" className="post-nav">
 
