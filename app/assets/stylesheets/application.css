@@ -13,10 +13,11 @@
  *= require_tree .
  *= require_self
  */
- @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
-a#authLinks.hidden {
-  display: none;
-}
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:200,200italic,300,300italic,regular,italic,500,500italic,600,600italic,700,700italic,900,900italic);
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P:regular);
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic,regular,italic,700,700italic,900,900italic);
+
 
 .modal-background{
   position: fixed;
@@ -37,63 +38,36 @@ a#authLinks.hidden {
 }
 
 html {
-  background-color: ivory;
-}
-a#lumbr-txt-logo {
-  font-family: Arial, Helvetica, sans-serif;
-  font-weight: 900;
-  font-size: 56px;
-}
-ul#session-inputs input {
-  width: 300px;
-  height: 44px;
-  margin-top: 7px;
-  border:none;
-  padding: 0px;
-}
-
-
-ul#session-inputs input#email{
-    border-radius: 3px 3px 0px 0px;
-}
-ul#session-inputs input#password.signup-butt{
-  border-radius: 0px;
-}
-ul#session-inputs input#password.login-butt{
-  border-radius: 0px 0px 3px 3px;
-}
-ul#session-inputs input#blogname{
-  border-radius: 0px 0px 3px 3px;
+  background-color: rgb(0,25,53);
 }
 
 #root {
-  background-color: rgb(0,25,53);
   margin:0;
-  /* padding-top: 20px; */
   padding-bottom: 20px;
-  height: 110vmin;
+  height: 110vmax;
+  background-image: url("https://lumbr-seeds.s3.us-west-1.amazonaws.com/blackandwhitesplash.jpg");
 }
+
 header#banner{
   position: fixed;
 }
 
 body {
   margin:0;
-  /* padding-top: 20px;
-  padding-bottom: 20px; */
-  background-color: rgb(0,25,53);
+  background-color: transparent;
   top: 0;
   bottom: 0;
   right: 0;
   left: 0;
   color: white;
-  
 }
+
 div#blogchannel {
   width: 400px;
   height: 100%;
   background-color: antiquewhite;
 }
+
 button#post-nav-button.post-nav{
   display: flex;
   align-items: center;
@@ -102,16 +76,18 @@ button#post-nav-button.post-nav{
   height: 95px;
   border:none;
   font-size: 14px;
+}
 
-}
-div#splash-container-root{
-  background-image: url("https://lumbr-seeds.s3.us-west-1.amazonaws.com/blackandwhitesplash.jpg");
-  width: 1400px;
-}
 div#feed{
   /* margin-top: 20px; */
   padding-top: 40px;
 }
+#log-run {
+  margin-left:auto;
+  margin-right:auto;
+  width: 540px
+}
+
 ul.post-nav#post-nav-buttons-list{
   display: flex;
   justify-content: space-evenly;
@@ -119,16 +95,9 @@ ul.post-nav#post-nav-buttons-list{
   padding-left: 20px;
   padding-right: 20px;
 }
-
-#log-run {
-  margin-left:auto;
-  margin-right:auto;
-  width: 540px
-}
 div#spacer.post-nav{
   margin-left:auto;
   margin-right:auto;
-  
 }
 img#pnii.post-nav:hover{
   transform: translateY(-8px);
@@ -143,9 +112,7 @@ div#post-nav-panel.post-nav{
   height:104px;
   align-content: space-around;
   border-radius: 2px;
-  
 }
-
 #pi-post-house{
   color: black;
   font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -153,12 +120,9 @@ div#post-nav-panel.post-nav{
   line-height: 11px;
   font-weight: 430;
 }
-img#pi-prof-pic{
-  /* padding-left: -35px; */
-  /* z-index: 10; */
-  position: sticky;
-  /* left:-10px; */
 
+img#pi-prof-pic{
+  position: sticky;
 }
 li#post-item.post {
   background-color: rgb(239,239,239);
@@ -171,22 +135,11 @@ li#post-item.post {
   position: relative;
 }
 
-div#bground{
-  width:100%;
-  height: 95%;
-  background-color: rgb(0,25,53);
-}
 nav#splash-bottom-nav {
   display: flex;
   flex-direction: row;
   align-items: flex-end;
   justify-content: center;
-}
-div#bground{
-  min-height: calc(100vh -4rem);
-  margin: 0;
-  position: fixed;
-
 }
 
 div#splash-container-root{
@@ -196,30 +149,12 @@ div#splash-container-root{
   flex-direction: column;
   margin-left: auto;
   margin-right: auto;
-
 }
-div#splash-auth-buttons{
-  flex-direction: column;
-  width: 300px;
-  margin: 30px;
-  padding-left: 100px;
-  padding-right: 100px;
-}
-div#session-form {
-  width: 300px;
-  margin-left: auto;
-  margin-right: auto;
+/* div#splash-auth-buttons{
   display: flex;
-  flex-direction: column;
+  
+  /* width: 300px; */
+  /* margin: 30px; */
+  /* padding-left: 100px;
+  padding-right: 100px; */
 
-}
-form.session-form button{
-  width: 300px;
-  height: 44px;
-  margin-top: 13px;
-}
-div#splash-auth-buttons.auth-buttons button{
-  width: 300px;
-  height: 44px;
-  margin-bottom: 10px;
-}

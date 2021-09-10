@@ -1,10 +1,89 @@
-div#splash-auth-buttons {
-  align-items: center;
-  color: white;
+
+
+a#authLinks.hidden {
+  display: none;
+}
+
+div#lumbr-title{
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: center;
+  margin-left: -16.5px;
+}
+a#lumbr-txt-logo {
+  /* padding-left: 9px; */
+  margin:-13px -31px 0px 0px;
+  display: flex;
+  font-family: roboto;
+  font-family: Source Code Pro;
+  font-weight: 595;
+  font-size: 129px;
+}
+a#lumbr-txt-title {
+  padding-left: 7px;
+  display: flex;
+  justify-content: center;
+  font-family: Merriweather;
+  font-weight: 735;
+  font-size: 88px;
+}
+
+div#splash-container-root.splash-buttons{
+  padding-top: 5%;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: flex-start;
+  position: static;
+}
+
+div#splash-auth-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  align-content: center;
+  justify-content: center;
   line-height: 16px;
-  margin: 9px 14px 9px 0px; 
-  
+}
+ul#session-inputs input {
+  width: 278px;
+  height: 18px;
+  margin-top: 7px;
+  border:none;
+  padding: 13px 11px;
+  font-size: 16px;
+}
+
+ul#session-inputs input#email{
+    border-radius: 3px 3px 0px 0px;
+}
+ul#session-inputs input#password.signup-butt{
+  border-radius: 0px;
+}
+ul#session-inputs input#password.login-butt{
+  border-radius: 0px 0px 3px 3px;
+}
+ul#session-inputs input#blogname{
+  border-radius: 0px 0px 3px 3px;
+}
+
+div#session-form {
+  padding-top: 5%;
+  width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+}
+form.session-form button{
+  width: 300px;
+  height: 44px;
+  margin-top: 13px;
+}
+div#splash-auth-buttons.auth-buttons button{
+  width: 300px;
+  height: 44px;
+  margin-bottom: 10px;
 }

@@ -48,7 +48,11 @@ class SessionForm extends React.Component {
     return (
       <div id="session-form">
         <form onSubmit={this.handleSubmit} className="session-form">
-          <a id="lumbr-txt-logo">lumbr</a>
+                <div id="lumbr-title">
+        <a id="lumbr-txt-logo">l</a>
+        <a id="lumbr-txt-title">umbr</a>
+        </div>
+
           <h5 className="form-errors">{this.renderErrors()}</h5>
           <ul id="session-inputs">
             <li>
