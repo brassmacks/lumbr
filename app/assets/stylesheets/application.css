@@ -17,7 +17,7 @@
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P:regular);
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap');
 @import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic,regular,italic,700,700italic,900,900italic);
-
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
 
 .modal-background{
   position: fixed;
@@ -45,7 +45,6 @@ html {
   margin:0;
   padding-bottom: 20px;
   height: 110vmax;
-  background-image: url("https://lumbr-seeds.s3.us-west-1.amazonaws.com/blackandwhitesplash.jpg");
 }
 
 header#banner{
@@ -65,7 +64,21 @@ body {
 div#blogchannel {
   width: 400px;
   height: 100%;
-  background-color: antiquewhite;
+  background-color: rgb(255,255,255);
+}
+
+div#log-run{
+  margin-left:auto;
+  margin-right:auto;
+  width:fit-content;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+}
+
+div#feed{
+  /* margin-top: 20px; */
+  padding-top: 40px;
 }
 
 button#post-nav-button.post-nav{
@@ -76,17 +89,9 @@ button#post-nav-button.post-nav{
   height: 95px;
   border:none;
   font-size: 14px;
+  background-color: rgb(255,255,255);
 }
 
-div#feed{
-  /* margin-top: 20px; */
-  padding-top: 40px;
-}
-#log-run {
-  margin-left:auto;
-  margin-right:auto;
-  width: 540px
-}
 
 ul.post-nav#post-nav-buttons-list{
   display: flex;
@@ -108,53 +113,71 @@ label#post-nav-button-label.post-nav {
 div#post-nav-panel.post-nav{
   display:flex;
   flex-direction: row;
-  background-color: rgb(239,239,239);
+  background-color: rgb(255,255,255);
   height:104px;
+  width: 540px;
   align-content: space-around;
   border-radius: 2px;
 }
-#pi-post-house{
-  color: black;
-  font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 14px;
-  line-height: 11px;
-  font-weight: 430;
-}
 
-img#pi-prof-pic{
+div#post-index-container{
+  margin-left:-85px;
+}
+#pi-post-house{
+  border-radius: 3px;
+  background-color: rgb(255,255,255);
+  width: 540px;
+  color: black;
+  font-family: Roboto Mono;
+  font-size: 14px;
+  font-weight: 375;
+}
+div#pi-prof-box{
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+}
+img#pi-prof-pic.sticky{
+  border-radius: 3px;
+  width:64px;
+  height:64px; 
   position: sticky;
+  top: 72px;
+}
+div#prof-slider-bounds{
+  background-color: transparent;
+  margin-right: 21px;
+  height:inherit;
+}
+ul#post-index-list{
+  margin-top: 22px;
 }
 li#post-item.post {
-  background-color: rgb(239,239,239);
   display: flex;
   margin-top: 14px;
   margin-bottom: 16px;
-  border-radius: 2px;
+  
   padding-bottom: 7%;
-  overflow: hidden;
   position: relative;
 }
-
-nav#splash-bottom-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
+h3#post-author{
+  border-radius: 3px 20px 0px 0px;
+  font-size: 13px;
+  padding:20px;
   justify-content: center;
+  font-weight: 500;
 }
-
-div#splash-container-root{
-  width: 540px;
-  height: 600px;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
+div#text-content.post{
+  height:fit-content;
+  padding:15px 21px 55px 21px;
+  line-height: 24px;
 }
-/* div#splash-auth-buttons{
-  display: flex;
-  
-  /* width: 300px; */
-  /* margin: 30px; */
-  /* padding-left: 100px;
-  padding-right: 100px; */
-
+h3#post-title{
+  font-weight: 400;
+  font-size: 16px;
+  padding-bottom: 17px;
+}
+p#text-content.post{
+  font-weight: 325;
+  color: rgb(24, 30, 32);
+}

@@ -1,4 +1,10 @@
-
+div#bground.splash{
+    background-image: url("https://lumbr-seeds.s3.us-west-1.amazonaws.com/blackandwhitesplash.jpg");
+    margin-top: -60px;
+    z-index: -1;
+    height: 110vmax;
+    
+}
 
 a#authLinks.hidden {
   display: none;
@@ -8,13 +14,13 @@ div#lumbr-title{
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-left: -16.5px;
+  margin-left: -6.5px;
 }
 a#lumbr-txt-logo {
-  /* padding-left: 9px; */
+  
   margin:-13px -31px 0px 0px;
   display: flex;
-  font-family: roboto;
+  
   font-family: Source Code Pro;
   font-weight: 595;
   font-size: 129px;
@@ -29,7 +35,7 @@ a#lumbr-txt-title {
 }
 
 div#splash-container-root.splash-buttons{
-  padding-top: 5%;
+  padding-top: 8%;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -38,6 +44,12 @@ div#splash-container-root.splash-buttons{
   position: static;
 }
 
+div#form-back.session{
+  background-image: url("https://lumbr-seeds.s3.us-west-1.amazonaws.com/blackandwhitesplash.jpg");
+  margin-top: -60px;
+  z-index: -1;
+  height: 110vmax;
+}
 div#splash-auth-buttons {
   display: flex;
   flex-direction: column;
@@ -68,9 +80,8 @@ ul#session-inputs input#password.login-butt{
 ul#session-inputs input#blogname{
   border-radius: 0px 0px 3px 3px;
 }
-
 div#session-form {
-  padding-top: 5%;
+  padding-top: 8%;
   width: 300px;
   margin-left: auto;
   margin-right: auto;
@@ -86,4 +97,20 @@ div#splash-auth-buttons.auth-buttons button{
   width: 300px;
   height: 44px;
   margin-bottom: 10px;
+}
+
+nav#splash-bottom-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+div#splash-container-root{
+  width: 540px;
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  margin-right: auto;
 }

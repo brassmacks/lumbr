@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
 
   render() {
     const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
-    let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Lnk', Lnk], ['Movie', Movie] ]
+    let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Link', Lnk], ['Movie', Movie] ]
     return (
       <div id="log-run">
             <div id="feed">
@@ -32,7 +32,10 @@ class Dashboard extends React.Component {
               buttons.map((button, i )=> {
                 let type, src = button
                 return (
-                  <li id="post-nav-list-item" className="post-nav" key={i}>
+                  <li id="post-nav-list-item" 
+                    className="post-nav"
+                    key={`${i} ${button}`}>
+                      
                     <PostButton id="post-nav-button" button={button} />
                   </li>)
               })
@@ -41,7 +44,7 @@ class Dashboard extends React.Component {
 
             </div>
           </div>
-          <div>
+          <div id="post-index-container">
             <PostIndexContainer />
           </div>
 

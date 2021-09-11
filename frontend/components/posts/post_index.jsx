@@ -23,7 +23,7 @@ class PostIndex extends React.Component {
               return <PostIndexItem 
                 post={post}
                 deletePost={deletePost}
-                key={post.id} />
+                key={`${post.id}${post.title}${post.username}`} />
               }
             )
           }

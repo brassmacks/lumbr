@@ -46,6 +46,8 @@ class SessionForm extends React.Component {
 
   render() {
     return (
+      <div id="form-back" className="session">
+
       <div id="session-form">
         <form onSubmit={this.handleSubmit} className="session-form">
                 <div id="lumbr-title">
@@ -78,7 +80,7 @@ class SessionForm extends React.Component {
 
             { this.props.formType === 'Sign up' ? 
       
-            <li>
+      <li>
               
                 <input id="blogname" className='signup-butt'
                   type="text" 
@@ -89,7 +91,7 @@ class SessionForm extends React.Component {
               
             </li>
                     : null
-            }
+                  }
           </ul>
           
           <button id={this.assignLabel(this.props.formType)} 
@@ -99,6 +101,7 @@ class SessionForm extends React.Component {
 
         </form>    
       </div>
+    </div>
     )
   }
 }

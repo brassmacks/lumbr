@@ -9,21 +9,24 @@ export const PostIndexItem = ({post, deletePost}) => {
       
         <div id="pi-prof-box">
           <div id="prof-slider-bounds" >
-          <img id="pi-prof-pic" src={post.profileUrl} width='100px' height="100px" alt="" ></img>
+          <img id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
           </div>
-          <div>
-        </div>
+    
         <div id="pi-post-house">
 
-        <h3>{post.title}</h3>
-        <h3>{post.username}</h3>
-      <img key={post.id}
-          className="post-image" 
-          width='540px' 
-          src={post.photoUrl}>
-      </img>
-      </div>
-      <p> {post.body}</p>
+          <h3 id="post-author">{post.username}</h3>
+
+          <img key={post.id}
+            className="post-image" 
+            width='540px' 
+            src={post.photoUrl}>
+          </img>
+
+          <div id="text-content" className="post">
+          <h3 id="post-title">{post.title}</h3>
+          <p className="post" id="text-content">{post.body}</p>
+          </div>
+        </div>
       </div>
       
     </li>

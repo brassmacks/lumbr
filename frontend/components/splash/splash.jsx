@@ -4,7 +4,7 @@ import { SessionButtons } from '../buttons/session_buttons'
 export const splash = ({ currentUser, pth}) => {
 
   if (pth === "/") return (
-    <div id="bground">
+    <div id="bground" className="splash">
 
       <div id="splash-container-root" className="splash-buttons">
         {/* <span></span> */}
