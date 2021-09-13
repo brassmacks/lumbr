@@ -11,7 +11,6 @@ function Modal({ modal, closeModal, fetchBlog, currentUser }) {
     return null;
   }
   let component;
-  console.log('in')
   switch (modal) {
     case 'edit blog':
       component = <Blog />;
@@ -20,7 +19,6 @@ function Modal({ modal, closeModal, fetchBlog, currentUser }) {
       component = <CreatePostContainer />
       break;
     default:
-      console.log("out")
       return null;
   }
   return (

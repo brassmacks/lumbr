@@ -19,23 +19,6 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic,regular,italic,700,700italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
 
-.modal-background{
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  background: rgba(0, 0, 0, 0);
-  z-index: 10;
-}
-
-.modal-child {
-
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
 
 html {
   background-color: rgb(0,25,53);
@@ -61,11 +44,11 @@ body {
   color: white;
 }
 
-div#blogchannel {
+/* div#blogchannel {
   width: 400px;
   height: 100%;
   background-color: rgb(255,255,255);
-}
+} */
 
 div#log-run{
   margin-left:auto;
@@ -74,6 +57,11 @@ div#log-run{
   display: flex;
   justify-content: space-evenly;
   align-content: center;
+  overflow:hidden;
+}
+
+div#log-run:hover{
+  overflow:scroll;
 }
 
 div#feed{

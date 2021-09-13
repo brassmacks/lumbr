@@ -4,10 +4,11 @@ import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router'
 
 
-const mSTP = ({ session, entities: { users } }, ownProps) => {
+const mSTP = ({ session, entities: { users }, modal }, ownProps) => {
   return ({
     currentUser: users[session.id],
-    pth: ownProps.location.pathname
+    pth: ownProps.location.pathname,
+    modal
   })
 };
 

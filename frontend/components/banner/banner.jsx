@@ -24,7 +24,7 @@ const banner = ({ currentUser, logout, pth, openModal, fetchBlog }) => {
   
     
     return (
-      <div id={"banner-box"}>
+      <div id="banner-box" className="main">
         <header id="banner"
           className={
             currentUser ? "nav" : "splash" } >
