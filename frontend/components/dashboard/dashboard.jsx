@@ -19,6 +19,7 @@ class Dashboard extends React.Component {
 
 
   render() {
+
     const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
     let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Link', Lnk], ['Movie', Movie] ]
     return (
@@ -36,7 +37,7 @@ class Dashboard extends React.Component {
                     className="post-nav"
                     key={`${i} ${button}`}>
                       
-                    <PostButton id="post-nav-button" button={button} />
+                    <PostButton id="post-nav-button" freeze={this.props.freeze} button={button} />
                   </li>)
               })
             }

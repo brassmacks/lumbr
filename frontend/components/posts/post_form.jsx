@@ -14,15 +14,16 @@ class PostForm extends React.Component {
     this.handleFile = this.handleFile.bind(this)
   }
   componentDidMount() {
-    console.log(this.state)
+    
   }
+
+
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
 
     formData.append('post[title]', this.state.title)
     formData.append('post[body]', this.state.body)
-    
     formData.append('post[user_id]', this.state.user_id)
     
     
@@ -31,8 +32,6 @@ class PostForm extends React.Component {
       formData.append('post[photo]', this.state.photoFile)
       this.props.createPhoto(formData)
     } else { this.props.textPost(this.state) }
-
-    
   }
 
   // attachTag(tag) {
@@ -57,6 +56,7 @@ class PostForm extends React.Component {
   render(){
     let type = this.state.contentType;
     let username = this.currentUser.username;
+    
     return (
       <div id="post-channel">
         <div id="post-form-container">
@@ -66,12 +66,12 @@ class PostForm extends React.Component {
             <h3>{this.props.contentType}</h3>
             <input 
               type="text" placeholder="Title" value={this.state.title} 
-              id="post-title-input" className="post-form"
+              id="post-title-input" className="post-form" autoComplete="off"
               onChange={this.update('title')} 
             />
             <textarea 
               placeholder="Go ahead, put anything" value={this.state.body}
-              id="post-body-input" className="post-form"
+              id="post-body-input" className="post-form" autoComplete="off"
               onChange={this.update('body')} 
             />
 
@@ -80,14 +80,14 @@ class PostForm extends React.Component {
             : <a></a>
           }
             <input type="text" placeholder="#add tags" value={this.state.tagString}
-              id="post-title-input" className="post-form"
+              id="post-tags-input" className="post-form"
               onChange={this.update('tagString')}
             />
-            <div id="post-buttons" className="post-form">
-              <button type="submit">Post now</button>
+            <div id="post-buttons" className="post-submit">
               <Link to="/dashboard">
-                <button>close</button>
+                <button onClick="" id="post-form-close" >Close</button>
               </Link>
+              <button type="submit" id="post-form-post">Post now</button>
             </div>
           </form>
           </div> 

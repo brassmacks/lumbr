@@ -6,6 +6,7 @@
   align-content: center;
 }
 .post-form {
+  outline:none;
   font-weight: 500;
   line-height: 24px;
   font-size: 16px;
@@ -19,22 +20,62 @@
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 3px;
-  padding-left:21px;
+  padding:21px;
   background-color: white;
   height: 289px;
-  width: 540px;
+  width: 490px;
+  /* max-width: 540px; */
   margin:auto; 
 }
 h3#post-form-author{
   padding-left: 0;
   color: black;
-  margin: 21px 0;
+  margin-bottom: 21px;
   line-height: 16px;
   font-weight: 800;
 }
-div#post-buttons.post-form{
-  width:100%;
-  border-top: 1px solid black;
-  margin-left:0;
+
+input#post-title-input{
+  line-height: 34px;
+  font-size: 26px;
+}
+
+textarea#post-body-input{
+  height: 128px;
+  font-family: Arial, Helvetica, sans-serif;
+  resize:none;
+  font-size: 14px;
+}
+
+input#post-tags-input{
+  line-height: 27px;
+  padding-bottom: 13px;
+}
+
+div#post-buttons.post-submit{
+  display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  margin:0px -21px 0px -21px;
+  padding: 21px 18px 21px 21px;
+  border-top: 0.5px solid rgba(0, 0, 0, 0.2);
+  flex-direction: row;
+}
+div#post-buttons button{
+  line-height: 16px;
+  font-weight: 550;
+  font-size: 15.5px;
+  border-radius: 3px;
+  border: none;
+
+}
+button#post-form-close{
+  width: 84px;
+  height: 32px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+button#post-form-post{
+
 }

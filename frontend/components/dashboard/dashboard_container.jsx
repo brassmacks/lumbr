@@ -8,7 +8,8 @@ const mSTP = ({ session, entities: { users }, modal }, ownProps) => {
   return ({
     currentUser: users[session.id],
     pth: ownProps.location.pathname,
-    modal
+    modal,
+    freeze: ownProps.freeze
   })
 };
 

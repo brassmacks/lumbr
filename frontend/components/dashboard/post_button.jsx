@@ -2,12 +2,13 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions'
 
-const PostButton = ({button, openModal}) => {
+const PostButton = ({button, openModal, freeze}) => {
   let type = button[0];
   let src = button[1];
+  
   return (
     <div key={src + 'button'}>
-      <button id="post-nav-button" className="post-nav" onClick={() => openModal("new " + type + " post")}>        
+      <button id="post-nav-button" className="post-nav" onClick={() => openModal("new " + type + " post").then(freeze())}>        
         <div className="post-button-column">
         <label id='post-nav-button-label' className="post-nav">
           <img id='pnii' className='post-nav' src={src} width='40px' />
