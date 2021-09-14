@@ -22,8 +22,8 @@ class Dashboard extends React.Component {
     const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
     let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Link', Lnk], ['Movie', Movie] ]
     return (
-      <div id="log-run">
-            <div id="feed">
+    <div id="log-run">
+    <div id="feed">
     <div id="post-nav-panel" className="post-nav">
       <div id="spacer" className="post-nav">
 

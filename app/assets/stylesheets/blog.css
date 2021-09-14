@@ -1,13 +1,13 @@
 div#blogchannel{
   background-color: white;
   height: fit-content;
-  min-height: 110vmin;
+  min-height: 110vw;
   width:600px;
   position: absolute;
   top:0;
   bottom: 0;
   right: 0;
-  
+  overflow: scroll;
 }
 .modal-background{
   position: fixed;
@@ -17,6 +17,8 @@ div#blogchannel{
   left: 0;
   background: rgba(0, 25, 53, 0.95);
   z-index: 10;
+  overflow:auto;
+  
 }
 
 .modal-child {

@@ -2,15 +2,22 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SessionButtons } from '../buttons/session_buttons'
 
-const banner = ({ currentUser, logout, pth, openModal, fetchBlog }) => {
+const banner = ({ currentUser, logout, pth, openModal, fetchBlog, freeze}) => {
   // fetchBlog(currentUser)
+
   const location = "banner"
+
+  const blgModal = () => {
+    openModal('edit blog').then(
+      freeze()
+    )
+  }
   const logo = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/lmbrlogo.png'
   const sideBar = () => (
     <span>
       <div className="sidebar-group">
         <ul>
-          <button onClick={() => openModal('edit blog')}>
+          <button onClick={() => blgModal('edit blog')}>
           {currentUser.username}
           </button>
   

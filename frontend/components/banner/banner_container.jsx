@@ -7,8 +7,8 @@ import { fetchBlog } from '../../actions/blog_actions';
 
 const mSTP = ( { session, entities: { users, blogs } }, ownProps) => ({
     currentUser: users[session.id],
-    pth: ownProps.location.pathname
-
+    pth: ownProps.location.pathname,
+    freeze: ownProps.freeze
 });
 
 const mDTP = dispatch => ({

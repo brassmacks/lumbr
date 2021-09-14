@@ -5,12 +5,20 @@ import Blog from '../blog/blog_edit_container'
 import CreatePostContainer from '../posts/create_post_form_container'
 import { fetchBlog } from '../../actions/blog_actions';
 
-function Modal({ modal, closeModal, fetchBlog, currentUser }) {
+function Modal({ modal, closeModal, fetchBlog, currentUser,melt}) {
+  
   if (currentUser) fetchBlog(currentUser.id)
   if (!modal) {
     return null;
   }
+  
   let component;
+
+  const close = () => {
+    closeModal();
+    melt();
+  }
+
   switch (modal) {
     case 'edit blog':
       component = <Blog />;
@@ -22,7 +30,7 @@ function Modal({ modal, closeModal, fetchBlog, currentUser }) {
       return null;
   }
   return (
-    <div className="modal-background" onClick={closeModal}>
+    <div className="modal-background" onClick={ () => close()}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
 
         {component}
@@ -31,9 +39,10 @@ function Modal({ modal, closeModal, fetchBlog, currentUser }) {
   );
 }
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state, ownProps) => ({
     currentUser: state.entities.users[state.session.id],  
-    modal: state.modal
+    modal: state.modal,
+    melt: ownProps.melt
   });
 
 

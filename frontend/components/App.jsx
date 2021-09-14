@@ -19,11 +19,10 @@ import PostIndexContainer from './posts/post_index_container'
 import Dashboard from './dashboard/dashboard';
 import { render } from 'react-dom';
 
-const App = () => (
-  
-  <div>
-    <Modal />
-    <BannerContainer />
+const App = ({freeze, melt}) => (
+  <div id="app">
+    <Modal melt={melt} />
+    <BannerContainer freeze={freeze} />
     <Splash />
     <AuthRoute exact path="/" component={Modal} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
