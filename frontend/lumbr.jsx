@@ -10,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
   
   let store; 
   const freeze = () => { document.body.style.overflow = "hidden" }
-  const melt = () => { document.body.style.overflow = "auto" }
+  const melt = () => { document.body.style.overflow = "" }
 
   if (window.currentUser) {
-    
+
     const preloadedState = {
       session: { id: window.currentUser.id },
       entities: { users: { [window.currentUser.id]: window.currentUser } }

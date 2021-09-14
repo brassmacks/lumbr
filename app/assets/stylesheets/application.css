@@ -43,9 +43,6 @@ body {
   overflow: hidden;
 }
 
-div#app{
-  overflow:hidden;
-}
 
 div#log-run{
   margin-left:auto;

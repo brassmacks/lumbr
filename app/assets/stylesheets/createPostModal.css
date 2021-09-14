@@ -6,13 +6,35 @@
   align-content: center;
 }
 .post-form {
+  font-weight: 500;
+  line-height: 24px;
+  font-size: 16px;
   border:none;
   display: flex;
-  background-color: aliceblue;
   flex-direction: column;
+  justify-content: space-around;
 }
 #post-form-container{
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, Helvetica, sans-serif;
+  border-radius: 3px;
+  padding-left:21px;
+  background-color: white;
   height: 289px;
   width: 540px;
   margin:auto; 
+}
+h3#post-form-author{
+  padding-left: 0;
+  color: black;
+  margin: 21px 0;
+  line-height: 16px;
+  font-weight: 800;
+}
+div#post-buttons.post-form{
+  width:100%;
+  border-top: 1px solid black;
+  margin-left:0;
+  flex-direction: row;
 }

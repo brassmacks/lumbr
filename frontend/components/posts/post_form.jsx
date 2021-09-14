@@ -56,9 +56,11 @@ class PostForm extends React.Component {
 
   render(){
     let type = this.state.contentType;
+    let username = this.currentUser.username;
     return (
       <div id="post-channel">
-        <div className="post-form" id="post-form-container">
+        <div id="post-form-container">
+          <h3 id="post-form-author" className="post-form">{username}</h3>
           <form className="post-form" id="post-form-form" 
           onSubmit={this.handleSubmit}>
             <h3>{this.props.contentType}</h3>
@@ -77,14 +79,16 @@ class PostForm extends React.Component {
             ? <input type="file" onChange={this.handleFile}/> 
             : <a></a>
           }
-            <input type="text" placeholder="#tags" value={this.state.tagString}
+            <input type="text" placeholder="#add tags" value={this.state.tagString}
               id="post-title-input" className="post-form"
               onChange={this.update('tagString')}
             />
-            <button type="submit">post</button>
-            <Link to="/dashboard">
-              <button>close</button>
-            </Link>
+            <div id="post-buttons" className="post-form">
+              <button type="submit">Post now</button>
+              <Link to="/dashboard">
+                <button>close</button>
+              </Link>
+            </div>
           </form>
           </div> 
         </div>
