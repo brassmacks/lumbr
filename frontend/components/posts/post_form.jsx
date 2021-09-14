@@ -9,11 +9,13 @@ class PostForm extends React.Component {
     this.state = this.props.post;
     this.state.tagString = "";
     this.state.photoFile = null
-    this.state.user_id = this.currentUser.id
+    this.state.user_id = this.props.currentUser.id
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this)
   }
-
+  componentDidMount() {
+    console.log(this.state)
+  }
   handleSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -53,46 +55,39 @@ class PostForm extends React.Component {
   }
 
   render(){
-    
+    let type = this.state.contentType;
     return (
-      <div className="post-form" id="post-form-div">
-        <h4 className="post-form" id="post-form-username"></h4>
-        <form className="post-form" id="post-form-form" 
-        onSubmit={this.handleSubmit}>
-          <h3>{this.props.contentType}</h3>
-          <input 
-            type="text" 
-            placeholder="Title" 
-            value={this.state.title} 
-            id="post-title-input" 
-            className="post-form"
-            onChange={this.update('title')} 
-          />
-          <textarea 
-            placeholder="Go ahead, put anything" 
-            value={this.state.body}
-            id="post-body-input"
-            className="post-form"
-            onChange={this.update('body')} 
-          />
-          {this.state.contentType === '/new/photo' || this.state.contentType === '/new/video' ? 
-          <input type="file" onChange={this.handleFile}/> :
-          <a></a>
-        }
-          <input
-            type="text"
-            placeholder="#tags"
-            value={this.state.tagString}
-            id="post-title-input"
-            className="post-form"
-            onChange={this.update('tagString')}
-          />
-          <button type="submit">post</button>
-          <Link to="/dashboard">
-            <button>close</button>
-          </Link>
-        </form>
-      </div>
+      <div id="post-channel">
+        <div className="post-form" id="post-form-container">
+          <form className="post-form" id="post-form-form" 
+          onSubmit={this.handleSubmit}>
+            <h3>{this.props.contentType}</h3>
+            <input 
+              type="text" placeholder="Title" value={this.state.title} 
+              id="post-title-input" className="post-form"
+              onChange={this.update('title')} 
+            />
+            <textarea 
+              placeholder="Go ahead, put anything" value={this.state.body}
+              id="post-body-input" className="post-form"
+              onChange={this.update('body')} 
+            />
+
+        {( type === '/new/photo' || type === '/new/video') 
+            ? <input type="file" onChange={this.handleFile}/> 
+            : <a></a>
+          }
+            <input type="text" placeholder="#tags" value={this.state.tagString}
+              id="post-title-input" className="post-form"
+              onChange={this.update('tagString')}
+            />
+            <button type="submit">post</button>
+            <Link to="/dashboard">
+              <button>close</button>
+            </Link>
+          </form>
+          </div> 
+        </div>
     )
   }
 }

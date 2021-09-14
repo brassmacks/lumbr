@@ -1,0 +1,18 @@
+
+#post-channel{
+  height:100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.post-form {
+  border:none;
+  display: flex;
+  background-color: aliceblue;
+  flex-direction: column;
+}
+#post-form-container{
+  height: 289px;
+  width: 540px;
+  margin:auto; 
+}

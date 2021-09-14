@@ -9,12 +9,10 @@ const mSTP = state => ({
     title: '',
     body: '',
     contentType: state.modal.split(1),
-    userId: 0,
     source: '',
     tags: []
   },
   formType: state.modal
-
 })
 
 const mDTP = dispatch => ({
