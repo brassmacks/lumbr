@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { closeModal } from '../../actions/modal_actions';
 import { createPhotoPost } from '../../util/post_util';
 
 class PostForm extends React.Component {
@@ -12,6 +13,7 @@ class PostForm extends React.Component {
     this.state.user_id = this.props.currentUser.id
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this)
+    console.log(this.props)
   }
   componentDidMount() {
     
@@ -52,7 +54,10 @@ class PostForm extends React.Component {
       [field]: e.currentTarget.value
     });
   }
-
+  closeForm() {
+    this.props.closeModal()
+    this.props.melt()
+  }
   render(){
     let type = this.state.contentType;
     let username = this.currentUser.username;
@@ -85,7 +90,7 @@ class PostForm extends React.Component {
             />
             <div id="post-buttons" className="post-submit">
               <Link to="/dashboard">
-                <button onClick="" id="post-form-close" >Close</button>
+                <button onClick={ () => this.closeForm() } id="post-form-close" >Close</button>
               </Link>
               <button type="submit" id="post-form-post">Post now</button>
             </div>

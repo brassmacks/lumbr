@@ -19,11 +19,11 @@ class PostIndex extends React.Component {
           
           {
           
-            posts.map(post => {
+            posts.map((post,i) => {
               return <PostIndexItem 
                 post={post}
                 deletePost={deletePost}
-                key={`${post.id}${post.title}${post.username}`} />
+                key={`${post.id}${post.username}${i}`} />
               }
             )
           }

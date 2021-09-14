@@ -77,6 +77,10 @@ ul.post-nav#post-nav-buttons-list{
   padding-left: 20px;
   padding-right: 20px;
 }
+
+img#pnii.post-nav{
+  padding:4px;
+}
 div#spacer.post-nav{
   margin-left:auto;
   margin-right:auto;

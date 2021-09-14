@@ -24,7 +24,7 @@ function Modal({ modal, closeModal, fetchBlog, currentUser,melt}) {
       component = <Blog />;
       break;
     case 'new Text post':
-      component = <CreatePostContainer />
+      component = <CreatePostContainer melt={melt} />
       break;
     default:
       return null;

@@ -2,8 +2,11 @@ import { connect } from 'react-redux';
 import PostForm from './post_form';
 import { createPost } from '../../actions/post_actions'
 import { createPhotoPost } from '../../actions/post_actions';
-
-const mSTP = state => ({
+import { closeModal } from '../../actions/modal_actions';
+const mSTP = (state, ownProps) => {
+  console.log('here')
+  console.log(ownProps)
+  return({
   currentUser: state.entities.users[state.session.id],
   post: {
     title: '',
@@ -13,7 +16,7 @@ const mSTP = state => ({
     tags: []
   },
   formType: state.modal
-})
+})}
 
 const mDTP = dispatch => ({
   closeModal: () => dispatch(closeModal()),

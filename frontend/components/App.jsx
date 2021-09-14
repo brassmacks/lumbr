@@ -27,7 +27,7 @@ const App = ({freeze, melt}) => (
     <AuthRoute exact path="/" component={Modal} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />  
-    <ProtectedRoute exact path="/dashboard" component={DashboardContainer} freeze={freeze} />
+    <ProtectedRoute exact path="/dashboard" component={DashboardContainer} freeze={freeze} melt={melt}/>
     {/* <ProtectedRoute exact path="/dashboard" 
       render={(freeze)=> (<DashboardContainer freeze={freeze} />)}/> */}
     {/* <ProtectedRoute exact path="/new" component={PostForm} />

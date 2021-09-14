@@ -68,14 +68,18 @@ div#post-buttons button{
   font-size: 15.5px;
   border-radius: 3px;
   border: none;
-
+  height: 32px;
+}
+div#post-buttons button:hover{
+cursor: pointer;
 }
 button#post-form-close{
   width: 84px;
-  height: 32px;
   color: white;
   background-color: rgba(0, 0, 0, 0.4);
 }
 button#post-form-post{
-
+  width: 120px;
+  color:white;
+  background-color: #00b8ff
 }

@@ -13,12 +13,13 @@ const Auth = ({ component: Component, path, loggedIn, exact, freeze }) => (
     )} /> 
 );
 
-const Protected = ({ component: Component, path, loggedIn, exact, freeze }) => {
+const Protected = ({ component: Component, path, loggedIn, exact, freeze, melt }) => {
+  // remove melt if unneeded
   return(
-  <Route path={path} exact={exact} freeze={freeze} render={ props => (
+  <Route path={path} exact={exact} freeze={freeze} melt={melt} render={ props => (
     loggedIn ?
       (
-        <Component freeze={freeze} {...props} />
+        <Component freeze={freeze} melt={melt} {...props} />
         
       ) : (
         <Redirect to="/login" />
