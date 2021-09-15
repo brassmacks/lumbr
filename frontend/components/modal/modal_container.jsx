@@ -24,7 +24,10 @@ function Modal({ modal, closeModal, fetchBlog, currentUser,melt}) {
       component = <Blog />;
       break;
     case 'new Text post':
-      component = <CreatePostContainer melt={melt} />
+      component = <CreatePostContainer melt={melt} type={'Text'} />
+      break;
+    case 'new Photo post':
+      component = <CreatePostContainer melt={melt} type={'Photo'} />
       break;
     default:
       return null;

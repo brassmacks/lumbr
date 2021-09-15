@@ -8,9 +8,8 @@ const banner = ({ currentUser, logout, pth, openModal, fetchBlog, freeze}) => {
   const location = "banner"
 
   const blgModal = () => {
-    openModal('edit blog').then(
-      freeze()
-    )
+    openModal('edit blog')
+    freeze()
   }
   const logo = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/lmbrlogo.png'
   const sideBar = () => (

@@ -22,19 +22,32 @@ class PostForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData();
-
-    formData.append('post[title]', this.state.title)
-    formData.append('post[body]', this.state.body)
-    formData.append('post[user_id]', this.state.user_id)
-    
-    
-    if (this.state.photoFile) {
-      
-      formData.append('post[photo]', this.state.photoFile)
-      this.props.createPhoto(formData)
-    } else { this.props.textPost(this.state) }
+    let post = {}
+    console.log(this.props)
+    switch(this.props.formType) {
+      case 'Text':
+        console.log('Text test')
+        post = {
+          title: this.state.title,
+          body: this.state.body,
+          // tags: this.attachTag(this.state.tags),
+          content_type: 'text',
+          user_id: this.state.user_id
+        }
+        console.log(post)
+        this.props.textPost(post)
+        break;
+      case ('Photo'):
+        this.props.createPhoto(post)
+        break;
+        default:
+          console.log('no post type');
+    }
+    console.log(this.state)
+    console.log(this.props)
+    this.closeForm()
   }
+
 
   // attachTag(tag) {
   //   if (tag.length >= 1) {
@@ -67,8 +80,8 @@ class PostForm extends React.Component {
         <div id="post-form-container">
           <h3 id="post-form-author" className="post-form">{username}</h3>
           <form className="post-form" id="post-form-form" 
-          onSubmit={this.handleSubmit}>
-            <h3>{this.props.contentType}</h3>
+          onSubmit={ () => this.handleSubmit() }>
+
             <input 
               type="text" placeholder="Title" value={this.state.title} 
               id="post-title-input" className="post-form" autoComplete="off"
@@ -92,7 +105,8 @@ class PostForm extends React.Component {
               <Link to="/dashboard">
                 <button onClick={ () => this.closeForm() } id="post-form-close" >Close</button>
               </Link>
-              <button type="submit" id="post-form-post">Post now</button>
+              <button type="submit" id="post-form-post" onSubmit={ () => this.handleSubmit(e)}>
+                Post now</button>
             </div>
           </form>
           </div> 

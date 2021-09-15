@@ -4,18 +4,17 @@ import { createPost } from '../../actions/post_actions'
 import { createPhotoPost } from '../../actions/post_actions';
 import { closeModal } from '../../actions/modal_actions';
 const mSTP = (state, ownProps) => {
-  console.log('here')
-  console.log(ownProps)
+  const type = ownProps.type
   return({
   currentUser: state.entities.users[state.session.id],
   post: {
     title: '',
     body: '',
-    contentType: state.modal.split(1),
+    contentType: type,
     source: '',
     tags: []
   },
-  formType: state.modal
+  formType: type
 })}
 
 const mDTP = dispatch => ({
