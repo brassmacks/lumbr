@@ -3,6 +3,7 @@ import PostForm from './post_form';
 import { createPost } from '../../actions/post_actions'
 import { createPhotoPost } from '../../actions/post_actions';
 import { closeModal } from '../../actions/modal_actions';
+
 const mSTP = (state, ownProps) => {
   const type = ownProps.type
   return({

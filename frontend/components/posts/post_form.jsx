@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { closeModal } from '../../actions/modal_actions';
+import { textPost } from './text_post';
+import { photoPost } from './photo_post';
 import { createPhotoPost } from '../../util/post_util';
 
 class PostForm extends React.Component {
@@ -11,8 +12,25 @@ class PostForm extends React.Component {
     this.state.tagString = "";
     this.state.photoFile = null
     this.state.user_id = this.props.currentUser.id
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this)
+    this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this)
+    this.component;
+    
+    switch (this.props.formType) {
+      case 'Text':
+        this.component = () => textPost(this.update, this.state.title, this.state.body);
+        // this.component = this.component.bind(this)
+        break;
+      case 'Photo':
+        this.component = () => photoPost(this.update, this.handleFile)
+        // this.component = this.component.bind(this)
+        break;
+      default:
+        this.component = <h1>Broke</h1>
+        break;
+      }
+      this.component = this.component.bind(this)
     console.log(this.props)
   }
   componentDidMount() {
@@ -20,7 +38,7 @@ class PostForm extends React.Component {
   }
 
 
-  handleSubmit(e) {
+  handlePostSubmit(e) {
     e.preventDefault();
     let post = {}
     console.log(this.props)
@@ -61,7 +79,6 @@ class PostForm extends React.Component {
   handleFile(e) {
     this.setState({photoFile: e.currentTarget.files[0]})
   }
-
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
@@ -74,29 +91,14 @@ class PostForm extends React.Component {
   render(){
     let type = this.state.contentType;
     let username = this.currentUser.username;
-    
+
     return (
       <div id="post-channel">
         <div id="post-form-container">
           <h3 id="post-form-author" className="post-form">{username}</h3>
           <form className="post-form" id="post-form-form" 
-          onSubmit={ () => this.handleSubmit() }>
-
-            <input 
-              type="text" placeholder="Title" value={this.state.title} 
-              id="post-title-input" className="post-form" autoComplete="off"
-              onChange={this.update('title')} 
-            />
-            <textarea 
-              placeholder="Go ahead, put anything" value={this.state.body}
-              id="post-body-input" className="post-form" autoComplete="off"
-              onChange={this.update('body')} 
-            />
-
-        {( type === '/new/photo' || type === '/new/video') 
-            ? <input type="file" onChange={this.handleFile}/> 
-            : <a></a>
-          }
+            onSubmit={(e) => this.handlePostSubmit(e) }>
+            {this.component()}
             <input type="text" placeholder="#add tags" value={this.state.tagString}
               id="post-tags-input" className="post-form"
               onChange={this.update('tagString')}
@@ -105,7 +107,7 @@ class PostForm extends React.Component {
               <Link to="/dashboard">
                 <button onClick={ () => this.closeForm() } id="post-form-close" >Close</button>
               </Link>
-              <button type="submit" id="post-form-post" onSubmit={ () => this.handleSubmit(e)}>
+              <button type="submit" id="post-form-post" onSubmit={ (e) => this.handlePostSubmit(e)}>
                 Post now</button>
             </div>
           </form>

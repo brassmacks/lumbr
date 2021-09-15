@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
 
   render() {
     const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
-    let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Link', Lnk], ['Movie', Movie] ]
+    let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Link', Lnk], ['Video', Movie] ]
     return (
     <div id="log-run">
     <div id="feed">

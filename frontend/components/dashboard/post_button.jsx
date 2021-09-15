@@ -4,6 +4,7 @@ import { openModal } from '../../actions/modal_actions'
 import { createPost } from '../../actions/post_actions';
 
 const PostButton = ({button, openModal, freeze}) => {
+  console.log(button)
   let type = button[0];
   let src = button[1];
   const openPostModal = () => {
