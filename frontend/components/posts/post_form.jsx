@@ -1,17 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { textPost } from './text_post';
-import { photoPost } from './photo_post';
+import { mediaPost } from './media_post';
 import { createPhotoPost } from '../../util/post_util';
 
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.currentUser = this.props.currentUser
-    this.state = this.props.post;
-    this.state.tagString = "";
-    this.state.photoFile = null
-    this.state.user_id = this.props.currentUser.id
+    this.state = Object.assign(
+      this.props.post,
+    { tagString: "",
+      photoFile: null,
+      user_id: this.props.currentUser.id } 
+      );
     this.update = this.update.bind(this)
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this)
@@ -19,12 +21,22 @@ class PostForm extends React.Component {
     
     switch (this.props.formType) {
       case 'Text':
-        this.component = () => textPost(this.update, this.state.title, this.state.body);
-        // this.component = this.component.bind(this)
+        this.component = () => (
+          textPost(this.update, this.state.title, this.state.body, 'Text')
+          );
         break;
-      case 'Photo':
-        this.component = () => photoPost(this.update, this.handleFile)
-        // this.component = this.component.bind(this)
+      case 'Photo': 
+        this.component = () => ( mediaPost(this.update, this.handleFile, 'photo'));
+        break;
+      case 'Quote':
+            this.component = () => (
+              textPost(this.update, this.state.title, this.state.body, 'Quote')
+              );
+        break;
+      case 'Link':
+        break;
+      case 'Video':
+        this.component = () => ( mediaPost(this.update, this.handleFile, 'Video'));
         break;
       default:
         this.component = <h1>Broke</h1>

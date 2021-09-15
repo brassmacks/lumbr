@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom';
 import { SessionButtons } from '../buttons/session_buttons'
 
 const banner = ({ currentUser, logout, pth, openModal, fetchBlog, freeze}) => {
-  // fetchBlog(currentUser)
 
+  if (currentUser) fetchBlog(currentUser.id)
   const location = "banner"
 
   const blgModal = () => {
-    openModal('edit blog')
-    freeze()
+    freeze();
+    openModal('edit blog');
   }
   const logo = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/lmbrlogo.png'
   const sideBar = () => (

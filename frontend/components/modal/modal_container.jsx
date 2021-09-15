@@ -5,9 +5,10 @@ import Blog from '../blog/blog_edit_container'
 import CreatePostContainer from '../posts/create_post_form_container'
 import { fetchBlog } from '../../actions/blog_actions';
 
-function Modal({ modal, closeModal, fetchBlog, currentUser,melt}) {
-  
-  if (currentUser) fetchBlog(currentUser.id)
+function Modal( { modal, closeModal, currentUser,melt}) {
+  console.log(modal)
+  // if (currentUser) fetchBlog(currentUser.id)
+  // if (modal == 'edit blog') fetchBlog(currentUser.id)
   if (!modal) {
     return null;
   }
@@ -18,7 +19,7 @@ function Modal({ modal, closeModal, fetchBlog, currentUser,melt}) {
     closeModal();
     melt();
   }
-
+console.log(modal)
   switch (modal) {
     case 'edit blog':
       component = <Blog />;
@@ -29,6 +30,13 @@ function Modal({ modal, closeModal, fetchBlog, currentUser,melt}) {
     case 'new Photo post':
       component = <CreatePostContainer melt={melt} type={'Photo'} />
       break;
+    case 'new Quote post':
+      component = <CreatePostContainer melt={melt} type={'Quote'} />
+      break;
+    case 'new Video post':
+      component = <CreatePostContainer melt={melt} type={'Video'} />
+      break;
+
     default:
       return null;
   }
