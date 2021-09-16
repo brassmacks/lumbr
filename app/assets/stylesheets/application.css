@@ -125,6 +125,9 @@ img#pi-prof-pic.sticky{
   position: sticky;
   top: 72px;
 }
+img#pi-prof-pic.sticky:hover{
+  cursor: pointer;
+}
 div#prof-slider-bounds{
   background-color: transparent;
   margin-right: 21px;

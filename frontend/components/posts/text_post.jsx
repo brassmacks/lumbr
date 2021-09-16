@@ -1,4 +1,5 @@
 import React from 'react'
+import { postContentUrl } from './post_content_url';
 
 export const textPost = (update, title, body, path) => {
   let placeholder = [];

@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { textPost } from './text_post';
 import { mediaPost } from './media_post';
-import { createPhotoPost } from '../../util/post_util';
+import { postContentUrl } from './post_content_url';
+
 
 class PostForm extends React.Component {
   constructor(props) {
@@ -12,13 +13,14 @@ class PostForm extends React.Component {
       this.props.post,
     { tagString: "",
       photoFile: null,
-      user_id: this.props.currentUser.id } 
+      user_id: this.props.currentUser.id,
+      urlInput: false } 
       );
     this.update = this.update.bind(this)
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this)
     this.component;
-    
+    this.toggleContent = this.toggleContent.bind(this)
     switch (this.props.formType) {
       case 'Text':
         this.component = () => (
@@ -26,7 +28,7 @@ class PostForm extends React.Component {
           );
         break;
       case 'Photo': 
-        this.component = () => ( mediaPost(this.update, this.handleFile, 'photo'));
+        this.component = () => ( mediaPost(this.update, this.handleFile, this.toggleContent, this.state.urlInput, 'photo'));
         break;
       case 'Quote':
             this.component = () => (
@@ -34,9 +36,10 @@ class PostForm extends React.Component {
               );
         break;
       case 'Link':
+        this.component = () => ( postContentUrl('flex', this.update ))
         break;
       case 'Video':
-        this.component = () => ( mediaPost(this.update, this.handleFile, 'Video'));
+        this.component = () => (mediaPost(this.update, this.handleFile, this.toggleContent, this.state.urlInput, 'Video'));
         break;
       default:
         this.component = <h1>Broke</h1>
@@ -78,7 +81,12 @@ class PostForm extends React.Component {
     this.closeForm()
   }
 
-
+  toggleContent = (e) => {
+    e.preventDefault();
+    this.setState({
+      urlInput: !this.state.urlInput
+    })
+  }
   // attachTag(tag) {
   //   if (tag.length >= 1) {
   //     const tags = tag.split(' ')
