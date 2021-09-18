@@ -24,7 +24,8 @@ export const mediaPost = (update, handleFile, toggleContent, urlInput, path) => 
       <div id={`${path}-post-choices`} className={`media-post-${!urlInput}`}>
           <div id={`${path}-upload-icon`}>
             <input type='file' 
-                id={`${path}-upload-input`} className={`${path}-form`}/>
+                id={`${path}-upload-input`} className={`${path}-form`}
+                onChange={(e)=>handleFile(e)} />
                 
               <label id={`${path}-upload-label`}>
                 

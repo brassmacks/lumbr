@@ -20,7 +20,7 @@ const mSTP = (state, ownProps) => {
 
 const mDTP = dispatch => ({
   closeModal: () => dispatch(closeModal()),
-  textPost: post => dispatch(createPost(post)),
+  createPost: post => dispatch(createPost(post)),
   createPhoto: post => dispatch(createPhotoPost(post)),
 })
 

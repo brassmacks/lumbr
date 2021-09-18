@@ -9,6 +9,7 @@ class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.currentUser = this.props.currentUser
+    
     this.state = Object.assign(
       this.props.post,
     { tagString: "",
@@ -16,13 +17,17 @@ class PostForm extends React.Component {
       user_id: this.props.currentUser.id,
       urlInput: false } 
       );
+
     this.update = this.update.bind(this)
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this)
     this.component;
+    this.state.mediaAttached = false
     this.toggleContent = this.toggleContent.bind(this)
+
     switch (this.props.formType) {
       case 'Text':
+
         this.component = () => (
           textPost(this.update, this.state.title, this.state.body, 'Text')
           );
@@ -46,7 +51,6 @@ class PostForm extends React.Component {
         break;
       }
       this.component = this.component.bind(this)
-    console.log(this.props)
   }
   componentDidMount() {
     
@@ -56,28 +60,24 @@ class PostForm extends React.Component {
   handlePostSubmit(e) {
     e.preventDefault();
     let post = {}
-    console.log(this.props)
-    switch(this.props.formType) {
-      case 'Text':
-        console.log('Text test')
-        post = {
-          title: this.state.title,
-          body: this.state.body,
-          // tags: this.attachTag(this.state.tags),
-          content_type: 'text',
-          user_id: this.state.user_id
-        }
-        console.log(post)
-        this.props.textPost(post)
-        break;
-      case ('Photo'):
-        this.props.createPhoto(post)
-        break;
-        default:
-          console.log('no post type');
+
+    let draft = {
+      title: this.state.title,
+      body: this.state.body,
+      content_type: this.props.formType,
+      user_id: this.state.user_id,
+      media_attached: this.state.mediaAttached,
+      tags: [this.attachTags(this.state.tagString)]
     }
-    console.log(this.state)
-    console.log(this.props)
+
+    post = new FormData()
+    Object.keys(draft).forEach( key => post.append(`post[${key}]`, draft[key]) )
+    
+      console.log(post)
+    if (this.state.mediaAttached) post.append('post[media]', this.state.media)
+
+      
+    this.props.createPost(post)
     this.closeForm()
   }
 
@@ -87,17 +87,21 @@ class PostForm extends React.Component {
       urlInput: !this.state.urlInput
     })
   }
-  // attachTag(tag) {
-  //   if (tag.length >= 1) {
-  //     const tags = tag.split(' ')
-  //     tags.forEach(tag => {
-  //       this.state.tags.push(fetchTagId(tag))
-  //     })
-  //   }
-  // }
+  attachTags(tagString) {
+    if (tagString.length >= 1) {
+      return tagString.split(' ').join('').split('#')
+    }
+    return false
+  }
 
   handleFile(e) {
-    this.setState({photoFile: e.currentTarget.files[0]})
+    let media = e.target.files[0]
+    console.log(media)
+    this.setState(
+      {media: media,
+       mediaAttached: true})
+
+    console.log(this.state)
   }
   update(field) {
     return e => this.setState({

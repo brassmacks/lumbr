@@ -10,14 +10,18 @@ function Modal( { modal, closeModal, currentUser,melt}) {
   if (!modal) {
     return null;
   }
-  
+
   let component;
+  
   const assignType = postType => (
-    component = <CreatePostContainer melt={melt} type={postType} /> )
+    component = <CreatePostContainer melt={melt} type={postType} /> 
+    )
+
   const close = () => {
     closeModal();
     melt();
-  }
+    }
+
   switch (modal) {
     case 'edit blog':
       component = <Blog />;
@@ -41,6 +45,8 @@ function Modal( { modal, closeModal, currentUser,melt}) {
       return null;
       // return loading modal
   }
+
+  
   return (
     <div className="modal-background" onClick={ () => close()}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
