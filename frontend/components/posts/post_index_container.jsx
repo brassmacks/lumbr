@@ -2,9 +2,17 @@ import { connect } from 'react-redux';
 import PostIndex from './post_index';
 import { fetchPosts, deletePost } from '../../actions/post_actions'
 
-const mSTP = (state, ownParams) => ({
+const mSTP = (state, ownProps) => {
+
+  let blog = state.entities.blogs
+  console.log(ownProps)
+
+  if (ownProps.blogOpen) {
+    return { posts: ownProps.posts }
+  }
+  return {
   posts: Object.values(state.entities.posts)
-})
+}}
 
 const mDTP = dispatch => ({
   

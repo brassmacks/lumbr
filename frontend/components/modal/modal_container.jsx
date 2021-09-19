@@ -12,6 +12,7 @@ function Modal( { modal, closeModal, currentUser,melt}) {
   }
 
   let component;
+  let background = "modal-background"
   
   const assignType = postType => (
     component = <CreatePostContainer melt={melt} type={postType} /> 
@@ -21,13 +22,14 @@ function Modal( { modal, closeModal, currentUser,melt}) {
     closeModal();
     melt();
     }
-
+    
   switch (modal) {
     case 'edit blog':
       component = <Blog />;
+      
       break;
-    case 'new Text post':
-      assignType('Text')
+      case 'new Text post':
+        assignType('Text')
       break;
     case 'new Photo post':
       assignType('Photo')
@@ -41,6 +43,8 @@ function Modal( { modal, closeModal, currentUser,melt}) {
     case 'new Link post':
       assignType('Link')
       break;
+    case 'post show':
+      background="post-show-back"
     default:
       return null;
       // return loading modal
@@ -48,7 +52,7 @@ function Modal( { modal, closeModal, currentUser,melt}) {
 
   
   return (
-    <div className="modal-background" onClick={ () => close()}>
+    <div className={background} onClick={ () => close()}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
 
         {component}

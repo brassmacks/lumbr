@@ -5,6 +5,7 @@ class User < ApplicationRecord
 
   has_one_attached :profile_photo
   before_validation :ensure_session_token
+  # , :ensure_profile_photo
   after_create :create_blog
 
   has_many :posts
@@ -14,6 +15,10 @@ class User < ApplicationRecord
     user = User.find_by(email: email)
     return nil if user.nil?
     user.is_password?(password) ? user : nil
+  end
+
+  def ensure_profile_photo
+    
   end
 
   def self.find_by_missing_params(params)

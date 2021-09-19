@@ -4,15 +4,25 @@ import { PostIndexItem } from './post_index_item';
 class PostIndex extends React.Component {
   constructor(props){
     super(props)
+    this.state = { loading: true }
+    console.log(this.state)
+    console.log(props)
   }
   
   componentDidMount() {
     this.props.fetchPosts();
+    this.setState({loading: false})
   }
 
   render() {
     const { posts, deletePost, fetchUser } = this.props;
-
+    if (this.state.loading) {
+      return (
+        <div>
+          <h1>LOADING</h1>
+        </div>
+      )
+    }
     return (
       <div id="post-index-wrapper">
         <ul id="post-index-list">

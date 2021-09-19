@@ -68,7 +68,11 @@ button#post-nav-button.post-nav{
   font-size: 14px;
   background-color: rgb(255,255,255);
 }
-
+div#pic-nav-bind{
+  margin-left:-85px;
+  display: flex;
+  flex-direction: row;
+}
 
 ul.post-nav#post-nav-buttons-list{
   display: flex;

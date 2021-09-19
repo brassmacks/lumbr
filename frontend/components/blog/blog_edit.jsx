@@ -6,11 +6,11 @@ export default class BlogEdit extends Component {
   }
 
   render() {
-  
+    console.log(this.props.currentUser)
     return (
       <div id="blogchannel">
       <div>
-        <Blog blog={this.props.blog} />
+        <Blog blog={this.props.blog} author={this.props.currentUser}/>
       </div>
 
       </div>

@@ -24,6 +24,13 @@ class Dashboard extends React.Component {
     return (
     <div id="log-run">
     <div id="feed">
+      <div id="pic-nav-bind">
+
+          <div id="pi-prof-box">
+            <div id="prof-slider-bounds" >
+              <img id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>
+            </div>
+          </div>
     <div id="post-nav-panel" className="post-nav">
       <div id="spacer" className="post-nav">
 
@@ -33,8 +40,8 @@ class Dashboard extends React.Component {
                 let type, src = button
                 return (
                   <li id="post-nav-list-item" 
-                    className="post-nav"
-                    key={`${i} ${button}`}>
+                  className="post-nav"
+                  key={`${i} ${button}`}>
                       
                     <PostButton id="post-nav-button" freeze={this.props.freeze} button={button} />
                   </li>)
@@ -44,6 +51,7 @@ class Dashboard extends React.Component {
 
             </div>
           </div>
+      </div>
           <div id="post-index-container">
             <PostIndexContainer />
           </div>
