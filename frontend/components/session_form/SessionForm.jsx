@@ -25,7 +25,6 @@ class SessionForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user)
-
   }
   assignLabel(formType) {
     return formType === "Log in" ? "login-butt" : "signup-butt"
@@ -33,13 +32,30 @@ class SessionForm extends React.Component {
   renderErrors() {
     if (this.props.errors.length > 0) {
     return (
-      <ul className='form-errors-list'>    
+      <ul className='form-errors-list' id="session-inputs">
         {
-        this.props.errors.map((error, i) => (
+        this.props.errors.map((error, i) => {
+          let message;
+          console.log(error[0])
+          switch (error[0]) {
+            case 'Email can\'t be blank':
+              message = 'You forgot to enter your email!'
+              break;
+            case 'Username can\'t be blank':
+              message = 'You forgot to enter your blog name!'
+              break;
+            case 'Password is too short (minimum is 6 characters)':
+              message = 'The password must be at least 8 characters.'
+              break;
+            default:
+              message = 'Your email, blog name, or password were incorrect.'
+              break;
+          }
+          return (
           <li key={`error-${i}`}>
-            {error}
+            {message}
           </li>
-        ))}
+        )})}
       </ul>
     );}
   }

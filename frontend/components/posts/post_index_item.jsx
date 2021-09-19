@@ -6,10 +6,8 @@ export const PostIndexItem = ({post, deletePost}) => {
   const tagString = () => {
     let list = ""
     post.tags.forEach(tag => {
-      console.log(tag.tag_content)
         list = list +'#'+ tag.tag_content + " "
       })
-      console.log(list)
     return list
   }
 

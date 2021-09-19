@@ -5,8 +5,6 @@ class PostIndex extends React.Component {
   constructor(props){
     super(props)
     this.state = { loading: true }
-    console.log(this.state)
-    console.log(props)
   }
   
   componentDidMount() {

@@ -15,48 +15,43 @@ class Api::PostsController < ApplicationController
     
     saved = false
     media = post_params[:media] if post_params[:media_attached]
-    puts media
     @post = Post.new({
       title: post_params[:title],
       content_type: post_params[:content_type],
       user_id: post_params[:user_id] })
-    puts @post
     if post_params[:media_attached] === 'true'
-      puts "meedddddiiiaiaaaa"
       @post[:title] = 'media'
-      if @post.save
-        case @post[:content_type]
-        when 'Photo' 
-          @post.photo.attach(io: post_params[:media], filename: media.tempfile)
-          saved = true
-        when 'Video'
-          @post.video.attach(io: post_params[:media], filename: media.tempfile)
-          saved = true
-        when 'Url'
-        else 
-        end
-      end
-
-      else
         if @post.save
-          saved = true
-        end 
+          case @post[:content_type]
+          when 'Photo' 
+            @post.photo.attach(io: post_params[:media], filename: media.tempfile)
+            saved = true
+          when 'Video'
+            @post.video.attach(io: post_params[:media], filename: media.tempfile)
+            saved = true
+          when 'Url'
+          else 
+          end
+        end
 
+    else
+      if @post.save
+        saved = true
+      end 
     end
 
     if saved
-      puts saved
-      post_params[:tags].split(',').each do |tag|
+      unless post_params[:tags] === 'false'
+        post_params[:tags].split(',').each do |tag|
         @tag = Tag.find_by(tag_content: tag)
-        unless @tag
-          @tag=Tag.create({tag_content_id: @post[:id], tag_content: tag})  
-        end 
+          unless @tag
+            @tag=Tag.create({tag_content_id: @post[:id], tag_content: tag})  
+          end 
         PostsTag.create({post_id: @post[:id], tag_id: @tag[:id]})
+        end
       end
-      puts @post
       render 'api/posts/show'
     else
-      puts saved
       err = @post.errors.full_messages
       @post.delete
       render json: {
