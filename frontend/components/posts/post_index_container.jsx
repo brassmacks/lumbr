@@ -1,24 +1,33 @@
 import { connect } from 'react-redux';
 import PostIndex from './post_index';
-import { fetchPosts, deletePost } from '../../actions/post_actions'
+import { openModal } from '../../actions/modal_actions';
+import { fetchBlog } from '../../actions/blog_actions';
+import { fetchPosts, deletePost } from '../../actions/post_actions';
 
 const mSTP = (state, ownProps) => {
 
-  let blog = state.entities.blogs
-  console.log(ownProps)
-
   if (ownProps.blogOpen) {
-    return { posts: ownProps.posts }
+    return {
+      currentUser: state.entities.users[state.session.id],
+      posts: ownProps.posts,
+      freeze: ownProps.freeze,
+      blogOpen: true
+            }
   }
   return {
-  posts: Object.values(state.entities.posts)
+    currentUser: state.entities.users[state.session.id],
+    posts: Object.values(state.entities.posts),
+    freeze: ownProps.freeze,
+    blogOpen: false
 }}
 
 const mDTP = dispatch => ({
   
   fetchPosts: () => dispatch(fetchPosts()),
   updatePost: post => dispatch(updatePost(post)),
-  deletePost: postId => dispatch(deletePost(postId))
+  deletePost: postId => dispatch(deletePost(postId)),
+  fetchBlog: userId => dispatch(fetchBlog(userId)),
+  openModal: modal => dispatch(openModal(modal)),
 })
 
 export default connect(mSTP,mDTP)(PostIndex) 

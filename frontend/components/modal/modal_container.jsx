@@ -1,11 +1,12 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import Blog from '../blog/blog_edit_container'
+import BlogEdit from '../blog/blog_edit_container'
 import CreatePostContainer from '../posts/create_post_form_container'
 import { fetchBlog } from '../../actions/blog_actions';
+import BlogShow from '../blog/blog_show_container';
 
-function Modal( { modal, closeModal, currentUser,melt}) {
+function Modal( { modal, closeModal, author, melt}) {
 
   if (!modal) {
     return null;
@@ -25,8 +26,10 @@ function Modal( { modal, closeModal, currentUser,melt}) {
     
   switch (modal) {
     case 'edit blog':
-      component = <Blog />;
-      
+      component = <BlogEdit />;
+      break;
+    case 'show blog':
+      component = <BlogShow />
       break;
       case 'new Text post':
         assignType('Text')

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const PostIndexItem = ({post, deletePost}) => {
+export const PostIndexItem = ({post, freeze, fetchBlog, blogOpen, openModal, deletePost}) => {
   // move alt to postindex and fetch in component did mount
   // switch case for each content type
   const tagString = () => {
@@ -10,11 +10,18 @@ export const PostIndexItem = ({post, deletePost}) => {
       })
     return list
   }
+  const blgModal = () => {
+    fetchBlog(post.user_id).then(
+      
+      openModal('show blog')
+
+    )
+  }
 
   return (
     <li className='post' id='post-item'>
       
-        <div id="pi-prof-box">
+      <div id="pi-prof-box" onClick={() => blgModal()}>
           <div id="prof-slider-bounds" >
           <img id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
           </div>
@@ -30,8 +37,8 @@ export const PostIndexItem = ({post, deletePost}) => {
           </div>
           : 
           <div>
-
             <img key={post.id}
+            // onClick={() => postZoom()}
             className="post-image" 
             width='540px' 
             src={post.photoUrl}>

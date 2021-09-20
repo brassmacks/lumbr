@@ -53,7 +53,7 @@ class Dashboard extends React.Component {
           </div>
       </div>
           <div id="post-index-container">
-            <PostIndexContainer />
+            <PostIndexContainer freeze={this.props.freeze} />
           </div>
 
         </div>
