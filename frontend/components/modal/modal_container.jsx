@@ -6,7 +6,7 @@ import CreatePostContainer from '../posts/create_post_form_container'
 import { fetchBlog } from '../../actions/blog_actions';
 import BlogShow from '../blog/blog_show_container';
 import DeletePst from '../buttons/delete_post';
-
+import EditPostForm from '../posts/edit_post_form_container';
 function Modal( { modal, closeModal, author, melt}) {
   if (!modal) {
     return null;
@@ -56,7 +56,7 @@ function Modal( { modal, closeModal, author, melt}) {
       component={}
       break;
     case 'edit post':
-      component={}
+      component=<EditPostForm post={modal[1]} />
       break;
     case 'delete post':
       component= <DeletePst close={close} post={modal[1]} />

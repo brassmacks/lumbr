@@ -2,12 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PostForm from './post_form';
 import { fetchPost, updatePost } from '../../actions/post_actions';
+import PostIndex from './post_index';
 
 
 class EditPostForm extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPost(this.props.match.params.postId);
+    // this.props.fetchPost(this.props.match.params.postId);
   }
 
   render() {
@@ -19,13 +20,15 @@ class EditPostForm extends React.Component {
         action={action}
         formType={formType}
         post={post}
+        currentUser={this.props.currentUser}
         />
     );
   }
 }
 
 const mSTP = (state, ownProps) => ({
-  post: state.entities.post[ownProps.match.params.postId],
+  currentUser: state.entities.users[state.session.id],
+  post: state.entities.posts[ownProps.post],
   formType: 'Update Post'
 });
 

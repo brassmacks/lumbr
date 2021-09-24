@@ -9,7 +9,7 @@ class PostForm extends React.Component {
   constructor(props) {
     super(props);
     this.currentUser = this.props.currentUser
-    
+    console.log(this.props)
     this.state = Object.assign(
       this.props.post,
     { tagString: "",
@@ -47,7 +47,7 @@ class PostForm extends React.Component {
         this.component = () => (mediaPost(this.update, this.handleFile, this.toggleContent, this.state.urlInput, 'Video'));
         break;
       default:
-        this.component = <h1>Broke</h1>
+        this.component = () => <h1>Broke</h1>
         break;
       }
       this.component = this.component.bind(this)
@@ -94,9 +94,12 @@ class PostForm extends React.Component {
 
   handleFile(e) {
     let media = e.target.files[0]
+    let preview = URL.createObjectURL(media)
     this.setState(
       {media: media,
        mediaAttached: true})
+    
+    this.component = () => <img id='preview' src={preview} />
   }
   update(field) {
     return e => this.setState({

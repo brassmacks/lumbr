@@ -10,14 +10,16 @@ import { connect } from "react-redux";
   return (
     <div id='delete-post-nav'>
       <button onClick={ () => close() }>Cancel</button>
+
       <button onClick={ ()=> sendDelete(props.post)}>OK</button>
+
     </div>
   )
 }
 const mSTP = (state, ownProps) => ({
   post: ownProps.post,
-  postId: ownProps.postId
-
+  postId: ownProps.postId,
+  deletePost: state.deletePost
 })
 
 const mDTP = dispatch => ({

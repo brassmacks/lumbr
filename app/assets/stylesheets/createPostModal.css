@@ -15,6 +15,10 @@
   flex-direction: column;
   justify-content: space-around;
 }
+img#preview{
+margin-left:-21px;
+margin-right:-21px;
+}
 #post-form-container{
   display: flex;
   flex-direction: column;
@@ -22,7 +26,7 @@
   border-radius: 3px;
   padding:21px;
   background-color: white;
-  height: 289px;
+  min-height: 289px;
   width: 490px;
   /* max-width: 540px; */
   margin:auto; 
