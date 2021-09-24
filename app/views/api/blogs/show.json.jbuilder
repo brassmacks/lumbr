@@ -1,6 +1,6 @@
 json.set! @user.id do
   json.blog( @blog )
-
+  
   json.posts @user.posts.last(10) do |post|
     if post.photo.attached?
       json.extract! post, :id, :title, :body, :content_type, :tags

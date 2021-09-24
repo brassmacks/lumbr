@@ -6,7 +6,6 @@ export default class BlogEdit extends Component {
   }
 
   render() {
-    console.log(this.props.currentUser)
     return (
       <div id="blogchannel">
       <div>

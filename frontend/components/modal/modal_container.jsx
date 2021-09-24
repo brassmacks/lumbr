@@ -5,9 +5,9 @@ import BlogEdit from '../blog/blog_edit_container'
 import CreatePostContainer from '../posts/create_post_form_container'
 import { fetchBlog } from '../../actions/blog_actions';
 import BlogShow from '../blog/blog_show_container';
+import DeletePst from '../buttons/delete_post';
 
 function Modal( { modal, closeModal, author, melt}) {
-
   if (!modal) {
     return null;
   }
@@ -24,7 +24,7 @@ function Modal( { modal, closeModal, author, melt}) {
     melt();
     }
     
-  switch (modal) {
+  switch (modal[0]) {
     case 'edit blog':
       component = <BlogEdit />;
       break;
@@ -47,7 +47,22 @@ function Modal( { modal, closeModal, author, melt}) {
       assignType('Link')
       break;
     case 'post show':
-      background="post-show-back"
+      
+      break;
+    case 'share post':
+      component=<h1>share</h1>
+      break;
+    case 'edit repost':
+      component={}
+      break;
+    case 'edit post':
+      component={}
+      break;
+    case 'delete post':
+      component= <DeletePst close={close} post={modal[1]} />
+
+      break;
+    
     default:
       return null;
       // return loading modal

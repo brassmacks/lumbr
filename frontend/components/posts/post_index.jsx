@@ -27,10 +27,12 @@ class PostIndex extends React.Component {
           
           {
           
-            posts.map((post,i) => {
+            Object.values(posts).map((post,i) => {
               
               return <PostIndexItem 
+                currentUser={this.props.currentUser}
                 freeze={this.props.freeze}
+                postId={Object.keys(posts)[i]}
                 post={post}
                 deletePost={deletePost}
                 blogOpen={this.props.blogOpen}

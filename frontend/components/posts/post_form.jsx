@@ -72,8 +72,6 @@ class PostForm extends React.Component {
 
     post = new FormData()
     Object.keys(draft).forEach( key => post.append(`post[${key}]`, draft[key]) )
-    
-      console.log(post)
     if (this.state.mediaAttached) post.append('post[media]', this.state.media)
 
       
@@ -96,12 +94,9 @@ class PostForm extends React.Component {
 
   handleFile(e) {
     let media = e.target.files[0]
-    console.log(media)
     this.setState(
       {media: media,
        mediaAttached: true})
-
-    console.log(this.state)
   }
   update(field) {
     return e => this.setState({

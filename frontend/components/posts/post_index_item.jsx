@@ -1,8 +1,10 @@
 import React from 'react'
+import  PostButtons  from '../buttons/post_button_container'
 
-export const PostIndexItem = ({post, freeze, fetchBlog, blogOpen, openModal, deletePost}) => {
+export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser, blogOpen, openModal, deletePost}) => {
   // move alt to postindex and fetch in component did mount
   // switch case for each content type
+  let editable = currentUser.id === post.id
   const tagString = () => {
     let list = ""
     post.tags.forEach(tag => {
@@ -11,19 +13,23 @@ export const PostIndexItem = ({post, freeze, fetchBlog, blogOpen, openModal, del
     return list
   }
   const blgModal = () => {
-    fetchBlog(post.user_id).then(
-      
+    freeze()
+    if (editable) {
+    fetchBlog(post.user_id).then(() =>  {
+      openModal('edit blog')
+    })}
+    else {
+    fetchBlog(post.user_id).then(() =>  {
       openModal('show blog')
-
-    )
+    })}
   }
 
   return (
     <li className='post' id='post-item'>
       
-      <div id="pi-prof-box" onClick={() => blgModal()}>
+      <div id="pi-prof-box" >
           <div id="prof-slider-bounds" >
-          <img id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
+          <img onClick={() => blgModal()} id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
           </div>
         <div id="pi-post-house">
         <h3 id="post-author">{post.username}</h3>
@@ -49,6 +55,7 @@ export const PostIndexItem = ({post, freeze, fetchBlog, blogOpen, openModal, del
             </div>
           </div>
           }
+          {<PostButtons editable={editable} post={post} postId={postId}/>}
         </div>
       </div>
       

@@ -16,7 +16,13 @@ class Dashboard extends React.Component {
 
   }
 
-
+  blgModal(){
+    this.props.freeze()
+    this.props.fetchBlog(this.props.currentUser.id).then(blog => 
+      this.props.openModal('edit blog', blog)
+      )
+    
+  }
 
   render() {
     const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
@@ -28,7 +34,7 @@ class Dashboard extends React.Component {
 
           <div id="pi-prof-box">
             <div id="prof-slider-bounds" >
-              <img id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>
+              <img onClick={() => this.blgModal()}id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>
             </div>
           </div>
     <div id="post-nav-panel" className="post-nav">

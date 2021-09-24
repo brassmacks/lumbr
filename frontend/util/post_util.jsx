@@ -20,6 +20,13 @@ export const createPhotoPost = (formData) => {
     processData: false
   })
 }
+export const createRePost =([postId, userId]) => {
+  return $.ajax({
+    url: `api/posts${postId}`,
+    method: 'POST',
+    data: { userId }
+  })
+}
 export const createPost = (post) => {
   return $.ajax({
     url: `api/posts/`,

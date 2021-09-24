@@ -1,7 +1,7 @@
 class Api::BlogsController < ApplicationController
   
   def show
-    @user =User.find(params[:user_id])
+    @user = User.find(params[:user_id])
     @blog = @user.blog
     @posts = @user.posts.with_attached_photo
     #not great ^ Slightlybetter

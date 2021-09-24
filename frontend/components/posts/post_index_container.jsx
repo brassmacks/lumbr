@@ -16,15 +16,14 @@ const mSTP = (state, ownProps) => {
   }
   return {
     currentUser: state.entities.users[state.session.id],
-    posts: Object.values(state.entities.posts),
+    posts: state.entities.posts,
+    // posts: Object.values(state.entities.posts),
     freeze: ownProps.freeze,
     blogOpen: false
 }}
 
 const mDTP = dispatch => ({
-  
   fetchPosts: () => dispatch(fetchPosts()),
-  updatePost: post => dispatch(updatePost(post)),
   deletePost: postId => dispatch(deletePost(postId)),
   fetchBlog: userId => dispatch(fetchBlog(userId)),
   openModal: modal => dispatch(openModal(modal)),

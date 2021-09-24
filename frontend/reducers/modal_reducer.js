@@ -4,11 +4,15 @@ import {
 } from '../actions/modal_actions'
 
 const modalReducer = (oldState = {}, action) => {
-  let newState = Object.freeze(oldState)
+  Object.freeze(oldState)
+  let newState = Object.assign({}, oldState)
 
   switch(action.type) {
     case OPEN_MODAL:
-      return action.modal;
+      if (action.data) {
+        return [ action.modal, action.data ];
+      }
+      return [action.modal]
     case CLOSE_MODAL:
       return null;
     default:

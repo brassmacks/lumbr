@@ -34,7 +34,10 @@ export const createPhotoPost = post => dispatch => (
   PostApiUtil.createPhotoPost(post)
     .then(post => dispatch(receivePost(post)))
 );
-
+export const createRePost = ([postId, userId]) => dispatch => (
+  PostApiUtil.createRePost([postId,userId])
+  .then(post => dispatch(receivePost(post)))
+)
 export const createPost = post => dispatch => (
   PostApiUtil.createPost(post)
     .then(post => dispatch(receivePost(post)))
@@ -45,7 +48,8 @@ export const updatePost = post => dispatch => (
     .then(post => dispatch(receivePost(post)))
 );
 
-export const deletePost = postId => dispatch => (
+export const deletePost = postId => dispatch => {
+  return (
   PostApiUtil.deletePost(postId)
     .then(() => dispatch(removePost(postId)))
-);
+)};

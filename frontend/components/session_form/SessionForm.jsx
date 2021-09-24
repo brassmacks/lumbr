@@ -36,7 +36,6 @@ class SessionForm extends React.Component {
         {
         this.props.errors.map((error, i) => {
           let message;
-          console.log(error[0])
           switch (error[0]) {
             case 'Email can\'t be blank':
               message = 'You forgot to enter your email!'

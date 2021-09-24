@@ -12,7 +12,7 @@ export const Blog = ({blog, author}) => {
 
         <div id="blog-author-pic-box">
           <div id="blog-author-pic-circle" >
-            <img id="blog-author-img" src={author.profileUrl}   alt="" />
+            <img id="blog-author-img" src={blog.profileUrl}   alt="" />
           </div>
         </div>
       </div>
