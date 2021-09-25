@@ -3,57 +3,59 @@ import { Link } from 'react-router-dom';
 import { textPost } from './text_post';
 import { mediaPost } from './media_post';
 import { postContentUrl } from './post_content_url';
-
+import { EditPost } from './edit_post'
 
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props, 'post_form')
     this.currentUser = this.props.currentUser
-    console.log(this.props)
-    this.state = Object.assign(
-      this.props.post,
-    { tagString: "",
-      photoFile: null,
-      user_id: this.props.currentUser.id,
-      urlInput: false } 
-      );
-
+    this.state = this.props.post;
+    
     this.update = this.update.bind(this)
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
-    this.handleFile = this.handleFile.bind(this)
+    this.handleFile = this.handleFile.bind(this);
+    this.toggleContent = this.toggleContent.bind(this);
+    this.removeFile = this.removeFile.bind(this);
     this.component;
-    this.state.mediaAttached = false
-    this.toggleContent = this.toggleContent.bind(this)
 
-    switch (this.props.formType) {
-      case 'Text':
-
-        this.component = () => (
-          textPost(this.update, this.state.title, this.state.body, 'Text')
-          );
-        break;
-      case 'Photo': 
-        this.component = () => ( mediaPost(this.update, this.handleFile, this.toggleContent, this.state.urlInput, 'photo'));
-        break;
-      case 'Quote':
-            this.component = () => (
-              textPost(this.update, this.state.title, this.state.body, 'Quote')
-              );
-        break;
+    this.setComponent = () => {
+      switch (this.props.type) {          
       case 'Link':
-        this.component = () => ( postContentUrl('flex', this.update ))
+          this.component = () => postContentUrl( 'flex', this.update )
         break;
-      case 'Video':
-        this.component = () => (mediaPost(this.update, this.handleFile, this.toggleContent, this.state.urlInput, 'Video'));
+      case 'Update':
+        this.state.tagString = 
+          this.props.post.tags ?
+            this.props.post.tags.map(tag => `#${tag.tag_content} `).join('')
+             :
+            "";
+
+          this.component = () => EditPost(
+            this.state,
+            this.update, 
+            this.removeFile
+            )
+        break;
+      case 'Media': 
+        this.component = () => mediaPost(
+            this.update, this.handleFile, 
+            this.toggleContent, 
+            this.state.urlInput, this.props.formType 
+            );
         break;
       default:
-        this.component = () => <h1>Broke</h1>
+        this.component = () => textPost(
+            this.update, 
+            this.state.title, 
+            this.state.body, 
+            this.props.formType
+          );
         break;
       }
-      this.component = this.component.bind(this)
-  }
-  componentDidMount() {
-    
+      this.component = this.component.bind(this);
+    }
+    this.setComponent();
   }
 
 
@@ -68,15 +70,15 @@ class PostForm extends React.Component {
       user_id: this.state.user_id,
       media_attached: this.state.mediaAttached,
       tags: [this.attachTags(this.state.tagString)]
-    }
+      }
 
     post = new FormData()
     Object.keys(draft).forEach( key => post.append(`post[${key}]`, draft[key]) )
     if (this.state.mediaAttached) post.append('post[media]', this.state.media)
 
       
-    this.props.createPost(post)
-    this.closeForm()
+    this.props.postAction(post)
+    this.props.closeForm()
   }
 
   toggleContent = (e) => {
@@ -92,24 +94,42 @@ class PostForm extends React.Component {
     return false
   }
 
+  stringTags(tags) {
+    let tagString = '';
+    tags.forEach(tag => string.concat(`#${tag} `));
+    return tagString;
+  }
+
+  removeFile(type='Text') {
+    this.setState({
+      media: null,
+      mediaAttached: false,
+      formType: type
+      });
+    this.setComponent();
+  }
+
   handleFile(e) {
     let media = e.target.files[0]
     let preview = URL.createObjectURL(media)
-    this.setState(
-      {media: media,
-       mediaAttached: true})
+
+    this.setState({
+      media: media,
+      mediaAttached: true,
+      formType: 'Preview'
+      })
     
-    this.component = () => <img id='preview' src={preview} />
+    this.component = () => <img id='preview' className='post-create' src={preview} />
   }
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
-  closeForm() {
-    this.props.closeModal()
-    this.props.melt()
-  }
+  // closeForm() {
+  //   this.props.closeModal()
+  //   this.props.melt()
+  // }
   render(){
     let type = this.state.contentType;
     let username = this.currentUser.username;
@@ -121,13 +141,16 @@ class PostForm extends React.Component {
           <form className="post-form" id="post-form-form" 
             onSubmit={(e) => this.handlePostSubmit(e) }>
             {this.component()}
-            <input type="text" placeholder="#add tags" value={this.state.tagString}
+            <input type="text" value={this.state.tagString} 
+              placeholder={
+                this.props.formType === 'Update' ? 
+                this.state.tagString : "#add tags" } 
               id="post-tags-input" className="post-form"
               onChange={this.update('tagString')}
             />
             <div id="post-buttons" className="post-submit">
               <Link to="/dashboard">
-                <button onClick={ () => this.closeForm() } id="post-form-close" >Close</button>
+                <button onClick={ () => this.props.closeForm() } id="post-form-close" >Close</button>
               </Link>
               <button type="submit" id="post-form-post" onSubmit={ (e) => this.handlePostSubmit(e)}>
                 Post now</button>

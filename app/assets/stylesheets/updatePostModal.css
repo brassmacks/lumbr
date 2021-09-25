@@ -1,0 +1,24 @@
+div.update-media-post{
+  display: flex;
+  width: 532px;
+  max-height: 83vh;
+  margin:none;
+  justify-content: center;
+  align-self: center;
+  overflow:hidden
+}
+div.edit-post-guts#post-form{
+  display:flex;
+  margin: none;
+  width:532px;
+}
+div.update-media-post div#red-X-box{
+ position: absolute;
+ 
+ right: 290px;
+}
+img#preview.update-media-post {
+  margin: none;
+  width:100%;
+  
+}

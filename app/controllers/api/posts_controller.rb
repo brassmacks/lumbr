@@ -18,7 +18,8 @@ class Api::PostsController < ApplicationController
     @post = Post.new({
       title: post_params[:title],
       content_type: post_params[:content_type],
-      user_id: post_params[:user_id] })
+      user_id: post_params[:user_id],
+      body: post_params[:body] })
     if post_params[:media_attached] === 'true'
       @post[:title] = 'media'
         if @post.save

@@ -5,18 +5,22 @@ import {
 } from '../actions/post_actions'
 
 const PostsReducer = (oldState = {}, action) => {
-  Object.freeze(oldState);
+  let newState = Object.assign({},Object.freeze(oldState));
 
   switch(action.type) {
     case RECEIVE_ALL_POSTS:
-      
-      return Object.assign({}, oldState, action.posts)
+      Object.keys(action.posts).forEach(key => {
+        Object.assign(action.posts[key], {id: key});
+      })
+      Object.assign(newState, action.posts);
+      return newState;
     case RECEIVE_POST:
       return Object.assign({}, oldState, { [action.post.id]: action.post })
     case REMOVE_POST:
       let nextState = Object.assign({}, oldState);
       delete nextState[action.postId]
       return nextState;
+      break;
     default:
       return oldState;
   }

@@ -15,33 +15,41 @@ function Modal( { modal, closeModal, author, melt}) {
   let component;
   let background = "modal-background"
   
-  const assignType = postType => (
-    component = <CreatePostContainer melt={melt} type={postType} /> 
-    )
-
   const close = () => {
     closeModal();
     melt();
     }
+
+  const assignType = (postType, formType = postType) => (
+
+    component = <CreatePostContainer
+      // melt={melt} 
+      type={postType} 
+      formType={formType}
+      closeForm={close}/> 
+    )
+
     
   switch (modal[0]) {
+
     case 'edit blog':
       component = <BlogEdit />;
       break;
     case 'show blog':
       component = <BlogShow />
       break;
-      case 'new Text post':
-        assignType('Text')
+
+    case 'new Text post':
+      assignType('Text')
       break;
     case 'new Photo post':
-      assignType('Photo')
-      break;
-    case 'new Quote post':
-      assignType('Quote')
+      assignType('Media', 'Photo')
       break;
     case 'new Video post':
-      assignType('Video')
+      assignType('Media', 'Video')
+      break;
+    case 'new Quote post':
+      assignType('Text', 'Quote')
       break;
     case 'new Link post':
       assignType('Link')
@@ -56,7 +64,7 @@ function Modal( { modal, closeModal, author, melt}) {
       component={}
       break;
     case 'edit post':
-      component=<EditPostForm post={modal[1]} />
+      component=<EditPostForm post={modal[1]} closeForm={close}/>
       break;
     case 'delete post':
       component= <DeletePst close={close} post={modal[1]} />

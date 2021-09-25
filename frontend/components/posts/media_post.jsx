@@ -7,16 +7,16 @@ import { postContentUrl } from './post_content_url'
 export const mediaPost = (update, handleFile, toggleContent, urlInput, path) => {
   
   let icon;
-  path === "photo" ? icon = photoAdd : icon = video
+  path === "Photo" ? icon = photoAdd : icon = video
 
   return (
 
     <div id={`${path}-post-guts`} className={`${path}-post-form`}>
 
       <div className={`media-post-${urlInput}`}>
-        <div id="url-X-box">
-          <div id="url-X-circle">
-          <button onClick={e => toggleContent(e)}>X</button>
+        <div id="red-X-box" className="close-icon">
+          <div id="red-X-circle" className="close-icon">
+          <button onClick={e => toggleContent(e)} className="close-icon">X</button>
           </div>
         </div>
         {postContentUrl('flex', update)}
@@ -29,7 +29,7 @@ export const mediaPost = (update, handleFile, toggleContent, urlInput, path) => 
                 
               <label id={`${path}-upload-label`}>
                 
-                <img src={icon} alt="https://lumbr-dev.s3.us-west-1.amazonaws.com/photoAdd.png" width="86px"/>
+              <img src={icon} alt="https://lumbr-dev.s3.us-west-1.amazonaws.com/photoAdd.png" width="86px"/>
               Upload images
               </label>
           </div>

@@ -7,9 +7,10 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser, bl
   let editable = currentUser.id === post.id
   const tagString = () => {
     let list = ""
-    post.tags.forEach(tag => {
+    if (post.tags) {
+      post.tags.forEach(tag => {
         list = list +'#'+ tag.tag_content + " "
-      })
+      })}
     return list
   }
   const blgModal = () => {

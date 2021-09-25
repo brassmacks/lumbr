@@ -15,7 +15,7 @@
   flex-direction: column;
   justify-content: space-around;
 }
-img#preview{
+img#preview.post-create{
 margin-left:-21px;
 margin-right:-21px;
 }
