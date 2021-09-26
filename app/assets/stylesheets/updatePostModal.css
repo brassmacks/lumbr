@@ -2,23 +2,27 @@ div.update-media-post{
   display: flex;
   width: 532px;
   max-height: 83vh;
-  margin:none;
+  margin: 0px;
+  flex-direction: column;
   justify-content: center;
   align-self: center;
-  overflow:hidden
-}
+  /* overflow: hidden; */
+};
+
 div.edit-post-guts#post-form{
   display:flex;
-  margin: none;
+  margin: 0px;
   width:532px;
-}
+};
+
 div.update-media-post div#red-X-box{
- position: absolute;
- 
- right: 290px;
-}
+  position:relative;
+  right: 40px;
+};
+
 img#preview.update-media-post {
-  margin: none;
+  vertical-align: middle;
+  margin: 0px;
   width:100%;
-  
-}
+  min-width: 532px;
+};

@@ -8,7 +8,7 @@ import { EditPost } from './edit_post'
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props, 'post_form')
+    // console.log(this.props, 'post_form')
     this.currentUser = this.props.currentUser
     this.state = this.props.post;
     
@@ -17,6 +17,7 @@ class PostForm extends React.Component {
     this.handleFile = this.handleFile.bind(this);
     this.toggleContent = this.toggleContent.bind(this);
     this.removeFile = this.removeFile.bind(this);
+    this.trackChanges = this.trackChanges.bind(this);
     this.component;
 
     this.setComponent = () => {
@@ -31,11 +32,11 @@ class PostForm extends React.Component {
              :
             "";
 
-          this.component = () => EditPost(
-            this.state,
-            this.update, 
-            this.removeFile
-            )
+        this.component = () => EditPost(
+          this.state,
+          this.update, 
+          this.removeFile,
+          )
         break;
       case 'Media': 
         this.component = () => mediaPost(
@@ -51,7 +52,6 @@ class PostForm extends React.Component {
             this.state.body, 
             this.props.formType
           );
-        break;
       }
       this.component = this.component.bind(this);
     }
@@ -61,24 +61,41 @@ class PostForm extends React.Component {
 
   handlePostSubmit(e) {
     e.preventDefault();
-    let post = {}
 
-    let draft = {
-      title: this.state.title,
-      body: this.state.body,
-      content_type: this.props.formType,
-      user_id: this.state.user_id,
-      media_attached: this.state.mediaAttached,
-      tags: [this.attachTags(this.state.tagString)]
-      }
+    let draft = {}
+    let post;
 
-    post = new FormData()
-    Object.keys(draft).forEach( key => post.append(`post[${key}]`, draft[key]) )
-    if (this.state.mediaAttached) post.append('post[media]', this.state.media)
+    if (this.props.type === 'Update') {
+      draft = Object.fromEntries(
+        this.state.changes.map( key => {
+          // build out condition where all tags are handled pre post submit
+          if (key === "tag_string") return ; 
+          return [ key, this.state[key] ] 
+        }));
+      post = Object.assign(
+        draft,
+        { id: this.state.id }
+        // { tags: this.attachTags(this.state.tagString)}
+      );
+      delete post.tagString;
+    } else {
+      draft = {
+        title: this.state.title,
+        body: this.state.body,
+        content_type: this.props.formType,
+        user_id: this.state.user_id,
+        media_attached: this.state.mediaAttached,
+        tags: [this.attachTags(this.state.tagString)]
+      };
+      post = new FormData();
+      Object.keys(draft).forEach( key =>
+         post.append(`post[${key}]`, draft[key]) );
 
+      if (this.state.mediaAttached) post.append('post[media]', this.state.media);
+    }
       
-    this.props.postAction(post)
-    this.props.closeForm()
+    this.props.postAction(post);
+    this.props.closeForm();
   }
 
   toggleContent = (e) => {
@@ -87,6 +104,7 @@ class PostForm extends React.Component {
       urlInput: !this.state.urlInput
     })
   }
+
   attachTags(tagString) {
     if (tagString.length >= 1) {
       return tagString.split(' ').join('').split('#')
@@ -100,12 +118,9 @@ class PostForm extends React.Component {
     return tagString;
   }
 
-  removeFile(type='Text') {
-    this.setState({
-      media: null,
-      mediaAttached: false,
-      formType: type
-      });
+  removeFile(e, type='Text') {
+    e.preventDefault();
+    this.state.photoUrl = null;
     this.setComponent();
   }
 
@@ -121,15 +136,18 @@ class PostForm extends React.Component {
     
     this.component = () => <img id='preview' className='post-create' src={preview} />
   }
+  trackChanges(postKey) {
+    if (!this.state.changes.includes(postKey)) {
+      this.state.changes.push(postKey)
+    }
+  }
   update(field) {
+    if (this.props.type === 'Update') this.trackChanges(field)
     return e => this.setState({
       [field]: e.currentTarget.value
     });
   }
-  // closeForm() {
-  //   this.props.closeModal()
-  //   this.props.melt()
-  // }
+
   render(){
     let type = this.state.contentType;
     let username = this.currentUser.username;

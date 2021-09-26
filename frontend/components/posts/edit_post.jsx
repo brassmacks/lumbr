@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const EditPost = (post, update, removeFile) => {
+export const EditPost = (post,  update, removeFile) => {
   let path = post.type;
   const renderContents = () => (
     post.title === 'media' ? 
@@ -9,7 +9,7 @@ export const EditPost = (post, update, removeFile) => {
         <img src={ post.photoUrl } id='preview' className='update-media-post' />
         <div id="red-X-box">
           <div id="red-X-circle">
-            <button onClick={ () => removeFile()}>X</button>
+            <button id="red-X-button" onClick={ e => removeFile(e)}>X</button>
           </div>
         </div>
       </div>

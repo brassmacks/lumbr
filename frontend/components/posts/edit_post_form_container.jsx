@@ -17,7 +17,7 @@ class EditPostForm extends React.Component {
 
   }
   componentDidMount() {
-    console.log(this.state)
+
     // this.props.fetchPost(this.props.match.params.postId);
   }
   handlePostUpdate(e) {
@@ -62,7 +62,11 @@ const mSTP = (state, ownProps) => ({
   postId: ownProps.post,
   currentUser: state.entities.users[state.session.id],
   type: 'Update',
-  post: Object.assign(state.entities.posts[ownProps.post], { tagString: ''}),
+  post: Object.assign(
+    state.entities.posts[ownProps.post], 
+    { tagString: '' }, 
+    { changes: []}
+  ),
   formType: 'Update',
   
 });

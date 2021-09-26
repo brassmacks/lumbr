@@ -22,7 +22,7 @@ export const createPhotoPost = (formData) => {
 }
 export const createRePost =([postId, userId]) => {
   return $.ajax({
-    url: `api/posts${postId}`,
+    url: `api/posts/${postId}`,
     method: 'POST',
     data: { userId }
   })
@@ -39,8 +39,8 @@ export const createPost = (post) => {
 export const updatePost = (post) => {
   return $.ajax({
     url: `api/posts/${post.id}`,
-    method: 'PATCH',
-    data: { post }
+    method: 'PUT',
+    data: { post: post },
   })
 }
 export const deletePost = (postId) => {

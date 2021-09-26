@@ -65,7 +65,9 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
+
+    puts post_params
+    @post = Post.find(post_params[:id].to_i)
 
     if @post.update(post_params)
       render :show
@@ -85,7 +87,7 @@ class Api::PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :content_type, :media, :media_attached, :user_id, :url, :tags, :linked_content_type)
+    params.require(:post).permit(:id, :title, :body, :content_type, :media, :media_attached, :user_id, :url, :tags, :linked_content_type)
   end
 
 end
