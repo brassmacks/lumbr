@@ -9,8 +9,12 @@ class User < ApplicationRecord
   after_create :create_blog
 
   has_many :posts
+  has_many :follows
+  
   has_one :blog
-
+#  CREATE METHOD FOR FOLLOWERS 
+#  ALL FOLLOWS WHERE CONTENT ID === SELF.ID 
+#  && FOLLOW_TYPE === 'USER'
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil if user.nil?
