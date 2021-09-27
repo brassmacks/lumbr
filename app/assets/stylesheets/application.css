@@ -45,12 +45,14 @@ body {
 
 
 div#log-run{
+  display: flex;
+  scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
+  justify-content: space-evenly;
+  align-content: center;
   margin-left:auto;
   margin-right:auto;
   width:fit-content;
-  display: flex;
-  justify-content: space-evenly;
-  align-content: center;
 }
 
 div#feed{
@@ -108,6 +110,12 @@ div#post-nav-panel.post-nav{
 div#post-index-container{
   margin-left:-85px;
 }
+div#pi-prof-box{
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  scroll-snap-align: start;
+}
 #pi-post-house{
   border-radius: 3px;
   background-color: rgb(255,255,255);
@@ -117,11 +125,7 @@ div#post-index-container{
   font-size: 14px;
   font-weight: 375;
 }
-div#pi-prof-box{
-  display: flex;
-  flex-direction: row;
-  background-color: transparent;
-}
+
 img#pi-prof-pic.sticky{
   border-radius: 3px;
   width:64px;

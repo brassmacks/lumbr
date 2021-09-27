@@ -1,18 +1,13 @@
 div#blogchannel{
-  background-color: transparent;
-  height: fit-content;
-  min-height: 110vw;
+  background: white;
+  max-height: 100vw;
   width:600px;
   position: absolute;
   top:0;
   bottom: 0;
   right: 0;
-  /* overflow: hidden; */
-  
 }
-div#blogchannel div{
-  min-height: fit-content;
-}
+
 div#blog div#prof-slider-bounds{
   display: none;
 } 
@@ -21,14 +16,15 @@ div#blog div#pi-prof-box{
   margin-right:auto;
 }
 #blog {
-    position: absolute;
-    right: -600px;
-    width: 600px;
-    height: fit-content;
-    background: white;
-    -webkit-animation: slide .3s forwards;
-    animation: slide .3s forwards;
-    min-height: fit-content;
+  /* change font */
+  color: black;
+  position: absolute;
+  right: -600px;
+  width: 600px;
+  background: white;
+  -webkit-animation: slide .3s forwards;
+  animation: slide .3s forwards;
+  min-height: fit-content;
   }
   
   @-webkit-keyframes slide {
@@ -88,7 +84,6 @@ div#blog-author-banner{
   
 }
 div#blog-author-pic-box{
-  /* position: fixed; */
   height: 100px;
   width: 100px;
   background-color: transparent;
@@ -97,7 +92,6 @@ div#blog-author-pic-circle{
   height: 106px;
   width: 106px;
   border-radius: 50%;
-  /* padding:2px; */
   background-color: white;
   display:flex;
   justify-content: center;

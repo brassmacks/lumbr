@@ -8,7 +8,7 @@ div#bground.splash{
   z-index: -1;
   height: 97vh;
 }
-
+/* change scroll bar color to black and transparent */
 div#splash-container-root{
   width: 540px;
   height: 600px;

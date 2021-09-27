@@ -20,7 +20,24 @@ export const Blog = ({blog, author}) => {
 
         <h3 id="blog-author">{blog.blog.url}</h3>
       </div>
-      <PostIndexContainer blogOpen={true} posts={blog.posts}/>
+      { 
+        blog.posts.length > 0 ?
+          <PostIndexContainer blogOpen={true} posts={blog.posts}/>
+           :
+          <div id='no-post-placeholder' className='no-post' >
+            <img src="" alt="" height='80px' width='85px' className='no-post' />
+            <div className='no-post' >
+              {/* add new line
+                  center
+                  text size
+                  no post base image
+                  style and link grow something
+                */}
+                <a>This (b)log is Empty.</a>
+              <a className='no-post' >Grow Something</a>
+            </div>
+          </div>
+      }
     </div>
    )
   }
