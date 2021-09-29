@@ -4,11 +4,18 @@ class Post < ApplicationRecord
   
   
   # change following association to include, video, quote, or text
+
   has_one_attached :photo
   has_one_attached :video
+  
   belongs_to :author, foreign_key: :user_id, class_name: 'User'
-  has_many :PostsTags
+
+  has_many :PostsTags 
   has_many :tags, through: :PostsTags
+
+  has_many :receive_follows, foreign_key: :post, class_name: 'Follow'
+
+  has_many :followers, :through => :receive_follows, :source => :follower
   # before_validation :set_content,
   
   # add blog validation 

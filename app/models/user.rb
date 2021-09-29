@@ -5,16 +5,26 @@ class User < ApplicationRecord
 
   has_one_attached :profile_photo
   before_validation :ensure_session_token
-  # , :ensure_profile_photo
+  
+  # :ensure_profile_photo
+
   after_create :create_blog
 
+  
   has_many :posts
-  has_many :follows
+  has_many :follows, foreign_key: :user_id, class_name: "Follow"
+  has_many :receive_follows, foreign_key: :user, class_name: "Follow"
+
+  # has_many :give_follows, foreign_key:  
+
+  has_many :followers, through: :receive_follows, source: :follower
   
   has_one :blog
+
 #  CREATE METHOD FOR FOLLOWERS 
 #  ALL FOLLOWS WHERE CONTENT ID === SELF.ID 
-#  && FOLLOW_TYPE === 'USER'
+#  && FOLLOW_TYPE === 'USER')
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil if user.nil?
