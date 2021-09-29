@@ -18,6 +18,10 @@ class Api::TagsController < ApplicationController
   def index
     @tags = Tag.all 
   end
+  
+  def followers
+    
+  end
 
   def tag_params 
     params.require(:tag).permit(:tag_content, :id, :tag_content_id) 

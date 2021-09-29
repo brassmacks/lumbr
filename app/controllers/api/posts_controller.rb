@@ -10,6 +10,10 @@ class Api::PostsController < ApplicationController
   def index
     @posts = Post.last(10)
   end
+  
+  def followers
+    
+  end
 
   def create 
     

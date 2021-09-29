@@ -9,21 +9,12 @@ class User < ApplicationRecord
   # :ensure_profile_photo
 
   after_create :create_blog
-
-  
+  has_one :blog 
   has_many :posts
+
   has_many :follows, foreign_key: :user_id, class_name: "Follow"
   has_many :receive_follows, foreign_key: :user, class_name: "Follow"
-
-  # has_many :give_follows, foreign_key:  
-
   has_many :followers, through: :receive_follows, source: :follower
-  
-  has_one :blog
-
-#  CREATE METHOD FOR FOLLOWERS 
-#  ALL FOLLOWS WHERE CONTENT ID === SELF.ID 
-#  && FOLLOW_TYPE === 'USER')
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

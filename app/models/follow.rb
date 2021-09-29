@@ -5,7 +5,7 @@ class Follow < ApplicationRecord
 
   has_one :followed_post, primary_key: :post, class_name: "Post"
   has_one :followed_tag, primary_key: :tag, class_name: "Tag"
-  has_one :followed_user, primary_key: :user, class_name: "User"
+  has_one :followed_user, foreign_key: :user, class_name: "User"
   
   # scope :user ->
   

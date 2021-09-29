@@ -12,7 +12,7 @@ class Api::BlogsController < ApplicationController
       render @blog.errors.full_messages
     end
   end
-  
+
   def blog_params
     params.require(:blog).permit(:id, :user_id, :url)
   end
