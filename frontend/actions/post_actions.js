@@ -18,7 +18,7 @@ const removePost = postId => ({
   type: REMOVE_POST,
   postId
 });
-
+// fetch blog posts
 export const fetchPosts = () => dispatch => (
   PostApiUtil.fetchPosts()
     .then(posts => dispatch(receiveAllPosts(posts)))

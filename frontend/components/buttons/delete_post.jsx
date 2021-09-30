@@ -7,15 +7,15 @@ import { connect } from "react-redux";
   const sendDelete = (postId) => {
     props.deletePost(postId)
   }
+
   return (
     <div id='delete-post-nav'>
       <button onClick={ () => close() }>Cancel</button>
-
-      <button onClick={ ()=> sendDelete(props.post)}>OK</button>
-
+      <button onClick={ ()=> sendDelete(props.post) }>OK</button>
     </div>
   )
 }
+
 const mSTP = (state, ownProps) => ({
   post: ownProps.post,
   postId: ownProps.postId,

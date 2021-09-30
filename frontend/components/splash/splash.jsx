@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { SessionButtons } from '../buttons/session_buttons'
-export const splash = ({ currentUser, pth}) => {
+
+export const splash = ({ currentUser, pth, fetchPosts}) => {
+  
+  fetchPosts()
 
   if (pth === "/") return (
     <div id="bground" className="splash">
@@ -15,9 +18,9 @@ export const splash = ({ currentUser, pth}) => {
         <a id="lumbr-txt-title">umbr</a>
         </div>
 
-        {SessionButtons("splash", pth)}
+        { SessionButtons("splash", pth) }
         <nav id="spash-bottom-nav">
-        <Link id="gitlink"to="https://github.com/brassmacks">Github</Link> 
+        <Link id="gitlink"to="https://github.com/brassmacks">Github</Link>
         <Link id='aboutLink'>about</Link>
         </nav>
 

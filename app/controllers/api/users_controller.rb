@@ -1,9 +1,8 @@
 class Api::UsersController < ApplicationController
 
   def create 
-    
+
     @user = User.new(user_params)
-    
     if @user.save
       log_in!(@user)
       render 'api/users/show'
@@ -33,7 +32,7 @@ class Api::UsersController < ApplicationController
     else 
       render json: {
         follows_errors:
-        { msg: "no follows found", 
+        { msg: "no follows found",
           err: @follows.errors.full_messages
         }}
     end
@@ -52,9 +51,17 @@ class Api::UsersController < ApplicationController
     end
   end
   
-  def new_follow
+  def follow
+
     @user = User.find(params[:id])
-    @follow = @User.follows.new(user_params[:content])
+    # refactor into a Class method call that creates based off of input
+    @follow = @user.follows.new({
+      user: params[:user],
+      post: params[:post],
+      user_id: params[:id],
+      tag: params[:tag]
+      })
+
     if @follow.save
         #render updated follows to state
     else
@@ -67,13 +74,24 @@ class Api::UsersController < ApplicationController
   end
 
   def unfollow
-    
+    @follow = Follow.find_by(:follow)
+    @follow.each { |follow| follow.destroy } if @follow.length > 1
+    if @follow.destroy
+      render json: {
+        status: 200 
+      } 
+    else 
+      render json: {
+        unfollow_errors: @follow.errors.full_messages
+      }
+    end
   end
+
   
   protected 
 
   def user_params
-    params.require(:user).permit(:id, :username, :password, :email, :content)
+    params.require(:user).permit(:id, :username, :password, :email, :follow, :tag, :post)
   end
   
 end
