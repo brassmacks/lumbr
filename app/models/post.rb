@@ -10,8 +10,8 @@ class Post < ApplicationRecord
   
   belongs_to :author, foreign_key: :user_id, class_name: 'User'
 
-  has_many :PostsTags 
-  has_many :tags, through: :PostsTags
+  # has_many :PostsTags 
+  # has_many :tags, through: :PostsTags
 
   has_many :receive_follows, foreign_key: :post, class_name: 'Follow'
 
@@ -20,6 +20,27 @@ class Post < ApplicationRecord
   
   # add blog validation 
   
+
+  def _render_errors
+    render json: { errors: self.errors.full_messages }, status: 400
+  end
+
+  def Post::new_from_params(id, media)
+    @post = Post.find(id)
+    case post[:content_type]
+    when 'Photo' 
+      @post.photo.attach(io: media, filename: media.tempfile)
+    when 'Video'
+      @post.video.attach(io: media, filename: media.tempfile)
+    when 'Url'
+      #TEST ADD URL MEDIA FUNCTIONALITY
+    end
+    
+  end
+
+
+
+
   # def set_content
   #   if self.photo.attached? 
   #     self.content_type = 'photo'

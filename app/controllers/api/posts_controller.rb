@@ -16,55 +16,23 @@ class Api::PostsController < ApplicationController
   end
 
   def create 
-    
-    saved = false
-    media = post_params[:media] if post_params[:media_attached]
+    # REFACTOR 
+    # build Post instance base as part of params
     @post = Post.new({
       title: post_params[:title],
       content_type: post_params[:content_type],
       user_id: post_params[:user_id],
       body: post_params[:body] })
-    if post_params[:media_attached] === 'true'
-      @post[:title] = 'media'
-        if @post.save
-          case @post[:content_type]
-          when 'Photo' 
-            @post.photo.attach(io: post_params[:media], filename: media.tempfile)
-            saved = true
-          when 'Video'
-            @post.video.attach(io: post_params[:media], filename: media.tempfile)
-            saved = true
-          when 'Url'
-          else 
-          end
-        end
+    
+      # MUST RETURN POST INSTANCE OR ERRORS
+    @post._render_errors unless @post.save
 
-    else
-      if @post.save
-        saved = true
-      end 
+    if post_params[:media]
+      Post.new_from_params(@post.id, post_params[:media])
     end
 
-    if saved
-      unless post_params[:tags] === 'false'
-        post_params[:tags].split(',').each do |tag|
-        @tag = Tag.find_by(tag_content: tag)
-          unless @tag
-            @tag=Tag.create({tag_content_id: @post[:id], tag_content: tag})  
-          end 
-        PostsTag.create({post_id: @post[:id], tag_id: @tag[:id]})
-        end
-      end
-      render 'api/posts/show'
-    else
-      err = @post.errors.full_messages
-      @post.delete
-      render json: {
-        message: 'Post failed to save! Check content and try again.',
-        error_messages: err, 
-        status: 422
-      }
-    end
+    #call create tags on tagstring
+    render 'api/post/show' 
 
   end
 
@@ -82,7 +50,7 @@ class Api::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-
+    @post.follows
     if @post.destroy
       render :show
     else

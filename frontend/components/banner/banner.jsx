@@ -4,7 +4,7 @@ import { SessionButtons } from '../buttons/session_buttons'
 
 const banner = ({ currentUser, logout, pth, openModal, fetchBlog, freeze}) => {
 
-  if (currentUser) fetchBlog(currentUser.id)
+  // if (currentUser) fetchBlog(currentUser.id)
   const location = "banner"
 
   const blgModal = () => {

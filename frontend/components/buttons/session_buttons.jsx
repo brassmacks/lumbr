@@ -5,7 +5,8 @@ import { Link } from 'react-router-dom'
 export const SessionButtons = (location, pth) => {
   
   const isShowing = (title, pth) => {
-    return pth === "/" ? "showing" : "/" + title === pth ? "hidden" : "showing"
+    return pth === "/" ? "showing" : "/" + title === pth ? 
+    "hidden" : "showing"
   }
 
   return (

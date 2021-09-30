@@ -21,7 +21,8 @@ class PostForm extends React.Component {
     this.component;
 
     this.setComponent = () => {
-      switch (this.props.type) {          
+    
+    switch (this.props.type) {          
       case 'Link':
           this.component = () => postContentUrl( 'flex', this.update )
         break;
@@ -129,6 +130,7 @@ class PostForm extends React.Component {
     let preview = URL.createObjectURL(media)
 
     this.setState({
+      title: 'media',
       media: media,
       mediaAttached: true,
       formType: 'Preview'

@@ -1,14 +1,16 @@
 import React from 'react'
+import { unmountComponentAtNode } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { SessionButtons } from '../buttons/session_buttons'
 
-export const splash = ({ currentUser, pth, fetchPosts}) => {
+export const splash = ( { currentUser, pth, fetchPosts} ) => {
   
-  fetchPosts()
-
+  
+  
   if (pth === "/") return (
+    
     <div id="bground" className="splash">
-
+      
       <div id="splash-container-root" className="splash-buttons">
         {/* <span></span> */}
         <div height="20%"></div>

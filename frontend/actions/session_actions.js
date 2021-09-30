@@ -1,4 +1,6 @@
 import * as SeshApiUtil from '../util/session_api_util'
+import { receiveAllPosts, RECEIVE_ALL_POSTS} from './post_actions';
+import { fetchPosts } from '../util/post_util';
 
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const LOGOUT_CURRENT_USER = "LOGOUT_CURRENT_USER";
@@ -29,8 +31,12 @@ export const login = (user) => dispatch => (
   .then(user => (
       dispatch(receiveCurrentUser(user))
       ), err => (dispatch(receiveErrors(err.responseJSON))
-  ))
+  )).then( ()=> fetchPosts()
+      .then(posts => (dispatch(receiveAllPosts(posts)))
+      ), err => (dispatch(receiveErrors(err.responseJSON)) )
+  )
 )
+
 export const logout = () => dispatch => {
   SeshApiUtil.logout()
   .then(() => dispatch(logoutCurrentUser()))

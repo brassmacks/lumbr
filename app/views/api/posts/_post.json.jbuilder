@@ -1,4 +1,4 @@
-json.extract! post, :id, :title, :user_id, :body, :content_type, :followers
+json.extract! post, :id, :title, :user_id, :body, :content_type
 json.extract! post.author, :id, :username
 json.photoUrl url_for(post.photo) if post.photo.attached?
 
@@ -11,4 +11,4 @@ else
     asset_path('thowindownroots.png'),
     asset_path('gnarmushysbro.jpg')].sample()
 end
-json.tags post.tags
+# json.tags post.tags if post.tags
