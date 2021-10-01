@@ -15,7 +15,11 @@ class PostIndex extends React.Component {
   
   componentDidMount() {
     // this.props.fetchPosts();
+    this.props.fetchBlog(this.props.currentUser.id)
     this.loading = false
+  }
+  componentWillUnmount() {
+    this.props.fetchPosts()
   }
 
   render() {

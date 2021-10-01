@@ -6,7 +6,8 @@ import { closeModal } from '../../actions/modal_actions';
 
 const mSTP = (state, ownProps) => ({
   
-  blog: state.entities.blogs[ownProps.blogId]
+  blog: ownProps.blog,
+  author: ownProps.author,
   // author: ownProps.author,
   // blog: state.entities.blogs[ownProps.author[user_id]]
   // change to params ownprops userid

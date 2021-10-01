@@ -15,17 +15,18 @@ class Dashboard extends React.Component {
     super(props)
 
   }
-  componentDidMount(){
-    // ACTION_ITEM FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
-    this.props.fetchBlog(this.props.currentUser.id)
-    this.props.fetchPosts()
-  }
-  componentDidUpdate(){
-    this.props.fetchPosts()
-  }
+  // TEST ENSURE FUNCTIONALITY AFTER REFACTOR
+  // componentDidMount(){
+  //   // ACTION_ITEM FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
+  //   this.props.fetchBlog(this.props.currentUser.id)
+  //   this.props.fetchPosts()
+  // }
+  // componentDidUpdate(){
+  //   this.props.fetchPosts()
+  // }
   blgModal(){
     this.props.freeze()
-    this.props.openModal('edit blog', blog) 
+    this.props.openModal('edit blog', this.props.currentUser.id)
   }
 
   render() {

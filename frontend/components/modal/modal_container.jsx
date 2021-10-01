@@ -7,11 +7,16 @@ import { fetchBlog } from '../../actions/blog_actions';
 import BlogShow from '../blog/blog_show_container';
 import DeletePst from '../buttons/delete_post';
 import EditPostForm from '../posts/edit_post_form_container';
-function Modal({ modal, closeModal, author, melt, blog}) {
+import { fetchPosts } from '../../actions/post_actions';
+function Modal({ modal, closeModal, author, melt, blog, currentUser}) {
   if (!modal) {
+    fetchBlog(currentUser)
+    fetchPosts()
     return null;
   } 
   console.log('modal inside modal container', modal)
+  console.log('blog inside modal container', blog)
+  console.log('AUTHOR inside modal container', author)
   
 
   let component;
@@ -40,7 +45,7 @@ function Modal({ modal, closeModal, author, melt, blog}) {
       break;
     case 'show blog':
       console.log('props inside modal switch', blog, author)      
-      component = <BlogShow blog={blog} author={author}/>
+      component = <BlogShow blog={blog} author={author}/>;
       break;
 
     case 'new Text post':
@@ -68,9 +73,11 @@ function Modal({ modal, closeModal, author, melt, blog}) {
       component={}
       break;
     case 'edit post':
+      // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
       component=<EditPostForm post={modal[1]} closeForm={close}/>
       break;
     case 'delete post':
+      // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
       component= <DeletePst close={close} post={modal[1]} />
 
       break;
@@ -92,12 +99,20 @@ function Modal({ modal, closeModal, author, melt, blog}) {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  // ACTION_ITEM REFACTOR:
+    // PASS MODAL FETCH FEED FROM APP.JS
+    // CALL IT HERE 
   if (!state.modal.type) return {}
   console.log('state inside modal connect', state)
   console.log('props inside modal connect', ownProps)
-  let author_id = state.modal.blog || state.session.id
+  let author_id = state.modal.blog ? state.modal.blog : state.session.id
+  let blog = state.entities.blogs[author_id];
+  console.log('author inside modal connect', author_id)
+  console.log('blog inside modal connect', blog)
+  
   return {
-    blog: state.entities.blogs[author_id],
+    currentUser: state.entities.users[state.session.id],
+    blog: blog,
     author: state.entities.users[author_id],
     modal: state.modal,
     melt: ownProps.melt
@@ -106,6 +121,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchPosts: () => dispatch(fetchPosts),
     fetchBlog: (id) => dispatch(fetchBlog(id)),
     closeModal: () => dispatch(closeModal())
   };

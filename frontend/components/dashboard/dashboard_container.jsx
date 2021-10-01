@@ -21,7 +21,7 @@ const mSTP = ({ session, entities: { users }, modal }, ownProps) => {
 
 const mDTP = dispatch => ({
   logout: () => dispatch(logout()),
-  openModal: modal => dispatch(openModal(modalπ)),
+  openModal: modal => dispatch(openModal(modal)),
   fetchBlog: (blogId, data) => dispatch(fetchBlog(blogId, data)),
   fetchPosts: () => dispatch(fetchPosts())
 })

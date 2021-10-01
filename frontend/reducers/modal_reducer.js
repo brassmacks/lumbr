@@ -11,8 +11,7 @@ const modalReducer=(oldState={ type: null, blog: null }, action) => {
     case OPEN_MODAL:
       return action.data ? 
         Object.assign(newState, 
-          { type: action.modal, blog: newState.entities.blogs[action.data] })
-      
+          { type: action.modal, blog: action.data } )
        : Object.assign(newState, { type: action.modal, blog: null })
     case CLOSE_MODAL:
       return Object.assign(newState, { type: null, blog: null });
