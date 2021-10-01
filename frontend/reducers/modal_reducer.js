@@ -3,21 +3,21 @@ import {
   CLOSE_MODAL
 } from '../actions/modal_actions'
 
-const modalReducer = (oldState = {}, action) => {
+const modalReducer=(oldState={ type: null, blog: null }, action) => {
   Object.freeze(oldState)
   let newState = Object.assign({}, oldState)
 
   switch(action.type) {
     case OPEN_MODAL:
-      if (action.data) {
-
-        return {type: action.modal, data: action.data} ;
-      }
-      return {type: action.modal}
+      return action.data ? 
+        Object.assign(newState, 
+          { type: action.modal, blog: newState.entities.blogs[action.data] })
+      
+       : Object.assign(newState, { type: action.modal, blog: null })
     case CLOSE_MODAL:
-      return {type: null};
+      return Object.assign(newState, { type: null, blog: null });
     default:
-      return oldState;
+      return newState;
   }
 }
 export default modalReducer

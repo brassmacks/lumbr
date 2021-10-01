@@ -19,7 +19,7 @@ class Blog < ApplicationRecord
   end
   
   def post_list
-    @posts = self.author.posts
+    @posts = self.author.posts 
     post_ids = []
     @posts.each { |post| post_ids.push(post.id) }
     post_ids

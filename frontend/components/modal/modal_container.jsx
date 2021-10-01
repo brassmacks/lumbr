@@ -7,11 +7,13 @@ import { fetchBlog } from '../../actions/blog_actions';
 import BlogShow from '../blog/blog_show_container';
 import DeletePst from '../buttons/delete_post';
 import EditPostForm from '../posts/edit_post_form_container';
-function Modal({ modal, closeModal, author, melt, blogs, blogId}) {
-  if (!modal.type) {
+function Modal({ modal, closeModal, author, melt, blog}) {
+  if (!modal) {
     return null;
   } 
-  console.log( modal, closeModal, author, melt, blogs, blogId )
+  console.log('modal inside modal container', modal)
+  
+
   let component;
   let background = "modal-background"
   
@@ -33,11 +35,12 @@ function Modal({ modal, closeModal, author, melt, blogs, blogId}) {
   switch (modal.type) {
 
     case 'edit blog':
-      component = <BlogEdit />;
+      console.log('props inside modal switch', blog, author)
+      component = <BlogEdit blog={blog} author={author} />;
       break;
     case 'show blog':
-
-      component = <BlogShow blog={blogs[modal.data]} author={author}/>
+      console.log('props inside modal switch', blog, author)      
+      component = <BlogShow blog={blog} author={author}/>
       break;
 
     case 'new Text post':
@@ -89,9 +92,13 @@ function Modal({ modal, closeModal, author, melt, blogs, blogId}) {
 }
 
 const mapStateToProps = (state, ownProps) => {
+  if (!state.modal.type) return {}
+  console.log('state inside modal connect', state)
+  console.log('props inside modal connect', ownProps)
+  let author_id = state.modal.blog || state.session.id
   return {
-    blogs: state.entities.blogs,
-    currentUser: state.entities.users[state.session.id],  
+    blog: state.entities.blogs[author_id],
+    author: state.entities.users[author_id],
     modal: state.modal,
     melt: ownProps.melt
   };

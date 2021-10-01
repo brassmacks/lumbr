@@ -2,8 +2,11 @@ class Api::BlogsController < ApplicationController
   
   def show
     @user = User.find(params[:user_id])
+    
     @blog = @user.blog
-    @posts = @user.posts.with_attached_photo
+    posts = @user.posts
+    @post_ids = posts.map { |post| post.id }
+      
     #not great ^ Slightlybetter
     
     if @blog

@@ -5,7 +5,12 @@ class PostIndex extends React.Component {
   constructor(props){
     super(props)
     this.loading = true
-    console.log(props)
+    console.log(props, 'inside post index constructor')
+    this.state = {
+      userFetchList: [],
+      blogFetchList: []
+    }
+
   }
   
   componentDidMount() {
@@ -14,7 +19,11 @@ class PostIndex extends React.Component {
   }
 
   render() {
-    const { posts, deletePost, fetchUser } = this.props;
+    let { posts, deletePost, fetchUser, 
+            users_by_Id, blogs_by_Id, fetchBlog } = this.props;
+    console.log('Blog_ids=', blogs_by_Id)
+    console.log('User_ids=', users_by_Id)
+
     if (this.loading) {
       return (
         <div>
@@ -27,16 +36,24 @@ class PostIndex extends React.Component {
         <ul id="post-index-list">
           
           {
-          //TEST CHECK FUNCTIONALITY BLOG FETCH 
+          // TEST CHECK FUNCTIONALITY BLOG FETCH 
+          // ACTION_ITEM ADD PROFILE_URLS_BY_ID OBJ TO STATE, REF OFF POST/USER
             Object.values(posts).map((post,i) => {
               let author_id = parseInt(post.user_id)
-            if (!(this.props.users_by_Id.includes(author_id))) {
-              this.props.users_by_Id.push(author_id)
-              this.props.fetchUser(author_id)
+
+            if (!users_by_Id.includes(author_id)
+                  && !this.state.userFetchList.includes(author_id)) {
+                      console.log('inside post index users by ID', author_id)
+                      users_by_Id.push(author_id)
+                      this.state.userFetchList.push(author_id)
+                      fetchUser(author_id)
             }
-            if (!this.props.blogs_by_Id.includes(author_id)) {
-              this.props.blogs_by_Id.push(author_id)
-              this.props.fetchBlog(post.user_id)
+            if (!blogs_by_Id.includes(author_id) 
+                  && !this.state.blogFetchList.includes(author_id)) {
+                      console.log('inside post index blogs by ID', author_id)
+                      blogs_by_Id
+                      this.state.blogFetchList.push(author_id)
+                      fetchBlog(post.user_id)
             }
             // convert this list to props
               return <PostIndexItem 
