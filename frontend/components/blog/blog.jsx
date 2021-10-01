@@ -1,18 +1,20 @@
 import React from 'react'
 import EditPostForm from '../posts/edit_post_form_container'
 import PostIndexContainer from '../posts/post_index_container'
-
+import treesplash from '../../../app/assets/images/thowindownroots.png'
 export const Blog = ({blog, author}) => {
-    return (
+console.log(blog)
+console.log(author)
+  return (
     <div id="blog">
       <div id='blog-profile'>
-      <img id="profile-pic" src={blog.profileUrl} alt="" />
+        <img id="profile-pic" src={blog.profileUrl} alt={treesplash} />
       </div>
       <div id="blog-author-banner">
 
         <div id="blog-author-pic-box">
           <div id="blog-author-pic-circle" >
-            <img id="blog-author-img" src={blog.profileUrl}   alt="" />
+            <img id="blog-author-img" src={author.profileUrl}   alt={treesplash} />
           </div>
         </div>
       </div>

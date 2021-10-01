@@ -3,18 +3,17 @@ import {
   RECEIVE_SESSION_ERRORS,
   RECEIVE_CURRENT_USER
   } from "../actions/session_actions"
+  // import { merge } from "lodash";
 
-import { merge } from "lodash";
-
+  // TEST ENSURE NO ERRORS FROM SWITCHING OFF MERGE
+  // TEST ENSURE NO ERRORS FROM REMOVING CURRENT USER FROM SWITCH STATEMENT
 export const sessionErrorsReducer = (oldState = [], action) => {
   Object.freeze(oldState);
-  let newState = merge({}, oldState);
+  let newState = Object.assign({}, oldState);
   switch(action.type){
     case RECEIVE_SESSION_ERRORS:
-      return merge(newState, action.errors);
+      return Object.assign(newState, action.errors);
     case CLEAR_SESSION_ERRORS:
-      return [];
-    case RECEIVE_CURRENT_USER:
       return [];
     default:
       return oldState;

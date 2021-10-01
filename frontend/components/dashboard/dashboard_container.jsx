@@ -4,7 +4,11 @@ import { logout } from '../../actions/session_actions';
 import { withRouter } from 'react-router'
 import { openModal } from '../../actions/modal_actions'
 import { fetchBlog } from '../../actions/blog_actions';
+import { fetchPosts } from '../../actions/post_actions';
 import blog_show_container from '../blog/blog_show_container';
+
+
+
 const mSTP = ({ session, entities: { users }, modal }, ownProps) => {
   return ({
     currentUser: users[session.id],
@@ -17,8 +21,9 @@ const mSTP = ({ session, entities: { users }, modal }, ownProps) => {
 
 const mDTP = dispatch => ({
   logout: () => dispatch(logout()),
-  openModal: modal => dispatch(openModal(modal)),
-  fetchBlog: (blogId,data) => dispatch(fetchBlog(blogId,data))
+  openModal: modal => dispatch(openModal(modalπ)),
+  fetchBlog: (blogId, data) => dispatch(fetchBlog(blogId, data)),
+  fetchPosts: () => dispatch(fetchPosts())
 })
 
 export default withRouter(connect(mSTP, mDTP)(Dashboard))

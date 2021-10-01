@@ -1,10 +1,11 @@
 import React from 'react'
 import  PostButtons  from '../buttons/post_button_container'
-
-export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser, blogOpen, openModal, deletePost}) => {
+import { Dispatch } from 'react'
+export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
+  blogOpen, openModal, deletePost, dispatch })=> {
   // move alt to postindex and fetch in component did mount
   // switch case for each content type
-  let editable = currentUser.id === post.id
+  let editable = currentUser.id === post.user_id
   const tagString = () => {
     let list = ""
     if (post.tags) {
@@ -16,13 +17,13 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser, bl
   const blgModal = () => {
     freeze()
     if (editable) {
-    fetchBlog(post.user_id).then(() =>  {
       openModal('edit blog')
-    })}
+    }
     else {
-    fetchBlog(post.user_id).then(() =>  {
-      openModal('show blog')
-    })}
+      let data = post.user_id 
+      openModal('show blog', data)
+      // store.dispatch({ type: 'OPEN MODAL', modal: 'show blog', data })
+    }
   }
 
   return (

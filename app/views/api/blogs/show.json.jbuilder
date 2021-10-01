@@ -3,7 +3,7 @@ json.set! @user.id do
   
   json.posts @user.posts.last(10) do |post|
     if post.photo.attached?
-      json.extract! post, :id, :title, :body, :content_type, :tags
+      json.extract! post, :id, :title, :body, :content_type
       json.photoUrl url_for(post.photo) 
     end
   end

@@ -5,3 +5,10 @@ export const fetchBlog = (userId) => {
     data: { userId }
   })
 }
+export const fetchBlogs = (userIds) => {
+  return $.ajax({
+    url: `api/blogs/${userId}`,
+    method: 'GET',
+    data: userIds 
+  })
+}

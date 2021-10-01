@@ -7,11 +7,11 @@ import { fetchBlog } from '../../actions/blog_actions';
 import BlogShow from '../blog/blog_show_container';
 import DeletePst from '../buttons/delete_post';
 import EditPostForm from '../posts/edit_post_form_container';
-function Modal( { modal, closeModal, author, melt}) {
-  if (!modal) {
+function Modal({ modal, closeModal, author, melt, blogs, blogId}) {
+  if (!modal.type) {
     return null;
-  }
-
+  } 
+  console.log( modal, closeModal, author, melt, blogs, blogId )
   let component;
   let background = "modal-background"
   
@@ -30,13 +30,14 @@ function Modal( { modal, closeModal, author, melt}) {
     )
 
     
-  switch (modal[0]) {
+  switch (modal.type) {
 
     case 'edit blog':
       component = <BlogEdit />;
       break;
     case 'show blog':
-      component = <BlogShow />
+
+      component = <BlogShow blog={blogs[modal.data]} author={author}/>
       break;
 
     case 'new Text post':
@@ -87,12 +88,14 @@ function Modal( { modal, closeModal, author, melt}) {
   );
 }
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state, ownProps) => {
+  return {
+    blogs: state.entities.blogs,
     currentUser: state.entities.users[state.session.id],  
     modal: state.modal,
     melt: ownProps.melt
-  });
-
+  };
+}
 
 const mapDispatchToProps = dispatch => {
   return {

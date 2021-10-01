@@ -11,10 +11,6 @@ class Api::PostsController < ApplicationController
     @posts = Post.last(10)
   end
   
-  def followers
-    
-  end
-
   def create 
     # REFACTOR 
     # build Post instance base as part of params

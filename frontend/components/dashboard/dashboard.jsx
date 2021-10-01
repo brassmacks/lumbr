@@ -15,13 +15,17 @@ class Dashboard extends React.Component {
     super(props)
 
   }
-
+  componentDidMount(){
+    // ACTION_ITEM FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
+    this.props.fetchBlog(this.props.currentUser.id)
+    this.props.fetchPosts()
+  }
+  componentDidUpdate(){
+    this.props.fetchPosts()
+  }
   blgModal(){
     this.props.freeze()
-    this.props.fetchBlog(this.props.currentUser.id).then(blog => 
-      this.props.openModal('edit blog', blog)
-      )
-    
+    this.props.openModal('edit blog', blog) 
   }
 
   render() {
@@ -59,7 +63,7 @@ class Dashboard extends React.Component {
           </div>
       </div>
           <div id="post-index-container">
-            <PostIndexContainer freeze={this.props.freeze} />
+            <PostIndexContainer freeze={this.props.freeze} getBlogs = {this.props.fetchBlog}/>
           </div>
 
         </div>

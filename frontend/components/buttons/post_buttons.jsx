@@ -9,15 +9,19 @@ export default class PostButtons extends React.Component{
     super(props)
     this.postId = this.props.post.id
     this.follow = this.props.followData
+    //ACTION_ITEM post_author is followed?
   }
   componentDidMount() {
-    console.log("here")
-    console.log(this.postId)
-    console.log(this.follow)
-    console.log(this.props)
   }
+  // use effect || will unmount + compdid || setState 
+
+  displayFollow() {
+    // ACTION_ITEM ternary if this.authorIsFollowed // display = hidden
+    // add author to list of currentUser.following_by_id
+  }
+
   postModal = (modal) => {
-    this.props.openModal(modal, postId)
+    this.props.openModal(modal, this.postId)
   }
   
     

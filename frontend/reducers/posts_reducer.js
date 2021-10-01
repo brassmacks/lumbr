@@ -9,10 +9,12 @@ const PostsReducer = (oldState = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_ALL_POSTS:
-      console.log(oldState, action)
+      
       Object.keys(action.posts).forEach(key => {
+        Object.assign(key, )
         Object.assign(action.posts[key], {id: key});
       })
+      
       Object.assign(newState, action.posts);
       return newState;
     case RECEIVE_POST:

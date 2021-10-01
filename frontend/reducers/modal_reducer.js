@@ -10,11 +10,12 @@ const modalReducer = (oldState = {}, action) => {
   switch(action.type) {
     case OPEN_MODAL:
       if (action.data) {
-        return [ action.modal, action.data ];
+
+        return {type: action.modal, data: action.data} ;
       }
-      return [action.modal]
+      return {type: action.modal}
     case CLOSE_MODAL:
-      return null;
+      return {type: null};
     default:
       return oldState;
   }

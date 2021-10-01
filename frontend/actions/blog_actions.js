@@ -10,3 +10,7 @@ export const fetchBlog = userId => dispatch => (
   BlogApiUtil.fetchBlog(userId)
     .then(blog => (dispatch(receiveBlog(blog))))  
 )
+export const fetchBlogs = userIds => dispatch => (
+  BlogApiUtil.fetchBlogs(userIds)
+    .then(blog => (dispatch(receiveBlog(blog))))  
+)
