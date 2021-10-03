@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
     resources :posts, only: [ :create, :index, :show, :update, :destroy ]
     get 'posts/followers/:id/', to: 'posts#followers'
-    
+    get 'posts/blog/:id', to: 'posts#of_blog'
     resources :users, only: [ :create, :new, :show ]
     get 'users/follows/:id', to: 'users#follows'
     get 'users/followers/:id', to: 'users#followers'

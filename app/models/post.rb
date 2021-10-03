@@ -27,7 +27,7 @@ class Post < ApplicationRecord
 
   def Post::new_from_params(id, media)
     @post = Post.find(id)
-    case post[:content_type]
+    case @post[:content_type]
     when 'Photo' 
       @post.photo.attach(io: media, filename: media.tempfile)
     when 'Video'

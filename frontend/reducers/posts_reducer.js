@@ -1,31 +1,32 @@
 import {
   RECEIVE_ALL_POSTS,
+  RECEIVE_BLOGS_POSTS,
   RECEIVE_POST,
   REMOVE_POST
 } from '../actions/post_actions'
 
 const PostsReducer = (oldState = {}, action) => {
-  let newState = Object.assign({},Object.freeze(oldState));
+  let newState = Object.assign({}, Object.freeze(oldState));
 
   switch(action.type) {
     case RECEIVE_ALL_POSTS:
-      
-      Object.keys(action.posts).forEach(key => {
-        Object.assign(key, )
-        Object.assign(action.posts[key], {id: key});
-      })
-      
-      Object.assign(newState, action.posts);
-      return newState;
+      let postStateKeyList = JSON.stringify(newState.posts)
+      let postActionKeyList = JSON.stringify(action.posts)
+      if (postStateKeyList != postActionKeyList) {
+        Object.keys(action.posts).forEach(key => {
+          Object.assign(action.posts[key], {id: key});
+        })
+        Object.assign(newState, action.posts);
+        return newState;
+      } else return oldState
     case RECEIVE_POST:
-      return Object.assign({}, oldState, { [action.post.id]: action.post })
+      return Object.assign( {}, newState, { [action.post.id]: action.post })
     case REMOVE_POST:
-      let nextState = Object.assign({}, oldState);
-      delete nextState[action.postId]
-      return nextState;
-      break;
+      delete newState[action.postId]
+      return newState;
+    
     default:
-      return oldState;
+      return newState;
   }
 };
 

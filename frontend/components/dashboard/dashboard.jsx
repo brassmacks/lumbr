@@ -13,14 +13,15 @@ import Text from '../../../app/assets/images/Text.png'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
+    console.log(props)
 
   }
   // TEST ENSURE FUNCTIONALITY AFTER REFACTOR
-  // componentDidMount(){
-  //   // ACTION_ITEM FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
-  //   this.props.fetchBlog(this.props.currentUser.id)
-  //   this.props.fetchPosts()
-  // }
+  componentDidUpdate() {
+    // ACTION_ITEM FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
+    // this.props.fetchBlog(this.props.currentUser.id)
+    
+  }
   // componentDidUpdate(){
   //   this.props.fetchPosts()
   // }
@@ -64,7 +65,10 @@ class Dashboard extends React.Component {
           </div>
       </div>
           <div id="post-index-container">
-            <PostIndexContainer freeze={this.props.freeze} getBlogs = {this.props.fetchBlog}/>
+            <PostIndexContainer freeze={this.props.freeze}
+              fetchBlog = {this.props.fetchBlog}
+              fetchUser = {this.props.fetchUser}
+              fetchBlogsPosts = {this.props.fetchBlogsPosts} />
           </div>
 
         </div>

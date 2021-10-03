@@ -1,3 +1,4 @@
+import { assign } from 'lodash';
 import React from 'react';
 import { PostIndexItem } from './post_index_item';
 
@@ -5,29 +6,50 @@ class PostIndex extends React.Component {
   constructor(props){
     super(props)
     this.loading = true
+
     console.log(props, 'inside post index constructor')
     this.state = {
-      userFetchList: [],
-      blogFetchList: []
+      posts: this.props.posts,
+      currentUser: this.props.currentUser,
+      users_by_Id: this.props.users_by_Id,
+      blogs_by_Id: this.props.blogs_by_Id,
+      blogFetchList: this.props.blogFetchList,
+      userFetchList: this.props.userFetchList
     }
+    this.postCheck = this.postCheck.bind(this)
 
   }
-  
-  componentDidMount() {
-    // this.props.fetchPosts();
-    this.props.fetchBlog(this.props.currentUser.id)
-    this.loading = false
+  postCheck = () =>  {
+    this.loading = (this.state.posts.length < 5  && (!this.props.blogOpen))
   }
+  componentDidMount() {
+    console.log('this thingy', Object.keys(this.state.posts))
+    this.postCheck()
+    if (!this.loading) {
+      this.props.fetchPosts().then( posts => {
+        if (!this.props.blogOpen) {
+          this.setState({posts: Object.assign({}, this.state.posts, posts)})
+        }
+      })
+      
+    }
+    
+    console.log(this.state)
+    this.props.fetchBlog(this.props.currentUser.id)
+    this.state.blogFetchList.forEach(blog_id => this.props.fetchBlogsPosts(blog_id))
+  }
+
   componentWillUnmount() {
-    this.props.fetchPosts()
+    this.postCheck
   }
 
   render() {
-    let { posts, deletePost, fetchUser, 
-            users_by_Id, blogs_by_Id, fetchBlog } = this.props;
-    console.log('Blog_ids=', blogs_by_Id)
-    console.log('User_ids=', users_by_Id)
-
+    let { deletePost, fetchUser, 
+            users_by_Id, blogs_by_Id, fetchBlog, posts } = this.props;
+    let postFeed = Object.keys(this.props.posts).length > 0 ? 
+        Object.values(this.props.posts) : this.state.posts
+    console.log(this.state.posts)
+    this.postCheck()
     if (this.loading) {
       return (
         <div>
@@ -42,23 +64,9 @@ class PostIndex extends React.Component {
           {
           // TEST CHECK FUNCTIONALITY BLOG FETCH 
           // ACTION_ITEM ADD PROFILE_URLS_BY_ID OBJ TO STATE, REF OFF POST/USER
-            Object.values(posts).map((post,i) => {
-              let author_id = parseInt(post.user_id)
 
-            if (!users_by_Id.includes(author_id)
-                  && !this.state.userFetchList.includes(author_id)) {
-                      console.log('inside post index users by ID', author_id)
-                      users_by_Id.push(author_id)
-                      this.state.userFetchList.push(author_id)
-                      fetchUser(author_id)
-            }
-            if (!blogs_by_Id.includes(author_id) 
-                  && !this.state.blogFetchList.includes(author_id)) {
-                      console.log('inside post index blogs by ID', author_id)
-                      blogs_by_Id
-                      this.state.blogFetchList.push(author_id)
-                      fetchBlog(post.user_id)
-            }
+            Object.values(posts).map((post, i) => {
+            
             // convert this list to props
               return <PostIndexItem 
                 currentUser={this.props.currentUser}

@@ -8,9 +8,15 @@ class Api::PostsController < ApplicationController
   end
   
   def index
-    @posts = Post.last(10)
+    @posts = Post.last(15)
   end
-  
+
+  def of_blog
+    @author = User.find(params[:id])
+    @posts = @author.posts.last(10)
+    render :index
+  end
+
   def create 
     # REFACTOR 
     # build Post instance base as part of params
@@ -28,7 +34,7 @@ class Api::PostsController < ApplicationController
     end
 
     #call create tags on tagstring
-    render 'api/post/show' 
+    render 'api/posts/show' 
 
   end
 
@@ -38,7 +44,7 @@ class Api::PostsController < ApplicationController
     @post = Post.find(post_params[:id].to_i)
 
     if @post.update(post_params)
-      render :show
+      render :post
     else
       render json: @post.errors.full_messages, status: 422
     end

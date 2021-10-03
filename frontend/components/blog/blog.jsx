@@ -2,11 +2,20 @@ import React from 'react'
 import EditPostForm from '../posts/edit_post_form_container'
 import PostIndexContainer from '../posts/post_index_container'
 import treesplash from '../../../app/assets/images/thowindownroots.png'
+
 export const Blog = (props) => {
-console.log('inside blog component', props)
-let {blog, author} = props
-console.log(blog)
-console.log(author)
+  console.log('inside blog component', props)
+  let {blog, author, posts} = props
+  console.log(blog)
+  console.log(author)
+  console.log(posts)
+  let sortPosts = (posts) => {
+    let postsList = []
+    Object.values(posts).map(post => {
+      if (post.user_id === author.id) postsList.push(post)
+    })
+    return postsList
+  }
   return (
     <div id="blog">
       <div id='blog-profile'>
@@ -26,8 +35,8 @@ console.log(author)
       </div>
       { 
         blog.posts.length > 0 ?
-          <PostIndexContainer blogOpen={true} posts={blog.posts}/>
-           :
+          <PostIndexContainer blogOpen={true} posts={sortPosts(posts)}/>
+          :
           <div id='no-post-placeholder' className='no-post' >
             <img src="" alt="" height='80px' width='85px' className='no-post' />
             <div className='no-post' >

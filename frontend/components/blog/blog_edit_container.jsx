@@ -4,7 +4,8 @@ import BlogEdit from './blog_edit';
 
 const mSTP = (state) => ({
   blog: state.entities.blogs[state.session.id],
-  currentUser: state.entities.users[state.session.id]
+  currentUser: state.entities.users[state.session.id],
+  posts: state.entities.posts
 })
 
 const mDTP = dispatch => ({

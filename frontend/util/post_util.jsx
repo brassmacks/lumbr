@@ -4,6 +4,12 @@ export const fetchPosts = () => {
     method: 'GET'
   })
 }
+export const fetchBlogsPosts = blog_id => {
+  return $.ajax({
+    url: `api/posts/blog/${blog_id}`,
+    method: 'GET'
+  })
+}
 export const fetchPost = (postId) => {
   return $.ajax({
     url: `api/posts/${postId}`,

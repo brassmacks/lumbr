@@ -7,8 +7,12 @@ import { fetchBlog } from '../../actions/blog_actions';
 import BlogShow from '../blog/blog_show_container';
 import DeletePst from '../buttons/delete_post';
 import EditPostForm from '../posts/edit_post_form_container';
-import { fetchPosts } from '../../actions/post_actions';
-function Modal({ modal, closeModal, author, melt, blog, currentUser}) {
+import { fetchPosts, fetchBlogsPosts } from '../../actions/post_actions';
+
+
+function Modal({ modal, closeModal, 
+                author, melt, blog, 
+                currentUser, fetchPost, fetchBlogsPosts}) {
   if (!modal) {
     fetchBlog(currentUser)
     fetchPosts()
@@ -45,7 +49,7 @@ function Modal({ modal, closeModal, author, melt, blog, currentUser}) {
       break;
     case 'show blog':
       console.log('props inside modal switch', blog, author)      
-      component = <BlogShow blog={blog} author={author}/>;
+      component = <BlogShow blog={blog} author={author} fetchPost={fetchPost} fetchBlogsPosts={fetchBlogsPosts} />;
       break;
 
     case 'new Text post':
@@ -121,7 +125,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    fetchPost: post_id => dispatch(fetchPost(post_id)),
     fetchPosts: () => dispatch(fetchPosts),
+    fetchBlogsPosts: blog_id => dispatch(fetchBlogsPosts(blog_id)),
     fetchBlog: (id) => dispatch(fetchBlog(id)),
     closeModal: () => dispatch(closeModal())
   };
