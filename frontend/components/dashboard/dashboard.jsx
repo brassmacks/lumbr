@@ -13,7 +13,6 @@ import Text from '../../../app/assets/images/Text.png'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
 
   }
   // TEST ENSURE FUNCTIONALITY AFTER REFACTOR

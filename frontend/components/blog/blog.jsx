@@ -4,11 +4,7 @@ import PostIndexContainer from '../posts/post_index_container'
 import treesplash from '../../../app/assets/images/thowindownroots.png'
 
 export const Blog = (props) => {
-  console.log('inside blog component', props)
   let {blog, author, posts} = props
-  console.log(blog)
-  console.log(author)
-  console.log(posts)
   let sortPosts = (posts) => {
     let postsList = []
     Object.values(posts).map(post => {

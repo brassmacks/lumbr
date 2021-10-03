@@ -18,11 +18,6 @@ function Modal({ modal, closeModal,
     fetchPosts()
     return null;
   } 
-  console.log('modal inside modal container', modal)
-  console.log('blog inside modal container', blog)
-  console.log('AUTHOR inside modal container', author)
-  
-
   let component;
   let background = "modal-background"
   
@@ -44,11 +39,9 @@ function Modal({ modal, closeModal,
   switch (modal.type) {
 
     case 'edit blog':
-      console.log('props inside modal switch', blog, author)
       component = <BlogEdit blog={blog} author={author} />;
       break;
-    case 'show blog':
-      console.log('props inside modal switch', blog, author)      
+    case 'show blog':    
       component = <BlogShow blog={blog} author={author} fetchPost={fetchPost} fetchBlogsPosts={fetchBlogsPosts} />;
       break;
 
@@ -107,12 +100,8 @@ const mapStateToProps = (state, ownProps) => {
     // PASS MODAL FETCH FEED FROM APP.JS
     // CALL IT HERE 
   if (!state.modal.type) return {}
-  console.log('state inside modal connect', state)
-  console.log('props inside modal connect', ownProps)
   let author_id = state.modal.blog ? state.modal.blog : state.session.id
   let blog = state.entities.blogs[author_id];
-  console.log('author inside modal connect', author_id)
-  console.log('blog inside modal connect', blog)
   
   return {
     currentUser: state.entities.users[state.session.id],

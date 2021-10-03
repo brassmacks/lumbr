@@ -2,6 +2,7 @@ class Post < ApplicationRecord
 
   validates :title, :content_type, :user_id, presence: true
   
+  attr_reader :blog_posts
   
   # change following association to include, video, quote, or text
 
@@ -20,6 +21,13 @@ class Post < ApplicationRecord
   
   # add blog validation 
   
+  def Post::list_by_user(user_id)
+    posts = Post.where({:user_id => user_id})
+    post_ids = []
+    posts.each { |post| post_ids.push(post.id) }
+    return { post_ids: post_ids, posts: posts }
+  end 
+
 
   def _render_errors
     render json: { errors: self.errors.full_messages }, status: 400

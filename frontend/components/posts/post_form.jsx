@@ -8,7 +8,6 @@ import { EditPost } from './edit_post'
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
-    // console.log(this.props, 'post_form')
     this.currentUser = this.props.currentUser
     this.state = this.props.post;
     

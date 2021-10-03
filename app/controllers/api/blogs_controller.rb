@@ -1,11 +1,11 @@
 class Api::BlogsController < ApplicationController
   
   def show
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     
-    @blog = @user.blog
-    posts = @user.posts
-    @post_ids = posts.map { |post| post.id }
+    @blog = Blog.find_by({ user_id: params[:user_id] })
+    @user = User.find(params[:user_id])
+    @posts = Post.list_by_user(params[:user_id])[:post_ids].last(15)
       
     #not great ^ Slightlybetter
     

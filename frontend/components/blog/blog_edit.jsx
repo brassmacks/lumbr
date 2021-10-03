@@ -3,7 +3,6 @@ import { Blog } from './blog'
 export default class BlogEdit extends Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.postsList = []
     this.sortPosts()
   }

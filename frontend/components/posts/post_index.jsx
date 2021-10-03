@@ -4,12 +4,13 @@ import { PostIndexItem } from './post_index_item';
 
 class PostIndex extends React.Component {
   constructor(props){
-    super(props)
-    this.loading = true
 
-    console.log(props, 'inside post index constructor')
+    super(props)
+    console.log('inside post index constructor', this.props)
+    this.loading = true
     this.state = {
       posts: this.props.posts,
+      post_keys: this.props.post_keys,
       currentUser: this.props.currentUser,
       users_by_Id: this.props.users_by_Id,
       blogs_by_Id: this.props.blogs_by_Id,
@@ -23,20 +24,18 @@ class PostIndex extends React.Component {
     this.loading = (this.state.posts.length < 5  && (!this.props.blogOpen))
   }
   componentDidMount() {
-    console.log('this thingy', Object.keys(this.state.posts))
     this.postCheck()
+
     if (!this.loading) {
       this.props.fetchPosts().then( posts => {
+        console.log('inside component did mount post index')
         if (!this.props.blogOpen) {
           this.setState({posts: Object.assign({}, this.state.posts, posts)})
         }
       })
-      
     }
-    
-    console.log(this.state)
     this.props.fetchBlog(this.props.currentUser.id)
-    this.state.blogFetchList.forEach(blog_id => this.props.fetchBlogsPosts(blog_id))
+    // this.state.blogFetchList.forEach(blog_id => this.props.fetchBlogsPosts(blog_id))
   }
 
   componentWillUnmount() {
@@ -48,7 +47,6 @@ class PostIndex extends React.Component {
             users_by_Id, blogs_by_Id, fetchBlog, posts } = this.props;
     let postFeed = Object.keys(this.props.posts).length > 0 ? 
         Object.values(this.props.posts) : this.state.posts
-    console.log(this.state.posts)
     this.postCheck()
     if (this.loading) {
       return (
@@ -77,7 +75,6 @@ class PostIndex extends React.Component {
                 blogOpen={this.props.blogOpen}
                 key={`${post.id}${post.username}${i}`}
                 dispatch={this.props.dispatch}
-                
                 openModal={this.props.openModal} />
               }
             )
