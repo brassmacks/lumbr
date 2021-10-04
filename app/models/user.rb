@@ -27,6 +27,22 @@ class User < ApplicationRecord
     
   end
 
+
+  def follow_list
+    followers_hash = Hash.new { |h, v| h[v] = 0}
+    follows_hash = Hash.new { |h, v| h[v] = 0}
+    self.receive_follows.each do |follow|
+       followers_hash[follow.user_id] += 1 
+    end
+    self.follows.each do |follow|
+       follows_hash[follow.user] += 1 
+    end
+    
+    followed_by = followers_hash.keys 
+    users_followed = follows_hash.keys
+    return { followers: followed_by, following: users_followed }
+  end
+
   def self.find_by_missing_params(params)
     user_dup = User.new(user_params)
 

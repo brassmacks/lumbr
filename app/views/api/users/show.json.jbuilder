@@ -1,5 +1,6 @@
 json.extract! @user, :id, :username, :email
-
+  json.follows @user.follow_list[:following]
+  json.followers @user.follow_list[:followers]
 if @user.profile_photo.attached?
   json.profileUrl url_for(@user.profile_photo) 
 else

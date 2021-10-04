@@ -10,9 +10,22 @@ import EditPostForm from '../posts/edit_post_form_container';
 import { fetchPosts, fetchBlogsPosts } from '../../actions/post_actions';
 
 
-function Modal({ modal, closeModal, 
-                author, melt, blog, 
-                currentUser, fetchPost, fetchBlogsPosts}) {
+function Modal(props) {
+  let blogs = props.blogs
+  let modal = props.modal 
+  let closeModal = props.closeModal 
+  let author = props.author 
+  let melt = props.melt 
+  let blog = props.blog 
+  let currentUser = props.currentUser 
+  let fetchPost = props.fetchPost 
+  let fetchBlogsPosts = props.fetchBlogsPosts 
+  
+  console.log('inside modal component', {
+    modal, closeModal,
+    author, melt, blog,
+    currentUser, fetchPost, fetchBlogsPosts, blogs
+  })
   if (!modal) {
     fetchBlog(currentUser)
     fetchPosts()
@@ -61,7 +74,7 @@ function Modal({ modal, closeModal,
       assignType('Link')
       break;
     case 'post show':
-      
+      //  ACTION_ITEM FILL IN THIS CASE
       break;
     case 'share post':
       component=<h1>share</h1>
@@ -96,15 +109,17 @@ function Modal({ modal, closeModal,
 }
 
 const mapStateToProps = (state, ownProps) => {
-  // ACTION_ITEM REFACTOR:
-    // PASS MODAL FETCH FEED FROM APP.JS
-    // CALL IT HERE 
+
+  console.log('inside modal propstostate,',state)
   if (!state.modal.type) return {}
-  let author_id = state.modal.blog ? state.modal.blog : state.session.id
+
+  let author_id = state.session.id;
+  if (state.modal.type === 'show blog') author_id = state.modal.blog
   let blog = state.entities.blogs[author_id];
-  
+
   return {
     currentUser: state.entities.users[state.session.id],
+    blogs: state.entities.blogs,
     blog: blog,
     author: state.entities.users[author_id],
     modal: state.modal,

@@ -7,6 +7,7 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
   // move alt to postindex and fetch in component did mount
   // switch case for each content type
   let editable = currentUser.id === post.user_id
+  // let followable = 
   const tagString = () => {
     let list = ""
     if (post.tags) {
@@ -18,7 +19,7 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
   const blgModal = () => {
     freeze()
     if (editable) {
-      openModal('edit blog')
+      openModal('edit blog', currentUser)
     }
     else {
       let data = post.user_id 

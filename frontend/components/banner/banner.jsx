@@ -2,14 +2,15 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { SessionButtons } from '../buttons/session_buttons'
 
-const banner = ({ currentUser, logout, pth, openModal, fetchBlog, freeze}) => {
-
+const banner = ( { ownBlogFetched, currentUser, logout, pth, openModal, fetchBlog, freeze} ) => {
+  if (currentUser && !ownBlogFetched) fetchBlog(currentUser.id)
   // if (currentUser) fetchBlog(currentUser.id)
   const location = "banner"
 
   const blgModal = () => {
     freeze();
-    openModal('edit blog');
+    let data = currentUser.id
+    openModal('edit blog', data); 
   }
   const logo = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/lmbrlogo.png'
   const sideBar = () => (

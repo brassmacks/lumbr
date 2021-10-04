@@ -1,13 +1,11 @@
 class Api::BlogsController < ApplicationController
   
   def show
-    # @user = User.find(params[:user_id])
-    
     @blog = Blog.find_by({ user_id: params[:user_id] })
     @user = User.find(params[:user_id])
-    @posts = Post.list_by_user(params[:user_id])[:post_ids].last(15)
-      
-    #not great ^ Slightlybetter
+    posts_by_user = Post.list_by_user(params[:user_id])
+    @post_ids = posts_by_user[:post_ids].last(15)
+    @posts = posts_by_user[:posts].last(15)
     
     if @blog
       render :show

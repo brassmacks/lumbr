@@ -1,3 +1,4 @@
+
 import { connect } from 'react-redux';
 import PostIndex from './post_index';
 import { openModal } from '../../actions/modal_actions';
@@ -6,48 +7,27 @@ import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { fetchUser } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => {
-  let post_keys = Object.keys(state.entities.posts)
+  let posts_by_Id = Object.keys(state.entities.posts)
+  let allPosts = state.entities.posts
+  let postsFeedList = posts_by_Id.slice(posts_by_Id.length - 11, posts_by_Id.length)
+  let posts = postsFeedList.map(postId => allPosts[postId])
+  let users = state.entities.users
   let blogs = state.entities.blogs
-  let posts = state.entities.posts
   if (ownProps.blogOpen) posts = ownProps.posts
   let users_by_Id = Object.keys(state.entities.users)
-  let blogs_by_Id = Object.keys(state.entities.blogs)
-  let userFetchList = []
-  let blogFetchList = []
-  let notFetched = true
-
-  let contentToFetch = () => {
-    console.log("inside contentToFetch")
-    let authorList = [] 
-    let users = state.entities.users
-    let blogs = state.entities.blogs
-
-    post_keys.forEach(key => {
-      let author_id = state.entities.posts[key].user_id
-      if (!authorList.includes(author_id)) authorList.push(author_id)
-    }) 
-    authorList.forEach(author => {
-      ownProps.fetchUser(author)
-      ownProps.fetchBlog(author)
-    })  
-    notFetched = false
-  
-  }
-    
-
-  
+  let blogs_by_Id = Object.keys(state.entities.blogs)  
     return {
       // ACTION_ITEM CONTAINERIZE REPEATED CODE BLOCKS INTO FUNCTIONS
+      users: users,
       users_by_Id: users_by_Id,
+      blogs: blogs,
       blogs_by_Id: blogs_by_Id,
-      userFetchList: userFetchList,
-      blogFetchList: blogFetchList,
       currentUser: state.entities.users[state.session.id],
       posts: posts,
-      blogs: blogs,
+      allPosts: allPosts,
+      posts_by_Id: posts_by_Id,
       freeze: ownProps.freeze,
-      blogOpen: ownProps.blogOpen,
-      contentToFetch: contentToFetch
+      blogOpen: ownProps.blogOpen
             }
   }
 
