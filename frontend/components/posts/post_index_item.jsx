@@ -1,6 +1,7 @@
 import React from 'react'
 import  PostButtons  from '../buttons/post_button_container'
 import { Dispatch } from 'react'
+
 export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
   blogOpen, openModal, deletePost, dispatch })=> {
   // ACTION_ITEM

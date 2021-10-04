@@ -1,6 +1,6 @@
-import { assign } from 'lodash';
 import React from 'react';
 import { PostIndexItem } from './post_index_item';
+import Post from './post_container'
 
 class PostIndex extends React.Component {
   
@@ -108,26 +108,29 @@ class PostIndex extends React.Component {
       )
     }
     return (
-      <div id="post-index-wrapper">
-        <ul id="post-index-list">
+    <div id="post-index-wrapper">
+      <ul id="post-index-list">
           
-          {
+      {
           // TEST CHECK FUNCTIONALITY BLOG FETCH 
           // ACTION_ITEM ADD PROFILE_URLS_BY_ID OBJ TO STATE, REF OFF POST/USER
 
-            Object.values(posts).map((post, i) => {
-            
+        Object.values(posts).map((post, i) => {
+
+          return <Post freeze={this.props.freeze} post={post} 
+                      blogOpen={this.props.blogOpen}
+                      key={`${post.id}${post.username}${i}`} />
             // convert this list to props
-              return <PostIndexItem 
-                currentUser={this.props.currentUser}
-                freeze={this.props.freeze}
-                postId={post.id}
-                post={post}
-                deletePost={deletePost}
-                blogOpen={this.props.blogOpen}
-                key={`${post.id}${post.username}${i}`}
-                dispatch={this.props.dispatch}
-                openModal={this.props.openModal} />
+              // return <PostIndexItem 
+              //   currentUser={this.props.currentUser}
+              //   freeze={this.props.freeze}
+              //   postId={post.id}
+              //   post={post}
+              //   deletePost={deletePost}
+              //   blogOpen={this.props.blogOpen}
+              //   key={`${post.id}${post.username}${i}`}
+              //   dispatch={this.props.dispatch}
+              //   openModal={this.props.openModal} />
               }
             )
           }
