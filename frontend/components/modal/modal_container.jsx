@@ -1,4 +1,5 @@
 import React from 'react';
+import Modal from './modal_component';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import BlogEdit from '../blog/blog_edit_container'
@@ -8,129 +9,35 @@ import BlogShow from '../blog/blog_show_container';
 import DeletePst from '../buttons/delete_post';
 import EditPostForm from '../posts/edit_post_form_container';
 import { fetchPosts, fetchBlogsPosts } from '../../actions/post_actions';
+import { render } from 'react-dom';
 
 
-function Modal(props) {
-  let blogs = props.blogs
-  let modal = props.modal 
-  let closeModal = props.closeModal 
-  let author = props.author 
-  let melt = props.melt 
-  let blog = props.blog 
-  let currentUser = props.currentUser 
-  let fetchPost = props.fetchPost 
-  let fetchBlogsPosts = props.fetchBlogsPosts 
-  
-  console.log('inside modal component', {
-    modal, closeModal,
-    author, melt, blog,
-    currentUser, fetchPost, fetchBlogsPosts, blogs
-  })
-  if (!modal) {
-    fetchBlog(currentUser)
-    fetchPosts()
-    return null;
-  } 
-  let component;
-  let background = "modal-background"
-  
-  const close = () => {
-    closeModal();
-    melt();
-    }
-
-  const assignType = (postType, formType = postType) => (
-
-    component = <CreatePostContainer
-      // melt={melt} 
-      type={postType} 
-      formType={formType}
-      closeForm={close}/> 
-    )
-
-    
-  switch (modal.type) {
-
-    case 'edit blog':
-      component = <BlogEdit blog={blog} author={author} />;
-      break;
-    case 'show blog':    
-      component = <BlogShow blog={blog} author={author} fetchPost={fetchPost} fetchBlogsPosts={fetchBlogsPosts} />;
-      break;
-
-    case 'new Text post':
-      assignType('Text')
-      break;
-    case 'new Photo post':
-      assignType('Media', 'Photo')
-      break;
-    case 'new Video post':
-      assignType('Media', 'Video')
-      break;
-    case 'new Quote post':
-      assignType('Text', 'Quote')
-      break;
-    case 'new Link post':
-      assignType('Link')
-      break;
-    case 'post show':
-      //  ACTION_ITEM FILL IN THIS CASE
-      break;
-    case 'share post':
-      component=<h1>share</h1>
-      break;
-    case 'edit repost':
-      component={}
-      break;
-    case 'edit post':
-      // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
-      component=<EditPostForm post={modal[1]} closeForm={close}/>
-      break;
-    case 'delete post':
-      // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
-      component= <DeletePst close={close} post={modal[1]} />
-
-      break;
-    
-    default:
-      return null;
-      // return loading modal
-  }
-
-  
-  return (
-    <div className={background} onClick={ () => close()}>
-      <div className="modal-child" onClick={e => e.stopPropagation()}>
-
-        {component}
-      </div>
-    </div>
-  );
-}
 
 const mapStateToProps = (state, ownProps) => {
 
-  console.log('inside modal propstostate,',state)
-  if (!state.modal.type) return {}
-
-  let author_id = state.session.id;
-  if (state.modal.type === 'show blog') author_id = state.modal.blog
-  let blog = state.entities.blogs[author_id];
+  console.log('inside modal propstostate,', state)
+  // if (!ownProps.modal) return {modal:{type: null}}
+  let modal = state.modal || { modal: {type: null} } 
+  let author_id = state.modal.blog || state.session.id;
+  let blogs = state.entities.blogs || null
+  let blog =  blogs ? state.entities.blogs[author_id] : null
 
   return {
     currentUser: state.entities.users[state.session.id],
     blogs: state.entities.blogs,
     blog: blog,
+    blogContent: blog,
     author: state.entities.users[author_id],
-    modal: state.modal,
-    melt: ownProps.melt
+    modal: modal,
+    melt: ownProps.melt,
+    isFetched: false
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchPost: post_id => dispatch(fetchPost(post_id)),
-    fetchPosts: () => dispatch(fetchPosts),
+    fetchPosts: () => dispatch(fetchPosts()),
     fetchBlogsPosts: blog_id => dispatch(fetchBlogsPosts(blog_id)),
     fetchBlog: (id) => dispatch(fetchBlog(id)),
     closeModal: () => dispatch(closeModal())

@@ -8,7 +8,7 @@ class PostIndex extends React.Component {
     
     super(props)
     console.log('inside post index constructor', this.props)
-    this.loading = true
+    // this.loading = true
     this.state = {
       posts: this.props.posts,
       allPosts: this.props.allPosts,
@@ -19,12 +19,12 @@ class PostIndex extends React.Component {
       blogs_by_Id: this.props.blogs_by_Id,
       isFetched: false,
       userFetchList: [],
-      blogFetchList: []
+      blogFetchList: [],
 
     }
-    // this.contentToFetch = this.contentToFetch.bind(this)
+    this.contentToFetch = this.contentToFetch.bind(this)
     this.postCheck = this.postCheck.bind(this)
-
+    this.postCheck()
 
   }
   postCheck = () =>  {
@@ -32,47 +32,60 @@ class PostIndex extends React.Component {
   }
   componentDidMount() {
     this.postCheck()
-
+    
     if (this.loading) {
       this.props.fetchPosts().then( posts => {
         console.log('inside component did mount post index')
-        if (!this.props.blogOpen) {
-          this.setState({posts: Object.assign({}, this.state.posts, posts), isFetched: false})
+      if (!this.props.blogOpen) {
+          this.setState({
+            allPosts: Object.assign({}, this.state.allPosts, posts.posts), 
+            posts_by_Id: Object.keys(posts.posts),
+            isFetched: false})
+            this.loading = false
         }
       })
     }
-    // if (!this.props.blogOpen) this.contentToFetch()
-    // this.props.fetchBlog(this.props.currentUser.id)
-    // this.state.blogFetchList.forEach(blog_id => this.props.fetchBlogsPosts(blog_id))
+    if (!this.props.blogOpen) this.contentToFetch()
+    this.props.fetchBlog(this.props.currentUser.id)
+    this.state.blogFetchList.forEach(blog_id => this.props.fetchBlogsPosts(blog_id))
+}
+  componentDidUpdate() {
+    if (!this.props.blogOpen && !this.state.isFetched) {
+      this.contentToFetch()
+      this.setState({allPosts: this.props.allPosts})
+    }
+    this.postCheck()
   }
-
   componentWillUnmount() {
     this.postCheck()
-    if (!this.state.isFetched) this.contentToFetch()
+    
     // if (!this.state.blogOpen) this.contentToFetch()
   }
 
   contentToFetch(){
-    console.log("inside contentToFetch", this.state)
     let authorList = []
+    
     this.state.posts_by_Id.forEach(key => {
       let author_id = this.state.allPosts[key].user_id
-      console.log(author_id)
+      
       if (!this.state.users[author_id] 
         && !authorList.includes(author_id) 
         && !this.state.userFetchList.includes(author_id)) {
-        authorList.push(author_id)
+          
+          authorList.push(author_id)
+
       }
     })
+
     authorList.forEach(author => {
       this.props.fetchUser(author)
-      this
       this.props.fetchBlog(author)
     })
-    console.log(authorList)
     this.setState({
       isFetched: true, userFetchList: authorList,
         blogFetchList: authorList})
+
+    this.loading = false
   }
 
 
@@ -87,7 +100,7 @@ class PostIndex extends React.Component {
     this.postCheck()
     
 
-    if (this.loading) {
+    if (this.loading && this.state.isFetched === false) {
       return (
         <div>
           <h1>LOADING</h1>
