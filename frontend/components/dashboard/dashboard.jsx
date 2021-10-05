@@ -25,7 +25,7 @@ class Dashboard extends React.Component {
   //   this.props.fetchPosts()
   // }
   blgModal(){
-    this.props.freeze()
+    // this.props.freeze()
     this.props.openModal('edit blog', this.props.currentUser.id)
   }
 
@@ -36,7 +36,7 @@ class Dashboard extends React.Component {
     <div id="log-run">
     <div id="feed">
       <div id="pic-nav-bind">
-
+      {/* ACTION_ITEM UNSTICK PROFILE PHOTO NEXT TO POST NAV */}
           <div id="pi-prof-box">
             <div id="prof-slider-bounds" >
               <img onClick={() => this.blgModal()}id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>
@@ -54,7 +54,8 @@ class Dashboard extends React.Component {
                   className="post-nav"
                   key={`${i} ${button}`}>
                       
-                    <PostButton id="post-nav-button" freeze={this.props.freeze} button={button} />
+                    {/* <PostButton id="post-nav-button" freeze={this.props.freeze} button={button} /> */}
+                    <PostButton id="post-nav-button" button={button} />
                   </li>)
               })
             }
@@ -64,7 +65,8 @@ class Dashboard extends React.Component {
           </div>
       </div>
           <div id="post-index-container">
-            <PostIndexContainer freeze={this.props.freeze}
+            {/* <PostIndexContainer freeze={this.props.freeze} */}
+            <PostIndexContainer
               fetchBlog = {this.props.fetchBlog}
               fetchUser = {this.props.fetchUser}
               fetchBlogsPosts = {this.props.fetchBlogsPosts} />

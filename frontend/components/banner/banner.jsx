@@ -8,7 +8,7 @@ const banner = ( { ownBlogFetched, currentUser, logout, pth, openModal, fetchBlo
   const location = "banner"
 
   const blgModal = () => {
-    freeze();
+    // freeze();
     let data = currentUser.id
     openModal('edit blog', data); 
   }

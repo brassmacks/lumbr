@@ -10,14 +10,16 @@ class Post extends React.Component{
       author: this.props.author,
       tags: this.props.tags,
       editable: this.props.editable,
-      isFollowed: this.props.followed,
-      
     }
 
+    this.isFollowed = this.props.currentUser.follows.includes(this.state.author)
+    
+
+    console.log('is followed',this.isFollowed)
   }
 
   blgModal = () => {
-    this.props.freeze()
+    // this.props.freeze()
     if (this.state.editable) {
       this.props.openModal('edit blog', this.state.currentUser)
     }
@@ -40,14 +42,15 @@ class Post extends React.Component{
 
   render() {
     let post = this.state.post
-    let followable = !this.state.isFollowed
     let editable = this.state.editable
+    let followable = (!this.isFollowed && !editable)
+    console.log(followable, post, this.state.currentUser)
     let postId = this.state.post.id
     let blogOpen = this.props.blogOpen
     return (
       <li className='post' id='post-item'>
 
-        <div id="pi-prof-box" >
+        <div id="pi-prof-box" className={blogOpen ? 'blog' : ''}>
           <div id="prof-slider-bounds" >
             <img onClick={() => this.blgModal()} id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
           </div>
@@ -56,13 +59,21 @@ class Post extends React.Component{
               refactor to disclude author name when in blog show 
               or post belongs to current user
           */}
+          <span id="post-top"> 
+            <div id="post-spacer-top" className='post'>
           { !blogOpen ? <h3 id="post-author">{post.username}</h3> : '' }
           
-          { (followable && !editable ) ?
-            <PostButtons editable={editable} post={post} location={'follow'}/>
+          { followable ?
+            <PostButtons id='follow-button'
+              // freeze={this.props.freeze} 
+              editable={editable} 
+              post={post} 
+              location={'follow'}/>
               :
-              '' }
-            
+            ''
+            }
+              </div>
+            </span>
             { post.content_type === 'Text' ?
                 <div id="text-content" className="post">
                   <h3 id="post-title">{post.title}</h3>

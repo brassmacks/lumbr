@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Route, Redirect, withRoute, withRouter } from 'react-router-dom'
 
-const Auth = ({ component: Component, path, loggedIn, exact, freeze }) => (
-  <Route path={path} exact={exact} freeze={freeze} render={(props) => (
+const Auth = ({ component: Component, path, loggedIn, exact}) => (
+// const Auth = ({ component: Component, path, loggedIn, exact, freeze }) => (
+  // <Route path={path} exact={exact} freeze={freeze} render={(props) => (
+  <Route path={path} exact={exact} render={(props) => (
     !loggedIn ? 
       (
         <Component {...props} /> 
@@ -13,13 +15,16 @@ const Auth = ({ component: Component, path, loggedIn, exact, freeze }) => (
     )} /> 
 );
 
-const Protected = ({ component: Component, path, loggedIn, exact, freeze, melt }) => {
+// const Protected = ({ component: Component, path, loggedIn, exact, freeze, melt }) => {
+const Protected = ({ component: Component, path, loggedIn, exact }) => {
   // remove melt if unneeded
   return(
-  <Route path={path} exact={exact} freeze={freeze} melt={melt} render={ props => (
+  // <Route path={path} exact={exact} freeze={freeze} melt={melt} render={ props => (
+  <Route path={path} exact={exact} render={ props => (
     loggedIn ?
       (
-        <Component freeze={freeze} melt={melt} {...props} />
+        // <Component freeze={freeze} melt={melt} {...props} />
+        <Component {...props} />
         
       ) : (
         <Redirect to="/login" />

@@ -1,9 +1,10 @@
 import React from 'react'
 
-export const EditPost = (post,  update, removeFile) => {
-  let path = post.type;
+export const EditPost = (post, update, removeFile, draft) => {
+  let path = post.content_type;
+  //  
   const renderContents = () => (
-    post.title === 'media' ? 
+    (path === 'Photo' || 'Video') || post.title === 'media' ? 
 
       <div className={ `update-media-post` }>
         <img src={ post.photoUrl } id='preview' className='update-media-post' />
@@ -15,7 +16,9 @@ export const EditPost = (post,  update, removeFile) => {
       </div>
        : 
       <input type="text"
-        placeholder={ post.title || 'Title' } value={ post.title }
+      // ACTION_ITEM
+      // add default value instead on other inputs
+        placeholder={ post.title || 'Title' } defaultValue={ post.title }
         id={ `${path}-post-title` } className="post-form"
         autoComplete="off"
         onChange={ update('title') } />

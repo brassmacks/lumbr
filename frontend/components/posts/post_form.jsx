@@ -8,10 +8,11 @@ import { EditPost } from './edit_post'
 class PostForm extends React.Component {
   constructor(props) {
     super(props);
-    this.currentUser = this.props.currentUser
-    this.state = this.props.post;
     
-    this.update = this.update.bind(this)
+    this.currentUser = this.props.currentUser;
+    this.state = {post: this.props.post};
+
+    this.update = this.update.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
     this.toggleContent = this.toggleContent.bind(this);
@@ -19,44 +20,49 @@ class PostForm extends React.Component {
     this.trackChanges = this.trackChanges.bind(this);
     this.component;
 
-    this.setComponent = () => {
-    
-    switch (this.props.type) {          
-      case 'Link':
-          this.component = () => postContentUrl( 'flex', this.update )
-        break;
-      case 'Update':
-        this.state.tagString = 
-          this.props.post.tags ?
-            this.props.post.tags.map(tag => `#${tag.tag_content} `).join('')
-             :
-            "";
 
-        this.component = () => EditPost(
-          this.state,
-          this.update, 
-          this.removeFile,
-          )
-        break;
-      case 'Media': 
-        this.component = () => mediaPost(
-            this.update, this.handleFile, 
-            this.toggleContent, 
-            this.state.urlInput, this.props.formType 
-            );
-        break;
-      default:
-        this.component = () => textPost(
-            this.update, 
-            this.state.title, 
-            this.state.body, 
-            this.props.formType
-          );
-      }
-      this.component = this.component.bind(this);
-    }
     this.setComponent();
   }
+
+  setComponent = () => {
+  // 
+  switch (this.props.type) {
+    case 'Link':
+      this.component = () => postContentUrl('flex', this.update)
+      break;
+    case 'Update':
+      // let draft = this.props.draft;
+      // draft[tagString] = 
+      //   this.props.fullPost.tags ?
+      //     this.props.post.tags.map(tag => `#${tag.tag_content} `).join('')
+      //      :
+      //     "";
+
+      this.component = () => EditPost(
+        this.props.fullPost,
+        this.update,
+        this.removeFile,
+        this.draft
+      )
+      break;
+    case 'Media':
+      this.component = () => mediaPost(
+        this.update, this.handleFile,
+        this.toggleContent,
+        this.state.urlInput, this.props.formType
+      );
+      break;
+    default:
+      this.component = () => textPost(
+        this.update,
+        this.state.title,
+        this.state.body,
+        this.props.formType
+      );
+  }
+  this.component = this.component.bind(this);
+}
+
 
 
   handlePostSubmit(e) {
@@ -65,20 +71,20 @@ class PostForm extends React.Component {
     let draft = {}
     let post;
 
-    if (this.props.type === 'Update') {
-      draft = Object.fromEntries(
-        this.state.changes.map( key => {
-          // build out condition where all tags are handled pre post submit
-          if (key === "tag_string") return ; 
-          return [ key, this.state[key] ] 
-        }));
-      post = Object.assign(
-        draft,
-        { id: this.state.id }
-        // { tags: this.attachTags(this.state.tagString)}
-      );
-      delete post.tagString;
-    } else {
+    // if (this.props.type === 'Update') {
+      // draft = Object.fromEntries(
+        // this.state.changes.map( key => {
+        //   // build out condition where all tags are handled pre post submit
+        //   if (key === "tag_string") return ; 
+        //   return [ key, this.state[key] ] 
+        // }));
+      //   post = Object.assign(
+      //   draft,
+      //   { id: this.state.id }
+      //   // { tags: this.attachTags(this.state.tagString)}
+      // );
+      // delete post.tagString;
+    // } else {
       draft = {
         title: this.state.title,
         body: this.state.body,
@@ -92,10 +98,12 @@ class PostForm extends React.Component {
          post.append(`post[${key}]`, draft[key]) );
 
       if (this.state.mediaAttached) post.append('post[media]', this.state.media);
-    }
+    // }
       
     this.props.postAction(post);
+
     this.props.closeForm();
+    this.props.melt()
   }
 
   toggleContent = (e) => {
@@ -104,7 +112,11 @@ class PostForm extends React.Component {
       urlInput: !this.state.urlInput
     })
   }
-
+  close(e){
+    e.preventDefault();
+    
+    this.props.closeForm();
+  }
   attachTags(tagString) {
     if (tagString.length >= 1) {
       return tagString.split(' ').join('').split('#')
@@ -138,9 +150,12 @@ class PostForm extends React.Component {
     this.component = () => <img id='preview' className='post-create' src={preview} />
   }
   trackChanges(postKey) {
-    if (!this.state.changes.includes(postKey)) {
-      this.state.changes.push(postKey)
-    }
+    // ACTION_ITEM 
+    // CHANGE TO ON UPDATE
+
+    // if (!this.state.changes.includes(postKey)) {
+    //   this.state.changes.push(postKey)
+    // }
   }
   update(field) {
     if (this.props.type === 'Update') this.trackChanges(field)
@@ -152,14 +167,14 @@ class PostForm extends React.Component {
   render(){
     let type = this.state.contentType;
     let username = this.currentUser.username;
-
+    let component = this.component;
     return (
       <div id="post-channel">
         <div id="post-form-container">
           <h3 id="post-form-author" className="post-form">{username}</h3>
           <form className="post-form" id="post-form-form" 
             onSubmit={(e) => this.handlePostSubmit(e) }>
-            {this.component()}
+            {component()}
             <input type="text" value={this.state.tagString} 
               placeholder={
                 this.props.formType === 'Update' ? 
@@ -169,7 +184,7 @@ class PostForm extends React.Component {
             />
             <div id="post-buttons" className="post-submit">
               <Link to="/dashboard">
-                <button onClick={ () => this.props.closeForm() } id="post-form-close" >Close</button>
+                <button onClick={ (e) => this.close(e) } id="post-form-close" >Close</button>
               </Link>
               <button type="submit" id="post-form-post" onSubmit={ (e) => this.handlePostSubmit(e)}>
                 Post now</button>

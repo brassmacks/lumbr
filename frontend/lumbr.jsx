@@ -9,8 +9,8 @@ import fetchUser from './util/user_api_util'
 document.addEventListener('DOMContentLoaded', () => {
   
   let store; 
-  const freeze = () => { document.body.style.overflow = "hidden" }
-  const melt = () => { document.body.style.overflow = "" }
+  // const freeze = () => { document.body.style.overflow = "hidden" }
+  // const melt = () => { document.body.style.overflow = "auto" }
 
   if (window.currentUser) {
 
@@ -24,5 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   else { store = configureStore(); }
   
   const root = document.getElementById('root');
-  ReactDOM.render(<Root store={store} freeze={freeze} melt={melt} />, root);
+  // ReactDOM.render(<Root store={store} freeze={freeze} melt={melt} />, root);
+  ReactDOM.render(<Root store={store} />, root);
 });

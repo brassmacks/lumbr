@@ -9,6 +9,7 @@ import { closeModal } from '../../actions/modal_actions';
 
 class EditPostForm extends React.Component {
   constructor(props) {
+    // 
     super(props);
     this.state = { 
       post: this.props.post,
@@ -30,6 +31,7 @@ class EditPostForm extends React.Component {
     });
   }
   render() {
+    // 
     let type = this.state.post.contentType;
     let username = this.props.currentUser.username;
 
@@ -40,10 +42,10 @@ class EditPostForm extends React.Component {
           <form className="post-form" id="update-post-form" 
           onSubmit={ (e) => update(e)} >
             {/* {this.component()} */}
-            <input type="text" placeholder={this.state.tagsString}
-              value={this.state.tagString}
-              id="post-tags-input" className="post-form"
-              onChange={this.update('tagString')} />
+            {/* <input type="text" placeholder={this.state.tagsString}
+              value={this.state.tagString} */}
+              {/* id="post-tags-input" className="post-form"
+              onChange={this.update('tagString')} /> */}
               <Link to="/dashboard">
                 <button onClick={ () => this.props.close() } 
                 id="post-form-close">Close</button>
@@ -58,20 +60,27 @@ class EditPostForm extends React.Component {
   }
 }
 
-const mSTP = (state, ownProps) => ({
-  postId: ownProps.post,
-  currentUser: state.entities.users[state.session.id],
-  type: 'Update',
-  post: Object.assign(
-    state.entities.posts[ownProps.post], 
-    { tagString: '' }, 
-    { changes: []}
-  ),
-  formType: 'Update',
-  
-});
+const mSTP = (state, ownProps) => {
+  // 
+  let postDraft;
+  postDraft = ownProps.post ? 
+      Object.assign({}, 
+        state.entities.posts[ownProps.post],
+        {changes: [],
+        tagString: '' }) 
+        : {}
+      // ACTION_ITEM MAKE POST DRAFT OBJECT AND USE IT TO POPULATE AGAINST TYPE
+  return{
+    postId: ownProps.post,
+    fullPost: ownProps.fullPost,
+    currentUser: state.entities.users[state.session.id],
+    type: 'Update',
+    formType: 'Update',
+    postDraft: postDraft,
+}};
 
 const mDTP = dispatch => ({
+  closeModal: () => dispatch(closeModal()),
   fetchPost: postId => dispatch(fetchPost(postId)),
   postAction: post => dispatch(updatePost(post))
 });

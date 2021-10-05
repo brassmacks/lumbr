@@ -11,8 +11,7 @@ const mSTP = (state, ownProps) => {
   let post = ownProps.post
   let currentUser = state.entities.users[state.session.id]
   let author = ownProps.post.user_id
-  let isFollowed = currentUser ? currentUser.follows.includes(author) 
-    : false
+
   let tags = ownProps.post.tags || [];
   return {
   post: post,
@@ -22,8 +21,7 @@ const mSTP = (state, ownProps) => {
   blogOpen: ownProps.blogOpen,
   // ACTION_ITEM: CONVERT TO FETCH TAGS FROM STATE=>OWNPROPS.POST.TAGS.MAP
   editable: currentUser.id === author,
-  isFollowed: isFollowed,
-  freeze: ownProps.freeze,
+  // freeze: ownProps.freeze,
 }}
 const mDTP = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts()),

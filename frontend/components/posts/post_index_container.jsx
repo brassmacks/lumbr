@@ -26,7 +26,7 @@ const mSTP = (state, ownProps) => {
       posts: posts,
       allPosts: allPosts,
       posts_by_Id: posts_by_Id,
-      freeze: ownProps.freeze,
+      // freeze: ownProps.freeze,
       blogOpen: ownProps.blogOpen,
       isFetched: false
             }

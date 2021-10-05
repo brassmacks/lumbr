@@ -18,16 +18,20 @@ import PostShowContainer from "./posts/post_show_container"
 import PostIndexContainer from './posts/post_index_container'
 import Dashboard from './dashboard/dashboard';
 import { render } from 'react-dom';
+// const App = ({freeze, melt}) => (
+const App = () => (
 
-const App = ({freeze, melt}) => (
   <div id="app">
-    <Modal melt={melt} />
-    <BannerContainer freeze={freeze} />
+    <Modal />
+    {/* <Modal freeze={freeze} melt={melt} /> */}
+    {/* <BannerContainer freeze={freeze} /> */}
+    <BannerContainer />
     <Splash />
     <AuthRoute exact path="/" component={Modal} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />  
-    <ProtectedRoute exact path="/dashboard" component={DashboardContainer} freeze={freeze} melt={melt}/>
+    <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
+    {/* <ProtectedRoute exact path="/dashboard" component={DashboardContainer} freeze={freeze} melt={melt}/> */}
     {/* <ProtectedRoute exact path="/dashboard" 
       render={(freeze)=> (<DashboardContainer freeze={freeze} />)}/> */}
     {/* <ProtectedRoute exact path="/new" component={PostForm} />

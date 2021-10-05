@@ -17,7 +17,7 @@ const mSTP = ({ session, entities: { users, posts }, modal }, ownProps) => {
     currentUser: users[session.id],
     pth: ownProps.location.pathname,
     modal,
-    freeze: ownProps.freeze
+    // freeze: ownProps.freeze
   })
 };
 

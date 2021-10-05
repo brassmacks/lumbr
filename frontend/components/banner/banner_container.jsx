@@ -10,7 +10,7 @@ const mSTP = ( { session, entities: { users, blogs } }, ownProps) => {
         ownBlogFetched: blogs[session.id],
         currentUser: users[session.id],
         pth: ownProps.location.pathname,
-        freeze: ownProps.freeze
+        // freeze: ownProps.freeze
 }};
 
 const mDTP = dispatch => ({

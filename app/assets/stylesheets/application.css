@@ -116,6 +116,7 @@ div#pi-prof-box{
   background-color: transparent;
   scroll-snap-align: start;
 }
+
 #pi-post-house{
   border-radius: 3px;
   background-color: rgb(255,255,255);
@@ -126,6 +127,10 @@ div#pi-prof-box{
   font-weight: 375;
 }
 
+div#pi-prof-box.blog{
+  border: .1px solid rgba(0, 0, 0, .1);
+  border-radius: 3px;
+}
 img#pi-prof-pic.sticky{
   border-radius: 3px;
   width:64px;
@@ -152,12 +157,47 @@ li#post-item.post {
   padding-bottom: 7%;
   position: relative;
 }
-h3#post-author{
+
+span#post-top{
+  display: flex;
+  flex-direction: row;
+  width: 500px;
   border-radius: 3px 20px 0px 0px;
   font-size: 13px;
   padding:20px;
-  justify-content: center;
+  justify-content: flex-start;
   font-weight: 500;
+}
+div#post-spacer-top {
+  display: inline;
+  
+}
+button#follow {
+  cursor: pointer;
+  display: inline;
+  align-items: center;
+  outline: none;
+  background-color: transparent;
+  border-style: none;
+  color: rgb(0, 184, 255);
+  font-family: Source code pro;
+  font-size: 13px;
+  font-weight: 525;
+  padding: 0px;
+  padding-left:3px;
+
+}
+button.in-post-bottom{
+  cursor: pointer;
+  display: inline;
+  align-items: center;
+  outline: none;
+  background-color: transparent;
+  border-style: none;
+}
+h3#post-author{
+  display: inline;
+  padding-right: 3px;
 }
 div#text-content.post{
   height:fit-content;
@@ -165,6 +205,7 @@ div#text-content.post{
   line-height: 24px;
 }
 h3#post-title{
+  
   font-weight: 400;
   font-size: 16px;
   padding-bottom: 17px;

@@ -3,7 +3,7 @@ import  PostButtons  from '../buttons/post_button_container'
 import { Dispatch } from 'react'
 
 export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
-  blogOpen, openModal, deletePost, dispatch })=> {
+  blogOpen, openModal, deletePost, dispatch})=> {
   // ACTION_ITEM
   // move alt to postindex and fetch in component did mount
   // switch case for each content type
@@ -18,7 +18,7 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
     return list
   }
   const blgModal = () => {
-    freeze()
+    // freeze()
     if (editable) {
       openModal('edit blog', currentUser)
     }
@@ -64,7 +64,12 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
             </div>
           </div>
           }
-          {<PostButtons editable={editable} post={post} postId={postId}/>}
+          {/* {<PostButtons onClick={()=> this.props.freeze()} */}
+          {<PostButtons
+            editable={editable}
+            // freeze={freeze}
+            post={post} 
+            postId={postId}/>}
         </div>
       </div>
       

@@ -14,13 +14,16 @@ import { render } from 'react-dom';
 
 
 const mapStateToProps = (state, ownProps) => {
-
+  if (state.modal)
   console.log('inside modal propstostate,', state)
   // if (!ownProps.modal) return {modal:{type: null}}
-  let modal = state.modal || { modal: {type: null} } 
+  let modal = state.modal || { modal: { type: null } } 
   let author_id = state.modal.blog || state.session.id;
+  let post_id = state.modal.type === "edit post" ? state.modal.blog : null
+  let post = state.entities.posts[post_id] || null
   let blogs = state.entities.blogs || null
   let blog =  blogs ? state.entities.blogs[author_id] : null
+
 
   return {
     currentUser: state.entities.users[state.session.id],
@@ -29,8 +32,9 @@ const mapStateToProps = (state, ownProps) => {
     blogContent: blog,
     author: state.entities.users[author_id],
     modal: modal,
-    melt: ownProps.melt,
-    isFetched: false
+    isFetched: false,
+    post_id: post_id,
+    post: post
   };
 }
 
