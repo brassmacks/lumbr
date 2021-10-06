@@ -72,6 +72,7 @@ class Post extends React.Component{
               :
             ''
             }
+            <PostButtons id='post-options' post={post} location='drop-down'/>
               </div>
             </span>
             { post.content_type === 'Text' ?

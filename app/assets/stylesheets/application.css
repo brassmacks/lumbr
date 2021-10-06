@@ -185,7 +185,41 @@ button#follow {
   font-weight: 525;
   padding: 0px;
   padding-left:3px;
+}
 
+div#post-options button{
+  outline: none;
+  background-color: transparent;
+  border-style: none;
+}
+
+
+div#post-options{
+  cursor: pointer;
+  display: inline;
+  align-items: center;
+  justify-self: right;
+}
+
+div#drop-tainer.drop-down{
+  background-color: white;
+  border-radius: 3px;
+  box-shadow: 0 0 15px 0 rgba(0 0 0 / 50%);
+  color: black;
+  display: inline-block;
+  position: absolute;
+  will-change: transform;
+  width: 250px;
+  height: auto;
+  top: 0px;
+  left: 0px;
+  transform: translate3d(386px, 43px, 0px);
+}
+
+
+
+div#drop-tainer.hidden{
+  display: none;
 }
 button.in-post-bottom{
   cursor: pointer;

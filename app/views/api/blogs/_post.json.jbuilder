@@ -1,4 +1,5 @@
 json.extract! post, :id, :title, :user_id, :body, :content_type
+json.created_at post.created_at.in_time_zone("Pacific Time (US & Canada)")
 json.extract! @user, :id, :username
 json.photoUrl url_for(post.photo) if post.photo.attached?
 

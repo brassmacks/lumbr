@@ -17,14 +17,24 @@ export default class PostButtons extends React.Component{
       location: this.props.location,
       postId: this.props.post.id
     }
-    this.postId = this.props.post.id
-    this.follow = this.props.followData
-    this.showing = true
+    this.dropMenu = React.createRef()
+    this.postId = this.props.post.id;
+    this.follow = this.props.followData;
+    this.showing = true;
+    this.open = false;
     //ACTION_ITEM post_author is followed?
   }
   componentDidMount() {
   }
   // use effect || will unmount + compdid || setState 
+
+  timeStamp() {
+    let timeStamp = new Date(this.state.post.created_at);
+    let [dateString, timeString] = [timeStamp.toDateString(), timeStamp.toLocaleTimeString()]
+    debugger
+    return <a id="post-created-at" className='post-button-drop-down'>
+      Posted: {dateString, timeString}</a>
+  }
 
   followToggle(e) {
     e.target.className = 'hidden'
@@ -33,9 +43,17 @@ export default class PostButtons extends React.Component{
     // ACTION_ITEM ternary if this.authorIsFollowed // display = hidden
     // add author to list of currentUser.following_by_id
   }
+  showToggle(e) {
+    e.preventDefault();
+    console.log(this.dropMenu)
+    this.dropMenu.current.className = this.open ? 'hidden' : 'drop-down'
+    this.open = !this.open
+  }
+
   postModal = (modal) => {
     this.props.openModal(modal, this.postId)
   }
+  
   button = (type, iconPath) => <button id={`${type}-button`} 
     className={'in-post-bottom'}
     onClick={() => this.postModal(type)}>
@@ -43,8 +61,30 @@ export default class PostButtons extends React.Component{
     </img>
   </button>
 
+  dropDown(){
+    return (
+    <div id="post-options" className='drop-house'>
+      <button onClick={e => this.showToggle(e)} id="drop-button" className='post-button-dropper'>...</button>
+      <div id='drop-tainer' className='hidden' ref={this.dropMenu}>
+
+      <ul id="post-options-list" className='post-button-drop-down'>
+      <li id="time-stamp" className='post-button-drop-down'>
+        {this.timeStamp()}
+      </li>
+      <li id="drop-copy-link" className='post-button-drop-down'>
+          <button className='post-button-drop-down'>copy link </button>
+      </li>
+        <li id="drop-unfollow-button" className='post-button-drop-down'>
+          <button onClick={e => this.followToggle()} id="" className='post-button-drop-down'>unfollow</button>
+        </li>
+        </ul>
+      </div>
+    </div>
+  )}
   render() {
-    
+    this.timeStamp()
+    if (this.state.location === 'drop-down') return this.dropDown()
+
     if (this.state.location === 'follow') {
       
       return (
@@ -53,7 +93,7 @@ export default class PostButtons extends React.Component{
       onClick = {(e)=> this.followToggle(e)}> 
       Follow</button >
       : ''
-  )}
+    )}
   
   
   return (
