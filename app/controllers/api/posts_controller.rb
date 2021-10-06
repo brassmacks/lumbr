@@ -39,12 +39,13 @@ class Api::PostsController < ApplicationController
   end
 
   def update
-
+    p post_params
     puts post_params
-    @post = Post.find(post_params[:id].to_i)
+    
+    @post = Post.find(post_params[:id])
 
     if @post.update(post_params)
-      render :post
+      render :show
     else
       render json: @post.errors.full_messages, status: 422
     end
@@ -52,16 +53,15 @@ class Api::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.follows
     if @post.destroy
-      render :show
+      render json: ['post deleted', params[:id]], status: 200
     else
       render json:@post.errors.full_messages, status: 422
     end
   end
 
   def post_params
-    params.require(:post).permit(:id, :title, :body, :content_type, :media, :media_attached, :user_id, :url, :tags, :linked_content_type)
+    params.require(:post).permit(:post, :id, :title, :body, :content_type, :media, :media_attached, :user_id, :url, :tags, :linked_content_type)
   end
 
 end

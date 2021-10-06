@@ -5,16 +5,12 @@ import { createPhotoPost } from '../../actions/post_actions';
 import { closeModal } from '../../actions/modal_actions';
 
 const mSTP = (state, ownProps) => {
-  const type = ownProps.type
   return({
-  currentUser: state.entities.users[state.session.id],
-  post: {
-    title: '', body: '', contentType: type,
-    source: '', tags: [], photoFile: null,
-    user_id: state.session.id, urlInput: false,
-    postId: false, tagString: "", mediaAttached: false
-      },
-  formType: ownProps.formType
+    currentUser: state.entities.users[state.session.id],
+    type: ownProps.type,  
+    user_id: state.session.id, 
+    postId: false,  
+    formType: ownProps.formType
   });
 }
 

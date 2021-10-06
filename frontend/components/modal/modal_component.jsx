@@ -16,7 +16,7 @@ class Modal extends React.Component {
   constructor(props) {
     super(props)
     console.log(props)
-    debugger
+    // debugger
     this.state = {
       allBlogs: this.props.blogs,
       modal: this.props.modal,
@@ -81,7 +81,6 @@ class Modal extends React.Component {
   
 // function Modal(props) {
   close = () => {
-    debugger
     this.melt()
     this.props.closeModal()
     // this.defineComponent()
@@ -148,7 +147,8 @@ class Modal extends React.Component {
       break;
     case 'delete post':
       // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
-      this.component= <DeletePst close={close} post={this.props.post_id} />
+      // ACTION_ITEM CHANGE BLOG OPTION TO POSTID IN STATE SLICE
+      this.component= <DeletePst close={close} post={this.props.modal.blog} />
       break
     case 'CLOSE_MODAL':
       this.melt()

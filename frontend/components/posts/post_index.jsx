@@ -108,7 +108,6 @@ class PostIndex extends React.Component {
         </div>
       )
     }
-    debugger
     return (
     <div id="post-index-wrapper">
       <ul id="post-index-list">

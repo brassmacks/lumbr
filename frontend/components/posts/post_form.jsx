@@ -10,7 +10,21 @@ class PostForm extends React.Component {
     super(props);
     
     this.currentUser = this.props.currentUser;
-    this.state = {post: this.props.post};
+    this.state = props.type === 'Update' ? 
+      {id: this.props.post} 
+      :
+      {
+        title: '',
+        body: '',
+        source: '',
+        tags: [],
+        user_id: this.props.user_id,
+        contentType: this.props.type,
+        photoFile: null,
+        urlInput: false,
+        tagString: "",
+        mediaAttached: false,
+      }
 
     this.update = this.update.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
@@ -25,85 +39,65 @@ class PostForm extends React.Component {
   }
 
   setComponent = () => {
-  // 
-  switch (this.props.type) {
-    case 'Link':
-      this.component = () => postContentUrl('flex', this.update)
-      break;
-    case 'Update':
-      // let draft = this.props.draft;
-      // draft[tagString] = 
-      //   this.props.fullPost.tags ?
-      //     this.props.post.tags.map(tag => `#${tag.tag_content} `).join('')
-      //      :
-      //     "";
-
-      this.component = () => EditPost(
-        this.props.fullPost,
-        this.update,
-        this.removeFile,
-        this.draft
-      )
-      break;
-    case 'Media':
-      this.component = () => mediaPost(
-        this.update, this.handleFile,
-        this.toggleContent,
-        this.state.urlInput, this.props.formType
-      );
-      break;
-    default:
-      this.component = () => textPost(
-        this.update,
-        this.state.title,
-        this.state.body,
-        this.props.formType
-      );
+  
+    switch (this.props.type) {
+      case 'Link':
+        this.component = () => postContentUrl('flex', this.update)
+        break;
+      case 'Update':
+        this.component = () => EditPost(
+          this.props.fullPost,
+          this.update,
+          this.removeFile,
+        )
+        break;
+      case 'Media':
+        this.component = () => mediaPost(
+          this.update, this.handleFile,
+          this.toggleContent,
+          this.state.urlInput, this.props.formType
+        );
+        break;
+      default:
+        this.component = () => textPost(
+          this.update,
+          this.state.title,
+          this.state.body,
+          this.props.formType
+        );
+    }
+    this.component = this.component.bind(this);
   }
-  this.component = this.component.bind(this);
-}
 
+  newPostSubmit(){
+    debugger
+    let draft = {
+      title: this.state.title,
+      body: this.state.body,
+      content_type: this.props.formType,
+      user_id: this.state.user_id,
+      media_attached: this.state.mediaAttached,
+      tags: [this.attachTags(this.state.tagString)]
+    }
 
+    let post = new FormData();
+    Object.keys(draft).forEach(key => post.append(`post[${key}]`, draft[key]));
+    if (this.state.mediaAttached) post.append('post[media]', this.state.media);
+
+    this.props.postAction(post);
+
+  }
 
   handlePostSubmit(e) {
     e.preventDefault();
+    debugger
+    this.props.type === 'Update' ?
+        this.props.postAction(this.state) 
+          :
+        this.newPostSubmit();
 
-    let draft = {}
-    let post;
-
-    // if (this.props.type === 'Update') {
-      // draft = Object.fromEntries(
-        // this.state.changes.map( key => {
-        //   // build out condition where all tags are handled pre post submit
-        //   if (key === "tag_string") return ; 
-        //   return [ key, this.state[key] ] 
-        // }));
-      //   post = Object.assign(
-      //   draft,
-      //   { id: this.state.id }
-      //   // { tags: this.attachTags(this.state.tagString)}
-      // );
-      // delete post.tagString;
-    // } else {
-      draft = {
-        title: this.state.title,
-        body: this.state.body,
-        content_type: this.props.formType,
-        user_id: this.state.user_id,
-        media_attached: this.state.mediaAttached,
-        tags: [this.attachTags(this.state.tagString)]
-      };
-      post = new FormData();
-      Object.keys(draft).forEach( key =>
-         post.append(`post[${key}]`, draft[key]) );
-
-      if (this.state.mediaAttached) post.append('post[media]', this.state.media);
-    // }
-      
-    this.props.postAction(post);
-
+    this.props.closeModal();
     this.props.closeForm();
-    this.props.melt()
   }
 
   toggleContent = (e) => {
@@ -158,7 +152,6 @@ class PostForm extends React.Component {
     // }
   }
   update(field) {
-    if (this.props.type === 'Update') this.trackChanges(field)
     return e => this.setState({
       [field]: e.currentTarget.value
     });
