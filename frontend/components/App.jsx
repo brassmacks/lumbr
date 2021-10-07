@@ -23,23 +23,13 @@ const App = () => (
 
   <div id="app">
     <Modal />
-    {/* <Modal freeze={freeze} melt={melt} /> */}
-    {/* <BannerContainer freeze={freeze} /> */}
     <BannerContainer />
     <Splash />
+    <Route exact path='blog/:id' />
     <AuthRoute exact path="/" component={Modal} />
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />  
     <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
-    {/* <ProtectedRoute exact path="/dashboard" component={DashboardContainer} freeze={freeze} melt={melt}/> */}
-    {/* <ProtectedRoute exact path="/dashboard" 
-      render={(freeze)=> (<DashboardContainer freeze={freeze} />)}/> */}
-    {/* <ProtectedRoute exact path="/new" component={PostForm} />
-    <ProtectedRoute exact path="/new/text" component={PostForm} />
-    <ProtectedRoute exact path="/new/quote" component={PostForm} />
-    <ProtectedRoute exact path="/new/photo" component={PostForm} />
-    <ProtectedRoute exact path="/new/link" component={PostForm} />
-    <ProtectedRoute exact path="/new/video" component={PostForm} /> */}
     
     
     

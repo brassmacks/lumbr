@@ -15,13 +15,17 @@ export default class PostButtons extends React.Component{
       post: this.props.post,
       editable: this.props.editable,
       location: this.props.location,
-      postId: this.props.post.id
+      postId: this.props.post.id,
+      open: false
     }
     this.dropMenu = React.createRef()
     this.postId = this.props.post.id;
     this.follow = this.props.followData;
     this.showing = true;
-    this.open = false;
+    this.menuToggle = this.menuToggle.bind(this)
+    this.menuOpen = this.menuOpen.bind(this)
+    this.menuClose = this.menuClose.bind(this)
+    this.dropDown = this.dropDown.bind(this)
     //ACTION_ITEM post_author is followed?
   }
   componentDidMount() {
@@ -33,56 +37,86 @@ export default class PostButtons extends React.Component{
     let [dateString, timeString] = [timeStamp.toDateString(), timeStamp.toLocaleTimeString()]
     debugger
     return <a id="post-created-at" className='post-button-drop-down'>
-      Posted: {dateString, timeString}</a>
+      Posted - {timeString}, <br/> on {dateString}</a>
   }
 
-  followToggle(e) {
+  followToggle() {
     e.target.className = 'hidden'
     this.props.createFollow(this.props.followData)
     this.showing = !this.showing
     // ACTION_ITEM ternary if this.authorIsFollowed // display = hidden
     // add author to list of currentUser.following_by_id
   }
-  showToggle(e) {
-    e.preventDefault();
-    console.log(this.dropMenu)
-    this.dropMenu.current.className = this.open ? 'hidden' : 'drop-down'
-    this.open = !this.open
+
+
+  menuToggle(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    console.log(e)
+    this.state.open ? this.menuClose() : this.menuOpen()
+    
+  }
+  
+  menuClose() {
+    console.log('close')
+    this.dropMenu.current.className = 'hidden'
+    let app = document.getElementById('app')
+    app.removeEventListener('click', this.menuClose)
+    this.setState({ open: false})
+  }
+
+  menuOpen() {
+      console.log('open')
+    this.dropMenu.current.className = 'drop-down'
+    let app = document.getElementById('app')
+    app.addEventListener('click', this.menuClose)
+    this.setState({ open: true})
   }
 
   postModal = (modal) => {
     this.props.openModal(modal, this.postId)
   }
   
-  button = (type, iconPath) => <button id={`${type}-button`} 
-    className={'in-post-bottom'}
-    onClick={() => this.postModal(type)}>
-    <img height='21' src={iconPath}>
-    </img>
-  </button>
+  button = (type, iconPath) => {
+    return (
+    <button id={`${type}-button`} 
+      className={'in-post-bottom'}
+      onClick={() => this.postModal(type)}>
+      <img height='21' src={iconPath}></img>
+    </button>
+    )}
 
   dropDown(){
+
+    
     return (
     <div id="post-options" className='drop-house'>
-      <button onClick={e => this.showToggle(e)} id="drop-button" className='post-button-dropper'>...</button>
+      <div id="post-opt-ainer">
+      <button onClick={this.menuToggle} id="drop-button" 
+      className='post-button-dropper'>...</button>
+      </div>
       <div id='drop-tainer' className='hidden' ref={this.dropMenu}>
 
       <ul id="post-options-list" className='post-button-drop-down'>
       <li id="time-stamp" className='post-button-drop-down'>
         {this.timeStamp()}
       </li>
-      <li id="drop-copy-link" className='post-button-drop-down'>
-          <button className='post-button-drop-down'>copy link </button>
+      <li id="drop-copy-button" className='post-button-drop-down'>
+          <button className='post-button-drop-down'>Copy link </button>
       </li>
         <li id="drop-unfollow-button" className='post-button-drop-down'>
-          <button onClick={e => this.followToggle()} id="" className='post-button-drop-down'>unfollow</button>
+          <button onClick={e => this.followToggle()} id="" className='post-button-drop-down'>Unfollow</button>
+        </li>
+        <li id="drop-close-button" className='post-button-drop-down'>
+          <a id="post-down-close" className='post-button-drop-down'>
+            Close</a>
         </li>
         </ul>
       </div>
     </div>
   )}
   render() {
-    this.timeStamp()
+
     if (this.state.location === 'drop-down') return this.dropDown()
 
     if (this.state.location === 'follow') {

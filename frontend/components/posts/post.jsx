@@ -61,6 +61,8 @@ class Post extends React.Component{
           */}
           <span id="post-top"> 
             <div id="post-spacer-top" className='post'>
+            <div id="post-top-row">
+              {/* <div id="post-top-auth-follow"> */}
           { !blogOpen ? <h3 id="post-author">{post.username}</h3> : '' }
           
           { followable ?
@@ -72,8 +74,10 @@ class Post extends React.Component{
               :
             ''
             }
+              </div>
             <PostButtons id='post-options' post={post} location='drop-down'/>
               </div>
+
             </span>
             { post.content_type === 'Text' ?
                 <div id="text-content" className="post">
