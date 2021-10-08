@@ -14,8 +14,6 @@ import { render } from 'react-dom';
 
 
 const mapStateToProps = (state, ownProps) => {
-  if (state.modal)
-  console.log('inside modal propstostate,', state)
   // if (!ownProps.modal) return {modal:{type: null}}
   let modal = state.modal || { modal: { type: null } } 
   let author_id = state.modal.blog || state.session.id;

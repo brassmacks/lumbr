@@ -24,7 +24,7 @@ margin-right:-21px;
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   border-radius: 3px;
-  padding:21px;
+  padding:21px 21px 0px 21px;
   background-color: white;
   min-height: 289px;
   width: 490px;
@@ -53,7 +53,10 @@ textarea#Text-post-body{
 
 input#post-tags-input{
   line-height: 27px;
-  padding-bottom: 13px;
+  padding-bottom: 7px;
+  height: 45px;
+  vertical-align: middle;
+  font-size: 15px;
 }
 
 div#post-buttons.post-submit{
@@ -62,8 +65,9 @@ div#post-buttons.post-submit{
   justify-content: space-between;
   align-content: center;
   margin:0px -21px 0px -21px;
-  padding: 21px 18px 21px 21px;
+  padding: 21px 21px 21px 21px;
   border-top: 0.5px solid rgba(0, 0, 0, 0.2);
+  border-width: 0px, .5px, 0px, 0px;
   flex-direction: row;
 }
 div#post-buttons button{

@@ -54,13 +54,11 @@ export default class PostButtons extends React.Component{
   menuToggle(e) {
     e.preventDefault()
     e.stopPropagation()
-    console.log(e)
     this.state.open ? this.menuClose() : this.menuOpen()
     
   }
   
   menuClose() {
-    console.log('close')
     this.dropMenu.current.className = 'hidden'
     let app = document.getElementById('app')
     app.removeEventListener('click', this.menuClose)
@@ -113,7 +111,7 @@ export default class PostButtons extends React.Component{
             Copy link </button>
       </li>
       }
-      {this.props.followable && 
+      {!this.props.followable && 
         <li id="drop-unfollow-button" className='post-button-drop-down'>
           <button onClick={e => this.followToggle(e)} id="" className='post-button-drop-down'>Unfollow</button>
         </li>
@@ -144,7 +142,7 @@ export default class PostButtons extends React.Component{
   return (
     <div>
           {  this.props.editable ? 
-          <div>
+          <div id ='feed-post-butts'>
             
             {this.button('delete post', Trash)}
             {this.button('edit post', Pencil)}
@@ -153,9 +151,9 @@ export default class PostButtons extends React.Component{
             
           </div>
           :
-          <div>
-            {this.button('edit repost', Repost)}
+          <div id="feed-post-butts">
             {this.button('share post', Sharow)}
+            {this.button('edit repost', Repost)}
           </div>
           }
           </div>

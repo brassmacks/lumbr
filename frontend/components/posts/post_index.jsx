@@ -7,7 +7,6 @@ class PostIndex extends React.Component {
   constructor(props){
     
     super(props)
-    console.log('inside post index constructor', this.props)
     // this.loading = true
     this.state = {
       posts: this.props.posts,
@@ -36,7 +35,6 @@ class PostIndex extends React.Component {
     
     if (this.loading) {
       this.props.fetchPosts().then( posts => {
-        console.log('inside component did mount post index')
       if (!this.props.blogOpen) {
           this.setState({
             allPosts: Object.assign({}, this.state.allPosts, posts.posts), 

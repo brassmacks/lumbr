@@ -156,15 +156,21 @@ class PostForm extends React.Component {
       [field]: e.currentTarget.value
     });
   }
+  debugger
 
   render(){
     let type = this.state.contentType;
     let username = this.currentUser.username;
     let component = this.component;
     return (
+
       <div id="post-channel">
         <div id="post-form-container">
+          <div id="post-author-pic" >
+            <img id="pa-prof-pic" className="post-author-pic" src={this.props.currentUser.profileUrl} alt="" ></img>
+          </div>
           <h3 id="post-form-author" className="post-form">{username}</h3>
+
           <form className="post-form" id="post-form-form" 
             onSubmit={(e) => this.handlePostSubmit(e) }>
             {component()}
@@ -175,13 +181,16 @@ class PostForm extends React.Component {
               id="post-tags-input" className="post-form"
               onChange={this.update('tagString')}
             />
+            <footer id={`post-footer`}>
             <div id="post-buttons" className="post-submit">
               <Link to="/dashboard">
                 <button onClick={ (e) => this.close(e) } id="post-form-close" >Close</button>
               </Link>
               <button type="submit" id="post-form-post" onSubmit={ (e) => this.handlePostSubmit(e)}>
                 Post now</button>
+
             </div>
+            </footer>
           </form>
           </div> 
         </div>

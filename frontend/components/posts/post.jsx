@@ -18,7 +18,6 @@ class Post extends React.Component{
     this.turnPage = this.turnPage.bind(this);
     this.turnBack = this.turnBack.bind(this);
 
-    console.log('is followed',this.isFollowed)
   }
 
   blgModal = () => {
@@ -33,10 +32,10 @@ class Post extends React.Component{
     }
   }
   turnPage(){
-    this.dogEar.current.style.boxShadow = '0 0 3px 3px rgba(0 25 53 / 25%)'
-    this.dogEar.current.style.transform = 'translateX(-10px)'
-    this.dogEar.current.style.transform += 'translateY(10px)'
-    this.cornerCover.current.style.transform = 'rotate(.125turn) translateY(7.5px)'
+    this.dogEar.current.style.boxShadow = '0 0 6px 6px rgba(0 25 53 / 22%)'
+    this.dogEar.current.style.transform = 'translateX(-15px)'
+    this.dogEar.current.style.transform += 'translateY(15px)'
+    this.cornerCover.current.style.transform = 'rotate(.125turn) translateY(11px)'
   }
   turnBack(){
     this.cornerCover.current.style.transform = 'rotate(.125turn) '
@@ -57,7 +56,6 @@ class Post extends React.Component{
     let post = this.state.post
     let editable = this.state.editable
     let followable = (!this.isFollowed && !editable)
-    console.log(followable, post, this.state.currentUser)
     let postId = this.state.post.id
     let blogOpen = this.props.blogOpen
     return (
@@ -99,7 +97,7 @@ class Post extends React.Component{
             ''
             }
               </div>
-            <PostButtons id='post-options' post={post} location='drop-down'/>
+            <PostButtons id='post-options' post={post} followable={this.followable} location='drop-down'/>
               </div>
 
             </span>
@@ -123,7 +121,9 @@ class Post extends React.Component{
                   </div>
                 </div>
             }
-            <PostButtons editable={editable} post={post} location={'option'}/>
+              <footer id='post-footer'>
+                <PostButtons editable={editable} post={post} location={'option'}/>
+              </footer>
           </div>
         </div>
 

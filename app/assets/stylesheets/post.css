@@ -4,21 +4,261 @@ div#corner-box{
   transition: all .4s ease-in;
   background:  rgb(0,25,53);
   position: absolute;
-  top: -22px;
-  right: -22px;
+  top: -20px;
+  right: -22.5px;
   transform: rotate(.125turn);
 }
 div#corner-turn{
   border-radius: 3px;
-  width: 12.5px;
-  height: 12.5px;
-  background: rgb(236, 231, 231);
+  width: 15px;
+  height: 15px;
+  background: rgb(242, 240, 252);
   transition: all .4s ease-in;
   position: absolute;
-  top: -12.5px;
-  right: -12.5px;
+  top: -15px;
+  right: -15px;
   box-shadow: none;
 }
 span#post-spacer-top{
   overflow: hidden;
+}
+footer#post-footer{
+  
+  display: flex;
+  justify-content: right;
+  padding-bottom: 12px;
+  padding-right: 12px;
+}
+div#Photo-post-guts{
+  background-color: rgb(245, 243, 243);
+  width: 100%;
+  height: 196px;
+  display: flex;
+  margin: 0 21px 0 -21px;
+  padding: 0 21px 0 21px;
+  border-top: 2px dashed #989898;
+  border-bottom: 2px dashed #989898;
+  letter-spacing: 2px;
+}
+
+div#Photo-post-choices{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  align-items: center;
+  width:100%;
+}
+
+
+div#Photo-post-choices button{
+  outline: none;
+  background: transparent;
+  border: none;
+  
+}
+input#Photo-upload-input{
+  position: absolute;
+  font-family: favorit;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  left:initial;
+  cursor: pointer;
+}
+
+div#Photo-upload-icon{
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  justify-content: center;
+  width: 50%;
+  font-size: 14px;
+  line-height: 16px;
+  color:#989898;
+}
+div#Photo-url-square{
+flex-grow: 1;
+display: flex;
+height: 100%;
+flex-direction: column;
+align-items: center;
+justify-self: flex-end;
+justify-content: center;
+width: 50%;
+}
+button#Photo-url-butt{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 16px;
+  color:#989898;
+  letter-spacing: 2px;
+  padding:0;
+  border:none;
+  cursor: pointer;
+}
+div#Photo-url-butt-ainer{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+div#inner-url-spacer{
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-left: .5px solid rgba(0, 0, 0, .1);
+}
+img#Photo-post-upload{
+  width:86px;
+}
+img#Photo-url-pic{
+  height: 56px;
+  width: 56px;
+  padding-bottom: 13px;
+}
+div#post-buttons.post-submit{
+  width: 100%;
+  height: 100%;
+
+}
+footer#post-footer{
+  padding:0;
+  max-height: 72px;
+  width: 100%;
+}
+div#feed-post-butts{
+  margin-right:13px;
+  margin-bottom: 13px;
+}
+div#drop-tainer{
+  z-index: 8;
+}
+
+
+div#Video-post-guts{
+  background-color: rgb(245, 243, 243);
+  width: 100%;
+  height: 196px;
+  display: flex;
+  margin: 0 21px 0 -21px;
+  padding: 0 21px 0 21px;
+  border-top: 2px dashed #989898;
+  border-bottom: 2px dashed #989898;
+  letter-spacing: 2px;
+}
+img#Video-post-upload{
+  width:60px;
+  padding-bottom: 13px;
+}
+img#Video-url-pic{
+  height: 56px;
+  width: 56px;
+  padding-bottom: 13px;
+}
+
+div#Video-post-choices{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  align-items: center;
+  width:100%;
+}
+
+
+div#Video-post-choices button{
+  outline: none;
+  background: transparent;
+  border: none;
+  
+}
+input#Video-upload-input{
+  position: absolute;
+  font-family: favorit;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+  left:initial;
+  cursor: pointer;
+}
+
+div#Video-upload-icon{
+  flex-grow: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  justify-content: center;
+  width: 50%;
+  font-size: 14px;
+  line-height: 16px;
+  color:#989898;
+  font-weight: 205;
+  
+  
+}
+div#Video-url-square{
+flex-grow: 1;
+display: flex;
+height: 100%;
+flex-direction: column;
+align-items: center;
+justify-self: flex-end;
+justify-content: center;
+width: 50%;
+}
+button#Video-url-butt{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  line-height: 16px;
+  color:#989898;
+  letter-spacing: 2px;
+  font-weight: 205;
+  padding:0;
+  border:none;
+  cursor: pointer;
+  
+}
+div#Video-url-butt-ainer{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+div#post-author-pic{
+
+  width: 66px;
+}
+
+img#pa-prof-pic{
+  transform: translateX(-108px) translateY(-21px);
+  position: absolute;
+  width: 66px;
+
+  border-radius: 3px;
 }

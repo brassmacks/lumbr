@@ -17,8 +17,7 @@
 @import url(https://fonts.googleapis.com/css?family=Press+Start+2P:regular);
 @import url(https://fonts.googleapis.com/css?family=Merriweather:300,300italic,regular,italic,700,700italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Roboto+Mono:100,200,300,regular,500,600,700,100italic,200italic,300italic,italic,500italic,600italic,700italic);
-
-
+@import url(https://assets.tumblr.com/pop/src/assets/fonts/favorit/favorit-85-cf2f6136.woff2);
 html {
   background-color: rgb(0,25,53);
 }
@@ -268,7 +267,7 @@ div#drop-tainer.drop-down{
   height: auto;
   top: 0px;
   left: 0px;
-  transform: translate3d(386px, 43px, 0px);
+  transform: translate3d(420px, 29px, 0px);
 }
 
 

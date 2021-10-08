@@ -6,7 +6,6 @@ const blogsReducer = (oldState = {}, action) => {
 
   switch (action.type) {
     case RECEIVE_BLOG:
-      console.log('inside blog reducer', action)
       Object.assign(newState, action.blog)
       return newState 
     default:

@@ -5,7 +5,6 @@ export default class BlogEdit extends Component {
     super(props)
     this.postsList = []
     this.sortPosts()
-    console.log('inside blog edit', this.props.blog)
   }
   sortPosts() {
     Object.values(this.props.posts).map(post => {

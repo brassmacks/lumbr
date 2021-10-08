@@ -15,8 +15,6 @@ class Modal extends React.Component {
 
   constructor(props) {
     super(props)
-    console.log(props)
-    // debugger
     this.state = {
       allBlogs: this.props.blogs,
       modal: this.props.modal,
