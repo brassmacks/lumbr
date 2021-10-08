@@ -31,7 +31,9 @@ export default class PostButtons extends React.Component{
   componentDidMount() {
   }
   // use effect || will unmount + compdid || setState 
-
+  componentWillUnmount() {
+    app.removeEventListener('click', this.menuClose)
+  }
   timeStamp() {
     let timeStamp = new Date(this.state.post.created_at);
     let [dateString, timeString] = [timeStamp.toDateString(), timeStamp.toLocaleTimeString()]
@@ -40,12 +42,12 @@ export default class PostButtons extends React.Component{
       Posted - {timeString}, <br/> on {dateString}</a>
   }
 
-  followToggle() {
+  followToggle(e) {
     e.target.className = 'hidden'
     this.props.createFollow(this.props.followData)
     this.showing = !this.showing
-    // ACTION_ITEM ternary if this.authorIsFollowed // display = hidden
-    // add author to list of currentUser.following_by_id
+    // ACTION_ITEM CREATE REF TO ALL FOLLOW BUTTONS RELATED TO AUTHOR
+    // STATE CHANGE AND RE-RENDER OF ALL POSTS BY AUTHOR WHEN ONE IS CLICKED
   }
 
 
@@ -64,9 +66,12 @@ export default class PostButtons extends React.Component{
     app.removeEventListener('click', this.menuClose)
     this.setState({ open: false})
   }
-
+  copyToClipboard(e) {
+    e.stopPropagation()
+    navigator.clipboard.writeText(this.state.post.photoUrl)
+  }
+  
   menuOpen() {
-      console.log('open')
     this.dropMenu.current.className = 'drop-down'
     let app = document.getElementById('app')
     app.addEventListener('click', this.menuClose)
@@ -87,7 +92,7 @@ export default class PostButtons extends React.Component{
     )}
 
   dropDown(){
-
+    
     
     return (
     <div id="post-options" className='drop-house'>
@@ -99,14 +104,20 @@ export default class PostButtons extends React.Component{
 
       <ul id="post-options-list" className='post-button-drop-down'>
       <li id="time-stamp" className='post-button-drop-down'>
-        {this.timeStamp()}
+      {this.timeStamp()}
       </li>
-      <li id="drop-copy-button" className='post-button-drop-down'>
-          <button className='post-button-drop-down'>Copy link </button>
+      { this.state.post.title === 'media' &&
+        <li id="drop-copy-button" className='post-button-drop-down'>
+          <button className='post-button-drop-down'
+            onClick={e => this.copyToClipboard(e)}>
+            Copy link </button>
       </li>
+      }
+      {this.props.followable && 
         <li id="drop-unfollow-button" className='post-button-drop-down'>
-          <button onClick={e => this.followToggle()} id="" className='post-button-drop-down'>Unfollow</button>
+          <button onClick={e => this.followToggle(e)} id="" className='post-button-drop-down'>Unfollow</button>
         </li>
+      }
         <li id="drop-close-button" className='post-button-drop-down'>
           <a id="post-down-close" className='post-button-drop-down'>
             Close</a>

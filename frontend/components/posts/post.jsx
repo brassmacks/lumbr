@@ -11,9 +11,12 @@ class Post extends React.Component{
       tags: this.props.tags,
       editable: this.props.editable,
     }
-
+    this.postBody = React.createRef()
+    this.cornerCover = React.createRef()
+    this.dogEar = React.createRef()
     this.isFollowed = this.props.currentUser.follows.includes(this.state.author)
-    
+    this.turnPage = this.turnPage.bind(this);
+    this.turnBack = this.turnBack.bind(this);
 
     console.log('is followed',this.isFollowed)
   }
@@ -29,7 +32,17 @@ class Post extends React.Component{
       // store.dispatch({ type: 'OPEN MODAL', modal: 'show blog', data })
     }
   }
-
+  turnPage(){
+    this.dogEar.current.style.boxShadow = '0 0 3px 3px rgba(0 25 53 / 25%)'
+    this.dogEar.current.style.transform = 'translateX(-10px)'
+    this.dogEar.current.style.transform += 'translateY(10px)'
+    this.cornerCover.current.style.transform = 'rotate(.125turn) translateY(7.5px)'
+  }
+  turnBack(){
+    this.cornerCover.current.style.transform = 'rotate(.125turn) '
+    this.dogEar.current.style.transform = 'none'
+    this.dogEar.current.style.boxShadow = 'none'
+  }
   tagString = () => {
     let list = ""
     if (this.state.post.tags) {
@@ -48,7 +61,7 @@ class Post extends React.Component{
     let postId = this.state.post.id
     let blogOpen = this.props.blogOpen
     return (
-      <li className='post' id='post-item'>
+      <li ref={this.postBody} className='post' id='post-item'>
 
         <div id="pi-prof-box" className={blogOpen ? 'blog' : ''}>
           <div id="prof-slider-bounds" >
@@ -59,7 +72,18 @@ class Post extends React.Component{
               refactor to disclude author name when in blog show 
               or post belongs to current user
           */}
-          <span id="post-top"> 
+          <span id="post-top" 
+          onMouseEnter={this.props.blogOpen ? "" : () => this.turnPage()}
+              onMouseLeave={this.props.blogOpen ? "" : () => this.turnBack() }> 
+              {
+                !this.props.blogOpen ? 
+                <div>
+                  <div id="corner-turn" ref={this.dogEar}></div>
+                  <div id="corner-box" ref={this.cornerCover}></div>
+                </div>
+                  : 
+                  ''
+              }
             <div id="post-spacer-top" className='post'>
             <div id="post-top-row">
               {/* <div id="post-top-auth-follow"> */}

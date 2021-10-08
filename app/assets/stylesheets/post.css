@@ -1,0 +1,24 @@
+div#corner-box{
+  width: 25px;
+  height: 25px;
+  transition: all .4s ease-in;
+  background:  rgb(0,25,53);
+  position: absolute;
+  top: -22px;
+  right: -22px;
+  transform: rotate(.125turn);
+}
+div#corner-turn{
+  border-radius: 3px;
+  width: 12.5px;
+  height: 12.5px;
+  background: rgb(236, 231, 231);
+  transition: all .4s ease-in;
+  position: absolute;
+  top: -12.5px;
+  right: -12.5px;
+  box-shadow: none;
+}
+span#post-spacer-top{
+  overflow: hidden;
+}
