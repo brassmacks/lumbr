@@ -6,7 +6,7 @@ import PostButton from './post_button'
 import Photo from '../../../app/assets/images/Photo.png'
 import Quote from '../../../app/assets/images/Quote.png'
 import Text from '../../../app/assets/images/Text.png'
-
+import { NewPostNav } from '../posts/new_post_nav'
 
 
 
@@ -42,27 +42,7 @@ class Dashboard extends React.Component {
               <img onClick={() => this.blgModal()}id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>
             </div>
           </div>
-    <div id="post-nav-panel" className="post-nav">
-      <div id="spacer" className="post-nav">
-
-          <ul className="post-nav" id="post-nav-buttons-list">
-            {
-              buttons.map((button, i )=> {
-                let type, src = button
-                return (
-                  <li id="post-nav-list-item" 
-                  className="post-nav"
-                  key={`${i} ${button}`}>
-                      
-                    {/* <PostButton id="post-nav-button" freeze={this.props.freeze} button={button} /> */}
-                    <PostButton id="post-nav-button" button={button} />
-                  </li>)
-              })
-            }
-          </ul>
-
-            </div>
-          </div>
+        <NewPostNav />
       </div>
           <div id="post-index-container">
             {/* <PostIndexContainer freeze={this.props.freeze} */}
@@ -79,4 +59,5 @@ class Dashboard extends React.Component {
   }
 
 }
+
 export default Dashboard

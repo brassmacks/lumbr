@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SessionButtons } from '../buttons/session_buttons'
-
+import house from '../../../app/assets/images/house.png'
+import compass from '../../../app/assets/images/compass.png'
+import compose from '../../../app/assets/images/compost.png'
 const banner = ( { ownBlogFetched, currentUser, logout, pth, openModal, fetchBlog, freeze} ) => {
   if (currentUser && !ownBlogFetched) fetchBlog(currentUser.id)
   // if (currentUser) fetchBlog(currentUser.id)
@@ -12,19 +14,25 @@ const banner = ( { ownBlogFetched, currentUser, logout, pth, openModal, fetchBlo
     let data = currentUser.id
     openModal('edit blog', data); 
   }
+  const pstModal = () => {
+    openModal('new Post choose')
+  }
   const logo = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/lmbrlogo.png'
   const sideBar = () => (
     <span>
       <div className="sidebar-group">
-        <ul>
-          <button onClick={() => blgModal('edit blog')}>
-          {currentUser.username}
+          <button id="ban-blog-open" className="ban-butts"
+           onClick={() => blgModal('edit blog')} style={{opacity: 5}} >
+            <img id='house' className="ban-butts" src={house}></img>
+          {/* {currentUser.username} */}
           </button>
   
-        <button className="sidebar-buttons" id="sidebar-signout" onClick={() => logout()}>
-          Log Out
+        <button className="ban-butts" id="compass" onClick={() => logout()}>
+          <img className="ban-butts" src={compass} alt="" />
         </button>
-        </ul>
+        <button className="ban-butts" id="compose" onClick={() => pstModal()}>
+          <img className="ban-butts" id="compose" src={compose} alt="" />
+        </button>
       </div>
     </span>
   )

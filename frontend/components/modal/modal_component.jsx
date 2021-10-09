@@ -9,7 +9,7 @@ import DeletePst from '../buttons/delete_post';
 import EditPostForm from '../posts/edit_post_form_container';
 import { fetchPosts, fetchBlogsPosts } from '../../actions/post_actions';
 import { render } from 'react-dom';
-
+import { NewPostNav } from '../posts/new_post_nav';
 
 class Modal extends React.Component {
 
@@ -109,7 +109,9 @@ class Modal extends React.Component {
                       author={this.props.author} fetchPost={this.props.fetchPost} 
                       fetchBlogsPosts={this.props.fetchBlogsPosts} />;
       break;
-
+    case 'new Post choose':
+      this.component = <div id="post-channel" ><NewPostNav /></div>
+      break;
     case 'new Text post':
       this.assignType('Text')
       break;
@@ -177,5 +179,6 @@ class Modal extends React.Component {
   );
   }
 }
+
 
 export default Modal

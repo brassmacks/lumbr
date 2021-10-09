@@ -29,7 +29,7 @@ export const mediaPost = (update, handleFile, toggleContent, urlInput, path) => 
       <div className={`media-post-${urlInput}`}>
         <div id="red-X-box" className="close-icon">
           <div id="red-X-circle" className="close-icon">
-          <button onClick={e => toggleContent(e)} className="close-icon">X</button>
+          <button onClick={e => toggleContent(e)} className="close-icon">x</button>
           </div>
         </div>
         {postContentUrl('flex', update)}
