@@ -25,7 +25,7 @@ class PostForm extends React.Component {
         tagString: "",
         mediaAttached: false,
       }
-
+    this.redXref = React.createRef();
     this.update = this.update.bind(this);
     this.handlePostSubmit = this.handlePostSubmit.bind(this);
     this.handleFile = this.handleFile.bind(this);
@@ -33,7 +33,7 @@ class PostForm extends React.Component {
     this.removeFile = this.removeFile.bind(this);
     this.trackChanges = this.trackChanges.bind(this);
     this.component;
-
+    
 
     this.setComponent();
   }
@@ -55,7 +55,8 @@ class PostForm extends React.Component {
         this.component = () => mediaPost(
           this.update, this.handleFile,
           this.toggleContent,
-          this.state.urlInput, this.props.formType
+          this.state.urlInput, this.props.formType,
+          this.redXref
         );
         break;
       default:

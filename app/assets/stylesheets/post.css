@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Syncopate:regular,700);
+
 div#corner-box{
   width: 25px;
   height: 25px;
@@ -261,4 +263,55 @@ img#pa-prof-pic{
   width: 66px;
 
   border-radius: 3px;
+}
+
+button#red-x.close-icon{
+  position: absolute;
+  opacity: 0;
+}
+div#red-X-circle.close-icon{
+  display: none;
+  transition: all .1s ease;  
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  justify-self: flex-end;
+  height: 27px;
+  width: 27px;
+  border:none;
+  outline: none;
+  border-radius: 15px;
+  background: red;
+  color:rgb(245, 243, 243);
+  letter-spacing: 0px;
+  font-weight: 600;
+  z-index: 11;
+}
+div#red-X-box{
+  display:flex;
+  display: flex;
+  justify-self: flex-end;
+}
+div#url-post-outline{
+  width:100%;
+}
+div#url-post-spacer{
+  width:100%;
+}
+input#url-post-input{
+  border:none;
+  line-height: 33px;
+  outline: none;
+  caret-color: #989898;
+  background-color: rgb(245, 243, 243);
+  height: 90%;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  align-self: center;
+  font-size: 26px;
+}
+div#url-input{
+  width: 100%;
+  display: flex;
 }

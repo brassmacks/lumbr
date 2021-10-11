@@ -8,7 +8,7 @@ export const postContentUrl = (displayed = 'none', update) => {
 
       <div id='url-post-spacer' className={"url-post-form"}>
         <input type="url" id='url-post-input' className={"url-post-form"}
-          placeholder='Type or past link here'/>
+          placeholder='Type or paste link here'/>
       </div>
     </div>
   )

@@ -1,41 +1,46 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import photoAdd from '../../../app/assets/images/photoAdd.png'
 import video from '../../../app/assets/images/video.png'
 import url from '../../../app/assets/images/url.png'
 import { postContentUrl } from './post_content_url'
 
-export const mediaPost = (update, handleFile, toggleContent, urlInput, path) => {
+export const mediaPost = (update, handleFile, toggleContent, 
+                                      urlInput, path, redXRef) => {
   
   let icon;
   path === "Photo" ? icon = photoAdd : icon = video
 
-  function clickHiddenInput (e){
-    e.preventDefault()
-    debugger
-    e.currentTarget.children[0].trigger.click()
-    console.log('hidden-click', e.currentTarget.children[0])
-    // e.target.firstChild.click()
+  const showX = () => redXRef.current.style.display= 'flex';
+  const hideX = () => redXRef.current.style.display= 'none';                                    
 
 
-    // document.getElementById(`${path}-upload-input`).click()
-    
-  }
-  debugger
+  // debugger
 
   return (
 
-    <div id={`${path}-post-guts`} className={`${path}-post-form`}>
-        
-      <div className={`media-post-${urlInput}`}>
+    <div id={`${path}-post-guts`} className={`${path}-post-form`}
+      onMouseOver={() => showX()} onMouseOut={() => hideX()}>
+
+      {urlInput ? 
+      <div id= "url-input" className={`media-post-${urlInput}`} >
+          <div id='url-post-outline' className={"url-post-form"} >
+
+            <div id='url-post-spacer' className={"url-post-form"}>
+              <input type="url" id='url-post-input' className={"url-post-form"}
+                placeholder='Type or paste link here' 
+                />
+            </div>
+          </div>
         <div id="red-X-box" className="close-icon">
-          <div id="red-X-circle" className="close-icon">
-          <button onClick={e => toggleContent(e)} className="close-icon">x</button>
+            <div id="red-X-circle" ref={redXRef} className="close-icon">
+          <button onClick={e => toggleContent(e)} id="red-x"
+              className="close-icon"></button>
+            ✕
           </div>
         </div>
-        {postContentUrl('flex', update)}
       </div>
+        :
       <div id={`${path}-post-choices`} className={`media-post-${!urlInput}`}>
-
       <div id={`${path}-upload-icon`}>
           <input type='file'
           id={`${path}-upload-input`} className={`${path}-form`}
@@ -56,8 +61,8 @@ export const mediaPost = (update, handleFile, toggleContent, urlInput, path) => 
             </button>
           </div>
           </div>
-
         </div> 
+      }
     </div>
   )
 }
