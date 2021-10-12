@@ -32,7 +32,7 @@ class Post extends React.Component{
     }
   }
   turnPage(){
-    this.dogEar.current.style.boxShadow = '0 0 6px 6px rgba(0 25 53 / 22%)'
+    this.dogEar.current.style.boxShadow = '0 0 6px 6px rgba(0, 25, 53, 22%)'
     this.dogEar.current.style.transform = 'translateX(-15px)'
     this.dogEar.current.style.transform += 'translateY(15px)'
     this.cornerCover.current.style.transform = 'rotate(.125turn) translateY(11px)'
