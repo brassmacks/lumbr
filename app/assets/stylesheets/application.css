@@ -258,7 +258,7 @@ li.post-button-drop-down:hover{
 div#drop-tainer.drop-down{
   background-color: white;
   border-radius: 3px;
-  box-shadow: 0 0 15px 0 rgba(0 0 0 / 50%);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 50%);
   color: black;
   display: inline-block;
   position: absolute;
