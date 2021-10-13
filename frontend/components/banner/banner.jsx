@@ -1,12 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { SessionButtons } from '../buttons/session_buttons'
-import house from '../../../app/assets/images/house.png'
-import compass from '../../../app/assets/images/compass.png'
-import compose from '../../../app/assets/images/compost.png'
+
 const banner = ( { ownBlogFetched, currentUser, logout, pth, openModal, fetchBlog, freeze} ) => {
   if (currentUser && !ownBlogFetched) fetchBlog(currentUser.id)
   // if (currentUser) fetchBlog(currentUser.id)
+  const house = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/house.png'
+  const compass = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/compass.png'
+  const compose = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/compost.png'
+
   const location = "banner"
 
   const blgModal = () => {

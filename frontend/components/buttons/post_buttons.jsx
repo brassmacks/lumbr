@@ -3,10 +3,6 @@ import { openModal } from '../../actions/modal_actions'
 import { deletePost, updatePost, createRePost } from '../../actions/post_actions'
 import { fetchPost } from '../../actions/post_actions'
 import { createFollow } from '../../util/follow_api_util'
-import Pencil from '../../../app/assets/images/pencil.png'
-import Trash from '../../../app/assets/images/trash.png'
-import Repost from '../../../app/assets/images/repost.png'
-import Sharow from '../../../app/assets/images/share-row.png'
 
 export default class PostButtons extends React.Component{
   constructor(props) {
@@ -18,6 +14,11 @@ export default class PostButtons extends React.Component{
       postId: this.props.post.id,
       open: false
     }
+    this.Pencil = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/pencil.png'
+    this.Trash = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/trash.png'
+    this.Repost = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/repost.png'
+    this.Sharow = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/share-row.png'
+
     this.dropMenu = React.createRef()
     this.postId = this.props.post.id;
     this.follow = this.props.followData;
@@ -144,16 +145,16 @@ export default class PostButtons extends React.Component{
           {  this.props.editable ? 
           <div id ='feed-post-butts'>
             
-            {this.button('delete post', Trash)}
-            {this.button('edit post', Pencil)}
-            {this.button('edit repost', Repost)}
-            {this.button('share post', Sharow)}
+            {this.button('delete post', this.Trash)}
+            {this.button('edit post', this.Pencil)}
+            {this.button('edit repost', this.Repost)}
+            {this.button('share post', this.Sharow)}
             
           </div>
           :
           <div id="feed-post-butts">
-            {this.button('share post', Sharow)}
-            {this.button('edit repost', Repost)}
+            {this.button('share post', this.Sharow)}
+            {this.button('edit repost', this.Repost)}
           </div>
           }
           </div>

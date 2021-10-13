@@ -1,15 +1,16 @@
 import React, { useRef } from 'react'
-import photoAdd from '../../../app/assets/images/photoAdd.png'
-import video from '../../../app/assets/images/video.png'
-import url from '../../../app/assets/images/url.png'
 import { postContentUrl } from './post_content_url'
 
 export const mediaPost = (update, handleFile, toggleContent, 
                                       urlInput, path, redXRef) => {
-  
-  let icon;
-  path === "Photo" ? icon = photoAdd : icon = video
 
+
+  let icon;
+  let video = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/video.png'
+  let url = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/url.png'
+  let photoAdd = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/photoAdd.png'
+  path === "Photo" ? icon = photoAdd : icon = video
+  
   const showX = () => redXRef.current.style.display= 'flex';
   const hideX = () => redXRef.current.style.display= 'none';                                    
 

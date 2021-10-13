@@ -1,11 +1,7 @@
 import React from 'react'
 import PostIndexContainer from '../posts/post_index_container'
 import PostShowContainer from "../posts/post_show_container"
-import Movie from '../../../app/assets/images/movie.png'
 import PostButton from './post_button'
-import Photo from '../../../app/assets/images/Photo.png'
-import Quote from '../../../app/assets/images/Quote.png'
-import Text from '../../../app/assets/images/Text.png'
 import { NewPostNav } from '../posts/new_post_nav'
 
 
