@@ -68,7 +68,7 @@ require 'faker'
     post_photo_links.each do |link, i|
       pst = Post.create(
         content_type: 'photo',
-        user_id: i
+        user_id: i,
         title: Faker::JapaneseMedia::StudioGhibli.movie,
         body: Faker::Quote.matz,
         source: User.find((cnt).ceil).username
