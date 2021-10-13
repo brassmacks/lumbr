@@ -1,7 +1,7 @@
 class DropFollowsTable < ActiveRecord::Migration[5.2]
 
   def up 
-    drop_table :follows, foreign_key: :
+    drop_table :follows, 
   end
 
   def down
