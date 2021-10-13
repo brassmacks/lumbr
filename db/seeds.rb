@@ -39,7 +39,7 @@ require 'faker'
       user_id: i/3.ceil,
       title: Faker::JapaneseMedia::StudioGhibli.movie,
       body: Faker::Quote.matz,
-      source: User.find(start).username
+    
     )
 
   end
