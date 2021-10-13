@@ -4,16 +4,23 @@ import Post from "./post";
 import { fetchBlog } from '../../actions/blog_actions';
 import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { fetchUser } from '../../actions/user_actions';
-
+import { createFollow } from '../../actions/user_actions';
 
 const mSTP = (state, ownProps) => {
 
   let post = ownProps.post
   let currentUser = state.entities.users[state.session.id]
   let author = ownProps.post.user_id
-
   let tags = ownProps.post.tags || [];
+
   return {
+  followData: {
+      id: state.session.id,
+      follow: {
+        user: ownProps.post.user_id
+      }
+    },
+  author: author,
   post: post,
   currentUser: currentUser,
   author: author,
@@ -25,6 +32,7 @@ const mSTP = (state, ownProps) => {
 }}
 const mDTP = dispatch => ({
   fetchPosts: () => dispatch(fetchPosts()),
+  createFollow: followData => dispatch(createFollow(followData)),
   deletePost: postId => dispatch(deletePost(postId)),
   fetchBlog: userId => dispatch(fetchBlog(userId)),
   openModal: (modal, data) => dispatch(openModal(modal, data)),

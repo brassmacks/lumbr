@@ -10,11 +10,11 @@ class Post extends React.Component{
       author: this.props.author,
       tags: this.props.tags,
       editable: this.props.editable,
+      isFollowed: this.props.currentUser.follows.includes(this.props.author)
     }
     this.postBody = React.createRef()
     this.cornerCover = React.createRef()
     this.dogEar = React.createRef()
-    this.isFollowed = this.props.currentUser.follows.includes(this.state.author)
     this.turnPage = this.turnPage.bind(this);
     this.turnBack = this.turnBack.bind(this);
 
@@ -30,6 +30,13 @@ class Post extends React.Component{
       this.props.openModal('show blog', blog)
       // store.dispatch({ type: 'OPEN MODAL', modal: 'show blog', data })
     }
+  }
+  followToggle(e) {
+    e.target.className = 'hidden'
+    this.props.createFollow(this.props.followData)
+    this.setState({ isFollowed: true })
+    // ACTION_ITEM CREATE REF TO ALL FOLLOW BUTTONS RELATED TO AUTHOR
+    // STATE CHANGE AND RE-RENDER OF ALL POSTS BY AUTHOR WHEN ONE IS CLICKED
   }
   turnPage(){
     this.dogEar.current.style.boxShadow = '0 0 6px 6px rgba(0, 25, 53, 22%)'
@@ -55,7 +62,7 @@ class Post extends React.Component{
   render() {
     let post = this.state.post
     let editable = this.state.editable
-    let followable = (!this.isFollowed && !editable)
+    let followable = (!this.state.isFollowed && !editable)
     let postId = this.state.post.id
     let blogOpen = this.props.blogOpen
     return (
@@ -88,11 +95,9 @@ class Post extends React.Component{
           { !blogOpen ? <h3 id="post-author">{post.username}</h3> : '' }
           
           { followable ?
-            <PostButtons id='follow-button'
-              // freeze={this.props.freeze} 
-              editable={editable} 
-              post={post} 
-              location={'follow'}/>
+            < button id='follow' className='follow-button'
+              onClick={(e) => this.followToggle(e)}>
+              Follow</button >
               :
             ''
             }

@@ -22,8 +22,9 @@ export const splash = ( { currentUser, pth, fetchPosts} ) => {
 
         { SessionButtons("splash", pth) }
         <nav id="spash-bottom-nav">
-        <Link id="gitlink"to="https://github.com/brassmacks">Github</Link>
-        <Link id='aboutLink'>about</Link>
+          
+        <a id="gitlink" href="https://github.com/brassmacks">Github</a>
+        {/* <Link id='aboutLink'>about</Link> */}
         </nav>
 
       </div>

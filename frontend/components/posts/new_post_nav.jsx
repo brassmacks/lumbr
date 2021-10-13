@@ -1,7 +1,7 @@
 import React from 'react'
 import PostButton from '../../components/dashboard/post_button'
 
-export const NewPostNav = () => {
+export const NewPostNav = (location) => {
 
   const Lnk = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/Link.png'
   const Quote = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/Quote.png'
@@ -11,6 +11,8 @@ export const NewPostNav = () => {
   
   let buttons = [['Text', Text], ['Photo', Photo], ['Quote', Quote], ['Link', Lnk], ['Video', Movie]]
   return (
+    
+    
     <div id="post-nav-panel" className="post-nav">
       <div id="spacer" className="post-nav">
 

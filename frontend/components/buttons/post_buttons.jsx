@@ -12,7 +12,8 @@ export default class PostButtons extends React.Component{
       editable: this.props.editable,
       location: this.props.location,
       postId: this.props.post.id,
-      open: false
+      open: false,
+      followable: this.props.followable
     }
     this.Pencil = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/pencil.png'
     this.Trash = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/trash.png'
@@ -43,13 +44,7 @@ export default class PostButtons extends React.Component{
       Posted - {timeString}, <br/> on {dateString}</a>
   }
 
-  followToggle(e) {
-    e.target.className = 'hidden'
-    this.props.createFollow(this.props.followData)
-    this.showing = !this.showing
-    // ACTION_ITEM CREATE REF TO ALL FOLLOW BUTTONS RELATED TO AUTHOR
-    // STATE CHANGE AND RE-RENDER OF ALL POSTS BY AUTHOR WHEN ONE IS CLICKED
-  }
+
 
 
   menuToggle(e) {
@@ -76,7 +71,10 @@ export default class PostButtons extends React.Component{
     app.addEventListener('click', this.menuClose)
     this.setState({ open: true})
   }
-
+  unFollow(e){
+    e.target.className = 'hidden';
+    this.props.unFollow(this.props.followData)
+  }
   postModal = (modal) => {
     this.props.openModal(modal, this.postId)
   }
@@ -114,7 +112,7 @@ export default class PostButtons extends React.Component{
       }
       {!this.props.followable && 
         <li id="drop-unfollow-button" className='post-button-drop-down'>
-          <button onClick={e => this.followToggle(e)} id="" className='post-button-drop-down'>Unfollow</button>
+          <button onClick={e => this.unFollow(e)} id="" className='post-button-drop-down'>Unfollow</button>
         </li>
       }
         <li id="drop-close-button" className='post-button-drop-down'>
@@ -129,17 +127,6 @@ export default class PostButtons extends React.Component{
 
     if (this.state.location === 'drop-down') return this.dropDown()
 
-    if (this.state.location === 'follow') {
-      
-      return (
-      this.showing ? 
-      < button id='follow' className='follow-button'
-      onClick = {(e)=> this.followToggle(e)}> 
-      Follow</button >
-      : ''
-    )}
-  
-  
   return (
     <div>
           {  this.props.editable ? 
