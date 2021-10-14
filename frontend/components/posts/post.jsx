@@ -102,7 +102,7 @@ class Post extends React.Component{
             ''
             }
               </div>
-            <PostButtons id='post-options' post={post} followable={this.followable} location='drop-down'/>
+            <PostButtons id='post-options' post={post} followable={followable} location='drop-down'/>
               </div>
 
             </span>

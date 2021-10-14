@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 import { openModal } from '../../actions/modal_actions'
-
-import { unFollow } from '../../util/follow_api_util'
+import { unFollow } from '../../actions/user_actions'
 import { deletePost, updatePost, createRePost } from '../../actions/post_actions'
 import { fetchPost } from '../../actions/post_actions'
 import PostButtons  from './post_buttons'
@@ -13,10 +12,8 @@ const mSTP = (state, ownProps) => {
   editable: ownProps.editable,
   followable: ownProps.followable,
   followData: {
-      id: state.session.id,
-      follow: {
-        user: ownProps.post.user_id
-      }
+      user_id: state.session.id,
+      follow: ownProps.post.user_id
     },
 
 }}

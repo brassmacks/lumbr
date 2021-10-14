@@ -21,10 +21,10 @@ export const createFollow = ({id, follow}) => {
   })
 }
 
-export const unFollow = ({ id, follow }) => {
+export const unFollow = ({ user_id, follow }) => {
   return $.ajax({
-    url: `api/users/unfollow/${id}`,
+    url: `api/users/unfollow/${user_id}`,
     method: 'DELETE',
-    data: { user: follow } 
+    data: { user: { user_id: follow} }
   })
 }

@@ -74,11 +74,15 @@ class Api::UsersController < ApplicationController
   end
 
   def unfollow
-    @follow = Follow.find_by(:follow)
-    @follow.each { |follow| follow.destroy } if @follow.length > 1
+    puts params
+    @follow = Follow.find_by({
+      user_id: params[:id],
+      user: user_params[:user_id]})
+    
     if @follow.destroy
       render json: {
-        status: 200 
+        user_id: user_params[:user_id],
+        id: params[:id]
       } 
     else 
       render json: {
@@ -91,7 +95,7 @@ class Api::UsersController < ApplicationController
   protected 
 
   def user_params
-    params.require(:user).permit(:id, :username, :password, :email, :follow, :tag, :post)
+    params.require(:user).permit(:id, :username, :user_id, :password, :email, :follow, :tag, :post)
   end
   
 end

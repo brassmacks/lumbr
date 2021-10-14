@@ -12,14 +12,16 @@ const mSTP = (state, ownProps) => {
   let currentUser = state.entities.users[state.session.id]
   let author = ownProps.post.user_id
   let tags = ownProps.post.tags || [];
-
+  
   return {
-  followData: {
+
+    followData: {
       id: state.session.id,
       follow: {
         user: ownProps.post.user_id
       }
     },
+
   author: author,
   post: post,
   currentUser: currentUser,
