@@ -1,7 +1,9 @@
 div#bground.splash{
   display: flex;
+  flex-direction: row;
   scroll-behavior: smooth;
   scroll-snap-type: y mandatory;
+  background-position: center center;
   background-repeat: no-repeat;
   background-image: url("https://lumbr-seeds.s3.us-west-1.amazonaws.com/blackandwhitesplash.jpg");
   margin-top: -60px;
@@ -141,3 +143,23 @@ nav#splash-bottom-nav {
   justify-content: center;
 }
 
+nav#splash-bottom-nav{
+  display: flex;
+  width: 40vw;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  position: absolute;
+  bottom: 5px;
+  left:30%;
+  padding: 5px;
+}
+nav#splash-bottom-nav a{
+  color: aliceblue;
+  text-decoration: none;
+  /* font-family: Source Code Pro; */
+  font-family: Merriweather;
+}
+nav#splash-bottom-nav a:hover{
+  cursor: pointer;
+}
