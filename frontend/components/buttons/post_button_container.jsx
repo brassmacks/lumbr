@@ -6,7 +6,6 @@ import { fetchPost } from '../../actions/post_actions'
 import PostButtons  from './post_buttons'
 
 const mSTP = (state, ownProps) => {
-  // 
   return {
   post: ownProps.post,
   editable: ownProps.editable,

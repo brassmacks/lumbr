@@ -11,7 +11,6 @@ const usersReducer = (oldState = {}, action) => {
 
   switch(action.type) {
     case REMOVE_FOLLOW:
-      debugger
       newState[action.followData.id].follows.filter(follow => {
         follow = action.followData.user_id })
       return newState;

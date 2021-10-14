@@ -78,8 +78,8 @@ class Post extends React.Component{
               or post belongs to current user
           */}
           <span id="post-top" 
-          onMouseEnter={this.props.blogOpen ? "" : () => this.turnPage()}
-              onMouseLeave={this.props.blogOpen ? "" : () => this.turnBack() }> 
+          onMouseEnter={this.props.blogOpen ? ()=> null : () => this.turnPage()}
+              onMouseLeave={this.props.blogOpen ? ()=> null : () => this.turnBack() }> 
               {
                 !this.props.blogOpen ? 
                 <div>

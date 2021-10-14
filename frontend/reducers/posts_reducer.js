@@ -10,7 +10,6 @@ const PostsReducer = (oldState = {}, action) => {
 
   switch(action.type) {
     case RECEIVE_ALL_POSTS:
-      debugger
       let postStateKeyList = JSON.stringify(newState.posts)
       let postActionKeyList = JSON.stringify(action.posts)
       if (postStateKeyList != postActionKeyList) {

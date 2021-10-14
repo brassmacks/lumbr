@@ -71,7 +71,6 @@ class PostForm extends React.Component {
   }
 
   newPostSubmit(){
-    debugger
     let draft = {
       title: this.state.title,
       body: this.state.body,
@@ -157,7 +156,7 @@ class PostForm extends React.Component {
       [field]: e.currentTarget.value
     });
   }
-  debugger
+
 
   render(){
     let type = this.state.contentType;

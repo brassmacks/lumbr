@@ -2,7 +2,6 @@ import React from 'react'
 
 export const EditPost = (post, update, removeFile) => {
   let path = post.content_type;
-   debugger
   
   
 

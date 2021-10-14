@@ -39,7 +39,6 @@ export default class PostButtons extends React.Component{
   timeStamp() {
     let timeStamp = new Date(this.state.post.created_at);
     let [dateString, timeString] = [timeStamp.toDateString(), timeStamp.toLocaleTimeString()]
-    debugger
     return <a id="post-created-at" className='post-button-drop-down'>
       Posted - {timeString}, <br/> on {dateString}</a>
   }
@@ -76,7 +75,7 @@ export default class PostButtons extends React.Component{
     this.props.unFollow(this.props.followData)
   }
   postModal = (modal) => {
-    this.props.openModal(modal, this.postId)
+    this.props.openModal(modal, this.props.post.id)
   }
   
   button = (type, iconPath) => {
@@ -140,7 +139,7 @@ export default class PostButtons extends React.Component{
           </div>
           :
           <div id="feed-post-butts">
-            {this.button('share post', this.Sharow)}
+            {/* {this.button('share post', this.Sharow)} */}
             {this.button('edit repost', this.Repost)}
           </div>
           }

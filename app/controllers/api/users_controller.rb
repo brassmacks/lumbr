@@ -78,7 +78,7 @@ class Api::UsersController < ApplicationController
     @follow = Follow.find_by({
       user_id: params[:id],
       user: user_params[:user_id]})
-    
+    `1`
     if @follow.destroy
       render json: {
         user_id: user_params[:user_id],

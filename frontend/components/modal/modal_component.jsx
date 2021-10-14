@@ -24,13 +24,9 @@ class Modal extends React.Component {
       isFetched: this.props.isFetched,
       background: 'hidden'
     }
-    //  
+    
     this.component; 
-    // console.log('inside modal this.component', {
-    //   modal, closeModal,
-    //   author, melt, blog,
-    //   currentUser, fetchPost, fetchBlogsPosts, blogs
-    // })
+
     this.fetch()
     this.assignType = this.assignType.bind(this);
     this.defineComponent();
@@ -77,7 +73,7 @@ class Modal extends React.Component {
     this.defineComponent()
   }
   
-// function Modal(props) {
+
   close = () => {
     this.melt()
     this.props.closeModal()
@@ -89,7 +85,6 @@ class Modal extends React.Component {
   assignType = (postType, formType = postType) => (
 
     this.component = <CreatePostContainer
-      // melt={melt} 
       type={postType} 
       formType={formType}
       closeForm={this.close}/> 
@@ -97,7 +92,6 @@ class Modal extends React.Component {
 
   defineComponent() {  
     this.freeze()
-    // 
   switch (this.props.modal.type) {
 
     case 'edit blog':
@@ -134,7 +128,11 @@ class Modal extends React.Component {
       this.component=<h1>share</h1>
       break;
     case 'edit repost':
-      this.component={}
+      debugger
+      this.component=<EditPostForm
+      post={this.props.post_id} 
+      fullPost={this.props.post}
+      closeForm={this.close}/>
       break;
     case 'edit post':
       this.freeze()

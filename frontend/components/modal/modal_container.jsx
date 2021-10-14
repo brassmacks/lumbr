@@ -17,14 +17,20 @@ const mapStateToProps = (state, ownProps) => {
   // if (!ownProps.modal) return {modal:{type: null}}
   let modal = state.modal || { modal: { type: null } } 
   let author_id = state.modal.blog || state.session.id;
-  let post_id = state.modal.type === "edit post" ? state.modal.blog : null
+  let currentUser = state.entities.users[state.session.id]
+  let post_id = state.modal.type === "edit post" || state.modal.type === "edit repost" ? state.modal.blog : null
   let post = state.entities.posts[post_id] || null
+  if (post) {
+    post.username = currentUser.username
+    post.user_id = currentUser.id
+  }
+  debugger
   let blogs = state.entities.blogs || null
   let blog =  blogs ? state.entities.blogs[author_id] : null
 
 
   return {
-    currentUser: state.entities.users[state.session.id],
+    currentUser: currentUser,
     blogs: state.entities.blogs,
     blog: blog,
     blogContent: blog,
