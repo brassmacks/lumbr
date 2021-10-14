@@ -59,16 +59,7 @@ div#feed{
   padding-top: 40px;
 }
 
-button#post-nav-button.post-nav{
-  display: flex;
-  align-items: center;
-  margin:17px;
-  margin-top: 8px;
-  height: 95px;
-  border:none;
-  font-size: 14px;
-  background-color: rgb(255,255,255);
-}
+
 div#pic-nav-bind{
   margin-left:-85px;
   display: flex;
@@ -161,13 +152,6 @@ div#post-opt-ainer{
   margin-top: -5px;
 }
 
-button#drop-button.post-button-dropper{
-  padding-bottom: 5px;
-  font-size: 25px;
-  line-height: 1px;
-  align-content: flex-end;
-}
-
 span#post-top{
   display: flex;
   flex-direction: row;
@@ -188,30 +172,6 @@ div#post-top-row{
   justify-content: space-between;
 }
 
-button#follow {
-  cursor: pointer;
-  display: inline;
-  align-items: center;
-  outline: none;
-  background-color: transparent;
-  border-style: none;
-  color: rgb(0, 184, 255);
-  font-family: Source code pro;
-  font-size: 13px;
-  font-weight: 525;
-  padding: 0px;
-  padding-left:3px;
-}
-
-
-
-div#post-options button{
-  outline: none;
-  background-color: transparent;
-  border-style: none;
-}
-
-
 div#post-options{
   align-self: flex-end;
   margin-right:0px;
@@ -222,11 +182,6 @@ div#post-options{
   justify-self: right;
 }
 
-button.post-button-drop-down{
-  width: inherit;
-  font-weight: 800;
-}
-
 li#drop-close-button.post-button-drop-down a{
   font-weight: 400;
 }
@@ -235,9 +190,7 @@ li#drop-unfollow-button.post-button-drop-down button{
   color: red;
 
 }
-/* li#time-stamp:hover{
-  border-bottom: .2px solid rgba(0, 0, 0, 0);
-} */
+
 li#time-stamp{
   font-weight: 400;
   border-bottom: .2px solid rgba(0, 0, 0, .13);
@@ -270,19 +223,10 @@ div#drop-tainer.drop-down{
   transform: translate3d(420px, 29px, 0px);
 }
 
-
-
 div#drop-tainer.hidden{
   display: none;
 }
-button.in-post-bottom{
-  cursor: pointer;
-  display: inline;
-  align-items: center;
-  outline: none;
-  background-color: transparent;
-  border-style: none;
-}
+
 h3#post-author{
   display: inline;
   padding-right: 3px;
@@ -293,7 +237,6 @@ div#text-content.post{
   line-height: 24px;
 }
 h3#post-title{
-  
   font-weight: 400;
   font-size: 16px;
   padding-bottom: 17px;

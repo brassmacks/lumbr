@@ -58,37 +58,3 @@ input#post-tags-input{
   vertical-align: middle;
   font-size: 15px;
 }
-
-div#post-buttons.post-submit{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-content: center;
-  margin:0px -21px 0px -21px;
-  padding: 21px 21px 21px 21px;
-  border-top: 0.5px solid rgba(0, 0, 0, 0.2);
-  border-width: 0px, .5px, 0px, 0px;
-  flex-direction: row;
-}
-div#post-buttons button{
-  line-height: 16px;
-  font-weight: 550;
-  font-size: 15.5px;
-  border-radius: 3px;
-  border: none;
-  height: 32px;
-}
-div#post-buttons button:hover{
-cursor: pointer;
-}
-button#post-form-close{
-  width: 84px;
-  color: white;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-button#post-form-post{
-  width: 120px;
-  color:white;
-  background-color: #00b8ff
-}
-

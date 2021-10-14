@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Syncopate:regular,700);
+
 div#blogchannel{
   background: white;
   max-height: 100vw;
@@ -16,10 +18,7 @@ div#blog div#pi-prof-box{
   margin-right:auto;
 }
 
-/* ACTION_ITEM containerize all POST AND BUTTON into SEPARATE stylesheets */
-
 #blog {
-  /* change font */
   color: black;
   position: absolute;
   right: -600px;
