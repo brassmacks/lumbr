@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-
+import DummyButton from './Dummy_Signin_container';
 
 export const SessionButtons = (location, pth) => {
   
@@ -13,14 +13,15 @@ export const SessionButtons = (location, pth) => {
     <div id={location + "-auth-buttons"} className="auth-buttons">
       <Link id="authLinks" className={isShowing("login", pth)} to="/login">
           <button className="authButts" id="login-butt">
-              <a>Log in</a>
+              Log in
           </button>
       </Link>
       <Link id="authLinks" className={isShowing("signup", pth)} to="/signup">
         <button className={"authButts" + location} id="signup-butt">
-          <a>Sign up</a>
+          Sign up
         </button>
       </Link>
+      <DummyButton />
     </div>
 
 

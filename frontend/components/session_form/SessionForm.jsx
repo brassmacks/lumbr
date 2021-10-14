@@ -65,24 +65,23 @@ class SessionForm extends React.Component {
 
       <div id="session-form">
         <form onSubmit={this.handleSubmit} className="session-form">
-                <div id="lumbr-title">
-        <a id="lumbr-txt-logo">l</a>
-        <a id="lumbr-txt-title">umbr</a>
-        </div>
+          <div id="lumbr-title">
+            <a id="lumbr-txt-logo">l</a>
+            <a id="lumbr-txt-title">umbr</a>
+          </div>
 
-          <h5 className="form-errors">{this.renderErrors()}</h5>
+        <h5 className="form-errors">{this.renderErrors()}</h5>
           <ul id="session-inputs">
-            <li>
 
+            <li>
               <input id="email" type='text'
                 onChange={this.update('email')}
                 value={this.state.email}
                 placeholder="Email">
               </input>
-
             </li>
-            <li>
-              
+            
+            <li>              
               <input id="password"
                   className={this.assignLabel(this.props.formType)}
                   type="password" 
@@ -90,23 +89,20 @@ class SessionForm extends React.Component {
                   value={this.state.password}
                   placeholder="Password">
                 </input>  
-              
             </li>
 
-            { this.props.formType === 'Sign up' ? 
-      
-      <li>
-              
-                <input id="blogname" className='signup-butt'
-                  type="text" 
-                  onChange={this.update('username')} 
-                  value={this.state.username}
-                  placeholder="Blog name">
-                </input>  
-              
-            </li>
+          { 
+          this.props.formType === 'Sign up' ? 
+           <li>              
+            <input id="blogname" className='signup-butt'
+              type="text" 
+              onChange={this.update('username')} 
+              value={this.state.username}
+              placeholder="Blog name">
+            </input>                
+          </li>
                     : null
-                  }
+          }
           </ul>
           
           <button id={this.assignLabel(this.props.formType)} 
@@ -114,7 +110,13 @@ class SessionForm extends React.Component {
           </button>
           
 
-        </form>    
+        </form>   
+          <nav id="splash-bottom-nav">
+
+            <a id="gitlink" href="https://github.com/brassmacks">Github</a>
+            <a id="linkdlink" href="https://www.linkedin.com/in/joshua-elliott-a044b0209/">LinkedIn</a>
+            <a id='aboutLink' >About</a>
+          </nav>
       </div>
     </div>
     )

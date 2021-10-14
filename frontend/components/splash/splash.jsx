@@ -1,5 +1,4 @@
 import React from 'react'
-import { unmountComponentAtNode } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { SessionButtons } from '../buttons/session_buttons'
 
