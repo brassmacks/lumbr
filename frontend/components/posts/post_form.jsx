@@ -10,7 +10,7 @@ class PostForm extends React.Component {
     super(props);
     
     this.currentUser = this.props.currentUser;
-    this.state = props.type === 'Update' ? 
+    this.state = props.type === 'Update' || props.type === 'Repost' ? 
       {id: this.props.post} 
       :
       {
@@ -51,6 +51,14 @@ class PostForm extends React.Component {
           this.removeFile,
         )
         break;
+      case 'Repost':
+        this.component = () => EditPost(
+          this.props.fullPost,
+          this.update,
+          this.removeFile,
+        )
+        break;
+
       case 'Media':
         this.component = () => mediaPost(
           this.update, this.handleFile,

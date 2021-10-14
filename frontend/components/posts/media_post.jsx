@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react'
 import { postContentUrl } from './post_content_url'
 
@@ -11,19 +12,19 @@ export const mediaPost = (update, handleFile, toggleContent,
   let photoAdd = 'https://lumbr-seeds.s3.us-west-1.amazonaws.com/images/photoAdd.png'
   path === "Photo" ? icon = photoAdd : icon = video
   
-  const showX = () => redXRef.current.style.display= 'flex';
-  const hideX = () => redXRef.current.style.display= 'none';                                    
+  let showX = () => redXRef.current.style.display= 'flex';
+  let hideX = () => redXRef.current.style.display= 'none';                                    
 
 
   // debugger
 
   return (
 
-    <div id={`${path}-post-guts`} className={`${path}-post-form`}
-      onMouseOver={() => showX()} onMouseOut={() => hideX()}>
+    <div id={`${path}-post-guts`} className={`${path}-post-form`}>
 
       {urlInput ? 
-      <div id= "url-input" className={`media-post-${urlInput}`} >
+        <div id= "url-input" className={`media-post-${urlInput}`} 
+        onMouseOver={() => showX()} onMouseOut={() => hideX()}>
           <div id='url-post-outline' className={"url-post-form"} >
 
             <div id='url-post-spacer' className={"url-post-form"}>
