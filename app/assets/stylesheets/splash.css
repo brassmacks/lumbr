@@ -10,6 +10,7 @@ div#bground.splash{
   margin-top: -60px;
   z-index: -1;
   height: 97vh;
+  
 }
 /* change scroll bar color to black and transparent */
 div#splash-container-root{
@@ -31,6 +32,7 @@ div#lumbr-title{
   flex-direction: row;
   justify-content: center;
   margin-left: -6.5px;
+  z-index: 8;
 }
 a#lumbr-txt-logo {
   
@@ -40,6 +42,7 @@ a#lumbr-txt-logo {
   font-family: Source Code Pro;
   font-weight: 595;
   font-size: 129px;
+  z-index: 8;
 }
 a#lumbr-txt-title {
   padding-left: 7px;
@@ -48,10 +51,11 @@ a#lumbr-txt-title {
   font-family: Merriweather;
   font-weight: 735;
   font-size: 88px;
+  z-index: 8;
 }
 
 div#splash-container-root.splash-buttons{
-  padding-top: 8%;
+  padding-top: 11vh;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -74,7 +78,7 @@ div#form-back.session{
 }
 
 div#session-form {
-  padding-top: 8%;
+  padding-top: 11vh;
   width: 300px;
   margin-left: auto;
   margin-right: auto;
@@ -139,12 +143,7 @@ div#splash-auth-buttons.auth-buttons button{
   margin-bottom: 10px;
 }
 
-nav#splash-bottom-nav {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
-}
+
 
 nav#splash-bottom-nav{
   display: flex;
@@ -157,6 +156,9 @@ nav#splash-bottom-nav{
   left:30%;
   padding: 5px;
 }
+nav#splash-bottom-nav.about{
+  bottom: 13vh;
+}
 nav#splash-bottom-nav a{
   color: aliceblue;
   text-decoration: none;
@@ -165,4 +167,68 @@ nav#splash-bottom-nav a{
 }
 nav#splash-bottom-nav a:hover{
   cursor: pointer;
+}
+
+div#splash-bottom-nav{
+  display: flex;
+  flex-direction: column;
+}
+/* div#About{
+  display: none;
+  top: 100vh;
+  animation: rise .5s reverse;
+  -webkit-animation: rise .5s reverse;
+} */
+div#About{
+  font-family: Merriweather;
+  position: absolute;
+  
+  top: 100px;
+  height: 81vh;
+  left: 0px;
+  width: 100vw;
+  line-height: 27px;
+  background-color: rgb(0,25,53);
+  display: flex;
+  flex-direction: column;
+  padding-top: 104px;
+  z-index: 7;
+  border-top: 1px solid rgba(240, 248, 255, 0.658);
+  animation: rise .7s normal;
+  -webkit-animation: rise .7s normal;
+}
+
+@-webkit-keyframes rise {
+  0% { top: 100vh;}
+  100% { top: 25vh; }
+}
+
+@keyframes rise {
+  0% { top: 100vh;}
+  100% { top: 25vh; }
+}
+
+div#about-body{
+  display: flex;
+  flex-direction: column;
+  width: 33vh;
+  padding-top: 7vh;
+  margin-left: auto;
+  margin-right: auto;
+  width:37vw;
+}
+p#about-closer, p#about-sign-off{
+  padding-top: 1vh;
+}
+
+h1#about-tagline{
+  width: fit-content;
+  font-size: 28px;
+  margin-left: auto;
+  margin-right: auto;
+}
+footer#splash-footer{
+  height: 1.7vh;
+  overflow: hidden;
+  background-color: rgb(0,25,53);
 }

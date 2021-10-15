@@ -15,7 +15,9 @@ import Modal from './modal/modal_container';
 import Splash from './splash/splash_container'
 
 
+
 import { render } from 'react-dom';
+import { About } from './splash/about';
 // const App = ({freeze, melt}) => (
 const App = () => (
 
@@ -31,7 +33,7 @@ const App = () => (
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignupFormContainer} />  
     <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
-    
+    <Route exact path={["/", "/login", "/signup" ]} component={About} />
     
     
   </div>

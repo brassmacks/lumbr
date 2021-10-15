@@ -26,7 +26,7 @@ div#blog div#pi-prof-box{
   background: white;
   -webkit-animation: slide .3s forwards;
   animation: slide .3s forwards;
-  min-height: fit-content;
+  min-height: 100vh;
   }
   
   @-webkit-keyframes slide {

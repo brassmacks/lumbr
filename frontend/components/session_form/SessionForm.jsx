@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-
+import { About } from '../splash/about';
 class SessionForm extends React.Component {
   constructor(props) {
     super(props)
@@ -10,9 +10,13 @@ class SessionForm extends React.Component {
       email: "",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.about = React.createRef();
   }
   componentDidMount(){
     this.props.clearErrors()
+  }
+  aboutExpand(){
+    this.about.currentTarget.className = "about-tab"
   }
 
   update(field) {
@@ -111,12 +115,6 @@ class SessionForm extends React.Component {
           
 
         </form>   
-          <nav id="splash-bottom-nav">
-
-            <a id="gitlink" href="https://github.com/brassmacks">Github</a>
-            <a id="linkdlink" href="https://www.linkedin.com/in/joshua-elliott-a044b0209/">LinkedIn</a>
-            <a id='aboutLink' >About</a>
-          </nav>
       </div>
     </div>
     )
