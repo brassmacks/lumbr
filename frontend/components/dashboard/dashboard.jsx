@@ -11,9 +11,10 @@ class Dashboard extends React.Component {
     super(props)
 
   }
+  // ACTION_ITEM 2.0 CHECK OUT THESE BLOGS
   // TEST ENSURE FUNCTIONALITY AFTER REFACTOR
   componentDidUpdate() {
-    // ACTION_ITEM FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
+    // ACTION_ITEM 3 FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
     // this.props.fetchBlog(this.props.currentUser.id)
     
   }
@@ -31,7 +32,7 @@ class Dashboard extends React.Component {
     <div id="log-run">
     <div id="feed">
       <div id="pic-nav-bind">
-      {/* ACTION_ITEM UNSTICK PROFILE PHOTO NEXT TO POST NAV */}
+      {/* ACTION_ITEM 2.0 UNSTICK PROFILE PHOTO NEXT TO POST NAV */}
           <div id="pi-prof-box">
             <div id="prof-slider-bounds" >
               <img onClick={() => this.blgModal()}id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>

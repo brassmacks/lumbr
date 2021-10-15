@@ -4,7 +4,7 @@ import { Dispatch } from 'react'
 
 export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
   blogOpen, openModal, deletePost, dispatch})=> {
-  // ACTION_ITEM
+  // ACTION_ITEM 1 TEST AND CLEAN UP
   // move alt to postindex and fetch in component did mount
   // switch case for each content type
   let editable = currentUser.id === post.user_id
@@ -37,7 +37,7 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
           <img onClick={() => blgModal()} id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
           </div>
         <div id="pi-post-house">
-          {/* ACTION_ITEM
+          {/* ACTION_ITEM 1.0 CHECK TO ENSURE DONE
               refactor to disclude author name when in blog show 
               or post belongs to current user
           */}

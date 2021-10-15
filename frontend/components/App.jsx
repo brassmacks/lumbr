@@ -25,7 +25,7 @@ const App = () => (
     <Modal />
     <BannerContainer />
     <Splash />
-    {/* ACTION_ITEM BLOG SHOW ON ROUTE
+    {/* ACTION_ITEM 4 BLOG SHOW ON ROUTE
      <Route exact path='blog/:id' /> 
     */}
     

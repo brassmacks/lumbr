@@ -122,30 +122,29 @@ class Modal extends React.Component {
       this.assignType('Link')
       break;
     case 'post show':
-      //  ACTION_ITEM FILL IN THIS CASE
+      //  ACTION_ITEM 2.1 FILL IN THIS CASE
       break;
     case 'share post':
       this.component=<h1>share</h1>
       break;
     case 'edit repost':
-  
       this.component=<EditPostForm
-      post={this.props.post_id} 
-      fullPost={this.props.post}
-      closeForm={this.close}/>
+        post={this.props.post_id} 
+        fullPost={this.props.post}
+        closeForm={this.close}/>
       break;
+
     case 'edit post':
       this.freeze()
-      // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
+      // ACTION_ITEM 1.0 TEST TO ENSURE DONE REFACTOR DATA ON THREAD TO POST THROUGH MODAL
       this.component=<EditPostForm 
-      post={this.props.post_id} 
-      fullPost={this.props.post}
-      closeForm={this.close}
-      melt={this.melt} />
+        post={this.props.post_id} 
+        fullPost={this.props.post}
+        closeForm={this.close} />
       break;
     case 'delete post':
-      // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
-      // ACTION_ITEM CHANGE BLOG OPTION TO POSTID IN STATE SLICE
+      // ACTION_ITEM 1.5 REFACTOR DATA ON THREAD TO POST THROUGH MODAL
+      // ACTION_ITEM 1.6 CHANGE BLOG OPTION TO POSTID IN STATE SLICE
       this.component= <DeletePst close={close} post={this.props.modal.blog} />
       break
     case 'CLOSE_MODAL':

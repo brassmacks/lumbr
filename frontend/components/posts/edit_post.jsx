@@ -23,7 +23,7 @@ export const EditPost = (post, update, removeFile) => {
 
       <div className={`update-media-post`}>
         <input type="text" className="post-form"
-          // ACTION_ITEM
+          // ACTION_ITEM 1.2 ENSURE DONE
           // add default value instead on other inputs
           placeholder={post.title || 'Title'} defaultValue={post.title}
           id={`${path}-post-title`} className="post-form"

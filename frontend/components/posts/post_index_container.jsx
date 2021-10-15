@@ -17,7 +17,7 @@ const mSTP = (state, ownProps) => {
   let users_by_Id = Object.keys(state.entities.users)
   let blogs_by_Id = Object.keys(state.entities.blogs)  
     return {
-      // ACTION_ITEM CONTAINERIZE REPEATED CODE BLOCKS INTO FUNCTIONS
+      // ACTION_ITEM 2.5 CONTAINERIZE REPEATED CODE BLOCKS INTO FUNCTIONS
       users: users,
       users_by_Id: users_by_Id,
       blogs: blogs,

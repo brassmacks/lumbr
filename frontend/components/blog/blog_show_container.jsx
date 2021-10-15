@@ -5,7 +5,7 @@ import { fetchBlog } from '../../actions/blog_actions';
 import { closeModal } from '../../actions/modal_actions';
 
 const mSTP = (state, ownProps) => {
-  // ACTION_ITEM REFACTOR INTO FEED LOAD 
+  // ACTION_ITEM 4 REFACTOR INTO FEED LOAD 
   // (function(){ 
   //   ownProps.blog.posts.forEach(post_key => {
   //     if (state.entities.posts[post_key]) {

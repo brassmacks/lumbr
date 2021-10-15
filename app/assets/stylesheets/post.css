@@ -61,7 +61,7 @@ div#Photo-post-choices button{
 }
 input#Photo-upload-input{
   position: absolute;
-  font-family: favorit;
+  font-family: Merriweather;
   opacity: 0;
   display: flex;
   flex-direction: column;
@@ -150,7 +150,7 @@ div#Video-post-choices{
 
 input#Video-upload-input{
   position: absolute;
-  font-family: favorit;
+  font-family: Merriweather;
   opacity: 0;
   display: flex;
   flex-direction: column;

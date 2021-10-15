@@ -1,0 +1,110 @@
+# Query: ACTION_ITEM
+# Flags: RegExp
+# ContextLines: 1
+
+23 results - 16 files
+
+frontend/components/App.jsx:
+  27      <Splash />
+  28:     {/* ACTION_ITEM BLOG SHOW ON ROUTE
+  29       <Route exact path='blog/:id' /> 
+
+frontend/components/blog/blog_show_container.jsx:
+  7  const mSTP = (state, ownProps) => {
+  8:   // ACTION_ITEM 1 REFACTOR INTO FEED LOAD 
+  9    // (function(){ 
+
+frontend/components/buttons/post_buttons.jsx:
+  30      this.dropDown = this.dropDown.bind(this)
+  31:     //ACTION_ITEM post_author is followed?
+  32    }
+
+frontend/components/dashboard/dashboard.jsx:
+  15    componentDidUpdate() {
+  16:     // ACTION_ITEM FILL BUILD FETCHPOSTS TO TAKE ARG BASED OFF OF FETCHBLOG
+  17      // this.props.fetchBlog(this.props.currentUser.id)
+
+  33        <div id="pic-nav-bind">
+  34:       {/* ACTION_ITEM UNSTICK PROFILE PHOTO NEXT TO POST NAV */}
+  35            <div id="pi-prof-box">
+
+frontend/components/dashboard/post_button.jsx:
+  6  const PostButton = ({button, openModal, freeze}) => {
+  7:   //  ACTION_ITEM SET LABELS TO BASELINE
+  8      // SIMILAR TO FOLLOW/POST AUTHOR
+
+frontend/components/modal/modal_component.jsx:
+  124      case 'post show':
+  125:       //  ACTION_ITEM FILL IN THIS CASE
+  126        break;
+
+  138        this.freeze()
+  139:       // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
+  140        this.component=<EditPostForm 
+
+  146      case 'delete post':
+  147:       // ACTION_ITEM REFACTOR DATA ON THREAD TO POST THROUGH MODAL
+  148:       // ACTION_ITEM CHANGE BLOG OPTION TO POSTID IN STATE SLICE
+  149        this.component= <DeletePst close={close} post={this.props.modal.blog} />
+
+frontend/components/posts/edit_post_form_container.jsx:
+  10  const mSTP = (state, ownProps) => {
+  11:       // ACTION_ITEM MAKE POST DRAFT OBJECT AND USE IT TO POPULATE AGAINST TYPE
+  12    return{
+
+frontend/components/posts/edit_post.jsx:
+  25          <input type="text" className="post-form"
+  26:           // ACTION_ITEM
+  27            // add default value instead on other inputs
+
+frontend/components/posts/post_container.jsx:
+  30    blogOpen: ownProps.blogOpen,
+  31:   // ACTION_ITEM: CONVERT TO FETCH TAGS FROM STATE=>OWNPROPS.POST.TAGS.MAP
+  32    editable: currentUser.id === author,
+
+frontend/components/posts/post_form.jsx:
+  154    trackChanges(postKey) {
+  155:     // ACTION_ITEM 
+  156      // CHANGE TO ON UPDATE
+
+frontend/components/posts/post_index_container.jsx:
+  19      return {
+  20:       // ACTION_ITEM CONTAINERIZE REPEATED CODE BLOCKS INTO FUNCTIONS
+  21        users: users,
+
+frontend/components/posts/post_index_item.jsx:
+   6    blogOpen, openModal, deletePost, dispatch})=> {
+   7:   // ACTION_ITEM
+   8    // move alt to postindex and fetch in component did mount
+
+  39          <div id="pi-post-house">
+  40:           {/* ACTION_ITEM
+  41                refactor to disclude author name when in blog show 
+
+frontend/components/posts/post_index.jsx:
+   32    componentDidMount() {
+   33:   //ACTION_ITEM LOADINGCOMPONENT => PULL 3 POSTS AND RENDER LOADING COMPONENT OUT OF VIEW, WHEN LOADING COMPONENT REF IS VISIBLE, UPDATE POSTLIST WITH ADDITIONAL POSTS
+   34      this.postCheck()
+
+  114            // TEST CHECK FUNCTIONALITY BLOG FETCH 
+  115:           // ACTION_ITEM ADD PROFILE_URLS_BY_ID OBJ TO STATE, REF OFF POST/USER
+  116          
+
+frontend/components/posts/post.jsx:
+  37      this.setState({ isFollowed: true })
+  38:     // ACTION_ITEM CREATE REF TO ALL FOLLOW BUTTONS RELATED TO AUTHOR
+  39      // STATE CHANGE AND RE-RENDER OF ALL POSTS BY AUTHOR WHEN ONE IS CLICKED
+
+  75            <div id="pi-post-house">
+  76:             {/* ACTION_ITEM
+  77                refactor to disclude author name when in blog show 
+
+frontend/components/posts/repost_form_container.jsx:
+  10  const mSTP = (state, ownProps) => {
+  11:   // ACTION_ITEM MAKE POST DRAFT OBJECT AND USE IT TO POPULATE AGAINST TYPE
+  12    return {
+
+frontend/reducers/errors_reducer.js:
+  6  });
+  7: //  ACTION_ITEM incorporate other errors by building then adding their reducers
+  8  //  POST

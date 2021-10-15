@@ -30,7 +30,7 @@ class PostIndex extends React.Component {
     this.loading = (this.state.posts.length < 5  && (!this.props.blogOpen))
   }
   componentDidMount() {
-  //ACTION_ITEM LOADINGCOMPONENT => PULL 3 POSTS AND RENDER LOADING COMPONENT OUT OF VIEW, WHEN LOADING COMPONENT REF IS VISIBLE, UPDATE POSTLIST WITH ADDITIONAL POSTS
+  //ACTION_ITEM 3 LOADINGCOMPONENT => PULL 3 POSTS AND RENDER LOADING COMPONENT OUT OF VIEW, WHEN LOADING COMPONENT REF IS VISIBLE, UPDATE POSTLIST WITH ADDITIONAL POSTS
     this.postCheck()
     
     if (this.loading) {
@@ -112,7 +112,7 @@ class PostIndex extends React.Component {
           
       {
           // TEST CHECK FUNCTIONALITY BLOG FETCH 
-          // ACTION_ITEM ADD PROFILE_URLS_BY_ID OBJ TO STATE, REF OFF POST/USER
+          // ACTION_ITEM 2 ADD PROFILE_URLS_BY_ID OBJ TO STATE, REF OFF POST/USER
         
         Object.values(posts).map((post, i) => {
           

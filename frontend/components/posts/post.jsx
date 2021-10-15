@@ -35,7 +35,7 @@ class Post extends React.Component{
     e.target.className = 'hidden'
     this.props.createFollow(this.props.followData)
     this.setState({ isFollowed: true })
-    // ACTION_ITEM CREATE REF TO ALL FOLLOW BUTTONS RELATED TO AUTHOR
+    // ACTION_ITEM 1.3 CREATE REF TO ALL FOLLOW BUTTONS RELATED TO AUTHOR
     // STATE CHANGE AND RE-RENDER OF ALL POSTS BY AUTHOR WHEN ONE IS CLICKED
   }
   turnPage(){
@@ -73,10 +73,6 @@ class Post extends React.Component{
             <img onClick={() => this.blgModal()} id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
           </div>
           <div id="pi-post-house">
-            {/* ACTION_ITEM
-              refactor to disclude author name when in blog show 
-              or post belongs to current user
-          */}
           <span id="post-top" 
           onMouseEnter={this.props.blogOpen ? ()=> null : () => this.turnPage()}
               onMouseLeave={this.props.blogOpen ? ()=> null : () => this.turnBack() }> 

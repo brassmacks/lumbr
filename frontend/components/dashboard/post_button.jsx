@@ -4,7 +4,7 @@ import { openModal } from '../../actions/modal_actions'
 import { createPost } from '../../actions/post_actions';
 
 const PostButton = ({button, openModal, freeze}) => {
-  //  ACTION_ITEM SET LABELS TO BASELINE
+  //  ACTION_ITEM 1.1 SET LABELS TO BASELINE
     // SIMILAR TO FOLLOW/POST AUTHOR
   let type = button[0];
   let src = button[1];

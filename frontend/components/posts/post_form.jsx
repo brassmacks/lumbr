@@ -152,7 +152,7 @@ class PostForm extends React.Component {
     this.component = () => <img id='preview' className='post-create' src={preview} />
   }
   trackChanges(postKey) {
-    // ACTION_ITEM 
+    // ACTION_ITEM 2.1
     // CHANGE TO ON UPDATE
 
     // if (!this.state.changes.includes(postKey)) {

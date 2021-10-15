@@ -28,7 +28,7 @@ const mSTP = (state, ownProps) => {
   author: author,
   tags: tags,
   blogOpen: ownProps.blogOpen,
-  // ACTION_ITEM: CONVERT TO FETCH TAGS FROM STATE=>OWNPROPS.POST.TAGS.MAP
+  // ACTION_ITEM: 2.2 CONVERT TO FETCH TAGS FROM STATE=>OWNPROPS.POST.TAGS.MAP
   editable: currentUser.id === author,
   // freeze: ownProps.freeze,
 }}

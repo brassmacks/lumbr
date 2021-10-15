@@ -28,7 +28,7 @@ export default class PostButtons extends React.Component{
     this.menuOpen = this.menuOpen.bind(this)
     this.menuClose = this.menuClose.bind(this)
     this.dropDown = this.dropDown.bind(this)
-    //ACTION_ITEM post_author is followed?
+    //ACTION_ITEM 1.3 CREATE ISFOLLOWED ON USER SLICE post_author is followed?
   }
   componentDidMount() {
   }
