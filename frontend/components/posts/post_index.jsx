@@ -7,6 +7,7 @@ class PostIndex extends React.Component {
   constructor(props){
     
     super(props)
+    // ACTION_ITEM 4.3
     // this.loading = true
     this.state = {
       posts: this.props.posts,
@@ -87,10 +88,6 @@ class PostIndex extends React.Component {
     this.loading = false
   }
 
-
-
-
-
   render() { 
     let { deletePost, fetchUser, 
             users_by_Id, blogs_by_Id, fetchBlog, posts } = this.props;
@@ -115,22 +112,9 @@ class PostIndex extends React.Component {
           // ACTION_ITEM 2 ADD PROFILE_URLS_BY_ID OBJ TO STATE, REF OFF POST/USER
         
         Object.values(posts).map((post, i) => {
-          
-          // return <Post freeze={this.props.freeze} post={post} 
           return <Post post={post} 
                       blogOpen={this.props.blogOpen}
                       key={`${post.id}${post.username}${i}`} />
-            // convert this list to props
-              // return <PostIndexItem 
-              //   currentUser={this.props.currentUser}
-              //   freeze={this.props.freeze}
-              //   postId={post.id}
-              //   post={post}
-              //   deletePost={deletePost}
-              //   blogOpen={this.props.blogOpen}
-              //   key={`${post.id}${post.username}${i}`}
-              //   dispatch={this.props.dispatch}
-              //   openModal={this.props.openModal} />
               }
             )
           }

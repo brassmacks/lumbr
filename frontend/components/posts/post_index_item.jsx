@@ -2,13 +2,10 @@ import React from 'react'
 import  PostButtons  from '../buttons/post_button_container'
 import { Dispatch } from 'react'
 
-export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
-  blogOpen, openModal, deletePost, dispatch})=> {
-  // ACTION_ITEM 1 TEST AND CLEAN UP
-  // move alt to postindex and fetch in component did mount
-  // switch case for each content type
+export const PostIndexItem = ({ postId, post, currentUser, openModal })=> {
+
   let editable = currentUser.id === post.user_id
-  // let followable = 
+  
   const tagString = () => {
     let list = ""
     if (post.tags) {
@@ -17,15 +14,14 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
       })}
     return list
   }
+
   const blgModal = () => {
-    // freeze()
     if (editable) {
       openModal('edit blog', currentUser)
     }
     else {
       let data = post.user_id 
       openModal('show blog', data)
-      // store.dispatch({ type: 'OPEN MODAL', modal: 'show blog', data })
     }
   }
 
@@ -34,13 +30,11 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
       
       <div id="pi-prof-box" >
           <div id="prof-slider-bounds" >
-          <img onClick={() => blgModal()} id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
+          <img id="pi-prof-pic" className="sticky" 
+            onClick={() => blgModal()} 
+            src={post.profileUrl} alt="" ></img>
           </div>
         <div id="pi-post-house">
-          {/* ACTION_ITEM 1.0 CHECK TO ENSURE DONE
-              refactor to disclude author name when in blog show 
-              or post belongs to current user
-          */}
         <h3 id="post-author">{post.username}</h3>
     
           {
@@ -53,6 +47,7 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
           : 
           <div>
             <img key={post.id}
+            // ACTION_ITEM 2.15
             // onClick={() => postZoom()}
             className="post-image" 
             width='540px' 
@@ -64,10 +59,8 @@ export const PostIndexItem = ({ postId, post, freeze, fetchBlog, currentUser,
             </div>
           </div>
           }
-          {/* {<PostButtons onClick={()=> this.props.freeze()} */}
           {<PostButtons
             editable={editable}
-            // freeze={freeze}
             post={post} 
             postId={postId}/>}
         </div>

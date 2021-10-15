@@ -8,14 +8,29 @@ import { closeModal } from '../../actions/modal_actions';
 
 
 const mSTP = (state, ownProps) => {
-      // ACTION_ITEM 1.2 MAKE POST DRAFT OBJECT AND USE IT TO POPULATE AGAINST TYPE
+
+  let currentUser = state.entities.users[state.session.id]
+    let post = {
+    title: ownProps.fullPost.title,
+    body: ownProps.fullPost.body,
+    source: null,
+    user_id: currentUser.id,
+    contentType: ownProps.fullPost.contentType,
+    photoFile: ownProps.fullPost.photoFile,
+    urlInput: ownProps.fullPost.urlInput,
+    tagString: ownProps.fullPost.tagString,
+    mediaAttached: ownProps.fullPost.mediaAttached,
+  }
+  post.source = ownProps.repost ? ownProps.fullPost.username : null
+  let type = ownProps.repost ? 'Repost' : 'Update'
   return{
+    postDraft: post,
     postId: ownProps.post,
     fullPost: ownProps.fullPost,
     currentUser: state.entities.users[state.session.id],
     user_id: state.session.id,
-    type: 'Update',
-    formType: 'Update'
+    type: type,
+    formType: type
 }};
 
 const mDTP = dispatch => ({

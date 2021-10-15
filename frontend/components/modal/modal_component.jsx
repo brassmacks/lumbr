@@ -29,6 +29,7 @@ class Modal extends React.Component {
 
     this.fetch()
     this.assignType = this.assignType.bind(this);
+    this.close = this.close.bind(this)
     this.defineComponent();
   } 
   freeze = () => { document.body.style.overflow = "hidden" }
@@ -136,16 +137,15 @@ class Modal extends React.Component {
 
     case 'edit post':
       this.freeze()
-      // ACTION_ITEM 1.0 TEST TO ENSURE DONE REFACTOR DATA ON THREAD TO POST THROUGH MODAL
       this.component=<EditPostForm 
         post={this.props.post_id} 
         fullPost={this.props.post}
         closeForm={this.close} />
       break;
+      
     case 'delete post':
-      // ACTION_ITEM 1.5 REFACTOR DATA ON THREAD TO POST THROUGH MODAL
-      // ACTION_ITEM 1.6 CHANGE BLOG OPTION TO POSTID IN STATE SLICE
-      this.component= <DeletePst close={close} post={this.props.modal.blog} />
+
+      this.component= <DeletePst close={this.close} post={this.props.modal.blog} />
       break
     case 'CLOSE_MODAL':
       this.melt()
@@ -155,6 +155,7 @@ class Modal extends React.Component {
     default:
       this.melt()
       return null;
+      // ACTION_ITEM 4
       // return loading modal
     }
   }

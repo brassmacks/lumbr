@@ -95,6 +95,16 @@ div#post-nav-panel.post-nav{
   align-content: space-around;
   border-radius: 2px;
 }
+h2#post-nav-title{
+  margin-bottom: 2.15vh;
+  font-weight: 500;
+}
+li#post-nav-list-item div{
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  align-items: center;
+}
 
 div#post-index-container{
   margin-left:-85px;
@@ -130,6 +140,13 @@ img#pi-prof-pic.sticky{
 }
 img#pi-prof-pic.sticky:hover{
   cursor: pointer;
+}
+div#prof-slider-bounds.curr-user img{
+  position: static;
+}
+div#prof-slider-bounds.curr-user{
+  display: inline;
+  overflow: hidden;
 }
 div#prof-slider-bounds{
   background-color: transparent;

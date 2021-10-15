@@ -10,9 +10,10 @@ class PostForm extends React.Component {
     super(props);
     
     this.currentUser = this.props.currentUser;
-    this.state = props.type === 'Update' || props.type === 'Repost' ? 
-      {id: this.props.post} 
-      :
+    this.state = props.type === 'Update' ? 
+      {id: this.props.postId} 
+      : props.type === 'Repost' ?
+        props.postDraft :
       {
         title: '',
         body: '',
@@ -53,7 +54,7 @@ class PostForm extends React.Component {
         break;
       case 'Repost':
         this.component = () => EditPost(
-          this.props.fullPost,
+          this.props.postDraft,
           this.update,
           this.removeFile,
         )
@@ -98,9 +99,9 @@ class PostForm extends React.Component {
 
   handlePostSubmit(e) {
     e.preventDefault();
-    
     this.props.type === 'Update' ?
         this.props.postAction(this.state) 
+        // ACTION_ITEM 2.1 call track changes and update state before closemodal
           :
         this.newPostSubmit();
 
@@ -152,9 +153,13 @@ class PostForm extends React.Component {
     this.component = () => <img id='preview' className='post-create' src={preview} />
   }
   trackChanges(postKey) {
+
     // ACTION_ITEM 2.1
     // CHANGE TO ON UPDATE
-
+    // Items changed and post Id are the only thing that end up in state when
+    // routed to update.
+    // objKeys for this.props.fullPost & this.state
+    // set state with  postId : this.state ? this.state[key] : this.props.fullPost
     // if (!this.state.changes.includes(postKey)) {
     //   this.state.changes.push(postKey)
     // }

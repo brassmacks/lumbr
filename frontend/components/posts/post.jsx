@@ -21,16 +21,15 @@ class Post extends React.Component{
   }
 
   blgModal = () => {
-    // this.props.freeze()
     if (this.state.editable) {
       this.props.openModal('edit blog', this.state.currentUser)
     }
     else {
       let blog = this.state.author
       this.props.openModal('show blog', blog)
-      // store.dispatch({ type: 'OPEN MODAL', modal: 'show blog', data })
     }
   }
+
   followToggle(e) {
     e.target.className = 'hidden'
     this.props.createFollow(this.props.followData)
@@ -63,8 +62,9 @@ class Post extends React.Component{
     let post = this.state.post
     let editable = this.state.editable
     let followable = (!this.state.isFollowed && !editable)
-    let postId = this.state.post.id
     let blogOpen = this.props.blogOpen
+    
+
     return (
       <li ref={this.postBody} className='post' id='post-item'>
 
@@ -87,7 +87,6 @@ class Post extends React.Component{
               }
             <div id="post-spacer-top" className='post'>
             <div id="post-top-row">
-              {/* <div id="post-top-auth-follow"> */}
           { !blogOpen ? <h3 id="post-author">{post.username}</h3> : '' }
           
           { followable ?
@@ -102,26 +101,31 @@ class Post extends React.Component{
               </div>
 
             </span>
-            { post.content_type === 'Text' ?
-                <div id="text-content" className="post">
-                  <h3 id="post-title">{post.title}</h3>
-                  <p className="post" id="text-content">{post.body}</p>
-                  <p>{this.tagString()}</p>
-                </div>
-                :
-                <div>
+            
+            
+            {                   
+                this.state.post.photoUrl ? 
+                  //ACTION_ITEM 2.1 MODAL OPEN AND POST ZOOM
+                  // onClick={() => postZoom()}
+                  <div>
                   <img key={post.id}
-                    // onClick={() => postZoom()}
                     className="post-image"
                     width='540px'
-                    src={post.photoUrl}>
-                  </img>
+                    src={post.photoUrl} />
                   <div id="text-content" className="post">
                     <p className="post" id="text-content">{post.body}</p>
                     <p>{this.tagString()}</p>
+                    </div>
+                    </div>
+                  :
+                  <div id="text-content" className="post">
+                    <h3 id="post-title">{post.title}</h3>
+                    <p className="post" id="text-content">{post.body}</p>
+                    <p>{this.tagString()}</p>
                   </div>
-                </div>
-            }
+                  
+                }
+            
               <footer id='post-footer'>
                 <PostButtons editable={editable} post={post} location={'option'}/>
               </footer>

@@ -34,7 +34,7 @@ class Dashboard extends React.Component {
       <div id="pic-nav-bind">
       {/* ACTION_ITEM 2.0 UNSTICK PROFILE PHOTO NEXT TO POST NAV */}
           <div id="pi-prof-box">
-            <div id="prof-slider-bounds" >
+            <div id="prof-slider-bounds" className="curr-user">
               <img onClick={() => this.blgModal()}id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>
             </div>
           </div>

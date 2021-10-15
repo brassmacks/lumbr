@@ -2,16 +2,21 @@ import { deletePost } from "../../actions/post_actions";
 import React from 'react'
 
 import { connect } from "react-redux";
-
- const DeletePst = (props) => {
+const DeletePst = (props) => {
+   debugger
   const sendDelete = (postId) => {
     props.deletePost(postId)
+    props.close()
   }
 
   return (
     <div id='delete-post-nav'>
-      <button onClick={ () => close() }>Cancel</button>
-      <button onClick={ ()=> sendDelete(props.post) }>OK</button>
+      <h1 id="delete-post-warning">Are you sure that you want to delete this post?</h1>
+      <div id='delete-post-buttons'>
+
+      <button id="confirm-delete" onClick={ ()=> sendDelete(props.post) }>OK</button>
+      <button id="cancel-delete" onClick={ () => props.close() }>Cancel</button>
+      </div>
     </div>
   )
 }
@@ -19,12 +24,13 @@ import { connect } from "react-redux";
 const mSTP = (state, ownProps) => ({
   post: ownProps.post,
   postId: ownProps.postId,
-  deletePost: state.deletePost
+  deletePost: state.deletePost,
+  close: ownProps.close
 })
 
 const mDTP = dispatch => ({
   deletePost: id => dispatch(deletePost(id)),
-  close: () => close() 
+ 
 })
 
 export default connect(mSTP,mDTP)(DeletePst)

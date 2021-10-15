@@ -2,10 +2,6 @@ import React from 'react'
 
 export const EditPost = (post, update, removeFile) => {
   let path = post.content_type;
-  
-  
-
-
 
   return (
       <div id={'edit-post-guts'} className='post-form'>
@@ -23,8 +19,6 @@ export const EditPost = (post, update, removeFile) => {
 
       <div className={`update-media-post`}>
         <input type="text" className="post-form"
-          // ACTION_ITEM 1.2 ENSURE DONE
-          // add default value instead on other inputs
           placeholder={post.title || 'Title'} defaultValue={post.title}
           id={`${path}-post-title`} className="post-form"
           autoComplete="off"
