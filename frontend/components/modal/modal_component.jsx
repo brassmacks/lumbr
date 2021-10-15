@@ -128,7 +128,7 @@ class Modal extends React.Component {
       this.component=<h1>share</h1>
       break;
     case 'edit repost':
-      debugger
+  
       this.component=<EditPostForm
       post={this.props.post_id} 
       fullPost={this.props.post}

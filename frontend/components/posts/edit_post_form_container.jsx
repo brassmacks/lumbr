@@ -8,7 +8,6 @@ import { closeModal } from '../../actions/modal_actions';
 
 
 const mSTP = (state, ownProps) => {
-  debugger
       // ACTION_ITEM MAKE POST DRAFT OBJECT AND USE IT TO POPULATE AGAINST TYPE
   return{
     postId: ownProps.post,

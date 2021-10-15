@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
     post.username = currentUser.username
     post.user_id = currentUser.id
   }
-  debugger
+  
   let blogs = state.entities.blogs || null
   let blog =  blogs ? state.entities.blogs[author_id] : null
 

@@ -55,7 +55,7 @@ a#lumbr-txt-title {
 }
 
 div#splash-container-root.splash-buttons{
-  padding-top: 11vh;
+  padding-top: 15vh;
   width: 300px;
   display: flex;
   flex-direction: column;
@@ -78,7 +78,7 @@ div#form-back.session{
 }
 
 div#session-form {
-  padding-top: 11vh;
+  padding-top: 15vh;
   width: 300px;
   margin-left: auto;
   margin-right: auto;
@@ -157,7 +157,7 @@ nav#splash-bottom-nav{
   padding: 5px;
 }
 nav#splash-bottom-nav.about{
-  bottom: 13vh;
+  bottom: 27vh;
 }
 nav#splash-bottom-nav a{
   color: aliceblue;
@@ -173,52 +173,98 @@ div#splash-bottom-nav{
   display: flex;
   flex-direction: column;
 }
-/* div#About{
-  display: none;
-  top: 100vh;
-  animation: rise .5s reverse;
-  -webkit-animation: rise .5s reverse;
-} */
-div#About{
-  font-family: Merriweather;
+div#About.hidden{
+  opacity: 0;
+}
+div#About.down{
+  overflow: hidden;
+  height: 0vh;
   position: absolute;
+  top: 100vh;
+  padding-top: 0px;
+  bottom: 0px;
   
-  top: 100px;
+  animation: fall .5s normal;
+  -webkit-animation: fall .5s normal;
+}
+@-webkit-keyframes fall {
+  0% { 
+    padding-top: 104px;
+    top: 13vh;
+    height: 81vh;
+ }
+  50%{
+    padding-top: 60px;
+    height: 81vh;
+    top: 58vh;
+  }
+  100% {
+    padding-top: 0px;
+    top: 100vh;
+    height: 5vh;
+  }
+}
+
+@keyframes fall {
+  0% { 
+    padding-top: 104px;
+    top: 13vh;
+    height: 81vh;
+ }
+  50%{
+    padding-top: 60px;
+    height: 60vh;
+    top: 50vh;
+  }
+  100% {
+    padding-top: 0px;
+    top: 100vh;
+    height: 5vh;
+  }
+}
+
+div#About{
   height: 81vh;
   left: 0px;
   width: 100vw;
   line-height: 27px;
   background-color: rgb(0,25,53);
-  display: flex;
-  flex-direction: column;
   padding-top: 104px;
   z-index: 7;
   border-top: 1px solid rgba(240, 248, 255, 0.658);
+}
+div#About.showing{
+  opacity: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: Merriweather;
+  position: absolute;
+  top: 13vh;
+
   animation: rise .7s normal;
   -webkit-animation: rise .7s normal;
 }
 
 @-webkit-keyframes rise {
   0% { top: 100vh;}
-  100% { top: 25vh; }
+  100% { top: 13vh; }
 }
 
 @keyframes rise {
   0% { top: 100vh;}
-  100% { top: 25vh; }
+  100% { top: 13vh; }
 }
 
 div#about-body{
   display: flex;
   flex-direction: column;
-  width: 33vh;
+  width: 39vh;
   padding-top: 7vh;
   margin-left: auto;
   margin-right: auto;
-  width:37vw;
 }
 p#about-closer, p#about-sign-off{
-  padding-top: 1vh;
+  padding-top: 3vh;
 }
 
 h1#about-tagline{

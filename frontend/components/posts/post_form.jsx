@@ -98,7 +98,7 @@ class PostForm extends React.Component {
 
   handlePostSubmit(e) {
     e.preventDefault();
-    debugger
+    
     this.props.type === 'Update' ?
         this.props.postAction(this.state) 
           :
