@@ -31,9 +31,9 @@ export const About = () => {
             <p id="about-sign-off">Feel free to reach out:</p>
             <nav id="splash-bottom-nav" className="about">
 
-            <a id="gitlink" href="https://github.com/brassmacks">Github</a>
-            <a id="linkdlink" href="https://www.linkedin.com/in/joshua-elliott-a044b0209/">LinkedIn</a>
-              <a href="mailto:tertiaryoptical@gmail.com">Email</a>
+            <a id="gitlink" href="https://github.com/brassmacks" target="_blank">Github</a>
+            <a id="linkdlink" href="https://www.linkedin.com/in/joshua-elliott-a044b0209/" target="_blank">LinkedIn</a>
+              <a href="mailto:tertiaryoptical@gmail.com" target="_blank">Email</a>
               </nav>
         
       </div>
