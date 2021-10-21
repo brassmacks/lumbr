@@ -108,7 +108,20 @@ class PostForm extends React.Component {
     this.props.closeModal();
     this.props.closeForm();
   }
-
+  tagCheck(e){
+    console.log(e)
+    if (this.state.tagString.length < 2 && e.nativeEvent.data === '#'){
+      return null
+    }
+    if (this.state.tagString.length >=4 && e.nativeEvent.data === '#') {
+      console.log(this.state.tags)
+      this.setState({
+        tags: this.state.tags.push(this.state.tagString.split('#')[0]),
+        tagString: ""    
+      })
+      console.log(this.state.tags)
+    } else { this.setState({tagString: e.currentTarget.value})}
+  }
   toggleContent = (e) => {
     e.preventDefault();
     this.setState({
@@ -165,6 +178,7 @@ class PostForm extends React.Component {
     // }
   }
   update(field) {
+    
     return e => this.setState({
       [field]: e.currentTarget.value
     });
@@ -175,6 +189,7 @@ class PostForm extends React.Component {
     let type = this.state.contentType;
     let username = this.currentUser.username;
     let component = this.component;
+    let tags = this.state.tags
     return (
 
       <div id="post-channel">
@@ -187,12 +202,18 @@ class PostForm extends React.Component {
           <form className="post-form" id="post-form-form" 
             onSubmit={(e) => this.handlePostSubmit(e) }>
             {component()}
+            <div id="tag-list" >
+              {console.log(tags)}
+              {/* {tags.forEach((tag, i) => {
+                <button id='tag-show' >{tag}</button>
+              })} */}
+            </div>
             <input type="text" value={this.state.tagString} 
               placeholder={
                 this.props.formType === 'Update' ? 
                 this.state.tagString : "#add tags" } 
               id="post-tags-input" className="post-form"
-              onChange={this.update('tagString')}
+              onChange={e => this.tagCheck(e)}
             />
             <footer id={`post-footer`}>
             <div id="post-buttons" className="post-submit">

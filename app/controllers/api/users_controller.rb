@@ -1,7 +1,6 @@
 class Api::UsersController < ApplicationController
 
   def create 
-
     @user = User.new(user_params)
     if @user.save
       log_in!(@user)
@@ -13,7 +12,7 @@ class Api::UsersController < ApplicationController
         }, status: 400
     end
   end
-  
+
   def show
     @user = User.find(params[:id])
     if @user
@@ -90,12 +89,28 @@ class Api::UsersController < ApplicationController
       }
     end
   end
+  
+  def avatar
+    p params 
+    puts params 
+    @user = User.find(params[:id])
+    puts user_params[:avatar]
+    @user.profile_photo= user_params[:avatar]
+    if @user.save
+      render 'api/users/show'
+    else
+      render json: { 
+        #style this v
+        user_errors: @user.errors.full_messages
+        }, status: 400
+    end
 
+  end
   
   protected 
 
   def user_params
-    params.require(:user).permit(:id, :username, :user_id, :password, :email, :follow, :tag, :post)
+    params.require(:user || :avatar).permit(:id, :username, :user_id, :avatar, :image, :password, :email, :follow, :tag, :post)
   end
   
 end

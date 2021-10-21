@@ -2,7 +2,7 @@ json.blog do
 json.set! @user.id do
   json.blog @blog 
   json.posts @post_ids
-  json.profileUrl @user.profile_photo.attached? ? url_for(@user.profile_photo) :
+  json.profileUrl @blog.backsplash.attached? ? url_for(@blog.backsplash) :
       'https://lumbr-seeds.s3.us-west-1.amazonaws.com/watercolor.jpg'
     #TEST ENSURE FUNCTIONALITY POST REFACTOR
     # if post.photo.attached?

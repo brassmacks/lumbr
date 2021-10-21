@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get 'users/followers/:id', to: 'users#followers'
     post 'users/follow/:id', to: 'users#follow'
     delete 'users/unfollow/:id', to: 'users#unfollow'
+    put 'users/avatar/:id', to: 'users#avatar'
 
     resources :blogs, only: [ :show, :index, :update ]
     resource :session, only: [ :create, :destroy, :new ]

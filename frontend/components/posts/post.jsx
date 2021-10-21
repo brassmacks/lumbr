@@ -10,7 +10,8 @@ class Post extends React.Component{
       author: this.props.author,
       tags: this.props.tags,
       editable: this.props.editable,
-      isFollowed: this.props.currentUser.follows.includes(this.props.author)
+      isFollowed: this.props.currentUser.follows.includes(this.props.author),
+      avatar: this.props.avatar
     }
     this.postBody = React.createRef()
     this.cornerCover = React.createRef()
@@ -70,7 +71,7 @@ class Post extends React.Component{
 
         <div id="pi-prof-box" className={blogOpen ? 'blog' : ''}>
           <div id="prof-slider-bounds" >
-            <img onClick={() => this.blgModal()} id="pi-prof-pic" className="sticky" src={post.profileUrl} alt="" ></img>
+            <img onClick={() => this.blgModal()} id="pi-prof-pic" className="sticky" src={this.state.avatar} alt="" ></img>
           </div>
           <div id="pi-post-house">
           <span id="post-top" 

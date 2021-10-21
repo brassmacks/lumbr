@@ -133,14 +133,14 @@ export default class PostButtons extends React.Component{
             
             {this.button('delete post', this.Trash)}
             {this.button('edit post', this.Pencil)}
-            {this.button('edit repost', this.Repost)}
-            {this.button('share post', this.Sharow)}
+            {/* {this.button('edit repost', this.Repost)} */}
+            
             
           </div>
           :
           <div id="feed-post-butts">
             {/* {this.button('share post', this.Sharow)} */}
-            {this.button('edit repost', this.Repost)}
+            {this.button('edit repost', this.Sharow)}
           </div>
           }
           </div>

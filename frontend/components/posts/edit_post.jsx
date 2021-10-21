@@ -19,7 +19,7 @@ export const EditPost = (post, update, removeFile) => {
 
       <div className={`update-media-post`}>
         <input type="text" className="post-form"
-          placeholder={post.title || 'Title'} defaultValue={post.title}
+          placeholder={ post.title || 'Title'} defaultValue={post.title}
           id={`${path}-post-title`} className="post-form"
           autoComplete="off"
           onChange={update('title')} />
@@ -27,7 +27,7 @@ export const EditPost = (post, update, removeFile) => {
           }
         
         <textarea
-          placeholder={post.body} defaultValue={post.body}
+          placeholder={ post.body || "Body"} defaultValue={post.body}
           id={`${path}-post-body`} className="post-form" autoComplete="off"
           onChange={update('body')}
         />

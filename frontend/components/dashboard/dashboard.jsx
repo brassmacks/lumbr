@@ -32,7 +32,6 @@ class Dashboard extends React.Component {
     <div id="log-run">
     <div id="feed">
       <div id="pic-nav-bind">
-      {/* ACTION_ITEM 2.0 UNSTICK PROFILE PHOTO NEXT TO POST NAV */}
           <div id="pi-prof-box">
             <div id="prof-slider-bounds" className="curr-user">
               <img onClick={() => this.blgModal()}id="pi-prof-pic" className="sticky" src={this.props.currentUser.profileUrl} alt="" ></img>
@@ -41,7 +40,6 @@ class Dashboard extends React.Component {
         <NewPostNav />
       </div>
           <div id="post-index-container">
-            {/* <PostIndexContainer freeze={this.props.freeze} */}
             <PostIndexContainer
               fetchBlog = {this.props.fetchBlog}
               fetchUser = {this.props.fetchUser}

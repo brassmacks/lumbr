@@ -34,3 +34,9 @@ export const unFollow = (followData) => dispatch => (
   FollowApiUtil.unFollow(followData)
     .then( user_id => (dispatch(removeFollow(user_id))))
 )
+
+export const changeUserAvatar = (id, file) => dispatch => (
+  UserApiUtil.changeUserAvatar(id, file)
+    .then( user => dispatch(receiveUser(user)))
+    // add catch err statement build action into reducer for user errors
+)

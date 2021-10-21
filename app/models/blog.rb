@@ -9,7 +9,7 @@ class Blog < ApplicationRecord
 
   
 
-  def ensure_profile_photo 
+  def ensure_backsplash
     self.profile_photo_id ||= 1
     # self.backsplach_id ||= 1
     # refactor to reference default bspach in aws 

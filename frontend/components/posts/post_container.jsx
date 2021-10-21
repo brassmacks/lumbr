@@ -12,6 +12,7 @@ const mSTP = (state, ownProps) => {
   let currentUser = state.entities.users[state.session.id]
   let author = ownProps.post.user_id
   let tags = ownProps.post.tags || [];
+  let avatar = state.entities.users[author] ? state.entities.users[author].profileUrl : post.profileUrl;
   
   return {
 
@@ -30,6 +31,7 @@ const mSTP = (state, ownProps) => {
   blogOpen: ownProps.blogOpen,
   // ACTION_ITEM: 2.2 CONVERT TO FETCH TAGS FROM STATE=>OWNPROPS.POST.TAGS.MAP
   editable: currentUser.id === author,
+  avatar: avatar
   // freeze: ownProps.freeze,
 }}
 const mDTP = dispatch => ({

@@ -18,21 +18,19 @@ class Api::PostsController < ApplicationController
   end
 
   def create 
-    # REFACTOR 
-    # build Post instance base as part of params
+
     @post = Post.new({
       title: post_params[:title],
       content_type: post_params[:content_type],
       user_id: post_params[:user_id],
       body: post_params[:body] })
-    
-      # MUST RETURN POST INSTANCE OR ERRORS
     @post._render_errors unless @post.save
 
     if post_params[:media]
       Post.new_from_params(@post.id, post_params[:media])
     end
-
+    puts "haherehehrhehre"
+    puts post_params
     #call create tags on tagstring
     render 'api/posts/show' 
 

@@ -6,9 +6,9 @@ class User < ApplicationRecord
   has_one_attached :profile_photo
   before_validation :ensure_session_token
   
-  # :ensure_profile_photo
+  
 
-  after_create :create_blog
+  after_create :create_blog, :ensure_profile_photo
   has_one :blog 
   has_many :posts
 
@@ -22,9 +22,31 @@ class User < ApplicationRecord
     return nil if user.nil?
     user.is_password?(password) ? user : nil
   end
+  
+  
+  def profile_photo=(file)
+    self.profile_photo.attach(io: file, filename: file.tempfile)
+    if self.save
+      return true
+    else
+      return self.messages
+    end
+  end
 
   def ensure_profile_photo
-    
+    return true if self.profile_photo.attached? 
+    random_photo = [ 
+      'queentree.jpg', 
+      'treedude.jpg',
+      'thowindownroots.png',
+      'gnarmushysbro.jpg'].sample()
+    path = Rails.root.join('app', 'assets','images', random_photo)
+    self.profile_photo.attach( io: File.open(path), filename: random_photo )
+    if self.save
+      return true
+    else 
+      return self.messages
+    end
   end
 
 
