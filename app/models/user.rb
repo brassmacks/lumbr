@@ -9,7 +9,7 @@ class User < ApplicationRecord
   
 
   after_create :create_blog, :ensure_profile_photo
-  has_one :blog 
+  has_one :blog, foreign_key: :user_id, class_name: "Blog" 
   has_many :posts
 
   has_many :follows, foreign_key: :user_id, class_name: "Follow"

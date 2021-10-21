@@ -133,8 +133,8 @@ div#pi-prof-box.blog{
 }
 img#pi-prof-pic.sticky{
   border-radius: 3px;
-  width:64px;
-  height:64px; 
+  width:77px;
+  height:77px; 
   position: sticky;
   top: 72px;
 }
@@ -249,7 +249,7 @@ h3#post-author{
 }
 div#text-content.post{
   height:fit-content;
-  padding:15px 21px 55px 21px;
+  padding:15px 21px 25px 21px;
   line-height: 24px;
 }
 h3#post-title{

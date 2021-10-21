@@ -1,3 +1,4 @@
+
 json.blog do 
 json.set! @user.id do
   json.blog @blog 

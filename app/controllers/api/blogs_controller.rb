@@ -13,9 +13,35 @@ class Api::BlogsController < ApplicationController
       render @blog.errors.full_messages
     end
   end
+  
+  def feed
+    @blogs = []
+    @posts = []
+    list = blog_params[:user_ids]
+
+    list.each do |id| 
+      blog = Blog.find_by({ user_id: id })
+      posts = User.find(id).posts 
+      post_list = posts.map { |post| post.id } if posts
+      @blogs.push([blog, post_list]) if blog 
+      @posts.push(posts.last(5)) if posts
+    end
+
+    if @posts.length >= 1 || @blogs.length >=1
+      render :feed
+    else 
+      render json: {
+        post_ERR: @posts.errors.full_messages,
+        blog_ERR: @blogs.errors.full_messages
+      }, status: 422
+
+    end
+
+      
+  end
 
   def blog_params
-    params.require(:blog).permit(:id, :user_id, :url)
+    params.require(:blog).permit(:id, :user_id, :url, :user_ids)
   end
 
 end

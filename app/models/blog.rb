@@ -1,8 +1,8 @@
 class Blog < ApplicationRecord
-  attr_accessor :user_id, :author
+  attr_accessor :user_id
   validates :url, presence: true 
   
-  belongs_to :author, foreign_key: :user_id
+  belongs_to :author, foreign_key: :user_id, class_name: "User"
   has_one_attached :backsplash 
   before_validation :ensure_profile_photo 
   # has_many :posts

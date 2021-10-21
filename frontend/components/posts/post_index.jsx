@@ -46,7 +46,7 @@ class PostIndex extends React.Component {
       })
     }
     if (!this.props.blogOpen) this.contentToFetch()
-    this.props.fetchBlog(this.props.currentUser.id)
+
     this.state.blogFetchList.forEach(blog_id => this.props.fetchBlogsPosts(blog_id))
 }
   componentDidUpdate() {

@@ -25,10 +25,9 @@ span#post-spacer-top{
   overflow: hidden;
 }
 footer#post-footer{
-  
   display: flex;
   justify-content: right;
-  padding-bottom: 12px;
+
   padding-right: 12px;
 }
 div#Photo-post-guts{
@@ -110,7 +109,10 @@ img#Photo-url-pic{
   width: 56px;
   padding-bottom: 13px;
 }
-
+img.post-image{
+  width: 540px;
+  max-height: 68vh;
+}
 div#drop-tainer{
   z-index: 8;
 }

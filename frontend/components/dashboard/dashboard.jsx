@@ -9,7 +9,31 @@ import { NewPostNav } from '../posts/new_post_nav'
 class Dashboard extends React.Component {
   constructor(props) {
     super(props)
-
+    this.state = {
+      posts: this.props.posts,
+      selfFetched: false,
+      blogs: this.props.blogs,
+      users: this.props.users
+    }
+  }
+  componentDidMount(){
+    if (!this.props.blogs[this.props.currentUser.id]) {
+      this.props.fetchBlog(this.props.currentUser.id)
+      this.setState({selfFetched: true})
+    }
+    let followList = this.props.currentUser.follows;
+    if (followList.length > 1) {
+      let fetchList = [];
+      followList.forEach(id => { 
+        if (!this.state.blogs[id]) fetchList.push(id) 
+      })
+      console.log(fetchList, followList)
+      fetchList.length === 1 ? this.props.fetchBlog(fetchList[0]) : 
+          fetchList ? this.props.fetchBlogs(fetchList) : null 
+    }else if (followList.length === 1 && !this.state.blogs[followList[0]]) {
+      console.log('fetch one blog')
+      this.props.fetchBlog(followList[0])
+    } 
   }
   // ACTION_ITEM 2.0 CHECK OUT THESE BLOGS
   // TEST ENSURE FUNCTIONALITY AFTER REFACTOR
