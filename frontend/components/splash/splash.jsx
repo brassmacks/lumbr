@@ -6,7 +6,9 @@ export const splash = ( { currentUser, pth, fetchPosts} ) => {
   
   
   
-  if (pth === "/") return (
+  if (pth === "/") {
+    document.body.style.overflow = "hidden"
+    return (
     
     <div id="bground" className="splash">
       
@@ -29,6 +31,6 @@ export const splash = ( { currentUser, pth, fetchPosts} ) => {
         </nav>
       </div>
     </div>
-  )
+  )}
   return null;
 }
