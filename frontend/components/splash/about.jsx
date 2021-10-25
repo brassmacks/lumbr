@@ -16,8 +16,8 @@ export const About = () => {
         <div id="splash-bottom-nav">
          <nav id="splash-bottom-nav">
 
-            <a id="gitlink" href="https://github.com/brassmacks">Github</a>
-            <a id="linkdlink" href="https://www.linkedin.com/in/joshua-elliott-a044b0209/">LinkedIn</a>
+            <a id="gitlink" href="https://github.com/brassmacks" target="_blank">Github</a>
+            <a id="linkdlink" href="https://www.linkedin.com/in/joshua-elliott-a044b0209/" target="_blank">LinkedIn</a>
             {/* <a id='aboutLink' onClick={()=> this.aboutExpand()} >About</a> */}
             <a id='aboutLink' onClick={()=>{about.current.className="showing"}}>
               About</a>
