@@ -5,3 +5,4 @@ belongs_to :post
 belongs_to :tag, inverse_of: :PostsTag
 
 
+end
