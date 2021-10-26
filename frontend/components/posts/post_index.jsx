@@ -45,7 +45,7 @@ class PostIndex extends React.Component {
         }
       })
     }
-    if (!this.props.blogOpen) this.contentToFetch()
+    if (!this.props.blogOpen && !this.state.isFetched) this.contentToFetch()
 
     this.state.blogFetchList.forEach(blog_id => this.props.fetchBlogsPosts(blog_id))
 }
@@ -79,8 +79,8 @@ class PostIndex extends React.Component {
 
     authorList.forEach(author => {
       this.props.fetchUser(author)
-      this.props.fetchBlog(author)
     })
+    if (authorList.length >= 1) this.props.fetchBlogs(authorList)
     this.setState({
       isFetched: true, userFetchList: authorList,
         blogFetchList: authorList})

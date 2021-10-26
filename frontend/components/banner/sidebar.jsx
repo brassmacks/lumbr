@@ -10,14 +10,11 @@ class SideBar extends React.Component {
       followers: this.props.currentUser.followers,
     }
     this.riseDown = React.createRef()
-    this.imageInput = React.createRef()
   }
 
 
     hide = () => {
       this.riseDown.current.className = "hidden"
-      console.log(this.imageInput)
-      this.imageInput.current.form.reset()
     }
 
     popUp = (e) => {
@@ -33,13 +30,6 @@ class SideBar extends React.Component {
       this.props.logout()
     }
 
-    handleAvatar = (e) => {
-      
-      let file = new FormData()
-      file.append("user[avatar]", e.target.form[0].files[0])
-      let id = this.props.currentUser.id
-      this.props.changeUserAvatar(id, file)
-    }
 
   blgModal = () => {
     // freeze();
@@ -76,12 +66,12 @@ class SideBar extends React.Component {
             logout
           </button>
         </li>
-        <li>
+        {/* <li>
           <form action="" >
             <input type="file" ref={this.imageInput} accept="image/*" onClick={e => e.stopPropagation()} />
             <input type="submit" onClick={e => this.handleAvatar(e)} />
           </form>
-        </li>
+        </li> */}
         <li>
           <button className="ban-drop">
             follows

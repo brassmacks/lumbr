@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 import PostIndex from './post_index';
 import { openModal } from '../../actions/modal_actions';
-import { fetchBlog } from '../../actions/blog_actions';
+import { fetchBlog, fetchBlogs } from '../../actions/blog_actions';
 import { fetchPosts, deletePost } from '../../actions/post_actions';
 import { fetchUser } from '../../actions/user_actions';
 
@@ -38,7 +38,8 @@ const mDTP = dispatch => ({
   deletePost: postId => dispatch(deletePost(postId)),
   fetchBlog: userId => dispatch(fetchBlog(userId)),
   openModal: (modal, data) => dispatch(openModal(modal, data)),
-  fetchUser: user_id => dispatch(fetchUser(user_id))
+  fetchUser: user_id => dispatch(fetchUser(user_id)),
+  fetchBlogs: user_ids => dispatch(fetchBlogs(user_ids))
 })
 
 export default connect(mSTP,mDTP)(PostIndex) 

@@ -1,6 +1,6 @@
 json.extract! post, :id, :title, :user_id, :body, :content_type
 json.created_at post.created_at.in_time_zone("Pacific Time (US & Canada)")
-user = User.find(:user_id)
+user = User.find(post.user_id)
 json.extract! user, :id, :username
 json.photoUrl url_for(post.photo) if post.photo.attached?
 json.photoUrl url_for(post.video) if post.video.attached?

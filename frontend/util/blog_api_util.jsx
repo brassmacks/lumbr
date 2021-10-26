@@ -6,9 +6,10 @@ export const fetchBlog = (userId) => {
   })
 }
 export const fetchBlogs = (userIds) => {
+  console.log(userIds)
   return $.ajax({
-    url: `api/blogs/feed`,
+    url: `api/blog/feed`,
     method: 'GET',
-    data: userIds 
+    data: {'blog': {"user_ids": userIds}}
   })
 }

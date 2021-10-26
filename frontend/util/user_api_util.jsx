@@ -17,7 +17,6 @@ export const fetchUserId = (userName) => {
 }
 
 export const changeUserAvatar = (id, file) => {
-  console.log(file, 'sent out to back')
   return $.ajax({
     url: `api/users/avatar/${id}`,
     method: 'PUT',

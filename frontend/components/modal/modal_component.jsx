@@ -24,10 +24,9 @@ class Modal extends React.Component {
       isFetched: this.props.isFetched,
       background: 'hidden'
     }
-    
     this.component; 
 
-    this.fetch()
+    // this.fetch()
     this.assignType = this.assignType.bind(this);
     this.close = this.close.bind(this)
     this.defineComponent();
@@ -52,11 +51,7 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
-    if (!this.props.isFetched) {
-      this.props.fetchPosts().then(
-        () => this.setState({ isFetched: true })
-      )
-    }
+
     this.defineComponent()
   }
 
@@ -168,7 +163,8 @@ class Modal extends React.Component {
   }
 
   return (
-    <div className={this.state.background} onClick={ () => this.close()}>
+    <div className={this.state.background} 
+    onClick={ () => this.close()}>
       <div className="modal-child" onClick={e => e.stopPropagation()}>
 
         {this.component}

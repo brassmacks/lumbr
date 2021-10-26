@@ -17,10 +17,8 @@ class Dashboard extends React.Component {
     }
   }
   componentDidMount(){
-    if (!this.props.blogs[this.props.currentUser.id]) {
-      this.props.fetchBlog(this.props.currentUser.id)
-      this.setState({selfFetched: true})
-    }
+    console.log(this.props.currentUser)
+
     let followList = this.props.currentUser.follows;
     if (followList.length > 1) {
       let fetchList = [];
@@ -29,7 +27,7 @@ class Dashboard extends React.Component {
       })
       console.log(fetchList, followList)
       fetchList.length === 1 ? this.props.fetchBlog(fetchList[0]) : 
-          fetchList ? this.props.fetchBlogs(fetchList) : null 
+          fetchList.length > 1 ? this.props.fetchBlogs(fetchList) : null 
     }else if (followList.length === 1 && !this.state.blogs[followList[0]]) {
       console.log('fetch one blog')
       this.props.fetchBlog(followList[0])
